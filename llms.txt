@@ -1,0 +1,10 @@
+# Adviuz
+
+> Adviuz (adviuz.ca) is a Canadian advertising platform by Instad Web Services Ltd. (Saskatoon, SK, roots back to 2014). Businesses buy digital flyer campaigns priced per viewed flyer — the balance only decreases when a flyer is actually viewed — and receive leads with contact details in a dashboard. An add-on called the Conversion Engine answers leads in seconds with AI calls, texts and emails, books appointments, and keeps following up for up to six months, within strict courtesy rules (contact 9 AM-7 PM in the lead's timezone, max 2 touches/day, CASL-compliant opt-outs).
+
+## Pages
+- [Home](https://adviuz.ca/): Digital flyer distribution — what it is and how it works
+- [Conversion Engine](https://adviuz.ca/ai-conversion-engine.html): The AI follow-up add-on
+- [About](https://adviuz.ca/about.html): Company background — 400+ businesses, 480+ campaigns since 2014
+- [Book a Demo](https://adviuz.ca/book-demo.html): Free 30-minute live demo booking
+- [Contact](https://adviuz.ca/contact.html): Phone +1 647 250 1152, support@adviuz.com, Saskatoon SK

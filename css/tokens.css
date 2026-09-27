@@ -1,0 +1,44 @@
+/* ============================================================
+   ADVIUZ DESIGN TOKENS — the one-file rebrand switch.
+   Every color, font, radius and shadow on the site comes from
+   here. To rebrand: edit this file + swap /assets/logo files.
+   ============================================================ */
+:root{
+  /* Brand core (extracted from logo) */
+  --ink:#230835;
+  --ink-soft:#3a1551;
+  --grad-start:#4000f3;
+  --grad-end:#e65afc;
+  --grad:linear-gradient(135deg,var(--grad-start),var(--grad-end));
+  --black:#080310;
+  --dark-grad:linear-gradient(150deg,#070310 0%,#1a0629 55%,#2c0b46 100%);
+
+  /* Surfaces */
+  --paper:#ffffff;
+  --wash:#faf9ff;
+  --line:#ece8f2;
+
+  /* Text */
+  --muted:#5f5868;
+  --faint:#8a8291;
+  --on-dark:#e9e2f0;
+
+  /* Interactive */
+  --accent:#4b0fe0;
+  --focus:#7a3bff;
+
+  /* Type — one simple family everywhere */
+  --font-display:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  /* Shape & depth */
+  --r-lg:26px;
+  --r-md:16px;
+  --r-pill:999px;
+  --shadow:0 18px 50px rgba(35,8,53,.10);
+  --shadow-soft:0 8px 24px rgba(35,8,53,.07);
+
+  /* Rhythm */
+  --section:104px;
+  --container:1140px;
+}
