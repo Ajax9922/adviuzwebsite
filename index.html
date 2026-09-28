@@ -20,7 +20,7 @@
 <meta property="og:title" content="Adviuz — Digital Flyer Distribution for Canadian Businesses">
 <meta property="og:description" content="Adviuz sends your flyer to people digitally. You pay only for flyers that get viewed. Interested people become leads, and our Conversion Engine can follow up with them for you.">
 <meta property="og:url" content="https://adviuz.ca/">
-<meta property="og:image" content="https://adviuz.ca/assets/hero.webp">
+<meta property="og:image" content="https://adviuz.ca/assets/og-dashboard.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://adviuz.ca/#org", "name": "Adviuz", "legalName": "Instad Web Services Ltd.", "url": "https://adviuz.ca/", "logo": "https://adviuz.ca/assets/logo.png", "foundingDate": "2014", "telephone": "+1-647-250-1152", "email": "support@adviuz.com", "address": {"@type": "PostalAddress", "streetAddress": "Scotiabank Building, 111 2nd Ave S, Unit 400", "addressLocality": "Saskatoon", "addressRegion": "SK", "addressCountry": "CA"}, "areaServed": ["CA", "US"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "url": "https://adviuz.ca/", "name": "Adviuz", "publisher": {"@id": "https://adviuz.ca/#org"}}</script>
@@ -61,33 +61,13 @@
         <li><span class="dot"></span>Charged only for viewed flyers</li>
         <li><span class="dot"></span>Contact details of interested people</li>
       </ul>
+      <div class="hero-vid-slot" id="heroVidSlot"></div>
       <div class="hero-actions">
         <a class="button button-grad" href="#book-demo">Book a demo</a>
-        <a class="button button-outline" href="#how">See how it works</a>
+        <a class="button button-outline" href="tel:+16472501152">Call now</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="float-card fc1"><span class="mini">✓ Viewed</span><b>Only delivered views reduce your balance</b></div>
-      <div class="float-card fc2"><span class="mini">New lead</span><b>Interest captured automatically</b></div>
-      <img class="hero-img" src="assets/hero.webp" alt="A flyer flowing from a phone to groups of people viewing it on their own devices" width="1240" height="826">
-    </div>
-  </div>
-</section>
-
-<!-- TRUST STRIPE -->
-<section class="trust" aria-label="Brands whose ads our team has promoted">
-  <div class="container">
-    <p class="trust-label">ADS PROMOTED</p>
-  </div>
-  <div class="trust-viewport">
-    <div class="trust-track"><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section wash" id="how">
-  <div class="container">
-    <div class="center"><span class="kicker">How it works</span><h2>From flyer to booked leads in four steps</h2></div>
+    <div class="hero-visual" id="heroVisual">
     <div class="video-stage" id="howVideo">
       <img src="assets/hero.webp" alt="" aria-hidden="true">
       <video src="assets/how-it-works.mp4" muted loop playsinline autoplay preload="metadata"></video>
@@ -97,56 +77,36 @@
         <div class="vcap-dots" id="vcapDots"></div>
       </div>
     </div>
-    <div class="steps steps-4">
-      <article class="step"><h3>Pick a package</h3><p>Choose how many viewed flyers you want. Pay securely with Stripe.</p></article>
-      <article class="step"><h3>We design</h3><p>Send your logo and photos. We prepare the flyer for your approval.</p></article>
-      <article class="step"><h3>Pick your audience</h3><p>Tell us who and where. We set the campaign up around them.</p></article>
-      <article class="step"><h3>Go live</h3><p>Your flyer goes out. Watch views and leads come in on your dashboard.</p></article>
     </div>
   </div>
 </section>
 
-<!-- NUMBERS STRIP -->
-<section class="num-strip" aria-label="Adviuz track record">
-  <div class="container num-grid">
-    <div class="num"><b><span class="cnt" data-count="12">12</span><i>+</i></b><span>Years in market</span></div>
-    <div class="num"><b><span class="cnt" data-count="400">400</span><i>+</i></b><span>Businesses served</span></div>
-    <div class="num"><b><span class="cnt" data-count="17618255">17,618,255</span><i>+</i></b><span>Flyer views delivered</span></div>
-    <div class="num"><b><span class="cnt" data-count="132000">132,000</span><i>+</i></b><span>Leads generated</span></div>
-  </div>
-</section>
-
-<!-- PAPER VS DIGITAL -->
-<section class="section">
+<!-- TRUST STRIPE -->
+<section class="trust" aria-label="Global brands using digital flyers">
   <div class="container">
-    <div class="center">
-      <span class="kicker">Benefits</span>
-      <h2>Why businesses switch to digital flyers</h2>
-      <p class="lead">Same idea. Very different results.</p>
+    <h2 class="trust-head">Trusted by <span class="grad-text">Global Brands</span></h2>
+  </div>
+  <div class="trust-viewport">
+    <div class="trust-track"><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span><span>Uber</span><span>Suzuki</span><span>RE/MAX</span><span>Škoda</span><span>MG Motors</span><span>Yamaha</span></div>
+  </div>
+  <div class="container">
+    <div class="trust-stats">
+      <div class="tstat"><span class="tstat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span><b><span class="cnt2" data-n="12">0</span>+</b><span>Years in Market</span></div>
+      <div class="tstat"><span class="tstat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2"/></svg></span><b><span class="cnt2" data-n="17" data-suf="M">0</span>+</b><span>Flyers Delivered</span></div>
+      <div class="tstat"><span class="tstat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></span><b><span class="cnt2" data-n="100" data-suf="K">0</span>+</b><span>Leads Generated</span></div>
     </div>
-    <div class="compare">
-      <article class="compare-card paper">
-        <div class="icon" aria-hidden="true">▤</div>
-        <h3>Paper flyers</h3>
-        <ul>
-          <li class="no"><span class="mark">✕</span>You pay for printing and delivery</li>
-          <li class="no"><span class="mark">✕</span>Most go straight in the recycling bin</li>
-          <li class="no"><span class="mark">✕</span>No way to know who saw it</li>
-          <li class="no"><span class="mark">✕</span>No way to know who's interested</li>
-          <li class="no"><span class="mark">✕</span>No report after the drop</li>
-        </ul>
-      </article>
-      <article class="compare-card digital">
-        <div class="icon" aria-hidden="true">◉</div>
-        <h3>Adviuz digital flyers</h3>
-        <ul>
-          <li><span class="mark">✓</span>No printing, no paper waste</li>
-          <li><span class="mark">✓</span>You pay only for flyers that get viewed</li>
-          <li><span class="mark">✓</span>Sent to the audience you choose</li>
-          <li><span class="mark">✓</span>Interested people become leads with contact details</li>
-          <li><span class="mark">✓</span>Every view and lead tracked in your dashboard</li>
-        </ul>
-      </article>
+  </div>
+</section>
+
+<!-- STEPS TO START -->
+<section class="section wash" id="how">
+  <div class="container">
+    <div class="center"><span class="kicker">Steps to Start</span><h2>From flyer to booked leads in four steps</h2></div>
+    <div class="steps steps-4">
+      <article class="step"><div class="lot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></div><h3>Pick a package</h3><p>Choose how many viewed flyers you want. Pay securely with Stripe.</p></article>
+      <article class="step"><div class="lot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.2-4.2L16.6 4.4a2 2 0 012.8 0l.9.9a2 2 0 010 2.8L8.9 19.5 4 20z"/><path d="M14.5 6.5l3 3"/></svg></div><h3>We design</h3><p>Send your logo and photos. We prepare the flyer for your approval.</p></article>
+      <article class="step"><div class="lot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.8" r="2.3"/></svg></div><h3>Pick your audience</h3><p>Tell us who and where. We set the campaign up around them.</p></article>
+      <article class="step"><div class="lot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3 2.3 4.7 5.8 4.7 9.4L14.2 15H9.8l-2.5-3.1c0-3.6 1.7-7.1 4.7-9.4z"/><circle cx="12" cy="9.3" r="1.7"/><path d="M9.2 16.2L7.5 20M14.8 16.2L16.5 20M12 16.5V21"/></svg></div><h3>Go live</h3><p>Your flyer goes out. Watch views and leads come in on your dashboard.</p></article>
     </div>
   </div>
 </section>
@@ -161,10 +121,119 @@
     <div class="features">
       <article class="feature"><span class="glyph" aria-hidden="true">✏</span><h3>We design your flyer</h3><p>Send us your logo, website or photos. We make the flyer and you approve it. No designer needed.</p></article>
       <article class="feature"><span class="glyph" aria-hidden="true">◎</span><h3>Your audience</h3><p>Tell us who you want to reach and where. Your flyer goes out to that audience on websites and apps.</p></article>
-      <article class="feature"><span class="glyph" aria-hidden="true">✓</span><h3>Pay per viewed flyer</h3><p>Your package is a number of views. Your balance only goes down when a flyer is actually viewed.</p></article>
+      <article class="feature"><span class="glyph" aria-hidden="true">✓</span><h3>Pay only for dedicated attention</h3><p>Your balance only goes down when someone actually keeps your flyer open — 25 seconds of real attention.</p></article>
       <article class="feature"><span class="glyph" aria-hidden="true">👥</span><h3>Leads with details</h3><p>When someone responds to your flyer, you get their name and contact info in your dashboard.</p></article>
       <article class="feature"><span class="glyph" aria-hidden="true">📊</span><h3>Clear reports</h3><p>See views, responses and leads any time. No guessing where your money went.</p></article>
       <article class="feature"><span class="glyph" aria-hidden="true">☎</span><h3>AI follow-up (add-on)</h3><p>Want every lead called and texted back in seconds? Add the Conversion Engine. <a href="/ai-conversion-engine.html" style="color:var(--accent);font-weight:700">See how it works</a></p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="section">
+  <div class="container">
+    <div class="center">
+      <span class="kicker">Platforms</span>
+      <h2>Go live across 15+ advertising platforms with one click</h2>
+      <p class="lead">Social, video, web, SMS, email and premium news sites — one campaign covers them all.</p>
+    </div>
+    <div class="golive" id="golivePanel" aria-hidden="true">
+      <video class="gl-vid" id="glVid" src="assets/golive.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="gl-node">
+        <span class="gl-flyer">🖼</span>
+        <b>Your flyer</b>
+        <span class="gl-live">● LIVE</span>
+      </div>
+      <div class="gl-beam"><i></i><i></i><i></i></div>
+      <div class="gl-chips">
+        <span>Facebook</span><span>Instagram</span><span>YouTube</span><span>TikTok</span><span>LinkedIn</span><span>Display Ads</span><span>SMS</span><span>Email</span><span>News Sites</span>
+      </div>
+    </div>
+    <div class="plats">
+      <article class="plat">
+        <h3><span class="pico">💬</span>Social Media</h3>
+        <ul>
+          <li>Facebook Feed</li>
+          <li>Facebook Messenger</li>
+          <li>Instagram Feed</li>
+          <li>Instagram Sponsored</li>
+          <li>Instagram Reels</li>
+          <li>Facebook Reels</li>
+          <li>WhatsApp Status</li>
+          <li>LinkedIn</li>
+          <li>X (Twitter)</li>
+          <li>TikTok</li>
+        </ul>
+      </article>
+      <article class="plat">
+        <h3><span class="pico">▶</span>Video</h3>
+        <ul>
+          <li>YouTube Ads</li>
+          <li>YouTube Shorts</li>
+          <li>Discovery Ads</li>
+        </ul>
+        <h3 style="margin-top:26px"><span class="pico">🔁</span>Remarketing</h3>
+        <ul>
+          <li>Remarketing Ads</li>
+          <li>SMS Campaigns</li>
+        </ul>
+        <h3 style="margin-top:26px"><span class="pico">🌐</span>Web, Apps &amp; Email</h3>
+        <ul>
+          <li>Display Network Ads</li>
+          <li>Mobile App Pop-up Ads</li>
+          <li>Sponsored Emails</li>
+        </ul>
+      </article>
+      <article class="plat wide">
+        <h3><span class="pico">📰</span>Premium News Platforms</h3>
+        <ul>
+          <li>CNN</li>
+          <li>Fox News</li>
+          <li>The New York Times</li>
+          <li>CNBC</li>
+          <li>Global News</li>
+        </ul>
+      </article>
+    </div>
+    <p class="plat-note">Not every platform fits every business — we hand-pick and prioritize the platforms best suited to your campaign, audience and goals.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section wash">
+  <div class="container">
+    <div class="center">
+      <span class="kicker">Comparison</span>
+      <h2>Traditional advertising vs Adviuz</h2>
+      <p class="lead">Same budget. Very different outcomes.</p>
+    </div>
+    <div class="compare">
+      <article class="compare-card paper">
+        <div class="icon" aria-hidden="true">▤</div>
+        <h3>Traditional advertising</h3>
+        <ul>
+          <li class="no"><span class="mark">✕</span>Pay for printing, impressions or clicks — viewed or not</li>
+          <li class="no"><span class="mark">✕</span>Ad management fees on top of your ad budget</li>
+          <li class="no"><span class="mark">✕</span>You handle design, creatives and landing pages</li>
+          <li class="no"><span class="mark">✕</span>Hire, train and manage your own callers to follow up</li>
+          <li class="no"><span class="mark">✕</span>Paper flyers printed, delivered — and thrown away unread</li>
+          <li class="no"><span class="mark">✕</span>No contact details of who's actually interested</li>
+          <li class="no"><span class="mark">✕</span>Budget spent on experiments, with no clear report</li>
+        </ul>
+      </article>
+      <article class="compare-card digital">
+        <div class="icon" aria-hidden="true">◉</div>
+        <h3>Adviuz</h3>
+        <ul>
+          <li><span class="mark">✓</span>Charged only after a 25-second completed view</li>
+          <li><span class="mark">✓</span>Fully managed — we run and optimize the campaign</li>
+          <li><span class="mark">✓</span>Flyer design and setup included in every package</li>
+          <li><span class="mark">✓</span>AI Conversion Engine calls and texts every lead for you</li>
+          <li><span class="mark">✓</span>$0.00 printing cost — 100% digital distribution</li>
+          <li><span class="mark">✓</span>Interested people arrive as leads, with contact details</li>
+          <li><span class="mark">✓</span>Clear reports — see exactly where your money went</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
@@ -179,25 +248,10 @@
         <a class="button" href="/ai-conversion-engine.html">See the Conversion Engine</a>
       </div>
       <div>
-        <div class="engine-rows" style="background:rgba(255,255,255,.05);border-radius:var(--r-md);padding:6px 16px">
-          <div class="engine-row" style="border-color:rgba(255,255,255,.12)"><span class="ava">AI</span><div><b style="color:#fff">Lead called in seconds</b><span style="color:#b7a8c4">Right after they respond to your flyer</span></div><span class="pill">DONE</span></div>
-          <div class="engine-row" style="border-color:rgba(255,255,255,.12)"><span class="ava">✉</span><div><b style="color:#fff">Text sent</b><span style="color:#b7a8c4">With the next step</span></div><span class="pill">SENT</span></div>
-          <div class="engine-row" style="border-bottom:0"><span class="ava">📅</span><div><b style="color:#fff">Appointment booked</b><span style="color:#b7a8c4">Straight into your calendar</span></div><span class="pill">BOOKED</span></div>
-        </div>
+        <img class="dash-img" src="assets/dashboard.webp" alt="Adviuz Conversion Engine dashboard on a phone — campaign exposure, flyer views, leads, and texts, emails and AI call minutes remaining" width="1280" height="720" loading="lazy">
+      </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="section wash" id="results">
-  <div class="container">
-    <div class="center">
-      <span class="kicker">Case studies</span>
-      <h2>Proof, not promises</h2>
-      <p class="lead">Named case studies from dental groups, colleges and retailers are being prepared for publication.</p>
-    </div>
-    <p class="tiers-note">Named case studies are on the way. Until then, the best proof is live — <a href="#book-demo">book a demo</a> and watch real campaigns run.</p>
   </div>
 </section>
 
@@ -221,17 +275,25 @@
       <div>
         <img src="assets/logo-white.png" alt="Adviuz">
         <p>Flyers delivered digitally. Leads answered in seconds. One platform for businesses across Canada and the US.</p>
-        <a class="button button-grad" style="padding:12px 22px;font-size:14px;margin-top:4px" href="#book-demo">Book a demo</a>
+        <p class="f-addr">Scotiabank Building, 111 2nd Ave S<br>Unit 400, Saskatoon SK</p>
         <div class="soc-row"><a href="#" aria-label="Adviuz on Facebook" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.3-.1-2.4-.1-2.3 0-3.9 1.4-3.9 4v2.4H7.7V14h2.7v8h3.1z"/></svg></a><a href="#" aria-label="Adviuz on X" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5H22l-6.8 7.8 8 11.2h-6.3l-4.9-6.4-5.6 6.4H3.2l7.3-8.3L2.8 2.5h6.5l4.4 5.8 5.2-5.8zm-1.1 19h1.7L7.1 4.3H5.3l12.5 17.2z"/></svg></a><a href="#" aria-label="Adviuz on Instagram" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="Adviuz on YouTube" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-1-2.4-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.7.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.9 9.1.9 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.5.3 7.5.3s4.6 0 7.7-.4c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 14.9V8.5l6.2 3.2-6.2 3.2z"/></svg></a><a href="#" aria-label="Adviuz on LinkedIn" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 3H3.6C2.7 3 2 3.7 2 4.6v14.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V4.6c0-.9-.7-1.6-1.6-1.6zM8 18.3H5.3V9.7H8v8.6zM6.6 8.5c-.9 0-1.6-.7-1.6-1.6S5.7 5.3 6.6 5.3s1.6.7 1.6 1.6-.7 1.6-1.6 1.6zM18.7 18.3H16v-4.2c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2v4.3h-2.7V9.7h2.6v1.2h0c.4-.7 1.3-1.4 2.6-1.4 2.7 0 3.2 1.8 3.2 4.1v4.7z"/></svg></a></div>
-        <div class="askai">Ask AI about us</div><div class="ai-chips"><a href="https://chatgpt.com/?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">ChatGPT</a><a href="https://claude.ai/new?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Claude</a><a href="https://www.perplexity.ai/search?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Perplexity</a><a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a></div>
       </div>
       <div>
         <h3>Company</h3>
         <ul>
           <li><a href="/about.html">About</a></li>
-          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/partners.html">Partners</a></li>
           <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
           <li><a href="https://hub.adviuz.ca">Client login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="/">Digital Flyers</a></li>
+          <li><a href="/ai-conversion-engine.html">AI Conversion Engine</a></li>
+          <li><a href="/book-demo.html">Book a Demo</a></li>
         </ul>
       </div>
       <div>
@@ -244,9 +306,9 @@
         </ul>
       </div>
     </div>
+    <div class="footer-ask"><span class="askai-label">Ask AI about us</span><div class="ai-chips"><a href="https://chatgpt.com/?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">ChatGPT</a><a href="https://claude.ai/new?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Claude</a><a href="https://www.perplexity.ai/search?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Perplexity</a><a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a></div></div>
     <div class="footer-legal">
-      Adviuz (Instad Web Services Ltd.) · Scotiabank Building, 111 2nd Ave S Unit 400, Saskatoon SK ·
-      <a href="mailto:support@adviuz.com">support@adviuz.com</a> · <a href="tel:+16472501152">+1 647 250 1152</a><br>
+      Adviuz (Instad Web Services Ltd.) · <a href="mailto:support@adviuz.com">support@adviuz.com</a> · <a href="tel:+16472501152">+1 647 250 1152</a><br>
       © 2026 Instad Web Services Ltd. All rights reserved.
     </div>
   </div>
@@ -256,8 +318,18 @@
 <script>
 const t=document.getElementById('menuToggle'),n=document.getElementById('navLinks');
 t.addEventListener('click',()=>{const open=n.classList.toggle('open');t.setAttribute('aria-expanded',open);});
+/* Hero video placement: right column on desktop, below the points on mobile */
+const heroMq=matchMedia('(max-width:720px)');
+function placeHeroVideo(){
+  const hv=document.getElementById('howVideo'),slot=document.getElementById('heroVidSlot'),home=document.getElementById('heroVisual');
+  if(!hv||!slot||!home)return;
+  if(heroMq.matches){slot.appendChild(hv);slot.style.display='block';}
+  else{home.appendChild(hv);slot.style.display='none';}
+}
+placeHeroVideo();
+heroMq.addEventListener?heroMq.addEventListener('change',placeHeroVideo):heroMq.addListener(placeHeroVideo);
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const sel='.hero-badge,h1,.hero .lead,.hero-points li,.hero-actions,.hero-img,.kicker,h2,.section .lead,.feature,.step,.tier,.compare-card,.proof,.industry,.coverage-card,.addon>div,.cta-panel,.faq details,.timeline .engine-row,.engine';
+  const sel='.hero-badge,h1,.hero .lead,.hero-points li,.hero-actions,.hero-img,.kicker,h2,.section .lead,.feature,.step,.tier,.compare-card,.plat,.num-card,.proof,.industry,.coverage-card,.addon>div,.cta-panel,.faq details,.timeline .engine-row,.engine';
   const els=[...document.querySelectorAll(sel)];
   els.forEach(el=>{el.classList.add('rv');
     const sibs=[...el.parentElement.children].filter(s=>s.classList&&s.classList.contains('rv'));
@@ -292,25 +364,34 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 })();
 
 
-/* Stat count-up */
+
+/* Big stat count-up */
 (function(){
-  var els=[].slice.call(document.querySelectorAll('.cnt'));
+  var els=[].slice.call(document.querySelectorAll('.cnt2'));
   if(!els.length)return;
-  function run(el){
-    var target=parseInt(el.dataset.count,10),t0=performance.now(),dur=target>10000?2600:1400;
-    function tick(t){
-      var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
-      el.textContent=Math.round(target*e).toLocaleString('en-US');
-      if(p<1)requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  function final(el){el.textContent=el.dataset.n+(el.dataset.suf||'');}
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){els.forEach(final);return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(en){
-    if(!en.isIntersecting)return;
-    io.unobserve(en.target);run(en.target);
-  });},{threshold:.3});
-  els.forEach(function(el){el.textContent='0';io.observe(el);});
+    if(!en.isIntersecting)return;io.unobserve(en.target);
+    var el=en.target,t=parseInt(el.dataset.n,10),suf=el.dataset.suf||'',t0=null,D=1600;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min(1,(ts-t0)/D);p=1-Math.pow(1-p,3);
+      el.textContent=Math.round(t*p)+suf;
+      if(p<1)requestAnimationFrame(step);else el.textContent=t+suf;
+    }
+    requestAnimationFrame(step);
+  });},{threshold:.4});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+
+/* Go-live video: show when it can play, CSS animation is the fallback */
+(function(){
+  var v=document.getElementById('glVid'),p=document.getElementById('golivePanel');
+  if(!v||!p)return;
+  function on(){p.classList.add('vid-on');v.play().catch(function(){});}
+  if(v.readyState>=3)on();else v.addEventListener('canplay',on);
 })();
 </script>
 <script src="js/booking.js" defer></script>
