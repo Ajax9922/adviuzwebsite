@@ -326,7 +326,7 @@ function runWizard(){
       if(isToday(view.y,view.m,d))b.classList.add('today');
       if(sel&&sel.y===view.y&&sel.m===view.m&&sel.d===d)b.classList.add('sel');
       if(!bookable(view.y,view.m,d))b.disabled=true;
-      else b.addEventListener('click',()=>{sel={y:view.y,m:view.m,d:d};renderCal();renderSlots();});
+      else b.addEventListener('click',()=>{sel={y:view.y,m:view.m,d:d};renderCal();renderSlots();if(matchMedia('(max-width:720px)').matches)dayLabel.scrollIntoView({behavior:'smooth',block:'start'});});
       grid.appendChild(b);
     }
     const nowK=key(T.y,T.m,1),maxD=new Date(maxNum);
@@ -343,8 +343,9 @@ function runWizard(){
       b.addEventListener('click',()=>{selSlot=s;[...slotsEl.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');
         const first=!step3.classList.contains('on');
         step3.classList.add('on');bkT0=bkT0||Date.now();update();
-        if(first){step3.scrollIntoView({behavior:'smooth',block:'center'});
-          const bz=document.getElementById('bkBiz');if(bz)bz.focus({preventScroll:true});}});
+        const mob=matchMedia('(max-width:720px)').matches;
+        if(first||mob)step3.scrollIntoView({behavior:'smooth',block:mob?'start':'center'});
+        if(first&&!mob){const bz=document.getElementById('bkBiz');if(bz)bz.focus({preventScroll:true});}});
       slotsEl.appendChild(b);
     });
     todayNote.style.display=t?'block':'none';

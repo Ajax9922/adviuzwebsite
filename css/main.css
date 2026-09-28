@@ -638,3 +638,92 @@ p{margin:0 0 18px}
 /* ---- v12b: go-live video fills panel ---- */
 .golive.vid-on{padding:0}
 .golive.vid-on .gl-vid{max-width:none;margin:0;border-radius:var(--r-lg)}
+
+/* ---- v13: full-width header pill, logo strip ---- */
+.site-header .container.nav{max-width:1520px}
+.trust-track img{height:clamp(20px,2.1vw,27px);width:auto;display:block;opacity:.85}
+
+/* ---- v14: lighter nav, hero mini points, steps redesign ---- */
+.nav-links{font-weight:500}
+.nav-links a[aria-current]{font-weight:600}
+.hero-mini{display:none}
+.stepsx{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+.stepx{position:relative;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:30px 26px 28px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.stepx::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad)}
+.stepx:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.sx-num{position:absolute;top:16px;right:20px;font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,rgba(64,0,243,.16),rgba(230,90,252,.20));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sx-ico{width:56px;height:56px;border-radius:16px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 10px 24px rgba(64,0,243,.25)}
+.sx-ico svg{width:27px;height:27px}
+.stepx h3{margin:0 0 8px;font-size:18px}
+.stepx p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+@media (max-width:960px){.stepsx{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  .stepsx{grid-template-columns:1fr}
+  .hero-mini{display:block;list-style:none;margin:20px 0 0;padding:0}
+  .hero-mini li{position:relative;padding:11px 0 11px 26px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+  .hero-mini li:first-child{border-top:0}
+  .hero-mini li::before{content:"✓";position:absolute;left:0;top:10px;width:17px;height:17px;border-radius:50%;background:var(--grad);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center}
+}
+
+/* ---- v15: header blur veil, nav layout ---- */
+.site-header::before{content:"";position:absolute;left:50%;width:100vw;top:-14px;height:calc(100% + 30px);transform:translateX(-50%);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);-webkit-mask-image:linear-gradient(#000 52%,transparent);mask-image:linear-gradient(#000 52%,transparent);z-index:-1;pointer-events:none}
+.nav-links{margin-left:6px;margin-right:auto}
+.nav-actions{margin-left:0}
+@media (max-width:720px){
+  .hero .hero-actions .button.no-m{display:none!important}
+}
+
+/* ---- v16: taller hero, desktop hero points ---- */
+@media (min-width:721px){
+  .hero{padding-top:104px;padding-bottom:112px}
+  .hero-mini{display:flex;list-style:none;gap:8px 34px;flex-wrap:wrap;margin:26px 0 0;padding:0}
+  .hero-mini li{position:relative;padding-left:25px;font-size:13.5px;color:var(--muted);font-weight:600}
+  .hero-mini li::before{content:"✓";position:absolute;left:0;top:1px;width:17px;height:17px;border-radius:50%;background:var(--grad);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center}
+}
+
+/* ---- v17: logo strip clarity ---- */
+.trust-track{align-items:center}
+.trust-track img{height:clamp(24px,2.4vw,31px);width:auto;display:block;opacity:1}
+.trust-track img.tall{height:clamp(34px,3.4vw,46px)}
+
+/* ---- v20: journey timeline, CE tiers ---- */
+.journey{max-width:860px;margin:6px auto 0}
+.jr{display:grid;grid-template-columns:104px 1fr;gap:26px;position:relative;padding-bottom:38px}
+.jr::before{content:"";position:absolute;left:51px;top:14px;bottom:-14px;width:2px;background:linear-gradient(var(--grad-start),var(--grad-end));opacity:.22}
+.jr:last-child{padding-bottom:0}
+.jr:last-child::before{display:none}
+.jr-year{position:relative;z-index:1;align-self:start;justify-self:center;background:var(--grad);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.04em;padding:9px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(64,0,243,.28);white-space:nowrap}
+.jr-card{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:26px 30px}
+.jr-card h3{margin:0 0 10px;font-size:19px}
+.jr-card p{margin:0 0 10px;color:var(--muted);font-size:15px;line-height:1.72}
+.jr-card p:last-child{margin-bottom:0}
+.jr-card p b{color:var(--ink)}
+.tiers-5{grid-template-columns:repeat(5,1fr);gap:14px}
+.tiers-5 .tier{padding:26px 20px}
+.tiers-5 .price{font-size:30px}
+.tier-inc{list-style:none;margin:0 0 18px;padding:0}
+.tier-inc li{position:relative;padding:5px 0 5px 20px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.tier-inc li::before{content:"✓";position:absolute;left:0;top:5px;color:var(--accent);font-weight:800;font-size:12px}
+@media (max-width:1050px){.tiers-5{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){
+  .tiers-5{grid-template-columns:1fr}
+  .jr{grid-template-columns:1fr;gap:12px}
+  .jr::before{display:none}
+  .jr-year{justify-self:start}
+}
+
+/* ---- v21: 7-tier grid ---- */
+.tiers-7{grid-template-columns:repeat(4,1fr);gap:14px}
+.tiers-7 .tier{padding:26px 20px;position:relative}
+.tiers-7 .price{font-size:30px}
+.tier-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;padding:5px 12px;border-radius:999px;white-space:nowrap}
+@media (max-width:1050px){.tiers-7{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.tiers-7{grid-template-columns:1fr}}
+
+/* ---- v22: CE full feature list ---- */
+.ce-list{list-style:none;margin:38px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 30px}
+.ce-list li{position:relative;padding:10px 0 10px 30px;font-size:14.5px;color:var(--muted);line-height:1.6;border-bottom:1px solid var(--line)}
+.ce-list li::before{content:"✓";position:absolute;left:0;top:11px;width:19px;height:19px;border-radius:50%;background:var(--grad);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center}
+.tier-inc li b{color:var(--ink);font-weight:700}
+@media (max-width:960px){.ce-list{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.ce-list{grid-template-columns:1fr}}
