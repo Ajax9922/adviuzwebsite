@@ -42,3 +42,7 @@
   --section:104px;
   --container:1140px;
 }
+
+/* Illustration-only colours for the sample client ad (SoundHub) on the homepage */
+:root{--demo-a:#ff5e3a;--demo-b:#ffb03a;--demo-ink:#2a1206}
+:root{--demo-chat:#1f8f6a;--demo-chatbg:#ece5dd;--demo-bubble:#dcf8c6}
