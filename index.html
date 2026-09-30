@@ -248,6 +248,7 @@
         <li data-s="2" data-n="03" tabindex="0"><b>They switch apps? The timer pauses</b><span>Only real attention counts — it pauses if they switch to another app, and resumes when they return</span></li>
         <li data-s="3" data-n="04" tabindex="0"><b>They tap Call Now — you get the lead</b><span>Their call comes straight to your business, right from the flyer</span></li>
       </ol>
+      <div class="c1-ctrl aj-ctrl"><button type="button" class="nav-btn" id="ajprev" aria-label="Previous step"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg></button><button type="button" class="pp-btn" id="ajpp" aria-label="Pause auto-play"><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="1"/><rect x="7" y="1.5" width="3" height="9" rx="1"/></svg><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5l7.5 4.5L3 10.5z"/></svg><span>Pause</span></button><button type="button" class="nav-btn" id="ajnext" aria-label="Next step"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button></div>
     </div>
   </div>
 </section>
@@ -318,12 +319,13 @@
     </div>
     <div class="c1-wrap">
     <div class="c1-chips" role="tablist"><button type="button" class="c1-chip" data-i="0">Printing</button><button type="button" class="c1-chip" data-i="1">Reach</button><button type="button" class="c1-chip" data-i="2">Weather</button><button type="button" class="c1-chip" data-i="3">Proof</button><button type="button" class="c1-chip" data-i="4">Tracking</button><button type="button" class="c1-chip" data-i="5">Leads</button><button type="button" class="c1-chip" data-i="6">Waste</button><button type="button" class="c1-chip" data-i="7">Effort</button></div>
+    <div class="c1-prog" aria-hidden="true"><i id="c1p"></i></div>
     <div class="c1" id="c1">
       <div class="c1-side c1-old"><span class="ba-tag">Paper flyers</span><div class="c1-more"><p data-i="0"><b>Why it hurts</b>Designing, printing and paying people to deliver every copy costs money before a single person reads it.</p><p data-i="1"><b>Why it hurts</b>Doors with “No soliciting” signs, apartment buildings and gated communities are often off-limits to flyer delivery.</p><p data-i="2"><b>Why it hurts</b>Snow, rain and extreme cold slow delivery crews down, soak the paper and push campaigns back by days.</p><p data-i="3"><b>Why it hurts</b>Once a flyer lands in a mailbox, there is no way to know whether anyone read it or threw it away.</p><p data-i="4"><b>Why it hurts</b>You can't see which streets were covered or whether every flyer was actually delivered.</p><p data-i="5"><b>Why it hurts</b>Even when someone is interested, you rarely find out who they are unless they call you themselves.</p><p data-i="6"><b>Why it hurts</b>Unread paper flyers pile up in recycling bins, along with the money spent printing them.</p><p data-i="7"><b>Why it hurts</b>Printing, sorting, carrying and delivering takes hours of physical work for every campaign.</p></div><div class="c1-stack"><div class="c1-sc" data-i="0"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="8" width="32" height="14" rx="2"/><rect x="8" y="22" width="48" height="22" rx="4"/><rect x="18" y="36" width="28" height="20" rx="2"/><path d="M24 44h16M24 50h10"/></svg></div><p>Pay to print and deliver every flyer</p></div><div class="c1-sc" data-i="1"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="6" width="32" height="52" rx="2"/><circle cx="41" cy="34" r="2"/><rect x="20" y="16" width="24" height="12" rx="2" class="red"/><path d="M24 22h16" class="red"/></svg></div><p>"No soliciting" signs block delivery</p></div><div class="c1-sc" data-i="2"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6v52M9 19l46 26M55 19 9 45M26 10l6 6 6-6M26 54l6-6 6 6"/></svg></div><p>Snow and rain delay deliveries</p></div><div class="c1-sc" data-i="3"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="6" width="40" height="52" rx="3"/><path d="M26 26a6 6 0 1 1 8 6c-2 1-2 3-2 5M32 44v1"/></svg></div><p>No way to know who read it</p></div><div class="c1-sc" data-i="4"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="10" r="5"/><path d="M32 16v20l-8 20M32 36l8 20M22 26h20"/><path d="M50 12a4 4 0 1 1 5 4c-1 1-1 2-1 3M54 24v1" class="red"/></svg></div><p>No way to track the distributor</p></div><div class="c1-sc" data-i="5"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="10"/><path d="M14 56c2-12 9-18 18-18s16 6 18 18"/></svg></div><p>Unknown who is interested</p></div><div class="c1-sc" data-i="6"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 16h36l-4 42H18zM10 16h44M26 16V8h12v8"/><path d="M24 28l4 20M40 28l-4 20"/></svg></div><p>Ends up in the recycling bin</p></div><div class="c1-sc" data-i="7"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="24" width="30" height="30" rx="2"/><rect x="28" y="10" width="30" height="24" rx="2"/><path d="M6 36h30M28 22h30"/></svg></div><p>Physical effort to carry and deliver</p></div></div></div>
       <div class="c1-side c1-new"><span class="ba-tag">Adviuz</span><div class="c1-more"><p data-i="0"><b>How Adviuz helps</b>We design your flyer and send it out digitally. You pay nothing for printing or delivery, only for flyers people actually view.</p><p data-i="1"><b>How Adviuz helps</b>Your flyer appears on the social apps, video platforms and news sites people already scroll every day.</p><p data-i="2"><b>How Adviuz helps</b>Digital flyers go live in one click and reach phones instantly, with no delays whatever the weather.</p><p data-i="3"><b>How Adviuz helps</b>A view counts only after someone spends 25 seconds with your flyer. That is the only thing you pay for.</p><p data-i="4"><b>How Adviuz helps</b>Your dashboard shows reach, views and leads as they happen, so you always know where your budget went.</p><p data-i="5"><b>How Adviuz helps</b>People who show interest arrive as leads with their contact details, ready for your follow-up.</p><p data-i="6"><b>How Adviuz helps</b>No paper, no ink, no delivery trucks. A cleaner way to reach your customers.</p><p data-i="7"><b>How Adviuz helps</b>Launch, pause and track your campaign from your phone, wherever you are.</p></div><div class="c1-stack"><div class="c1-sc" data-i="0"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="6" width="24" height="52" rx="5"/><path d="M29 51h6"/></svg></div><p>$0 printing, 100% digital</p></div><div class="c1-sc" data-i="1"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="6" width="24" height="52" rx="5"/><path d="M29 51h6"/></svg></div><p>Reaches the phones people already use</p></div><div class="c1-sc" data-i="2"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M36 4 14 36h16l-4 24 24-34H34z"/></svg></div><p>Delivered instantly, in any weather</p></div><div class="c1-sc" data-i="3"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="22"/><path d="M32 34V20M26 6h12"/></svg></div><p>Pay only after a 25-second view</p></div><div class="c1-sc" data-i="4"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 56h48M14 48V34M26 48V22M38 48V28M50 48V12"/></svg></div><p>Track reach, views and leads</p></div><div class="c1-sc" data-i="5"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="14" width="52" height="36" rx="5"/><circle cx="20" cy="30" r="6"/><path d="M12 44c1-4 4-6 8-6s7 2 8 6M34 26h16M34 34h12M34 42h8"/></svg></div><p>Contact details of interested people</p></div><div class="c1-sc" data-i="6"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 52C12 24 30 10 54 10c0 26-16 42-42 42z"/><path d="M12 52 38 26"/></svg></div><p>No paper, no waste</p></div><div class="c1-sc" data-i="7"><div class="c1-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="22" y="4" width="22" height="40" rx="4"/><path d="M14 60c0-10 2-18 8-22M50 60c0-8-2-14-6-18"/><path d="M28 16h10M28 24h10"/></svg></div><p>Manage from your phone, on the go</p></div></div></div>
       <button class="hdl" id="c1h" type="button" role="slider" aria-label="Compare traditional and Adviuz" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span>⇆</span></button>
     </div>
-    <div class="c1-prog" aria-hidden="true"><i id="c1p"></i></div>
+    <div class="c1-ctrl"><button type="button" class="nav-btn" id="c1prev" aria-label="Previous comparison"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg></button><button type="button" class="pp-btn" id="c1pp" aria-label="Pause auto-play"><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="1"/><rect x="7" y="1.5" width="3" height="9" rx="1"/></svg><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5l7.5 4.5L3 10.5z"/></svg><span>Pause</span></button><button type="button" class="nav-btn" id="c1next" aria-label="Next comparison"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button></div>
     </div>
   </div>
 </section>
@@ -556,12 +558,22 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     clearTimeout(tid);clearSub();cancelAnimationFrame(tick);resetSwitch();
     running=true;ph=k-1;next();
   }
+  var paused=false,seen=false,pp=document.getElementById('ajpp');
+  function ppUI(){if(!pp)return;pp.classList.toggle('is-paused',paused);pp.setAttribute('aria-label',paused?'Play auto-play':'Pause auto-play');pp.querySelector('span').textContent=paused?'Play':'Pause';wrap.classList.toggle('aj-paused',paused);}
+  function hold(){running=false;clearTimeout(tid);clearSub();cancelAnimationFrame(tick);}
+  if(pp)pp.addEventListener('click',function(){
+    if(paused){paused=false;ppUI();if(ph<0)ph=0;clearSub();PH[ph].go();running=true;tid=setTimeout(next,PH[ph].dur*ajK);}
+    else{paused=true;ppUI();hold();}});
+  function stepBy(d){var cur=ph<0?0:PH[ph].s,n=(cur+d+steps.length)%steps.length;jump(n);if(paused)hold();}
+  var apv=document.getElementById('ajprev'),anx=document.getElementById('ajnext');
+  if(apv)apv.addEventListener('click',function(){stepBy(-1);});
+  if(anx)anx.addEventListener('click',function(){stepBy(1);});
   steps.forEach(function(li){
-    li.addEventListener('click',function(){jump(+li.dataset.s);});
+    li.addEventListener('click',function(){jump(+li.dataset.s);if(paused)hold();});
     li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();jump(+li.dataset.s);}});
   });
-  if(reduce||!('IntersectionObserver' in window)){sc(1);st(1,0);setT(14);wrap.classList.add('aj-still');return;}
-  var io=new IntersectionObserver(function(es){es.forEach(function(en){en.isIntersecting?start():stop();});},{threshold:.3});
+  if(reduce||!('IntersectionObserver' in window)){sc(1);st(1,0);setT(14);wrap.classList.add('aj-still');var ac=wrap.querySelector('.aj-ctrl');if(ac)ac.hidden=true;return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(paused)return;en.isIntersecting?start():stop();});},{threshold:.3});
   io.observe(wrap);
 })();
 
@@ -623,8 +635,15 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     if(rm){setX(50);return;}
     c.classList.remove('anim');setX(92);void c.offsetWidth;c.classList.add('anim');setTimeout(function(){setX(50);},60);
     bar.style.transition='none';bar.style.width='0';void bar.offsetWidth;if(auto){bar.style.transition='width '+DUR+'ms linear';bar.style.width='100%';}}
-  function stop(){auto=false;clearInterval(t);bar.style.transition='none';bar.style.width='0';}
-  function start(){if(rm)return;auto=true;clearInterval(t);t=setInterval(function(){show((i+1)%chips.length);},DUR);show(i);}
+  var pp=document.getElementById('c1pp');
+  function ppUI(){if(!pp)return;pp.classList.toggle('is-paused',!auto);pp.setAttribute('aria-label',auto?'Pause auto-play':'Play auto-play');pp.querySelector('span').textContent=auto?'Pause':'Play';}
+  function stop(){auto=false;clearInterval(t);bar.style.transition='none';bar.style.width='0';ppUI();}
+  function start(){if(rm)return;auto=true;ppUI();clearInterval(t);t=setInterval(function(){show((i+1)%chips.length);},DUR);show(i);}
+  if(pp){if(rm)pp.hidden=true;pp.addEventListener('click',function(){if(auto)stop();else{start();}});}
+  function step(d){var n=(i+d+chips.length)%chips.length;if(auto){i=n;start();}else show(n);}
+  var pv=document.getElementById('c1prev'),nx=document.getElementById('c1next');
+  if(pv)pv.addEventListener('click',function(){step(-1);});
+  if(nx)nx.addEventListener('click',function(){step(1);});
   chips.forEach(function(b,k){b.addEventListener('click',function(){stop();show(k);});});
   var drag=false;
   function fromEvt(e){var r=c.getBoundingClientRect();setX((e.clientX-r.left)/r.width*100);}
