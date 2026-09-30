@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adviuz</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--wash);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 16px 60px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.top img{height:28px;width:auto}
+.top span{font-size:13px;font-weight:700;color:var(--faint);padding-left:12px;border-left:1px solid var(--line)}
+.bar{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;background:var(--wash)}
+.q{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px 0 44px;font-size:16px;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8291' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 14px 50%/20px no-repeat}
+.q:focus,.cat:focus{outline:none;border-color:var(--focus)}
+.cat{height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 12px;background:var(--paper);max-width:44vw}
+.count{font-size:12.5px;color:var(--faint);margin:6px 2px 12px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:13px 16px;cursor:pointer;transition:border-color .15s}
+.item:hover,.item:focus-visible{border-color:var(--focus);outline:none}
+.item b{display:block;font-size:15.5px}
+.item small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.item em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--accent);background:var(--wash);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px 10px;white-space:nowrap}
+.empty{text-align:center;color:var(--faint);padding:40px 0}
+/* viewer */
+.vw{position:fixed;inset:0;z-index:10;background:var(--paper);display:none;overflow:hidden}
+.vw.on{display:block}
+.vw iframe{position:absolute;left:0;width:100%;border:0;top:calc(-1 * var(--crop,0px));height:calc(100% + var(--crop,0px))}
+.back{position:fixed;z-index:11;left:max(12px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));width:42px;height:42px;border-radius:50%;border:0;background:rgba(35,8,53,.55);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:none;opacity:.35;transition:opacity .2s;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.back:hover,.back:focus-visible{opacity:1;outline:none}
+.vw.on~.back{display:block}
+.vw.ld .loading{display:none}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--faint);font-size:14px;z-index:-1}
+</style>
+</head>
+<body>
+<div class="wrap" id="lib">
+  <div class="top"><img src="../assets/logo.png" alt="Adviuz" onerror="this.remove()"><span>Design library</span></div>
+  <div class="bar">
+    <input class="q" id="q" type="search" placeholder="Search client, industry or city" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search designs">
+    <select class="cat" id="cat" aria-label="Industry"><option value="">All industries</option></select>
+  </div>
+  <p class="count" id="count"></p>
+  <ul class="list" id="list"></ul>
+</div>
+
+<div class="vw" id="vw" aria-live="polite"><div class="loading">Loading…</div><iframe id="fr" title="Design" referrerpolicy="no-referrer" allow="autoplay; fullscreen; clipboard-write"></iframe></div>
+<button class="back" id="back" type="button" aria-label="Back to search">‹</button>
+
+<script src="clients.js"></script>
+<script>
+(function(){
+  /* Height of the host's top banner that gets tucked out of view (px).
+     Fine-tune here, or test with ?crop=NN in the address bar. */
+  var CROP_PHONE=40, CROP_DESKTOP=50;
+  var HOST='https://adviuz.wixsite.com/';
+
+  var D=window.SC_CLIENTS||[],q=document.getElementById('q'),cat=document.getElementById('cat'),
+      list=document.getElementById('list'),count=document.getElementById('count'),
+      vw=document.getElementById('vw'),fr=document.getElementById('fr'),back=document.getElementById('back'),
+      lib=document.getElementById('lib'),bySlug={};
+  D.forEach(function(d){d.t=(d.n+' '+d.c+' '+d.s+' '+d.l).toLowerCase();bySlug[d.k.toLowerCase()]=d;});
+
+  var cats={};D.forEach(function(d){cats[d.c]=(cats[d.c]||0)+1;});
+  Object.keys(cats).sort().forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c+' ('+cats[c]+')';cat.appendChild(o);});
+
+  function esc(s){return s.replace(/[&<>"]/g,function(ch){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});}
+  var shown=[];
+  function render(){
+    var words=q.value.toLowerCase().trim().split(/\s+/).filter(Boolean),c=cat.value;
+    shown=D.filter(function(d){return (!c||d.c===c)&&words.every(function(w){return d.t.indexOf(w)>-1;});});
+    count.textContent=shown.length+' design'+(shown.length===1?'':'s');
+    if(!shown.length){list.innerHTML='<li class="empty">No designs match that search.</li>';return;}
+    var h='';for(var i=0;i<Math.min(shown.length,150);i++){var d=shown[i];
+      h+='<li><button class="item" type="button" data-k="'+esc(d.k)+'"><span><b>'+esc(d.n)+'</b><small>'+esc([d.s,d.l].filter(Boolean).join(' · ')||'—')+'</small></span><em>'+esc(d.c)+'</em></button></li>';}
+    list.innerHTML=h;
+  }
+  var tmr;q.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(render,80);});
+  cat.addEventListener('change',render);
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'&&shown[0])open(shown[0].k,true);});
+  list.addEventListener('click',function(e){var b=e.target.closest('.item');if(b)open(b.dataset.k,true);});
+
+  function crop(){var m=location.search.match(/[?&]crop=(\d+)/);if(m)return +m[1];
+    return matchMedia('(max-width:760px)').matches?CROP_PHONE:CROP_DESKTOP;}
+  function open(k,push){
+    var d=bySlug[String(k).toLowerCase()];if(!d)return;
+    vw.style.setProperty('--crop',crop()+'px');
+    vw.classList.remove('ld');fr.src=HOST+encodeURIComponent(d.k);
+    vw.classList.add('on');lib.setAttribute('aria-hidden','true');document.title=d.n;
+    if(push)history.pushState({k:d.k},'','?c='+encodeURIComponent(d.k)+(location.search.match(/[?&]crop=\d+/)?'&'+location.search.match(/crop=\d+/)[0]:''));
+  }
+  function close(){vw.classList.remove('on');fr.src='about:blank';lib.removeAttribute('aria-hidden');document.title='Adviuz';q.focus();}
+  back.addEventListener('click',function(){if(history.state&&history.state.k)history.back();else{history.replaceState(null,'',location.pathname);close();}});
+  window.addEventListener('popstate',function(){var m=location.search.match(/[?&]c=([^&]+)/);if(m)open(decodeURIComponent(m[1]),false);else close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&vw.classList.contains('on'))back.click();});
+
+  fr.addEventListener('load',function(){if(fr.src!=='about:blank')vw.classList.add('ld');});
+  render();
+  var m=location.search.match(/[?&]c=([^&]+)/);if(m)open(decodeURIComponent(m[1]),false);else q.focus();
+})();
+</script>
+</body>
+</html>
