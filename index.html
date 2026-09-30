@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Adviuz — Digital Flyer Distribution for Businesses</title>
 <meta name="description" content="Adviuz sends your flyer to people digitally. You pay only for flyers that get viewed. Interested people become leads, and our Conversion Engine can follow up with them for you.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +41,8 @@
     </nav>
     <div class="nav-actions">
       <span class="nav-phone"><svg class="np-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><span class="np-num">+1 647 250 1152</span><button type="button" class="np-copy" aria-label="Copy phone number" onclick="(function(b){var t='+1 647 250 1152';function ok(){b.classList.add('ok');b.setAttribute('aria-label','Copied');setTimeout(function(){b.classList.remove('ok');b.setAttribute('aria-label','Copy phone number')},1600)}if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,ok)}else{var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');ok()}})(this)"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg><i>Copied</i></button></span>
-      <a class="button button-outline nav-login" href="https://hub.adviuz.ca">Log in</a>
       <a class="button button-grad" href="#book-demo">Book a demo</a>
+      <a class="button button-outline nav-login" href="https://hub.adviuz.ca">Log in</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
   </div>
@@ -82,7 +82,7 @@
     </div>
   </div>
   <div class="container">
-    <ul class="hero-mini hm-one"><li class="hm-long">From flyer design to distribution, lead generation and deal-closing assistance — everything in one place</li></ul>
+    <ul class="hero-mini hm-one"><li class="hm-long hm-quote">“From flyer designing to distribution &amp; lead generation to deal-closing assistance — everything in one platform.”</li></ul>
   </div>
 </section>
 
@@ -127,7 +127,6 @@
       <h2>Go live across 15+ advertising platforms with one click</h2>
       <p class="lead">Social, video, web, apps and premium news sites — one campaign covers them all.</p>
     </div>
-    <div class="plat-split">
     <div class="golive" id="golivePanel" aria-hidden="true">
       <div class="gl-top"><span>One click</span><b>Your flyer goes live everywhere at once</b></div>
       <video class="gl-vid" id="glVid" src="assets/golive-v2.mp4" muted loop playsinline autoplay preload="metadata"></video>
@@ -146,14 +145,14 @@
       <div class="lb-bar">
         <div class="lb-camp"><span class="lb-thumb" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#ajHp"/></svg><i></i><i></i></span><div><b>Your flyer campaign</b><small id="lbState">Ready to launch</small></div></div>
         <button type="button" class="lb-switch" id="lbSwitch" aria-pressed="false"><span class="lb-knob"></span><span class="lb-lbl">Go Live</span></button>
-        <div class="lb-total"><strong id="lbNum">0</strong><span>/ 24 channels live</span></div>
+        <div class="lb-total"><strong id="lbNum">0</strong><span>/ 24 <i class="lt-full">channels </i>live</span></div>
       </div>
       <div class="lb-prog" aria-hidden="true"><i id="lbProg"></i></div>
-      <div class="lb-grid lb-grid2">
-        <div class="lb-card lb-plain"><span class="lb-cnt" hidden><em>0</em></span><ol start="1" style="counter-reset:lbn 0"><li><span class="lb-name">Facebook Feed</span><span class="lb-st"></span></li><li><span class="lb-name">Facebook Messenger</span><span class="lb-st"></span></li><li><span class="lb-name">Facebook Reels</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Feed</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Sponsored</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Reels</span><span class="lb-st"></span></li><li><span class="lb-name">WhatsApp Status</span><span class="lb-st"></span></li><li><span class="lb-name">LinkedIn</span><span class="lb-st"></span></li><li><span class="lb-name">X (Twitter)</span><span class="lb-st"></span></li><li><span class="lb-name">TikTok</span><span class="lb-st"></span></li><li><span class="lb-name">YouTube Ads</span><span class="lb-st"></span></li><li><span class="lb-name">YouTube Shorts</span><span class="lb-st"></span></li></ol></div>
-        <div class="lb-card lb-plain"><span class="lb-cnt" hidden><em>0</em></span><ol start="13" style="counter-reset:lbn 12"><li><span class="lb-name">Discovery Ads</span><span class="lb-st"></span></li><li><span class="lb-name">Display Network Ads</span><span class="lb-st"></span></li><li><span class="lb-name">App Pop-up Ads</span><span class="lb-st"></span></li><li><span class="lb-name">CNN</span><span class="lb-st"></span></li><li><span class="lb-name">Fox News</span><span class="lb-st"></span></li><li><span class="lb-name">The New York Times</span><span class="lb-st"></span></li><li><span class="lb-name">CNBC</span><span class="lb-st"></span></li><li><span class="lb-name">Global News</span><span class="lb-st"></span></li><li><span class="lb-name">Remarketing Ads</span><span class="lb-st"></span></li><li><span class="lb-name">SMS to leads</span><span class="lb-st"></span></li><li><span class="lb-name">Email to leads</span><span class="lb-st"></span></li><li><span class="lb-name">AI calls to leads</span><span class="lb-st"></span></li></ol></div>
-      </div>
-    </div>
+      <div class="lb-grid">
+<div class="lb-card lb-social"><div class="lb-head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm10 2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM2 19c0-2.8 2.2-5 5-5s5 2.2 5 5M13 19c0-2.2 1.8-4 4-4s4 1.8 4 4"/></svg><b>Social</b><span class="lb-cnt"><em>0</em>/10</span></div><ul><li><span class="lb-name">Facebook Feed</span><span class="lb-st"></span></li><li><span class="lb-name">Facebook Messenger</span><span class="lb-st"></span></li><li><span class="lb-name">Facebook Reels</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Feed</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Sponsored</span><span class="lb-st"></span></li><li><span class="lb-name">Instagram Reels</span><span class="lb-st"></span></li><li><span class="lb-name">WhatsApp Status</span><span class="lb-st"></span></li><li><span class="lb-name">LinkedIn</span><span class="lb-st"></span></li><li><span class="lb-name">X (Twitter)</span><span class="lb-st"></span></li><li><span class="lb-name">TikTok</span><span class="lb-st"></span></li></ul></div>
+<div class="lb-col"><div class="lb-card lb-video"><div class="lb-head"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg><b>Video &amp; Search</b><span class="lb-cnt"><em>0</em>/3</span></div><ul><li><span class="lb-name">YouTube Ads</span><span class="lb-st"></span></li><li><span class="lb-name">YouTube Shorts</span><span class="lb-st"></span></li><li><span class="lb-name">Discovery Ads</span><span class="lb-st"></span></li></ul></div><div class="lb-card lb-web"><div class="lb-head"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><b>Web &amp; Apps</b><span class="lb-cnt"><em>0</em>/2</span></div><ul><li><span class="lb-name">Display Network Ads</span><span class="lb-st"></span></li><li><span class="lb-name">Mobile App Pop-up Ads</span><span class="lb-st"></span></li></ul></div></div>
+<div class="lb-col"><div class="lb-card lb-news"><div class="lb-head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M8 9h5M8 13h5M8 16h3"/></svg><b>Premium News</b><span class="lb-cnt"><em>0</em>/5</span></div><ul><li><span class="lb-name">CNN</span><span class="lb-st"></span></li><li><span class="lb-name">Fox News</span><span class="lb-st"></span></li><li><span class="lb-name">The New York Times</span><span class="lb-st"></span></li><li><span class="lb-name">CNBC</span><span class="lb-st"></span></li><li><span class="lb-name">Global News</span><span class="lb-st"></span></li></ul></div><div class="lb-card lb-remk"><div class="lb-head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg><b>Remarketing</b><span class="lb-cnt"><em>0</em>/4</span></div><p class="lb-sub">Reaches people who already saw your flyer, and your leads</p><ul><li><span class="lb-name">Remarketing Ads</span><span class="lb-st"></span></li><li><span class="lb-name">SMS to leads</span><span class="lb-st"></span></li><li><span class="lb-name">Email to leads</span><span class="lb-st"></span></li><li><span class="lb-name">AI calls to leads</span><span class="lb-st"></span></li></ul></div></div>
+</div>
     </div>
     <p class="plat-note">Not every platform fits every business — we hand-pick and prioritize the platforms best suited to your campaign, audience and goals.</p>
   </div>
@@ -259,12 +258,12 @@
     <div class="center">
       <span class="kicker">The Adviuz funnel</span>
       <h2>Long story in short</h2>
-      <p class="lead">Press Go Live and watch your audience flow through the funnel — you pay at just one stage.</p>
+      <p class="lead">Watch your audience flow through the funnel — you pay at just one stage.</p>
     </div>
     <div class="ls" id="lsBox">
       <div class="ls-top">
         <button type="button" class="ls-go" id="lsGo" aria-controls="lsSteps"><span class="ls-pw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v9M6.3 6.8a8 8 0 1 0 11.4 0"/></svg></span><b>Go Live</b></button>
-        <p class="ls-hint" id="lsHint">Tap to launch a sample campaign</p>
+        <p class="ls-hint" id="lsHint"></p>
       </div>
       <ol class="ls-steps lf" id="lsSteps" aria-live="polite">
         <li class="ls-s s1"><div class="lf-band"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l3-3 4 4 9-9M14 5h6v6"/></svg><span>Blast</span></div><div class="lf-txt"><small class="lf-k">Blast</small><b>Live on 15+ platforms</b><span>Social, video, news sites and apps. Pure branding — circulation is free.</span></div><em class="ls-tag free">Free</em></li>
@@ -279,6 +278,16 @@
   </div>
 </section>
 
+
+<!-- READY TO START -->
+<section class="section rts-wrap" id="ready">
+  <div class="container">
+    <div class="rts">
+      <div class="rts-t"><span class="kicker rts-k">Ready to start?</span><h2>Put your flyer in front of real people.</h2><p>Book a free demo, or call us. We'll plan your first campaign with you.</p></div>
+      <div class="rts-btns"><a class="button rts-b1" href="#book-demo">Book a demo</a><a class="button rts-b2" href="tel:+16472501152"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg>Call +1 647 250 1152</a></div>
+    </div>
+  </div>
+</section>
 
 <!-- AI ADD-ON -->
 <section class="section">
@@ -408,7 +417,7 @@
       </div>
       <div class="f-touch">
         <h3>Get in touch</h3>
-        <ul class="f-contact"><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><a href="mailto:relations@adviuz.com">relations@adviuz.com</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><a href="tel:+16472501152">+1 647 250 1152</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Scotiabank Building, 111 2nd Ave S, Unit 400<br>Saskatoon, SK</span></li></ul>
+        <ul class="f-contact"><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><a href="mailto:relations@adviuz.com">relations@adviuz.com</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><a href="tel:+16472501152">+1 647 250 1152</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><span class="nw">Scotiabank Building,</span> <span class="nw">111 2nd Ave S, Unit 400,</span> <span class="nw">Saskatoon, SK</span></span></li></ul>
       </div>
     </div>
     <div class="f-bottom"><div class="footer-legal">© 2026 Instad Web Services Ltd., operating as Adviuz. All rights reserved.</div><div class="footer-ask"><span class="askai-label">Ask AI about us</span><div class="ai-chips"><a href="https://chatgpt.com/?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">ChatGPT</a><a href="https://claude.ai/new?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Claude</a><a href="https://www.perplexity.ai/search?q=What%20is%20Adviuz%20%28adviuz.ca%29%3F%20Explain%20their%20pay-per-viewed-flyer%20advertising%20and%20AI%20Conversion%20Engine%20for%20businesses." target="_blank" rel="noopener">Perplexity</a><a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a></div></div></div>
@@ -623,11 +632,13 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   var go=document.getElementById('lsGo'),hint=document.getElementById('lsHint'),steps=[].slice.call(box.querySelectorAll('.ls-s')),T=[];
   var msgs=['Blasting to 15+ platforms…','Remarketing people who left early…','Charging only for 25-second views…','Leads delivered to you ✓','Optional: deal closing assistance'];
   function reset(){T.forEach(clearTimeout);T=[];box.classList.remove('on','done');steps.forEach(function(s){s.classList.remove('lit');});
-    go.querySelector('b').textContent='Go Live';hint.textContent='Tap to launch a sample campaign';}
+    go.querySelector('b').textContent='Go Live';hint.textContent='';}
   function launch(){reset();box.classList.add('on');go.querySelector('b').textContent='Live';
     steps.forEach(function(s,i){T.push(setTimeout(function(){s.classList.add('lit');hint.textContent=msgs[i];if(i===steps.length-1)box.classList.add('done');},500+i*1100));});}
   go.addEventListener('click',launch);
   document.getElementById('lsReplay').addEventListener('click',launch);
+  /* lsAuto: plays when scrolled into view */
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var lio=new IntersectionObserver(function(es){if(es[0].isIntersecting){launch();lio.disconnect();}},{threshold:.3});lio.observe(box);}
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){box.classList.add('still');}
 })();
 </script>

@@ -1828,3 +1828,124 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 .lboard.is-on .lb-thumb::after{background:#18b866}
 .lboard .lb-thumb{flex:none!important;min-width:42px}
 @media (min-width:721px){.hero{padding-bottom:36px!important}.hero .hero-mini.hm-one{margin-top:36px!important}.trust{padding-top:44px!important}}
+
+/* ---- v64: feedback round ---- */
+/* 3. platforms: video on top (smaller), grouped board below */
+.golive.vid-on{max-width:860px!important;margin:44px auto 0!important}
+.golive.vid-on .gl-vid{aspect-ratio:16/9;object-fit:cover}
+#platforms .lboard{max-width:1020px;margin:28px auto 0}
+/* 4. footer watermark: don't clip the i dot */
+.footer-mark{line-height:1!important;padding-top:.1em;margin-bottom:-.18em}
+/* 5. hero quote */
+.hero .hero-mini.hm-one li.hm-quote{font-style:italic;font-weight:400!important;font-size:16px!important;color:var(--muted)}
+/* 6. logo strip same width as the stats card */
+@media (min-width:721px){.trust-viewport{max-width:1020px!important;width:calc(100% - 28px)!important}}
+/* 7. funnel plays by itself — no second Go Live button */
+.ls-go{display:none!important}
+.ls-top{min-height:0}
+.ls-hint{margin:0;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.ls.on .ls-hint::before{content:"";width:8px;height:8px;border-radius:50%;background:#18b866;animation:lbdot 1.4s ease-in-out infinite}
+.ls.done .ls-hint::before{animation:none}
+/* 8. ready-to-start band */
+.rts-wrap{padding-top:24px!important;padding-bottom:24px!important}
+.rts{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;max-width:1020px;margin:0 auto;padding:44px 48px;border-radius:var(--r-lg);background:var(--dark-grad);position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(35,8,53,.25)}
+.rts::after{content:"";position:absolute;right:-120px;top:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(230,90,252,.35),transparent 65%);pointer-events:none}
+.rts-t{position:relative;z-index:1;max-width:560px}
+.rts .rts-k{color:#e2b6ff;margin-bottom:10px}
+.rts h2{color:#fff;margin:0;font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;text-wrap:balance}
+.rts p{color:#d8cde6;margin:10px 0 0;font-size:15.5px;line-height:1.6}
+.rts-btns{position:relative;z-index:1;display:flex;gap:12px;flex-wrap:wrap}
+.rts-b1{background:#fff;color:var(--ink);box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.rts-b2{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.rts-b2 svg{width:17px;height:17px}
+.rts-b2:hover{border-color:#fff}
+@media (max-width:720px){.rts{padding:30px 22px}.rts-btns{width:100%}.rts-btns .button{flex:1 1 100%}}
+/* 9. timezone picker — roomier, brand colour */
+.tz-row{gap:10px!important;margin-top:20px!important}
+.tz-row select{color:var(--accent)!important;font-weight:600!important;font-size:14px!important;background-color:#f6f2ff!important;border:1px solid #e4dcf7!important;border-radius:10px!important;padding:9px 36px 9px 14px!important;background-position:right 13px center!important;min-height:40px}
+.tz-row select:hover{border-color:#cbbdf2!important}
+.bk-note,.tz-row+p{margin-top:14px!important}
+@media (max-width:720px){.tz-row select{font-size:16px!important}}
+/* 10. footer content lines up with the header logo and buttons */
+@media (min-width:861px){.site-footer>.container{max-width:none!important;width:auto!important;padding-left:27px!important;padding-right:14px!important}}
+#lsCta .button{display:none}
+
+/* ---- v65: tidy timezone picker; mobile board header on one line ---- */
+.tz-row{flex-wrap:nowrap!important;align-items:center}
+.tz-row select{flex:0 1 auto!important;width:auto!important;max-width:100%!important;min-width:0!important;font-size:13.5px!important;padding:7px 32px 7px 12px!important;min-height:0!important;border-radius:9px!important}
+@media (max-width:720px){.tz-row{flex-wrap:wrap!important}.tz-row select{flex:1 1 100%!important;width:100%!important;font-size:16px!important;padding:10px 34px 10px 12px!important}}
+@media (max-width:720px){
+  .lb-bar{grid-template-columns:1fr auto!important;row-gap:18px!important;padding:6px 4px 14px!important}
+  .lb-camp b{white-space:nowrap;font-size:15px!important}
+  .lb-camp small{white-space:nowrap}
+  .lb-total{flex-direction:row!important;align-items:baseline!important;gap:4px!important;white-space:nowrap}
+  .lb-total strong{font-size:24px!important;min-width:0!important}
+  .lb-total span{font-size:11.5px!important}
+  .lb-switch,.plat-split .lb-switch{min-height:56px;font-size:17px!important;padding:14px!important;margin-top:4px}
+  .lb-prog{margin-top:6px!important}
+}
+.lt-full{font-style:normal}
+@media (max-width:720px){.lt-full{display:none}.lb-camp b{font-size:14.5px!important}.lb-camp{min-width:0}.lb-bar{column-gap:10px!important}.lboard .lb-thumb{width:36px!important;height:46px!important;min-width:36px}.lboard .lb-thumb svg{width:20px;height:20px}}
+.bk-cal-wrap>*{min-width:0}.bk-slots,#bkSlots{min-width:0}.tz-row select{max-width:100%!important}
+.tz-row{flex-wrap:wrap!important;gap:6px!important}.tz-row select{flex:1 1 100%!important;width:100%!important}
+.lboard .lb-bar{border-bottom:0!important;margin-bottom:10px!important;padding-bottom:14px!important}.lboard .lb-prog{margin-top:0!important}
+
+/* ---- v66: mobile polish ---- */
+.nw{white-space:nowrap}
+.hero .hero-mini.hm-one li.hm-quote{white-space:normal!important;max-width:760px;margin:0 auto;line-height:1.6}
+.hero .hero-mini{max-width:100%;min-width:0}
+.hero-grid>*{min-width:0}
+@media (max-width:720px){
+  .hero .hero-mini.hm-one li.hm-quote{font-size:14.5px!important;text-align:center!important}
+  /* stats labels on one line */
+  .tband .tstat>span:last-child{font-size:10px!important;white-space:nowrap;letter-spacing:0}
+  /* steps: lighter & roomier */
+  .stepsv .stepx{padding-bottom:30px!important;column-gap:16px}
+  .stepsv .sx-ico{width:40px!important;height:40px!important;border-radius:12px;box-shadow:none}
+  .stepsv .sx-ico svg{width:18px;height:18px}
+  .stepsv .stepx:not(:last-child)::after{left:19px!important;top:46px!important;opacity:.6}
+  .stepsv .sx-num{font-size:10.5px!important;font-weight:700!important;letter-spacing:.14em;margin:2px 0 4px}
+  .stepsv h3{font-size:16.5px!important;font-weight:600!important;margin-bottom:6px!important}
+  .stepsv p{font-size:14px!important;font-weight:400;line-height:1.7!important;color:var(--faint)}
+  #how h2{font-size:26px}
+}
+.hero .hero-mini.hm-one li{flex:1 1 auto!important;min-width:0!important}
+
+/* ---- v67: small-phone responsiveness (≤480px) ---- */
+@media (max-width:480px){
+  .hero h1{font-size:clamp(28px,9.4vw,40px)!important}
+  .hero-actions .button{min-width:0!important}
+  .hero .vcap-text{font-size:15px!important}
+  .hero .vcap{padding:14px 14px 12px!important}
+  /* stats band */
+  .tband{padding:22px 4px!important}
+  .tband .tstat{padding:0 4px!important;min-width:0}
+  .tband .tstat b{font-size:clamp(20px,7vw,30px)!important}
+  .tband .tstat-ico{width:30px!important;height:30px!important}
+  .tband .tstat>span:last-child{font-size:9.5px!important;white-space:normal!important}
+  /* platforms board header */
+  .lb-bar{grid-template-columns:1fr!important;grid-template-areas:"camp" "total" "sw"!important}
+  .lb-total{justify-content:flex-start!important}
+  .lb-camp b{white-space:normal!important}
+  /* ad journey: phone on top, steps below */
+  .aj{grid-template-columns:1fr!important;justify-items:center;gap:18px!important}
+  .aj-phone{zoom:.8!important}
+  .aj-steps{width:100%}
+  .aj-steps li{padding:10px 12px 10px 40px!important}
+  .aj-steps li::before{left:12px!important;top:12px!important}
+  .aj-steps li b{font-size:14px!important}
+  .aj-steps li span{font-size:12.5px!important}
+  /* ready band */
+  .rts-b2{white-space:nowrap;font-size:14px;padding-left:12px!important;padding-right:12px!important}
+  /* booking */
+  .bk-card{padding-left:14px!important;padding-right:14px!important}
+  .cal-grid,.cal-days{gap:2px!important}
+  .tz-row select{font-size:15px!important;text-overflow:clip}
+}
+@media (max-width:360px){.aj-phone{zoom:.72!important}.rts-b2{font-size:13px}}
+@media (max-width:480px){
+  .bk-slots{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+  .bk-slots>*{min-width:0;padding-left:4px!important;padding-right:4px!important;font-size:13.5px!important;white-space:nowrap}
+  .bk-card,#bkHost .bk-card{overflow:hidden}
+}
+@media (max-width:360px){.tz-row select{font-size:14px!important;padding:9px 30px 9px 10px!important}.bk-slots>*{font-size:12.5px!important}}
