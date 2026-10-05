@@ -1,17 +1,17 @@
 # Adviuz
 
-> Adviuz (adviuz.ca) is a Canadian advertising platform by Instad Web Services Ltd. (Saskatoon, SK, roots back to 2014). Businesses buy digital flyer campaigns priced per viewed flyer — the balance only decreases when a flyer is actually viewed — and receive leads with contact details in a dashboard. An add-on called the Conversion Engine answers leads in seconds with AI calls, texts and emails, books appointments, and keeps following up for up to six months, within strict courtesy rules (contact 9 AM-7 PM in the lead's timezone, max 2 touches/day, CASL-compliant opt-outs).
+> Adviuz (adviuz.com) is a Canadian advertising platform by Instad Web Services Ltd. (Saskatoon, SK, roots back to 2014). Businesses buy digital flyer campaigns priced per viewed flyer — the balance only decreases when a flyer is actually viewed — and receive leads with contact details in a dashboard. An add-on called the Conversion Engine answers leads in seconds with AI calls, texts and emails, books appointments, and keeps following up for up to six months, within strict courtesy rules (contact 9 AM-7 PM in the lead's timezone, max 2 touches/day, CASL-compliant opt-outs).
 
 ## Pages
-- [Home](https://adviuz.ca/): Digital flyer distribution — what it is and how it works
-- [Conversion Engine](https://adviuz.ca/ai-conversion-engine.html): The AI follow-up add-on
-- [About](https://adviuz.ca/about.html): Company background — 400+ businesses, 480+ campaigns since 2014
-- [Book a Demo](https://adviuz.ca/book-demo.html): Free 30-minute live demo booking
-- [Contact](https://adviuz.ca/contact.html): Phone +1 647 250 1152, support@adviuz.com, Saskatoon SK
+- [Home](https://adviuz.com/): Digital flyer distribution — what it is and how it works
+- [AI Conversion Engine](https://adviuz.com/ai-conversion-engine.html): AI lead follow-up by call, text and email, sold on its own as prepaid plans ($200–$17,500 CAD) or alongside Digital Flyer campaigns. Works with Facebook/Instagram lead ads and leads added in the hub. Bought online by card; accounts are set up by the Adviuz team after payment.
+- [About](https://adviuz.com/about.html): Company story and milestones — founded 2014 by Ajay Sheria; digital flyers (2014), CRM (2016), Sales Support Centre (2018), Sales Booster app (2022), headquarters moved to Canada (2025), AI Conversion Engine (2026). Operated by Instad Web Services Ltd.
+- [Book a Demo](https://adviuz.com/book-demo.html): Free 30-minute live demo booking
+- [Contact](https://adviuz.com/contact.html): Phone +1 647 250 1152, support@adviuz.com, Saskatoon SK
 
-- [Pricing](https://adviuz.ca/pricing.html): AI Conversion Engine prepaid packages, purchasable online — 100 AI minutes/$200, 200/$350, 400/$600, 800/$1,000, 2,000/$2,000, 5,000/$4,500, 10,000/$8,000, 25,000/$17,500 CAD, each with matching texts, emails and call minutes (5× the AI minutes). Digital Flyer campaigns priced at your demo (charged only for 25-second viewed flyers).
-- [Partners](https://adviuz.ca/partners.html): Referral partner programme — 10% commission on a referred client's first order, 5% on recurring orders.
-- [Privacy Policy](https://adviuz.ca/privacy.html)
-- [Terms of Service](https://adviuz.ca/terms.html)
-- [Refund Policy](https://adviuz.ca/refund-policy.html)
-- [Data Deletion](https://adviuz.ca/data-deletion.html)
+- [Pricing](https://adviuz.com/pricing.html): AI Conversion Engine prepaid packages, purchasable online — 100 AI minutes/$200, 200/$350, 400/$600, 800/$1,000, 2,000/$2,000, 5,000/$4,500, 10,000/$8,000, 25,000/$17,500 CAD, each with matching texts, emails and call minutes (5× the AI minutes). Digital Flyer campaigns priced at your demo (charged only for 25-second viewed flyers).
+- [Partners](https://adviuz.com/partners.html): Referral partner programme — 10% commission on a referred client's first order, 5% on recurring orders.
+- [Privacy Policy](https://adviuz.com/privacy.html)
+- [Terms of Service](https://adviuz.com/terms.html)
+- [Refund Policy](https://adviuz.com/refund-policy.html)
+- [Data Deletion](https://adviuz.com/data-deletion.html)

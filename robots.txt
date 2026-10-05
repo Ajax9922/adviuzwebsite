@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://adviuz.ca/sitemap.xml
+Sitemap: https://adviuz.com/sitemap.xml
