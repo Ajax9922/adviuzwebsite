@@ -4,13 +4,14 @@
 
 ## Pages
 - [Home](https://adviuz.com/): Digital flyer distribution — what it is and how it works
-- [AI Conversion Engine](https://adviuz.com/ai-conversion-engine.html): AI lead follow-up by call, text and email, sold on its own as prepaid plans ($599, $999 and $1,999 CAD; Enterprise by quote) or alongside Digital Flyer campaigns. Works with Facebook/Instagram lead ads and leads added in the hub. Bought online by card; accounts are set up by the Adviuz team after payment.
+- [AI Conversion Engine](https://adviuz.com/ai-conversion-engine.html): AI lead follow-up by call, text and email, sold on its own as prepaid plans ($600, $1,000 and $2,000 CAD; Enterprise by quote) or alongside Digital Flyer campaigns. Works with Facebook/Instagram lead ads and leads added in the hub. Bought online by card; accounts are set up by the Adviuz team after payment.
 - [About](https://adviuz.com/about.html): Company story and milestones — founded 2014 by Ajay Sheria; digital flyers (2014), CRM (2016), Sales Support Centre (2018), Sales Booster app (2022), headquarters moved to Canada (2025), AI Conversion Engine (2026). Operated by Instad Web Services Ltd.
 - [Book a Demo](https://adviuz.com/book-demo.html): Free 30-minute live demo booking
 - [Contact](https://adviuz.com/contact.html): Phone +1 647 250 1152, support@adviuz.com, Saskatoon SK
 
-- [Pricing](https://adviuz.com/pricing.html): AI Conversion Engine one-time prepaid plans, bought online: Essential $599 CAD (+$300 one-time setup, about 400 new leads, 120 days), Pro $999 CAD (setup included, about 800 new leads, 180 days, adds bulk texts/emails/AI calls), Max $1,999 CAD (setup included, about 2,000 new leads, 360 days, adds priority setup and monthly review call). Enterprise by quote. Recharge when needed, no monthly fees. Digital Flyer campaigns priced at your demo (charged only for 25-second viewed flyers).
+- [Pricing](https://adviuz.com/pricing.html): AI Conversion Engine one-time prepaid plans, bought online: Essential $600 CAD (+$300 one-time setup, about 400 new leads, 120 days), Pro $1,000 CAD (setup included, about 800 new leads, 180 days, adds bulk texts/emails/AI calls), Max $2,000 CAD (setup included, about 2,000 new leads, 360 days, adds priority setup and monthly review call). Enterprise by quote. Recharge when needed, no monthly fees. Digital Flyer campaigns priced at your demo (charged only for 25-second viewed flyers).
 - [Partners](https://adviuz.com/partners.html): Referral partner programme — 10% commission on a referred client's first order, 5% on recurring orders.
+- [Integrations & Developer Information](https://adviuz.com/integrations.html)
 - [Privacy Policy](https://adviuz.com/privacy.html)
 - [Terms of Service](https://adviuz.com/terms.html)
 - [Refund Policy](https://adviuz.com/refund-policy.html)

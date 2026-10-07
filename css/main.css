@@ -500,6 +500,7 @@ p{margin:0 0 18px}
 .legal p,.legal li{font-size:15.5px;line-height:1.75;color:var(--muted)}
 .legal ul{padding-left:22px;margin:10px 0 18px}
 .legal li{margin:7px 0}
+.legal code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;background:rgba(127,127,127,.12);border:1px solid rgba(127,127,127,.25);border-radius:6px;padding:2px 7px;color:inherit;word-break:break-all}
 .legal .updated{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
 .legal a{color:var(--accent);font-weight:600}
 .legal strong{color:var(--ink)}
@@ -3543,3 +3544,31 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 @media (min-width:1180px){.ce-hero2 .ce-phone{width:279px}}
 @media (max-width:720px){.ob-line{font-size:min(3.65vw,17px);letter-spacing:-.005em}}
 @media (max-width:720px){.ob-line{font-size:min(4.4vw,18px)}}
+
+/* v132 – Buy now checkout sheet (js/checkout.js) */
+.co-dlg{border:0;padding:0;background:transparent;max-width:calc(100vw - 32px);width:420px;margin:auto}
+.co-dlg::backdrop{background:rgba(8,3,16,.55);backdrop-filter:blur(3px)}
+.co-box{position:relative;background:var(--paper);color:var(--ink);border-radius:var(--r-lg);padding:28px 26px 22px;box-shadow:var(--shadow);font-family:var(--font-body)}
+.co-x{position:absolute;top:12px;right:14px;width:34px;height:34px;border:0;background:var(--wash);border-radius:50%;font-size:20px;line-height:1;color:var(--muted);cursor:pointer}
+.co-x:hover{color:var(--ink)}
+.co-kick{margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.co-h{margin:0;font-size:24px;font-weight:600;line-height:1.2}
+.co-info{margin:4px 0 18px;color:var(--muted);font-size:14px}
+.co-lab{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.co-sel{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper)}
+.co-sel:focus{outline:2px solid var(--focus);outline-offset:1px}
+.co-sum{margin:18px 0 0;padding:14px 16px;background:var(--wash);border-radius:var(--r-md);font-size:14px}
+.co-sum div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.co-sum dt{color:var(--muted)}.co-sum dd{margin:0;font-variant-numeric:tabular-nums}
+.co-sum .co-tot{border-top:1px solid var(--line);margin-top:6px;padding-top:10px;font-size:16px}
+.co-sum .co-tot dt{color:var(--ink)}.co-sum .co-tot dd{font-weight:600}
+.co-err{margin:12px 0 0;font-size:13px;color:#b42318}.co-err a{color:inherit}
+.co-go{width:100%;margin-top:18px;justify-content:center}
+.co-go[disabled]{opacity:.7;cursor:wait}
+.co-note{margin:12px 0 0;font-size:12px;line-height:1.5;color:var(--faint);text-align:center}
+.co-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;background:var(--ink);color:#fff;padding:12px 18px;border-radius:var(--r-pill);font-size:14px;box-shadow:var(--shadow);transition:opacity .5s;width:max-content;max-width:calc(100vw - 32px);text-align:center}
+.co-toast.out{opacity:0}
+@media(max-width:480px){.co-box{padding:24px 18px 18px}.co-h{font-size:22px}}
+
+/* v133 – checkout sheet: honour hidden rows (Pro/Max/Test have no setup fee) */
+.co-sum div[hidden]{display:none}

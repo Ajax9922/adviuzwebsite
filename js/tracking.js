@@ -15,7 +15,7 @@
 
   // Plan values in CAD (Essential includes the $300 setup fee), used for the purchase event on the welcome page
   var VALUE = {
-    'ce-essential': 899, 'ce-pro': 999, 'ce-max': 1999
+    'ce-essential': 900, 'ce-pro': 1000, 'ce-max': 2000
   };
 
   function addScript(src) {

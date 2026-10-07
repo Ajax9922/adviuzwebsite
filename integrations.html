@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Privacy Policy — Adviuz</title>
-<meta name="description" content="How Adviuz (Instad Web Services Ltd.) collects, uses, and protects personal information, under PIPEDA. Includes our SMS and Google user data practices.">
+<title>Integrations &amp; Developer Information — Adviuz</title>
+<meta name="description" content="How the Adviuz platform connects to Facebook Lead Ads, Google Calendar, Zapier, Make, Twilio and Stripe — what data moves, how it's secured, and how to connect or disconnect.">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,13 @@
 <link rel="stylesheet" href="css/tokens.css?v=20261005">
 <link rel="stylesheet" href="css/main.css?v=20261007f">
 
-<link rel="canonical" href="https://adviuz.com/privacy.html">
+<link rel="canonical" href="https://adviuz.com/integrations.html">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Adviuz">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Privacy Policy — Adviuz">
-<meta property="og:description" content="How Adviuz (Instad Web Services Ltd.) collects, uses, and protects personal information, under PIPEDA. Includes our SMS and Google user data practices.">
-<meta property="og:url" content="https://adviuz.com/privacy.html">
+<meta property="og:title" content="Integrations &amp; Developer Information — Adviuz">
+<meta property="og:description" content="How the Adviuz platform connects to Facebook Lead Ads, Google Calendar, Zapier, Make, Twilio and Stripe — and how each connection is secured.">
+<meta property="og:url" content="https://adviuz.com/integrations.html">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://adviuz.com/#org", "sameAs": ["https://www.facebook.com/adviuz", "https://x.com/adviuz", "https://www.instagram.com/adviuz_in/", "https://www.youtube.com/playlist?list=PLkqeu4o8E-C5BopNMoS0ZogFiTpYu6jlG", "https://in.linkedin.com/company/adviuz"], "name": "Adviuz", "legalName": "Instad Web Services Ltd.", "url": "https://adviuz.com/", "logo": "https://adviuz.com/assets/logo.png", "foundingDate": "2014", "telephone": "+1-647-250-1152", "email": "support@adviuz.com", "address": {"@type": "PostalAddress", "streetAddress": "Scotiabank Building, 111 2nd Ave S, Unit 400", "addressLocality": "Saskatoon", "addressRegion": "SK", "addressCountry": "CA"}, "areaServed": "Worldwide"}</script>
 </head>
@@ -50,69 +50,84 @@
   <div class="container">
     <div class="legal">
 <p class="updated">Last updated: October 7, 2026</p>
-<h1>Privacy Policy</h1>
-<p>This policy explains how Instad Web Services Ltd., operating as Adviuz ("Adviuz", "we", "us"), Scotiabank Building, 111 2nd Ave S, Unit 400, Saskatoon, SK, Canada collects, uses, and protects personal information. We follow Canada's <strong>Personal Information Protection and Electronic Documents Act (PIPEDA)</strong> and, where applicable, US federal and state privacy laws.</p>
+<h1>Integrations &amp; Developer Information</h1>
+<p>This page describes how the Adviuz platform connects to outside services: exactly what data moves in each direction, how each connection is secured, and how to connect or disconnect. It is written for our clients, their technical teams, and the platform partners who review us. How we handle personal information is covered in our <a href="/privacy.html">Privacy Policy</a>; deletion requests are covered on our <a href="/data-deletion.html">Data Deletion</a> page.</p>
 
-<h2>What we collect</h2>
+<h2 id="platform">The Adviuz platform at a glance</h2>
+<p>Adviuz, operated by Instad Web Services Ltd. (Saskatoon, SK, Canada), is a lead-generation and lead-conversion platform for businesses:</p>
 <ul>
-<li><strong>When you book a demo or contact us:</strong> your name, business name, phone number, email address, your selected time zone and province or state, your requested demo time, and anything you write in a message.</li>
-<li><strong>When you become a client:</strong> billing details (processed by Stripe — we never see or store full card numbers), campaign content you provide (your flyers, offers, and business information), and account details for your client dashboard.</li>
-<li><strong>When people respond to your campaigns:</strong> if you're a client, we collect leads on your behalf — the contact details people submit when they express interest in your flyer.</li>
-<li><strong>When you connect an integration:</strong> if you connect Facebook or Instagram Lead Ads (or send us leads through Zapier, Make, or Google Sheets), we receive the answers people submit on your lead forms. If you connect Google Calendar, see "Google user data" below. Full details are on our <a href="/integrations.html">Integrations</a> page.</li>
-<li><strong>Automatically:</strong> basic technical information such as pages visited, needed to run and secure the website. We do not sell this data.</li>
+<li><strong>adviuz.com</strong> — this website: product information, checkout (processed by Stripe), and demo booking.</li>
+<li><strong>hub.adviuz.ca</strong> — the client dashboard, where each business signs in to see its own leads, conversations, call recordings, appointments, and campaign settings.</li>
+<li><strong>Digital Flyers</strong> — advertising campaigns that bring a business new leads.</li>
+<li><strong>AI Conversion Engine</strong> — AI assistants that answer and follow up a business's own leads by phone, text, and email, and book appointments into the business's calendar.</li>
+</ul>
+<p>Our application services run on Supabase; the endpoints referenced on this page live under <code>https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/</code>. Every endpoint is HTTPS-only.</p>
+
+<h2 id="facebook">Facebook &amp; Instagram Lead Ads</h2>
+<p><strong>What it does.</strong> When a business runs lead ads on Facebook or Instagram, the answers a person submits on the lead form are delivered into that business's Adviuz campaign, so follow-up can start within about a minute instead of days later.</p>
+<p><strong>Data we receive.</strong> Only what the person typed or selected on the form — typically name, phone number, email, and the form's custom questions — plus Meta's form ID and lead ID.</p>
+<p><strong>How it is used.</strong> Solely so that the business the person contacted can follow up its own lead. Lead data is never sold, never used for Adviuz's own marketing, and never shared with other businesses.</p>
+<p><strong>Protections built in.</strong></p>
+<ul>
+<li><strong>Test leads are never contacted.</strong> Meta's form-testing tool sends dummy submissions; our intake recognizes them, uses them only to learn the form's field names, and never creates a lead or sends any message.</li>
+<li><strong>Duplicates are blocked</strong> using Meta's unique lead ID, so nobody is contacted twice for one submission.</li>
+<li><strong>Unknown forms are quarantined.</strong> A submission from a form that has not been mapped to a client campaign is held for review instead of being guessed at.</li>
+</ul>
+<p><strong>Connecting and disconnecting.</strong> Our team sets up lead delivery during onboarding — either directly or through a bridge the client already uses (Google Sheets, Zapier, or Make). To stop delivery, a client simply asks us or removes the bridge; deletion of already-received leads follows our <a href="/data-deletion.html">Data Deletion</a> process.</p>
+
+<h2 id="google">Google Calendar sync (Google user data)</h2>
+<p><strong>What it does.</strong> A client can connect a Google Calendar to their campaign so that appointments booked through Adviuz — including appointments booked by their AI assistant — appear on their real calendar, and busy slots are not double-booked.</p>
+<p><strong>OAuth scopes we request, and why — nothing more:</strong></p>
+<ul>
+<li><code>openid email</code> — to show the client which Google account they connected.</li>
+<li><code>…/auth/calendar.readonly</code> — to list the client's calendars so they can pick one, and to read busy times on that calendar so we never book over an existing appointment.</li>
+<li><code>…/auth/calendar.events</code> — to create and update the appointment events we book. <strong>We never delete or modify events we did not create.</strong></li>
+</ul>
+<p><strong>Storage and security.</strong> The Google token is stored server-side in our database and used only for the purposes above. Humans do not read Google user data except with the client's permission, for security, or to comply with law.</p>
+<p><strong>Disconnecting.</strong> The client can disconnect at any time from campaign settings in the dashboard — we then revoke the token with Google immediately — or from their <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions page</a>.</p>
+<p>Adviuz's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+<h2 id="webhook">Lead intake webhook (Zapier, Make, Google Sheets, custom forms)</h2>
+<p>Clients can send leads into their Adviuz campaign from almost any tool that can make a web request — Zapier ("Webhooks by Zapier"), Make (HTTP module), Google Sheets automations, or a form on their own website.</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>POST https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/fb-leadform-intake</code></li>
+<li><strong>Authentication:</strong> a per-account secret sent in the <code>x-adviuz-secret</code> header. Secrets are issued by our team during onboarding, are never published, and requests without a valid secret are rejected.</li>
+<li><strong>Body:</strong> JSON including the integration ID (<code>form_id</code>) we issue for the source, plus the lead's details, for example:</li>
+</ul>
+<p><code>{ "form_id": "your-integration-id", "full_name": "…", "phone_number": "…", "email": "…", "your custom question": "…" }</code></p>
+<ul>
+<li><strong>Field names are flexible</strong> — common variants (name / full_name, phone / phone_number, email) are recognized automatically, and extra fields are kept with the lead so no answer is lost.</li>
+<li><strong>Honest responses:</strong> a lead for an unrecognized integration ID is refused with an error rather than silently accepted, so the sending tool shows a failure and nobody's lead disappears behind a green tick.</li>
+<li><strong>Test submissions</strong> are detected and never contacted, and duplicates are blocked.</li>
+</ul>
+<p>To get an integration ID and secret for a campaign, contact <a href="mailto:support@adviuz.com">support@adviuz.com</a>.</p>
+
+<h2 id="sms">Text messages and calls (Twilio)</h2>
+<ul>
+<li>Each client gets a dedicated business phone number, provisioned through Twilio into the client's own isolated sub-account.</li>
+<li>Messaging is <strong>consent-based</strong>: the platform contacts people who submitted their details to that business, or whose documented consent the business has confirmed. Purchased, rented, or scraped lists are prohibited by our <a href="/terms.html">Terms of Service</a>.</li>
+<li>Where US A2P 10DLC registration applies, traffic is sent under registered campaigns with the opt-in language shown on the collecting form.</li>
+<li><strong>STOP</strong> ends messaging immediately and is honored across channels; <strong>HELP</strong> returns help. Calls respect waking hours in the lead's own time zone, and daily contact limits apply.</li>
+<li>Call recordings and transcripts are available to the client in their dashboard, with recording notices given where the law requires.</li>
 </ul>
 
-<h2>How we use it</h2>
+<h2 id="payments">Payments (Stripe)</h2>
+<p>All checkout and card payments are processed by Stripe. Card details go directly to Stripe; <strong>Adviuz never sees or stores full card numbers</strong>. Payment confirmations reach our platform through Stripe's signed webhooks, and every payment produces an instant receipt and tax invoice.</p>
+
+<h2 id="email">Email (Resend)</h2>
+<p>Transactional and campaign email is sent through Resend. Clients can send from their own domain once it is verified (we provide the DNS records). Every commercial email identifies the sender and carries a working unsubscribe link, as CASL and CAN-SPAM require.</p>
+
+<h2 id="security">Security practices</h2>
 <ul>
-<li>To schedule and hold your demo, and to respond to your enquiries.</li>
-<li>To contact you about your request by phone (including automated and AI voice calls), text, and email — <strong>only if you've given consent</strong> on our forms. Consent is never a condition of purchase, and you can withdraw it at any time by replying STOP to texts, asking us during a call, or emailing us.</li>
-<li>To run your campaigns, deliver your leads, bill you, and support your account.</li>
-<li>To meet legal obligations, such as tax and accounting records.</li>
+<li>HTTPS everywhere; no API keys or secrets ever appear in website code.</li>
+<li>Integration endpoints are protected by per-account shared secrets or signed webhooks; unauthenticated requests are rejected.</li>
+<li>Each client's data is scoped to their own account in the dashboard; telephony runs in per-client Twilio sub-accounts.</li>
+<li>Webhooks are idempotent — a payment or lead delivered twice is processed once.</li>
+<li>To report a security concern, email <a href="mailto:support@adviuz.com">support@adviuz.com</a> with the subject "Security".</li>
 </ul>
 
-<h2>Text messaging (SMS)</h2>
-<p>By opting in on our forms, you agree to receive text messages from Adviuz about your request and our services. Message and data rates may apply; message frequency varies. Reply <strong>STOP</strong> to opt out at any time, or <strong>HELP</strong> for help. <strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> Text messaging opt-in data and consent are not shared with any third parties.</p>
-
-<h2>Calls and call recordings</h2>
-<p>Calls handled by the platform — including calls made or answered by AI assistants — may be recorded and transcribed so the business you contacted can review them and so we can keep quality high. Our AI assistants identify themselves honestly as AI, and recording notices are given where the law requires. Clients can listen to their own campaign's recordings in their dashboard. Recordings are never sold or used to contact you about anything other than your original request.</p>
-
-<h2>Service providers we use</h2>
-<p>We share personal information only with the service providers needed to run our platform, and only for the purposes above:</p>
-<ul>
-<li><strong>Stripe</strong> — payment processing</li>
-<li><strong>Twilio</strong> — phone calls and text messages</li>
-<li><strong>Supabase</strong> — secure database and application hosting</li>
-<li><strong>Resend</strong> — transactional email</li>
-<li><strong>Cloudflare</strong> — website hosting and security</li>
-<li><strong>Google</strong> — calendar scheduling for clients who connect their Google Calendar (see below)</li>
-</ul>
-<p>Each provider processes data under its own privacy and security commitments. We never sell personal information. How each connection works — what data moves and how it's secured — is described on our <a href="/integrations.html">Integrations</a> page.</p>
-
-<h2>Google user data</h2>
-<p>Clients may choose to connect their Google Calendar to the Adviuz client platform so that appointments booked through their campaigns appear on their calendar. If you connect Google Calendar:</p>
-<ul>
-<li>We access only your calendar events, and only to create, read, and update appointments related to your Adviuz campaigns.</li>
-<li>We do not use Google user data for advertising, and we do not sell it.</li>
-<li>We do not transfer Google user data to third parties except as needed to provide the calendar feature, to comply with law, or as part of a merger or acquisition with prior notice.</li>
-<li>Humans do not read your Google data except with your permission, for security purposes, to comply with law, or when aggregated and anonymized.</li>
-<li>You can disconnect Google Calendar at any time from your dashboard, or via your Google Account permissions page.</li>
-</ul>
-<p>Adviuz's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements.</p>
-
-<h2>Cookies and advertising tools</h2>
-<p>Our website uses the Google Ads tag and the Meta (Facebook) Pixel. These tools use cookies and similar technology to tell us which ads brought visitors to our site, whether a visitor started checkout or completed a purchase, and to show our ads again to people who visited our site. They collect information such as the pages you visit, the buttons you click, your browser and device type, and an approximate location based on your IP address. They do not receive the content of any form you fill in, and we never share your phone number or email with them for their own marketing. Some of the same measurement events (for example "purchase completed") are also sent to Meta server-to-server through its Conversions API, under the same limits.</p>
-<p>You can block or delete cookies in your browser settings, opt out of personalised Google ads at <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>, and manage Meta ad preferences in your Facebook or Instagram account settings. Blocking these cookies does not stop the website from working.</p>
-<h2>How long we keep it</h2>
-<p>We keep personal information only as long as needed for the purposes above: enquiry and demo records for up to 2 years, client and billing records for 7 years (as required for tax purposes), and campaign lead data for the duration of the client relationship plus 1 year. You can request earlier deletion — see our <a href="/data-deletion.html">Data Deletion</a> page.</p>
-
-<h2>Your rights</h2>
-<p>You may ask us at any time to access, correct, or delete your personal information, or to withdraw consent to contact. Email <a href="mailto:support@adviuz.com">support@adviuz.com</a> or call <a href="tel:+16472501152">+1 647 250 1152</a>. We respond within 30 days. If you're not satisfied, you may contact the Office of the Privacy Commissioner of Canada.</p>
-
-<h2>Changes</h2>
-<p>If we change this policy, we'll update the date at the top of this page. Material changes affecting clients will be communicated directly.</p>
-
-<h2>Contact</h2>
-<p>Privacy questions: <a href="mailto:support@adviuz.com">support@adviuz.com</a> · +1 647 250 1152 · Scotiabank Building, 111 2nd Ave S, Unit 400, Saskatoon, SK, Canada.</p>
+<h2 id="contact">Developer contact</h2>
+<p>Integration setup, API questions, and partnership requests: <a href="mailto:support@adviuz.com">support@adviuz.com</a> · +1 647 250 1152 · Instad Web Services Ltd., Scotiabank Building, 111 2nd Ave S, Unit 400, Saskatoon, SK, Canada.</p>
 
     </div>
   </div>
@@ -170,7 +185,6 @@
 const t=document.getElementById('menuToggle'),n=document.getElementById('navLinks');
 t.addEventListener('click',()=>{const open=n.classList.toggle('open');t.setAttribute('aria-expanded',open);});
 </script>
-<script src="js/booking.js?v=20261006" defer></script>
 <script src="/js/tracking.js?v=20261005" defer></script>
 </body>
 </html>
