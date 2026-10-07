@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/tokens.css?v=20261005">
+<link rel="stylesheet" href="css/main.css?v=20261007c">
 
 <link rel="canonical" href="https://adviuz.com/about.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -31,7 +31,7 @@
     <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
     <nav class="nav-links" id="navLinks" aria-label="Main navigation">
       <a href="/">Digital Flyers</a>
-      <a href="/ai-conversion-engine.html">Conversion Engine</a>
+      <a href="/ai-conversion-engine.html">AI Conversion Engine</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/about.html" aria-current="page">About</a>
       <a href="/contact.html">Contact</a>
@@ -73,20 +73,21 @@
 <section class="section eco-sec">
   <div class="container">
     <div class="center"><span class="kicker">One ecosystem</span><h2>Everything in one place. Fully managed.</h2>
-    <p class="lead">Most businesses juggle a designer, an ads manager, a CRM, an email tool, a texting app, a phone system and a booking app. With Adviuz it’s one platform, and we set it up and run it for you. You approve the flyer and talk to your leads.</p></div>
+    <p class="lead">Most businesses juggle a designer, an ads manager, a CRM, an email tool, a texting app, a phone system and a booking app, then hire people to call every lead and set appointments. With Adviuz it’s one platform and the calling is done for you. We set it up and run it. You approve the flyer and meet your customers.</p></div>
     <div class="eco">
       <div class="eco-col eco-old">
         <h3>The usual way</h3>
-        <ul class="eco-tools"><li>Graphic designer</li><li>Ad platforms</li><li>Ads manager</li><li>Landing page builder</li><li>CRM subscription</li><li>Email marketing tool</li><li>Texting app</li><li>Phone &amp; call recording</li><li>Booking app</li><li>Reporting dashboard</li></ul>
-        <p>Separate logins, separate monthly bills, and you pay for clicks and impressions, not for time spent viewing your ad.</p>
+        <ul class="eco-tools"><li>Graphic designer</li><li>Ad platforms</li><li>Ads manager</li><li>Landing page builder</li><li>CRM subscription</li><li>Email marketing tool</li><li>Texting app</li><li>Phone &amp; call recording</li><li>Booking app</li><li>Reporting dashboard</li><li>Staff to call every lead</li><li>Appointment setters</li></ul>
+        <p>Separate logins, separate monthly bills, staff to hire and train, and you pay for clicks and impressions, not for time spent viewing your ad.</p>
       </div>
       <div class="eco-col eco-new">
         <h3>Included with Adviuz</h3>
-        <ul class="eco-list"><li>Flyer design</li><li>Distribution on 15+ platforms</li><li>Flyer page with call and form buttons</li><li>Lead capture, including Facebook lead forms</li><li>CRM with pipeline, reminders and team access</li><li>AI calls with recordings and transcripts</li><li>Automated text and email follow-up</li><li>Bulk texts, emails and calls</li><li>Appointment booking with Google Calendar</li><li>Instant new-lead alerts on your phone</li><li>Live campaign reports</li><li>One login, one prepaid balance</li></ul>
+        <ul class="eco-list"><li>Flyer design</li><li>Distribution on 15+ platforms</li><li>Flyer page with call and form buttons</li><li>Lead capture, including Facebook lead forms</li><li>CRM with pipeline, reminders and team access</li><li>AI calls every new lead, with recordings and transcripts</li><li>Follow-up by call, text and email, like a person would</li><li>Bulk texts, emails and calls</li><li>Appointments booked into your calendar</li><li>Instant new-lead alerts on your phone</li><li>Live campaign reports</li><li>One login, one prepaid balance</li></ul>
       </div>
     </div>
+    <p class="eco-tag">From flyer design to customers at your door.</p>
     <div class="eco-hl">
-      <div><b>Fully managed</b><span>We design, launch and run your campaign. No tools to learn or connect.</span></div>
+      <div><b>Fully managed, no callers to hire</b><span>We design and run your campaign, and the AI calls, texts and emails every lead until they book. No tools to learn, no staff to manage.</span></div>
       <div><b>No paying for clicks or impressions</b><span>You pay for guaranteed exposure: flyers viewed for at least 25 seconds.</span></div>
       <div><b>Bonus with every package</b><span>AI call minutes, texts, emails, call minutes and months of flyer design, with the CRM included at no charge.</span></div>
     </div>
@@ -181,7 +182,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   els.forEach(el=>io.observe(el));
 }
 </script>
-<script src="js/booking.js" defer></script>
+<script src="js/booking.js?v=20261006" defer></script>
 <script>
 (function(){var t=document.getElementById('tl');if(!t)return;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)){t.classList.add('tl-on');return;}
@@ -189,6 +190,6 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserv
 var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){t.classList.add('tl-on');io.disconnect();}},{threshold:.25});io.observe(t);})();
 </script>
 
-<script src="/js/tracking.js" defer></script>
+<script src="/js/tracking.js?v=20261005" defer></script>
 </body>
 </html>

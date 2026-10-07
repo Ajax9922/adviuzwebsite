@@ -2,21 +2,11 @@
    Paste each link between the quotes. A plan left empty ('') sends its button
    to the Contact page instead.
    In each Stripe link set: After payment -> "Don't show confirmation page" ->
-   https://adviuz.com/welcome?plan=PLAN-KEY   (PLAN-KEY = the name on the left)  */
+   https://adviuz.com/welcome?plan=PLAN-KEY   (PLAN-KEY = the name on the left)
+   Essential: add TWO items to its Stripe link – the $599 plan and the $300 one-time setup fee. */
 window.ADVIUZ_STRIPE = {
-  /* AI Conversion Engine – MONTHLY plans (Stripe: "Recurring", monthly) – ai-conversion-engine.html */
-  'ce-starter-m':  '',   // Starter – $200/month  – 100 AI min, 500 texts/emails/call min
-  'ce-growth-m':   '',   // Growth  – $350/month  – 200 AI min, 1,000 each
-  'ce-scale-m':    '',   // Scale   – $600/month  – 400 AI min, 2,000 each
-  'ce-pro-m':      '',   // Pro     – $1,000/month – 800 AI min, 4,000 each
-
-  /* AI Conversion Engine – ONE-TIME prepaid packs (Stripe: "One time") – pricing.html */
-  'ce-starter':    '',   // 100 AI minutes   – $200
-  'ce-growth':     '',   // 200 AI minutes   – $350
-  'ce-scale':      '',   // 400 AI minutes   – $600
-  'ce-pro':        '',   // 800 AI minutes   – $1,000
-  'ce-max':        '',   // 2,000 AI minutes – $2,000
-  'ce-enterprise': '',   // 5,000 AI minutes – $4,500
-  'ce-ultimate':   '',   // 10,000 AI minutes – $8,000
-  'ce-25k':        ''    // 25,000 AI minutes – $17,500
+  /* AI Conversion Engine – prepaid plans (Stripe: "One time") – used on ai-conversion-engine.html and pricing.html */
+  'ce-essential': '',   // Essential – $599 + $300 one-time setup (400 AI minutes, 120 days)
+  'ce-pro':       '',   // Pro       – $999, setup included (800 AI minutes, 180 days)
+  'ce-max':       ''    // Max       – $1,999, setup included (2,000 AI minutes, 360 days)
 };

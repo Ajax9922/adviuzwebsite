@@ -13,11 +13,9 @@
     META_PIXEL_ID:   ''
   };
 
-  // Monthly / one-time plan values in CAD, used for the purchase event on the welcome page
+  // Plan values in CAD (Essential includes the $300 setup fee), used for the purchase event on the welcome page
   var VALUE = {
-    'ce-starter-m': 200, 'ce-growth-m': 350, 'ce-scale-m': 600, 'ce-pro-m': 1000,
-    'ce-starter': 200, 'ce-growth': 350, 'ce-scale': 600, 'ce-pro': 1000,
-    'ce-max': 2000, 'ce-enterprise': 4500, 'ce-ultimate': 8000, 'ce-25k': 17500
+    'ce-essential': 899, 'ce-pro': 999, 'ce-max': 1999
   };
 
   function addScript(src) {
