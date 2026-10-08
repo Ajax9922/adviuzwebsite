@@ -3311,7 +3311,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 
 /* v119 – demo form: solution choice */
 .bk-sol-field{margin-bottom:14px}
-.bk-sol{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.bk-sol{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
 .bk-sol-opt{position:relative;cursor:pointer;display:block}
 .bk-sol-opt input{position:absolute;opacity:0;pointer-events:none}
 .bk-sol-opt span{display:block;padding:12px 14px 12px 42px;border:1.5px solid var(--line);border-radius:14px;background:var(--paper);transition:border-color .2s,background .2s,box-shadow .2s;position:relative}
@@ -3321,9 +3321,10 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 .bk-sol-opt input:checked+span{border-color:transparent;background:linear-gradient(#faf7ff,#faf7ff) padding-box,var(--grad) border-box;box-shadow:0 8px 20px rgba(64,0,243,.10)}
 .bk-sol-opt input:checked+span::before{border-color:transparent;background:var(--grad)}
 .bk-sol-opt input:checked+span::after{content:"\2713";position:absolute;left:18px;top:50%;margin-top:-9px;font-size:12px;font-weight:800;color:#fff;line-height:18px}
+.bk-sol-opt input[type=radio]+span::before{border-radius:50%}
 .bk-sol-opt input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px}
 .bk-sol-err .bk-sol-opt span{border-color:#d0263e}
-@media (max-width:420px){.bk-sol{grid-template-columns:1fr}}
+@media (max-width:760px){.bk-sol{grid-template-columns:1fr}}
 
 /* v120 – CTA spacing, button gradient, no call button on desktop */
 .ce-cta-sec{padding-top:0}
