@@ -1179,7 +1179,7 @@ p{margin:0 0 18px}
 .trust-head{margin:0 0 30px;font-size:clamp(24px,3vw,36px)}
 .trust-viewport::before,.trust-viewport::after{width:140px}
 .trust-viewport:hover .trust-track{animation-play-state:paused}
-.tband{position:relative;overflow:hidden;isolation:isolate;margin:52px auto 0;max-width:1020px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--dark-grad);border-radius:var(--r-lg);padding:40px 20px;box-shadow:0 24px 60px rgba(35,8,53,.28);text-align:center}
+.tband{position:relative;overflow:hidden;isolation:isolate;margin:52px auto 0;max-width:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--dark-grad);border-radius:var(--r-lg);padding:40px 20px;box-shadow:0 24px 60px rgba(35,8,53,.28);text-align:center}
 .tband::before,.tband::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(60px);opacity:.55}
 .tband::before{width:320px;height:320px;left:-80px;top:-160px;background:var(--grad-start)}
 .tband::after{width:300px;height:300px;right:-60px;bottom:-170px;background:var(--grad-end)}
@@ -1202,7 +1202,7 @@ p{margin:0 0 18px}
 }
 
 /* ---- v42: header pill matches footer width ---- */
-.site-header .container.nav{width:min(1520px,calc(100% - 28px))!important;max-width:none!important;margin-left:auto;margin-right:auto;padding-left:26px;padding-right:14px;box-sizing:border-box}
+.site-header .container.nav{width:min(calc(var(--container) + 52px),calc(100% - 28px))!important;max-width:none!important;margin-left:auto;margin-right:auto;padding-left:26px;padding-right:26px;box-sizing:border-box}
 
 /* ---- v43: bigger hero video ---- */
 @media (min-width:901px){
@@ -1840,7 +1840,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 /* 5. hero quote */
 .hero .hero-mini.hm-one li.hm-quote{font-style:italic;font-weight:400!important;font-size:16px!important;color:var(--muted)}
 /* 6. logo strip same width as the stats card */
-@media (min-width:721px){.trust-viewport{max-width:1020px!important;width:calc(100% - 28px)!important}}
+@media (min-width:721px){.trust-viewport{max-width:var(--container)!important;width:calc(100% - 28px)!important}}
 /* 7. funnel plays by itself — no second Go Live button */
 .ls-go{display:none!important}
 .ls-top{min-height:0}
