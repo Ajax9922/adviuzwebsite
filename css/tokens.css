@@ -50,6 +50,4 @@
 :root{--bk-bg:#f6f3ff;--bk-glow-a:rgba(64,0,243,.13);--bk-glow-b:rgba(230,90,252,.14);--bk-dot:rgba(64,0,243,.09)}
 
 /* Wider content column on large desktops (laptops and below unchanged) */
-@media (min-width:1360px){:root{--container:1260px}}
-@media (min-width:1600px){:root{--container:1380px}}
-@media (min-width:1900px){:root{--container:1480px}}
+@media (min-width:1360px){:root{--container:min(92vw,1700px)}}
