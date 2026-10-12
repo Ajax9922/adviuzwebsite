@@ -10,6 +10,34 @@ var COUNTRIES=[['CA','Canada','1','🇨🇦'],['US','United States','1','🇺�
  ['AE','UAE','971','🇦🇪'],['PH','Philippines','63','🇵🇭'],
  ['BR','Brazil','55','🇧🇷'],['CN','China','86','🇨🇳']];
 var CA_TZ=['Regina','Swift_Current','Toronto','Vancouver','Edmonton','Winnipeg','Halifax','St_Johns','Moncton','Whitehorse','Yellowknife','Iqaluit','Montreal','Creston','Dawson','Glace_Bay','Goose_Bay'];
+/* ---- Real availability (website-lead ?action=slots) ----
+   Fetched once per page view when the calendar initializes. The server already
+   removes booked demos, blocked hours and times less than the minimum notice
+   away. If the fetch fails or returns nothing, the calendar quietly falls back
+   to the old built-in schedule so the form never breaks. */
+var SLOTS_API='https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-lead?action=slots';
+var slotFeedP=null;
+function fetchSlotFeed(){
+  if(slotFeedP)return slotFeedP;
+  slotFeedP=Promise.race([
+    fetch(SLOTS_API).then(function(r){return r.json();}),
+    new Promise(function(_,rej){setTimeout(function(){rej(new Error('timeout'));},5000);})
+  ]).then(function(j){
+    if(!j||j.ok!==true||!Array.isArray(j.days)||!j.days.length)throw new Error('empty');
+    var by={};
+    j.days.forEach(function(d){
+      if(!d||!d.date||!Array.isArray(d.slots))return;
+      var list=d.slots.map(function(s){
+        var ms=Date.parse(s&&s.iso);
+        return isNaN(ms)?null:{t:String(s.label||''),iso:String(s.iso),ms:ms};
+      }).filter(Boolean);
+      if(list.length)by[String(d.date)]=list;
+    });
+    if(!Object.keys(by).length)throw new Error('empty');
+    return {tz:String(j.tz||'America/Regina'),by:by};
+  }).catch(function(){return null;});
+  return slotFeedP;
+}
 function detectISO(){
   try{
     var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
@@ -205,6 +233,7 @@ function runWizard(){
 (function(){
   const grid=document.getElementById('calGrid');
   if(!grid)return;
+  fetchSlotFeed();
   const monthEl=document.getElementById('calMonth'),prevB=document.getElementById('calPrev'),nextB=document.getElementById('calNext'),
         slotsEl=document.getElementById('bkSlots'),dayLabel=document.getElementById('bkDayLabel'),tzSelEl=document.getElementById('bkTz'),
         step3=document.getElementById('bkStep3'),
@@ -220,9 +249,11 @@ function runWizard(){
   const curMin=cstNow.getUTCHours()*60+cstNow.getUTCMinutes();
   const T={y:cstNow.getUTCFullYear(),m:cstNow.getUTCMonth(),d:cstNow.getUTCDate()};
   const todayNum=Date.UTC(T.y,T.m,T.d);
-  const maxNum=todayNum+30*86400000;
+  let maxNum=todayNum+30*86400000;
   const key=(y,m,d)=>Date.UTC(y,m,d);
   const isToday=(y,m,d)=>key(y,m,d)===todayNum;
+  const dkey=(y,m,d)=>y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+  let FEED=null; // real availability from the hub (null = fallback schedule)
 
   // --- Timezone picker: shown as provinces/states, mapped to real timezones ---
   const CA_PROV=[
@@ -298,10 +329,11 @@ function runWizard(){
   const slotUtc=(y,m,d,h)=>Date.UTC(y,m,d,h+6,0,0);
   function slotTime(y,m,d,s){ // time only, in chosen zone
     if(!intlOK)return s.t;
-    try{return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:tzSel}).format(new Date(slotUtc(y,m,d,s.h)));}
+    try{return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:tzSel}).format(s.ms?new Date(s.ms):new Date(slotUtc(y,m,d,s.h)));}
     catch(e){return s.t;}
   }
   function slotsAvail(y,m,d){
+    if(FEED)return FEED.by[dkey(y,m,d)]||[];
     const w=new Date(key(y,m,d)).getUTCDay();
     if(w===0||w===6)return [];
     if(isToday(y,m,d))return SLOTS.filter(s=>s.h*60>curMin+60);
@@ -318,7 +350,7 @@ function runWizard(){
   attachNameFilter(document.getElementById('bkName'));
   attachPhoneFilter(document.getElementById('bkPhone'),document.getElementById('bkCC'));
   function firstBookable(){
-    for(let i=0;i<40;i++){
+    for(let i=0;i<47;i++){
       const dt=new Date(todayNum+i*86400000);
       const y=dt.getUTCFullYear(),m=dt.getUTCMonth(),d=dt.getUTCDate();
       if(bookable(y,m,d))return{y,m,d};
@@ -366,6 +398,14 @@ function runWizard(){
   sel=firstBookable();
   if(sel){view={y:sel.y,m:sel.m};}
   renderCal();if(sel)renderSlots();
+  fetchSlotFeed().then(f=>{
+    if(!f||selSlot)return; // keep the visitor's picked time untouched
+    FEED=f;
+    const ds=Object.keys(f.by).sort(),last=ds[ds.length-1].split('-').map(Number);
+    maxNum=Math.max(maxNum,Date.UTC(last[0],last[1]-1,last[2]));
+    if(!(sel&&FEED.by[dkey(sel.y,sel.m,sel.d)])){sel=firstBookable();if(sel)view={y:sel.y,m:sel.m};}
+    renderCal();if(sel)renderSlots();
+  });
   prevB.addEventListener('click',()=>{view.m--;if(view.m<0){view.m=11;view.y--;}renderCal();});
   nextB.addEventListener('click',()=>{view.m++;if(view.m>11){view.m=0;view.y++;}renderCal();});
   function dayStr(){return isToday(sel.y,sel.m,sel.d)?'Today ('+MN[sel.m]+' '+sel.d+')':DN[selWeekday()]+', '+MN[sel.m]+' '+sel.d;}
@@ -373,7 +413,14 @@ function runWizard(){
     const ab=zoneAbbr();
     return dayStr()+' — '+slotTime(sel.y,sel.m,sel.d,selSlot)+(ab?' '+ab:'');
   }
-  function slotLabelFull(){ // hub-facing: chosen zone + CST anchor
+  function slotLabelFull(){ // hub-facing; the backend re-reads this time in the visitor's timezone
+    if(selSlot&&selSlot.ms){
+      let z='America/Regina';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||z;}catch(e){}
+      try{
+        const txt=new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:z}).format(new Date(selSlot.ms));
+        return txt.replace(/, (\d)/,' — $1')+(selSlot.t?' ('+selSlot.t+' CST)':'');
+      }catch(e){return dayStr()+' — '+selSlot.t+' CST';}
+    }
     const loc=slotLabel();
     return (tzSel==='America/Regina'||!intlOK)?dayStr()+' — '+selSlot.t+' CST'
       :loc+' ('+selSlot.t+' CST)';
@@ -417,6 +464,7 @@ function runWizard(){
           location:(function(){var o=tzSelEl&&tzSelEl.options[tzSelEl.selectedIndex];return (o&&o.dataset&&o.dataset.prov)?o.dataset.prov:'';})(),
           country:iso,
           requested_slot:slotLabelFull(),
+          slot_iso:(selSlot&&selSlot.iso)||'',
           timezone:(function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(x){return ''}})(),
           consent:document.getElementById('bkConsent').checked,
           message:'Interested in: '+sols.join(' + '),
