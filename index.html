@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261005">
-<link rel="stylesheet" href="css/main.css?v=20261012i">
+<link rel="stylesheet" href="css/main.css?v=20261012j">
 
 <link rel="canonical" href="https://adviuz.com/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -172,7 +172,7 @@
       <div class="aj-seg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="aj-phone" aria-hidden="true">
         <div class="aj-notch"></div>
-        <div class="aj-cap"><b>01</b><span>Your flyer circulates across platforms</span></div>
+        <div class="aj-cap" data-p="0"><b>01</b><span>Your flyer circulates across platforms</span></div>
         <div class="aj-screen">
 
           <div class="aj-scene aj-multi" data-s="0">
@@ -535,7 +535,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     void wrap.offsetWidth;
     [steps[i],segs[i]].forEach(function(el){if(el){el.style.setProperty('--d',d+'ms');el.classList.add('on');}});
       var cap=wrap.querySelector('.aj-cap');
-      if(cap){cap.querySelector('b').textContent='0'+(i+1);
+      if(cap){cap.dataset.p=i;cap.querySelector('b').textContent='0'+(i+1);
         cap.querySelector('span').textContent=steps[i].querySelector('b').textContent;
         cap.classList.remove('pop');void cap.offsetWidth;cap.classList.add('pop');}
   }
