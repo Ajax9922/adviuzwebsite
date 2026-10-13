@@ -29,20 +29,20 @@
 .bp-btns{display:flex;flex-direction:column;gap:10px;margin-top:16px}
 .bp-btns .button{width:100%;justify-content:center;text-align:center}
 .button.bp-ghost{background:transparent;border:1.5px solid var(--line,#ddd4ee);color:inherit}
-.bp-days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;margin:14px -4px 2px;scrollbar-width:thin}
-.bp-day{flex:0 0 auto;min-width:64px;border:1.5px solid var(--line,#e2dbf0);background:var(--paper,#fff);border-radius:12px;padding:8px 10px;text-align:center;cursor:pointer}
-.bp-day small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.bp-day b{font-size:14px}
-.bp-day.on{border-color:transparent;background:linear-gradient(var(--paper,#faf7ff),var(--paper,#faf7ff)) padding-box,var(--grad,linear-gradient(90deg,#7c3aed,#c026d3)) border-box;box-shadow:0 8px 20px rgba(64,0,243,.10)}
-.bp-times{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
-.bp-times button{border:1.5px solid var(--line,#e2dbf0);background:var(--paper,#fff);border-radius:12px;padding:11px 4px;font-weight:600;font-size:14.5px;cursor:pointer}
-.bp-times button.on{border-color:transparent;background:linear-gradient(var(--paper,#faf7ff),var(--paper,#faf7ff)) padding-box,var(--grad,linear-gradient(90deg,#7c3aed,#c026d3)) border-box;box-shadow:0 8px 20px rgba(64,0,243,.12)}
-.bp-tz{color:var(--muted);font-size:13px;text-align:center;margin-top:12px}
+/* same calendar as the public booking wizard (cal-grid / bk-slots from main.css) */
+.bp-card.bp-wide{max-width:880px}
+.bp-calwrap{margin-top:20px;text-align:left}
+@media (min-width:761px){
+  .bp-calwrap.bk-cal-wrap{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0}
+  .bp-calwrap.bk-cal-wrap>:first-child{padding-right:30px;border-right:1px solid var(--line,#e7e2f2)}
+  .bp-calwrap.bk-cal-wrap>:last-child{padding-left:30px}
+}
+.bp-tz{color:var(--muted);font-size:13px;text-align:left;margin-top:14px}
 .bp-err{display:none;color:#b3123a;background:rgba(208,38,62,.07);border:1px solid rgba(208,38,62,.25);border-radius:12px;padding:11px 14px;font-size:14px;margin-top:14px;text-align:center}
 .bp-big{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:4px auto 14px;background:var(--grad,linear-gradient(90deg,#7c3aed,#c026d3));color:#fff;font-size:28px;font-weight:800}
 .bp-skel{height:16px;border-radius:8px;background:linear-gradient(90deg,rgba(127,127,127,.10),rgba(127,127,127,.2),rgba(127,127,127,.10));background-size:200% 100%;animation:bpsk 1.2s infinite;margin:10px 0}
 @keyframes bpsk{0%{background-position:200% 0}100%{background-position:0 0}}
-@media (min-width:560px){.bp-times{grid-template-columns:repeat(4,1fr)}.bp-btns{flex-direction:row}.bp-btns .button{flex:1}}
+@media (min-width:560px){.bp-btns{flex-direction:row}.bp-btns .button{flex:1}}
 /* demo mode: text left, calendar right */
 .bkd-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:52px;align-items:center;margin-top:6px}
 .bkd-left{padding-top:0}
@@ -115,7 +115,6 @@
 
       <!-- start: has / hasn't an appointment -->
       <div id="vHome" hidden>
-        <div class="bp-brand" id="bpBrand" aria-live="polite"></div>
         <h3 class="bp-h" id="homeH"></h3>
         <p class="bp-sub" id="homeSub"></p>
         <div class="bp-appt" id="homeAppt" hidden>
@@ -130,9 +129,23 @@
       <div id="vSlots" hidden>
         <h3 class="bp-h" id="slotsH">Pick a time</h3>
         <p class="bp-sub" id="slotsSub"></p>
-        <div class="bp-days" id="bpDays"></div>
-        <div class="bp-times" id="bpTimes"></div>
-        <p class="bp-tz" id="bpTzNote"></p>
+        <div class="bk-cal-wrap bp-calwrap">
+          <div>
+            <div class="cal-head">
+              <b id="bpCalMonth"></b>
+              <div class="cal-nav">
+                <button type="button" id="bpCalPrev" aria-label="Previous month">‹</button>
+                <button type="button" id="bpCalNext" aria-label="Next month">›</button>
+              </div>
+            </div>
+            <div class="cal-grid" id="bpCalGrid" role="grid" aria-label="Choose a day"></div>
+          </div>
+          <div class="bk-slot-col">
+            <p class="bk-label" id="bpDayLabel">AVAILABLE TIMES</p>
+            <div class="bk-slots" id="bpTimes" style="margin-top:0"></div>
+            <p class="bp-tz" id="bpTzNote"></p>
+          </div>
+        </div>
         <div class="bp-btns">
           <button type="button" class="button bp-ghost" id="bpBack">Back</button>
           <button type="button" class="button button-grad" id="bpConfirm" disabled>Pick a time above</button>
@@ -220,22 +233,22 @@
   var t=(new URLSearchParams(location.search)).get('t')||'';
   var el=function(id){return document.getElementById(id);};
   var views=['vLoad','vHome','vSlots','vDone','vCancelled','vErr'];
-  function show(id){views.forEach(function(v){el(v).hidden=(v!==id);});}
+  function show(id){views.forEach(function(v){el(v).hidden=(v!==id);});el('persWrap').classList.toggle('bp-wide',id==='vSlots');}
   function hero(k,h,s){el('pageKick').textContent=k;el('pageH').textContent=h;el('pageSub').textContent=s;}
   function err(id,msg){var e=el(id);e.textContent=msg;e.style.display='block';}
   function clearErrs(){['homeErr','slotsErr'].forEach(function(i){el(i).style.display='none';});}
 
-  var info=null,days=[],dayIx=0,pick=null,rescheduling=false;
+  var info=null,days=[],byDate={},selDate='',calView=null,pick=null,rescheduling=false;
+  var MNF=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var CDOW=['S','M','T','W','T','F','S'];
+  function pd(s){var p=(s||'').split('-');return{y:+p[0],m:+p[1]-1,d:+p[2]};}
+  function dk(y,m,d){return y+'-'+('0'+(m+1)).slice(-2)+'-'+('0'+d).slice(-2);}
 
   function api(body){
     return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
       .then(function(r){return r.json().then(function(j){return j||{};});});
   }
   function brand(){
-    var b=el('bpBrand');b.innerHTML='';
-    if(info&&info.logo_url){var i=document.createElement('img');i.src=info.logo_url;i.alt=info.business||'';i.onerror=function(){b.innerHTML='';brandText();};b.appendChild(i);}
-    else brandText();
-    function brandText(){if(info&&info.business){var s=document.createElement('b');s.textContent=info.business;b.appendChild(s);}}
     if(info&&info.business)document.title=(info.already_booked?'Your appointment — ':'Book — ')+info.business;
   }
   function hardErr(code){
@@ -255,7 +268,9 @@
     clearErrs();brand();
     var btns=el('homeBtns');btns.innerHTML='';
     if(info.already_booked){
-      hero(info.business,'Your appointment',(info.first?'Hi '+info.first+' — y':'Y')+'ou can move or cancel it below, any time.');
+      var isAdz=/adviuz/i.test(info.business||'');
+      var what=isAdz?'digital flyer demo':('appointment with '+info.business);
+      hero(info.business,isAdz?'Your demo is scheduled':'Your appointment is scheduled',(info.first?'Hi '+info.first+' — y':'Y')+'our '+what+' is scheduled for '+info.booked_label+' ('+info.tz_label+'). You can move or cancel it below.');
       el('homeH').hidden=true;el('homeSub').hidden=true;
       el('homeApptTxt').textContent=info.booked_label+' ('+info.tz_label+')';
       el('homeAppt').hidden=false;
@@ -275,34 +290,50 @@
     clearErrs();pick=null;confirmBtn(false);
     el('slotsH').textContent=rescheduling?'Pick a new time':'Pick a time';
     el('slotsSub').textContent='with '+info.business;
-    el('bpDays').innerHTML='<div class="bp-skel" style="width:100%"></div>';
-    el('bpTimes').innerHTML='';
+    el('bpCalGrid').innerHTML='';el('bpCalMonth').textContent='Loading…';
+    el('bpTimes').innerHTML='<div class="bp-skel" style="width:100%"></div>';
+    el('bpDayLabel').textContent='AVAILABLE TIMES';el('bpTzNote').textContent='';
     show('vSlots');
     api({t:t,action:'slots'}).then(function(j){
-      if(!j.ok){err('slotsErr',apiMsg(j.error));el('bpDays').innerHTML='';return;}
-      days=(j.days||[]).filter(function(d){return d&&Array.isArray(d.slots)&&d.slots.length;});
+      if(!j.ok){err('slotsErr',apiMsg(j.error));el('bpTimes').innerHTML='';el('bpCalMonth').textContent='';return;}
+      days=(j.days||[]).filter(function(d){return d&&d.date&&Array.isArray(d.slots)&&d.slots.length;});
+      byDate={};days.forEach(function(d){byDate[d.date]=d;});
       el('bpTzNote').textContent=days.length?('All times are in '+(j.tz_label||'business time')+'.'):'';
-      if(!days.length){el('bpDays').innerHTML='';el('bpTimes').innerHTML='';err('slotsErr','No times are open right now. Please reply to the text or email that sent you here and we’ll find you a time.');return;}
-      dayIx=0;renderDays();renderTimes();
-    }).catch(function(){err('slotsErr','Couldn’t load the times. Please check your connection and try again.');});
+      if(!days.length){el('bpTimes').innerHTML='';el('bpCalMonth').textContent='';err('slotsErr','No times are open right now. Please reply to the text or email that sent you here and we’ll find you a time.');return;}
+      days.sort(function(a,b){return a.date<b.date?-1:1;});
+      selDate=days[0].date;var v=pd(selDate);calView={y:v.y,m:v.m};
+      renderCal();renderTimes();
+    }).catch(function(){err('slotsErr','Couldn’t load the times. Please check your connection and try again.');el('bpTimes').innerHTML='';el('bpCalMonth').textContent='';});
   }
-  function renderDays(){
-    var w=el('bpDays');w.innerHTML='';
-    days.forEach(function(d,i){
-      var b=document.createElement('button');b.type='button';b.className='bp-day'+(i===dayIx?' on':'');
-      b.innerHTML='<small></small><b></b>';
-      b.querySelector('small').textContent=d.dow||'';
-      b.querySelector('b').textContent=d.md||d.date;
-      b.addEventListener('click',function(){dayIx=i;pick=null;confirmBtn(false);renderDays();renderTimes();});
-      w.appendChild(b);
-    });
+  function renderCal(){
+    var g=el('bpCalGrid');g.innerHTML='';
+    el('bpCalMonth').textContent=MNF[calView.m]+' '+calView.y;
+    CDOW.forEach(function(x){var s=document.createElement('span');s.className='cal-dow';s.textContent=x;g.appendChild(s);});
+    var firstW=new Date(Date.UTC(calView.y,calView.m,1)).getUTCDay();
+    var dim=new Date(Date.UTC(calView.y,calView.m+1,0)).getUTCDate();
+    for(var i=0;i<firstW;i++)g.appendChild(document.createElement('span'));
+    for(var d=1;d<=dim;d++){
+      (function(d){
+        var k=dk(calView.y,calView.m,d);
+        var b=document.createElement('button');b.type='button';b.className='cal-day';b.textContent=d;
+        if(k===selDate)b.classList.add('sel');
+        if(!byDate[k])b.disabled=true;
+        else b.addEventListener('click',function(){selDate=k;pick=null;confirmBtn(false);renderCal();renderTimes();});
+        g.appendChild(b);
+      })(d);
+    }
+    var f=pd(days[0].date),l=pd(days[days.length-1].date);
+    el('bpCalPrev').disabled=(calView.y*12+calView.m)<=(f.y*12+f.m);
+    el('bpCalNext').disabled=(calView.y*12+calView.m)>=(l.y*12+l.m);
   }
   function renderTimes(){
     var w=el('bpTimes');w.innerHTML='';
-    (days[dayIx].slots||[]).forEach(function(s){
+    var day=byDate[selDate];if(!day)return;
+    el('bpDayLabel').textContent=((day.dow||'')+' · '+(day.md||day.date)).toUpperCase();
+    (day.slots||[]).forEach(function(s){
       var b=document.createElement('button');b.type='button';b.textContent=s.label;
       b.addEventListener('click',function(){
-        pick={iso:s.iso,label:s.label,day:days[dayIx].label};
+        pick={iso:s.iso,label:s.label,day:day.label||day.md||day.date};
         [].forEach.call(w.children,function(x){x.classList.remove('on');});
         b.classList.add('on');confirmBtn(true);
       });
@@ -321,6 +352,8 @@
   }
 
   el('bpBack').addEventListener('click',function(){home();});
+  el('bpCalPrev').addEventListener('click',function(){calView.m--;if(calView.m<0){calView.m=11;calView.y--;}renderCal();});
+  el('bpCalNext').addEventListener('click',function(){calView.m++;if(calView.m>11){calView.m=0;calView.y++;}renderCal();});
   el('bpConfirm').addEventListener('click',function(){
     if(!pick)return;clearErrs();
     var b=el('bpConfirm');b.disabled=true;b.textContent='Saving…';
