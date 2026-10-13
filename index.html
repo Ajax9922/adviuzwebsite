@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261005">
-<link rel="stylesheet" href="css/main.css?v=20261012n">
+<link rel="stylesheet" href="css/main.css?v=20261012o">
 
 <link rel="canonical" href="https://adviuz.com/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -535,8 +535,9 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     [steps[i],segs[i]].forEach(function(el){if(el){el.style.setProperty('--d',d+'ms');el.classList.add('on');}});
   }
   function resetSwitch(){sw('');setPill('');flyer.classList.remove('paused');}
+  function tapAt(sel){var el=wrap.querySelector(sel);if(el){el.classList.remove('hit');void el.offsetWidth;el.classList.add('hit');}}
   var PH=[
-    {s:0,dur:4600,go:function(){resetSwitch();sc(0);st(0,4600);}},
+    {s:0,dur:4600,go:function(){resetSwitch();sc(0);st(0,4600);later(function(){tapAt('.aj-tap');},Math.max(500,4600*ajK-1500));}},
     {s:1,dur:4000,go:function(){resetSwitch();sc(1);st(1,4000);setT(0);runTo(12,3800);}},
     {s:2,dur:3600,go:function(){
       sc(1);st(2,6600);if(t<1)setT(12);cancelAnimationFrame(tick);
@@ -548,6 +549,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       sw('sw-c');                      /* back to switcher, flyer card slides to centre */
       later(function(){sw('');flyer.classList.remove('paused');setPill('resumed');runTo(21,2000);},800);
       later(function(){setPill('');},2600);
+      later(function(){tapAt('.tap2');},Math.max(900,3000*ajK-1250));
     }},
     {s:3,dur:4800,go:function(){resetSwitch();sc(3);st(3,4800);cancelAnimationFrame(tick);}}
   ];
