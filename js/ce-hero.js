@@ -64,3 +64,31 @@
   new IntersectionObserver(function (es) { visible = es[0].isIntersecting; visible ? run() : stop(); }).observe(rot);
   document.addEventListener('visibilitychange', function () { document.hidden ? stop() : run(); });
 })();
+
+
+/* fl stepper: the follow-up timeline pulses step by step. */
+(function () {
+  var lists = document.querySelectorAll('ol.fl');
+  if (!lists.length) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i = 0, timer = null, visible = false;
+  function activeList() {
+    for (var k = 0; k < lists.length; k++) {
+      var el = lists[k];
+      if (el.offsetParent !== null) return el;
+    }
+    return lists[0];
+  }
+  function step() {
+    var ol = activeList(), items = ol.querySelectorAll('li');
+    if (!items.length) return;
+    i = i % items.length;
+    [].forEach.call(items, function (x, n) { x.classList.toggle('go', n === i); });
+    i++;
+  }
+  function run() { if (!timer && visible && !document.hidden) { step(); timer = setInterval(step, 1500); } }
+  function stop() { clearInterval(timer); timer = null; }
+  new IntersectionObserver(function (es) { visible = es[0].isIntersecting; visible ? run() : stop(); }, { threshold: 0.2 }).observe(lists[0].closest('section') || lists[0]);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : run(); });
+  document.querySelectorAll('.ce-scn-in').forEach(function (r) { r.addEventListener('change', function () { i = 0; step(); }); });
+})();

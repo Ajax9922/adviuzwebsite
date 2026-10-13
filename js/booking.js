@@ -112,9 +112,10 @@ function attachPhoneFilter(input,ccSel){
   function fmt(){
     var d=input.value.replace(/\D/g,'').slice(0,maxFor());
     var o=ccSel&&ccSel.selectedOptions[0];
-    if(o&&o.dataset.dial==='1'&&d.length>3){
-      input.value=d.length>6?d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6):d.slice(0,3)+'-'+d.slice(3);
-    }else input.value=d;
+    var out=(o&&o.dataset.dial==='1'&&d.length>3)
+      ? (d.length>6?d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6):d.slice(0,3)+'-'+d.slice(3))
+      : d;
+    if(input.value!==out)input.value=out; // leaving it alone keeps browser autofill menus open
   }
   input.addEventListener('input',fmt);
   if(ccSel)ccSel.addEventListener('change',fmt);
