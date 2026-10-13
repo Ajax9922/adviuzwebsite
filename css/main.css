@@ -734,7 +734,7 @@ p{margin:0 0 18px}
 .nav::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad);border-radius:20px 20px 0 0;pointer-events:none}
 .brand-est{font-size:12px;color:var(--faint);font-weight:600;padding-left:13px;margin-left:11px;border-left:1px solid var(--line);white-space:nowrap}
 /* logo strip: same width as the header pill, finite edges */
-.trust-viewport{max-width:1700px;margin:0 auto;width:calc(100% - 28px)}
+.trust-viewport{max-width:var(--container);margin:0 auto;width:calc(100% - 28px)}
 /* one clean marquee row on every device — no wrapping, no cut logos */
 @media (max-width:720px){
   .trust-track{flex-wrap:nowrap!important;justify-content:flex-start!important;width:max-content!important;padding:0!important;gap:44px!important;animation:trust-scroll 30s linear infinite}
@@ -1556,7 +1556,7 @@ body::before{content:"";position:fixed;left:0;right:0;top:0;height:calc(env(safe
 
 /* ---- v55: desktop hero goes full width, aligned with the logo ---- */
 @media (min-width:901px){
-  .hero>.container{max-width:none!important;width:min(1700px,calc(100% - 28px))!important;padding-left:40px!important;padding-right:40px!important;box-sizing:border-box}
+  .hero>.container{max-width:none!important;width:min(calc(var(--container) + 52px),calc(100% - 28px))!important;padding-left:40px!important;padding-right:40px!important;box-sizing:border-box}
   .hero .hero-grid{grid-template-columns:1fr 1.1fr!important;gap:64px!important}
 }
 /* hero points under the hero: simple stacked list on every screen size */
@@ -1573,8 +1573,12 @@ body::before{content:"";position:fixed;left:0;right:0;top:0;height:calc(env(safe
 }
 
 /* ---- v56: header phone + footer refresh ---- */
-.nav-phone{display:none;align-items:center;gap:8px;padding:7px 8px 7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--wash);color:var(--ink);font-weight:700;font-size:14px;white-space:nowrap}
-.nav-phone .np-ico{width:16px;height:16px;color:var(--accent);flex:none}
+.nav-phone{display:none;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--wash);color:var(--ink);font-weight:700;font-size:14px;white-space:nowrap;cursor:pointer;position:relative;transition:border-color .2s}
+.nav-phone:hover{border-color:#17b26a}
+@keyframes npglow{0%,100%{filter:drop-shadow(0 0 2px rgba(23,178,106,.55))}50%{filter:drop-shadow(0 0 7px rgba(23,178,106,.95))}}
+.np-done{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);font-style:normal;font-size:11.5px;font-weight:700;background:var(--ink);color:#fff;padding:4px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap;z-index:5}
+.nav-phone.ok .np-done{opacity:1}
+.nav-phone .np-ico{width:16px;height:16px;color:#17b26a;flex:none;animation:npglow 2.4s ease-in-out infinite}
 .np-num{user-select:all;-webkit-user-select:all;font-variant-numeric:tabular-nums}
 .np-copy{position:relative;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:0;background:#fff;color:var(--muted);cursor:pointer;box-shadow:0 1px 3px rgba(35,8,53,.12);transition:color .2s,background .2s}
 .np-copy svg{width:14px;height:14px}
