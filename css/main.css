@@ -3597,6 +3597,7 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 
 /* About page imagery */
 .fs-photo-wide{width:100%;height:auto;border-radius:22px;display:block;filter:grayscale(1);box-shadow:0 26px 60px rgba(35,8,53,.22);margin:22px 0 26px}
+@media (min-width:861px){.fs-photo-wide{max-width:600px;margin:24px auto 28px}}
 .tl-art{display:block;width:min(560px,86%);height:auto;margin:26px auto 8px;border-radius:20px;box-shadow:0 24px 60px rgba(64,0,243,.14)}
 
 /* tap cue: press + ripple, triggered by the scene script */
