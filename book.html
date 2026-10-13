@@ -21,8 +21,6 @@
 .bp-brand{min-height:0;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
 .bp-brand img{max-height:46px;max-width:230px;width:auto;display:block;margin-bottom:10px}
 .bp-brand b{font-size:19px;letter-spacing:-.01em;margin-bottom:8px}
-.bp-kick{display:block;text-align:center;margin-bottom:8px}
-.bp-kick:empty{display:none}
 .bp-h{font-size:clamp(21px,5vw,26px);letter-spacing:-.02em;margin:0 0 8px;text-align:center}
 .bp-sub{color:var(--muted);font-size:15px;line-height:1.6;text-align:center;margin:0 0 4px}
 .bp-note{color:var(--muted);font-size:13px;text-align:center;margin-top:14px}
@@ -56,7 +54,7 @@
 .bkd-call a{color:var(--accent);font-weight:700;text-decoration:none}
 .bkd-img{width:min(320px,78%);height:auto;margin-top:30px;filter:drop-shadow(0 26px 44px rgba(64,0,243,.16))}
 .bkd-right .bk-card{margin-top:0}
-@media (max-width:1100px){.bkd-grid{grid-template-columns:1fr;gap:24px}.bkd-left{padding-top:0;text-align:center}.bkd-points{align-items:center}.bkd-img{display:none}}
+@media (max-width:1100px){.bkd-grid{grid-template-columns:1fr;gap:24px}.bkd-left{padding-top:0;text-align:left}.bkd-points{align-items:flex-start}.bkd-img{display:none}}
 </style>
 </head>
 <body>
@@ -108,7 +106,6 @@
     </div>
 
     <div class="bp-card" id="persWrap">
-      <span class="kicker bp-kick" id="bpKick"></span>
 
       <!-- loading -->
       <div id="vLoad">
@@ -238,7 +235,7 @@
   var el=function(id){return document.getElementById(id);};
   var views=['vLoad','vHome','vSlots','vDone','vCancelled','vErr'];
   function show(id){views.forEach(function(v){el(v).hidden=(v!==id);});el('persWrap').classList.toggle('bp-wide',id==='vSlots');}
-  function hero(k){el('bpKick').textContent=k||'';}
+  function hero(){}
   function err(id,msg){var e=el(id);e.textContent=msg;e.style.display='block';}
   function clearErrs(){['homeErr','slotsErr'].forEach(function(i){el(i).style.display='none';});}
 
@@ -408,11 +405,13 @@
     document.title='Book a Demo \u2014 Adviuz';
     return;
   }
-  // personal mode: compact layout — everything lives in the card
+  // personal mode: compact card, centered in the viewport
   document.getElementById('pageHero').hidden=true;
-  el('bookSec').style.paddingTop='44px';
-  el('bookSec').style.minHeight='0';
-  el('persWrap').style.marginTop='6px';
+  var bs=el('bookSec');
+  bs.style.paddingTop='20px';bs.style.paddingBottom='44px';
+  bs.style.minHeight='calc(100svh - 150px)';
+  bs.style.display='flex';bs.style.alignItems='center';
+  el('persWrap').style.marginTop='0';
   reload();
 })();
 </script>
