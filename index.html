@@ -401,6 +401,9 @@
 <script>
 const t=document.getElementById('menuToggle'),n=document.getElementById('navLinks');
 t.addEventListener('click',()=>{const open=n.classList.toggle('open');t.setAttribute('aria-expanded',open);});
+document.addEventListener('click',e=>{if(n.classList.contains('open')&&!n.contains(e.target)&&!t.contains(e.target)){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+n.addEventListener('click',e=>{if(e.target.closest('a')){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
 /* Hero video placement: right column on desktop, below the points on mobile */
 const heroMq=matchMedia('(max-width:720px)');
 function placeHeroVideo(){
