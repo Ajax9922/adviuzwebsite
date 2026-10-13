@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261012d">
-<link rel="stylesheet" href="css/main.css?v=20261012e">
+<link rel="stylesheet" href="css/main.css?v=20261012g">
 <style>
 /* Booking page (/book?t=…) — lead-facing; brand inside the card comes from the campaign */
 .bp-card{width:100%;max-width:620px;margin:30px auto 0;background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2);border-radius:20px;box-shadow:0 18px 50px rgba(35,8,53,.08);padding:28px 24px}
@@ -44,8 +44,8 @@
 @keyframes bpsk{0%{background-position:200% 0}100%{background-position:0 0}}
 @media (min-width:560px){.bp-times{grid-template-columns:repeat(4,1fr)}.bp-btns{flex-direction:row}.bp-btns .button{flex:1}}
 /* demo mode: text left, calendar right */
-.bkd-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:52px;align-items:start;margin-top:6px}
-.bkd-left{padding-top:22px}
+.bkd-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:52px;align-items:center;margin-top:6px}
+.bkd-left{padding-top:0}
 .bkd-h{font-size:clamp(28px,3.1vw,40px);font-weight:650;letter-spacing:-.015em;line-height:1.14;margin:14px 0 14px}
 .bkd-lead{color:var(--muted);font-size:16.5px;line-height:1.75;margin:0 0 22px;font-weight:400}
 .bkd-points{display:flex;flex-direction:column;gap:12px;margin:0 0 22px;padding:0;list-style:none}
@@ -179,6 +179,7 @@
         <h3>Company</h3>
         <ul>
           <li><a href="/about.html">About</a></li>
+          <li><a href="/why-adviuz.html">Why Adviuz</a></li>
           <li><a href="/partners.html">Partners</a></li>
           <li><a href="/pricing.html">Pricing</a></li>
           <li><a href="/contact.html">Contact</a></li>
@@ -374,7 +375,7 @@
 const mt=document.getElementById('menuToggle'),n=document.getElementById('navLinks');
 mt.addEventListener('click',()=>{const open=n.classList.toggle('open');mt.setAttribute('aria-expanded',open);});
 </script>
-<script src="js/booking.js?v=20261012" defer></script>
+<script src="js/booking.js?v=20261012f" defer></script>
 <script src="/js/tracking.js?v=20261005" defer></script>
 </body>
 </html>

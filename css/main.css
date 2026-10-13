@@ -805,7 +805,7 @@ p{margin:0 0 18px}
 }
 
 /* ---- v27: ad-journey demo ---- */
-.aj{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:center;margin-top:48px;max-width:960px;margin-left:auto;margin-right:auto}
+.aj{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:center;margin-top:48px;max-width:none;margin-left:auto;margin-right:auto}
 .aj-phone{position:relative;width:300px;height:600px;background:#14101c;border-radius:42px;padding:12px;box-shadow:0 30px 70px rgba(35,8,53,.30);justify-self:center}
 .aj-notch{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:96px;height:22px;background:#14101c;border-radius:12px;z-index:3}
 .aj-screen{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:#fff}
@@ -1293,7 +1293,7 @@ p{margin:0 0 18px}
 @media (max-width:720px){.br-d{display:none}}
 
 /* ---- v48: Long story in short (replaces v44 funnel look) ---- */
-.ls{max-width:880px;margin:40px auto 0}
+.ls{max-width:none;margin:40px auto 0}
 .ls-top{text-align:center}
 .ls-go{display:inline-flex;align-items:center;gap:12px;border:0;cursor:pointer;background:var(--grad);color:#fff;font:700 18px var(--font-body);border-radius:999px;padding:12px 30px 12px 12px;box-shadow:0 14px 34px rgba(64,0,243,.3);position:relative;transition:transform .15s}
 .ls-go:hover{transform:translateY(-2px)}
@@ -1707,7 +1707,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 
 /* ---- v59: hero points one line each; Steps as vertical timeline + phone ---- */
 @media (min-width:901px){.hero-points{grid-template-columns:auto auto!important;justify-content:start;column-gap:40px!important}.hero-points li{white-space:nowrap}}
-.how-split{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;max-width:1080px;margin:48px auto 0}
+.how-split{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;max-width:none;margin:48px auto 0}
 .stepsv{display:flex!important;flex-direction:column;gap:0!important;grid-template-columns:none!important;margin:0!important;position:relative}
 .stepsv .stepx{display:grid;grid-template-columns:56px 1fr;column-gap:22px;align-items:start;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0 0 34px!important;position:relative;overflow:visible}
 .stepsv .stepx::before{display:none!important}
@@ -2608,7 +2608,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 .eco-tag{text-align:center;margin:28px auto 0;font-size:clamp(11px,3.4vw,22px);font-weight:700;color:var(--ink);white-space:nowrap}
 
 /* v91 conversion engine: inside-sales comparison */
-.ce-cmp{max-width:880px;margin:40px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
+.ce-cmp{max-width:none;margin:40px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
 .ce-cmp-row{display:grid;grid-template-columns:1.1fr 1fr 1.2fr;gap:16px;padding:16px 24px;border-top:1px solid var(--line);align-items:center}
 .ce-cmp-row>*{min-width:0}
 .ce-cmp-row b{color:var(--ink);font-size:15px}
@@ -2752,7 +2752,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 
 /* v97 – compare section v2: aligned rows, highlighted AI column, "staff leave" callout */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.cmp2{max-width:940px;margin:40px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-soft);padding:8px 20px 20px}
+.cmp2{max-width:none;margin:40px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-soft);padding:8px 20px 20px}
 .cmp2-row{display:grid;grid-template-columns:minmax(150px,.85fr) 1fr 1.1fr;align-items:stretch;border-top:1px solid var(--line)}
 .cmp2-row:first-child,.cmp2-row:nth-child(2){border-top:0}
 .cmp2-row>div{display:flex;align-items:flex-start;gap:10px;padding:15px 16px;font-size:15px;line-height:1.45;min-width:0}
@@ -2767,7 +2767,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 .cmp2-row:last-child .cmp2-ai{border-radius:0 0 16px 16px}
 .cmp2-av{flex:0 0 auto;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#f1f0f4;color:#7d768a;font-size:11px;letter-spacing:0}
 .cmp2-head .cmp2-ai .cmp2-av{background:var(--grad);color:#fff}
-.cmp2-asset{max-width:940px;margin:22px auto 0;border-radius:var(--r-lg);background:var(--dark-grad);color:var(--on-dark);padding:26px 30px;position:relative;overflow:hidden}
+.cmp2-asset{max-width:none;margin:22px auto 0;border-radius:var(--r-lg);background:var(--dark-grad);color:var(--on-dark);padding:26px 30px;position:relative;overflow:hidden}
 .cmp2-asset::after{content:"";position:absolute;width:320px;height:320px;right:-90px;top:-150px;border-radius:50%;background:radial-gradient(circle,rgba(230,90,252,.3),transparent 65%);pointer-events:none}
 .cmp2-asset b{display:block;font-size:clamp(20px,2.4vw,26px);color:#fff;margin-bottom:8px;letter-spacing:-.01em}
 .cmp2-asset p{margin:0;font-size:15px;line-height:1.6;max-width:720px;position:relative;z-index:1}
@@ -2809,7 +2809,7 @@ body::before{height:calc(env(safe-area-inset-top,0px) + 14px)!important;-webkit-
 }
 
 /* v100 – compare section (option C): one interactive card, By hand / With AI */
-.cy-demo{position:relative;max-width:760px;margin:34px auto 0}
+.cy-demo{position:relative;max-width:none;margin:34px auto 0}
 .cy-in{position:absolute;opacity:0;pointer-events:none}
 .cy-seg{position:relative;display:grid;grid-template-columns:1fr 1fr;width:280px;margin:0 auto 18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px;box-shadow:var(--shadow-soft)}
 .cy-seg label{position:relative;z-index:1;text-align:center;padding:10px 0;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;transition:color .3s}
@@ -3577,3 +3577,5 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 
 /* v133 – checkout sheet: honour hidden rows (Pro/Max/Test have no setup fee) */
 .co-sum div[hidden]{display:none}
+
+.consent-box.cb-err{outline:1.5px solid #d0263e;outline-offset:4px;border-radius:12px}

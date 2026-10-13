@@ -426,6 +426,7 @@ function runWizard(){
       :loc+' ('+selSlot.t+' CST)';
   }
   function update(){if(selSlot)picked.textContent='📅 '+slotLabel();}
+  (function(){var c=document.getElementById('bkConsent');if(c)c.addEventListener('change',function(){var b=c.closest('.consent-box');if(b&&c.checked)b.classList.remove('cb-err');});})();
   form.addEventListener('submit',async e=>{
     e.preventDefault();err.style.display='none';
     const bizEl=document.getElementById('bkBiz'),nameEl=document.getElementById('bkName'),
@@ -446,6 +447,12 @@ function runWizard(){
     if(!phoneFmt){showErr(phoneEl,'Please enter a valid phone number.');bad=true;}
     const em=emailEl.value.trim();
     if(em&&!emailCheck(em).ok){showErr(emailEl,'That email address doesn’t look right.');bad=true;}
+    var consEl=document.getElementById('bkConsent');
+    if(!consEl.checked){
+      var cbx=consEl.closest('.consent-box');if(cbx)cbx.classList.add('cb-err');
+      err.textContent='Please tick the consent box — we need your OK to confirm the demo by call, text and email.';
+      err.style.display='block';bad=true;
+    }
     if(bad)return;
     const btn=form.querySelector('.bk-submit');btn.disabled=true;btn.textContent='Booking…';
     // Bots fill instantly; humans can't complete this form in under 3 seconds.
