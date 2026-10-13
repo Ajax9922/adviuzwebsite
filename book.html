@@ -8,8 +8,8 @@
 <link rel="canonical" href="https://adviuz.com/book">
 <meta name="robots" content="index,follow">
 
-<link rel="icon" href="/assets/favicon.svg?v=3" type="image/svg+xml"><link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png?v=3"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=3">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3">
+<link rel="icon" href="/assets/favicon.svg?v=4" type="image/svg+xml"><link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png?v=4"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=4">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -21,6 +21,8 @@
 .bp-brand{min-height:0;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
 .bp-brand img{max-height:46px;max-width:230px;width:auto;display:block;margin-bottom:10px}
 .bp-brand b{font-size:19px;letter-spacing:-.01em;margin-bottom:8px}
+.bp-kick{display:block;text-align:center;margin-bottom:8px}
+.bp-kick:empty{display:none}
 .bp-h{font-size:clamp(21px,5vw,26px);letter-spacing:-.02em;margin:0 0 8px;text-align:center}
 .bp-sub{color:var(--muted);font-size:15px;line-height:1.6;text-align:center;margin:0 0 4px}
 .bp-note{color:var(--muted);font-size:13px;text-align:center;margin-top:14px}
@@ -80,7 +82,7 @@
 </header>
 
 <main>
-<section class="section wash" style="padding-top:64px;min-height:72svh">
+<section class="section wash" id="bookSec" style="padding-top:64px;min-height:72svh">
   <div class="container">
     <div class="center" id="pageHero">
       <span class="kicker" id="pageKick">Online booking</span>
@@ -106,6 +108,7 @@
     </div>
 
     <div class="bp-card" id="persWrap">
+      <span class="kicker bp-kick" id="bpKick"></span>
 
       <!-- loading -->
       <div id="vLoad">
@@ -206,7 +209,6 @@
         <ul>
           <li><a href="/">Digital Flyers</a></li>
           <li><a href="/ai-conversion-engine.html">AI Conversion Engine</a></li>
-          <li><a href="/integrations.html">Integrations</a></li>
           <li><a href="/book">Book a Demo</a></li>
         </ul>
       </div>
@@ -236,7 +238,7 @@
   var el=function(id){return document.getElementById(id);};
   var views=['vLoad','vHome','vSlots','vDone','vCancelled','vErr'];
   function show(id){views.forEach(function(v){el(v).hidden=(v!==id);});el('persWrap').classList.toggle('bp-wide',id==='vSlots');}
-  function hero(k,h,s){el('pageKick').textContent=k;el('pageH').textContent=h;el('pageSub').textContent=s;}
+  function hero(k){el('bpKick').textContent=k||'';}
   function err(id,msg){var e=el(id);e.textContent=msg;e.style.display='block';}
   function clearErrs(){['homeErr','slotsErr'].forEach(function(i){el(i).style.display='none';});}
 
@@ -256,11 +258,11 @@
   function hardErr(code){
     show('vErr');
     if(code==='no_online_booking'){
-      hero('Online booking','Please call to book','');
+      hero('Online booking');
       el('errH').textContent='Online booking isn’t available here';
       el('errTxt').textContent='Please reply to the text or email that sent you here, or call '+((info&&info.business)||'the business')+' directly, and they’ll set your time.';
     }else{
-      hero('Online booking','This link didn’t work','');
+      hero('Online booking');
       el('errH').textContent='We couldn’t find your booking link';
       el('errTxt').innerHTML='Please open the exact booking link from your text or email — it’s personal to you. Looking for Adviuz? <a href="https://adviuz.com/#book-demo">Book a demo here</a>.';
     }
@@ -271,16 +273,19 @@
     var btns=el('homeBtns');btns.innerHTML='';
     if(info.already_booked){
       var isAdz=/adviuz/i.test(info.business||'');
-      var what=isAdz?'digital flyer demo':('appointment with '+info.business);
-      hero(info.business,isAdz?'Your demo is scheduled':'Your appointment is scheduled',(info.first?'Hi '+info.first+' — y':'Y')+'our '+what+' is scheduled for '+info.booked_label+' ('+info.tz_label+'). You can move or cancel it below.');
-      el('homeH').hidden=true;el('homeSub').hidden=true;
+      hero(info.business);
+      el('homeH').textContent=isAdz?'Your demo is scheduled':'Your appointment is scheduled';
+      el('homeSub').textContent=(info.first?'Hi '+info.first+' — y':'Y')+'our '+(isAdz?'digital flyer demo':'appointment with '+info.business)+' is scheduled for:';
+      el('homeH').hidden=false;el('homeSub').hidden=false;
       el('homeApptTxt').textContent=info.booked_label+' ('+info.tz_label+')';
       el('homeAppt').hidden=false;
       add('Reschedule','button button-grad',function(){rescheduling=true;openSlots();});
       add('Cancel appointment','button bp-ghost',cancelFlow);
     }else{
-      hero(info.business,'Book your appointment',(info.first?'Hi '+info.first+'! ':'')+'Pick a time that works for you — it takes a few seconds.');
-      el('homeH').hidden=true;el('homeSub').hidden=true;
+      hero(info.business);
+      el('homeH').textContent='Book your appointment';
+      el('homeSub').textContent=(info.first?'Hi '+info.first+'! ':'')+'Pick a time that works for you — it takes a few seconds.';
+      el('homeH').hidden=false;el('homeSub').hidden=false;
       el('homeAppt').hidden=true;
       add('See available times','button button-grad',function(){rescheduling=false;openSlots();});
     }
@@ -363,7 +368,7 @@
     if(rescheduling)body.reschedule=true;
     api(body).then(function(j){
       if(j.ok){
-        hero((j.business||info.business),j.rescheduled?'Appointment moved!':'You’re booked!','');
+        hero(j.business||info.business);
         el('doneH').textContent=j.rescheduled?'Appointment moved!':'You’re booked!';
         el('doneTxt').textContent=(info.first?info.first+', y':'Y')+'our appointment with '+(j.business||info.business)+' is set for '+j.when+' ('+(j.tz_label||info.tz_label)+').';
         show('vDone');return;
@@ -380,7 +385,7 @@
     if(!confirm('Cancel your appointment on '+info.booked_label+'?'))return;
     clearErrs();
     api({t:t,action:'cancel'}).then(function(j){
-      if(j.ok){info.already_booked=false;info.booked_label='';hero(info.business,'Booking cancelled','');show('vCancelled');return;}
+      if(j.ok){info.already_booked=false;info.booked_label='';hero(info.business);show('vCancelled');return;}
       if(j.error==='nothing_booked'){reload();return;}
       err('homeErr',apiMsg(j.error));
     }).catch(function(){err('homeErr','Couldn’t cancel. Please check your connection and try again.');});
@@ -403,6 +408,11 @@
     document.title='Book a Demo \u2014 Adviuz';
     return;
   }
+  // personal mode: compact layout — everything lives in the card
+  document.getElementById('pageHero').hidden=true;
+  el('bookSec').style.paddingTop='44px';
+  el('bookSec').style.minHeight='0';
+  el('persWrap').style.marginTop='6px';
   reload();
 })();
 </script>
