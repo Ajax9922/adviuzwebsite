@@ -131,6 +131,15 @@
   .sb-t .new,.fc-in,.ol-list li,.ol-end,.ol-pill{transition:none}
   .ol-seg button.nudge{animation:none}
 }
+/* --- closing CTA (light, centred) --- */
+.wy-end{padding-top:70px;padding-bottom:80px}
+.wy-cta{max-width:760px;margin:0 auto;text-align:center;border-radius:28px;padding:48px 28px 40px;background:radial-gradient(120% 140% at 50% 0%,#f3ecff 0%,#ffffff 60%);border:1px solid #e6dcfb;box-shadow:0 26px 60px rgba(64,0,243,.10)}
+.wy-cta h2{margin:12px 0 8px;font-size:clamp(26px,3.2vw,38px);letter-spacing:-.02em}
+.wy-cta>p{margin:0 auto;color:var(--muted,#6d6782);font-size:17px}
+.wy-cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+.wy-cta .wy-cta-faq{margin-top:18px;font-size:14px}
+.wy-cta-faq a{color:var(--accent,#5b21d6);font-weight:700;text-decoration:none}
+@media (max-width:520px){.wy-cta{padding:36px 20px 30px}.wy-cta-btns .button{width:100%;justify-content:center}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://adviuz.com/why-adviuz.html#page", "url": "https://adviuz.com/why-adviuz.html", "name": "Why Adviuz — One Ecosystem", "description": "Why businesses pick Adviuz: one managed platform that replaces a dozen tools and the staff to run them — design, distribution, CRM, AI follow-up and booking.", "inLanguage": "en", "mainEntity": {"@type": "Organization", "@id": "https://adviuz.com/#org", "name": "Adviuz", "legalName": "Instad Web Services Ltd.", "url": "https://adviuz.com/", "logo": "https://adviuz.com/assets/logo.png", "description": "Digital flyer distribution platform and one-stop marketing and sales solution: flyer design, distribution on 15+ platforms, verified 25-second flyer views, CRM, and AI follow-up by call, text and email.", "slogan": "From designing your flyer to helping you close the deal.", "foundingDate": "2014", "founder": {"@type": "Person", "@id": "https://adviuz.com/about.html#founder", "name": "Ajay Sheria", "jobTitle": "Founder", "worksFor": {"@id": "https://adviuz.com/#org"}}, "knowsAbout": ["Digital flyer distribution", "Digital flyers", "Lead management CRM", "AI sales follow-up", "Marketing and sales automation"], "areaServed": ["CA", "US", "Worldwide"], "address": {"@type": "PostalAddress", "streetAddress": "Scotiabank Building, 111 2nd Ave S, Unit 400", "addressLocality": "Saskatoon", "addressRegion": "SK", "addressCountry": "CA"}, "telephone": "+1-647-250-1152", "email": "support@adviuz.com", "sameAs": ["https://www.facebook.com/adviuz", "https://x.com/adviuz", "https://www.instagram.com/adviuz_in/", "https://www.youtube.com/playlist?list=PLkqeu4o8E-C5BopNMoS0ZogFiTpYu6jlG", "https://in.linkedin.com/company/adviuz"]}}</script>
 </head>
@@ -235,13 +244,17 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section wy-end">
   <div class="container">
-    <div class="cta-panel center">
+    <div class="wy-cta">
+      <span class="kicker">Free 30-minute demo</span>
       <h2>See it working on your business</h2>
-      <p class="lead" style="max-width:560px;margin:10px auto 22px">A free 30-minute demo on a video call or phone. No obligation.</p>
-      <a class="button button-grad" href="/book">Book a free demo</a>
-      <p class="engine-caption" style="margin-top:14px">Or see <a href="/pricing.html" style="color:var(--accent);font-weight:700">plans and pricing</a> · <a href="/faq.html" style="color:var(--accent);font-weight:700">FAQ</a></p>
+      <p>On a video call or phone. No obligation.</p>
+      <div class="wy-cta-btns">
+        <a class="button button-grad" href="/book">Book a free demo</a>
+        <a class="button button-outline" href="/pricing.html">See plans and pricing</a>
+      </div>
+      <p class="wy-cta-faq">Questions first? Read the <a href="/faq.html">FAQ</a> or call <a href="tel:+16472501152">+1 647 250 1152</a>.</p>
     </div>
   </div>
 </section>
