@@ -58,7 +58,7 @@
 .sb.done .sb-t{cursor:default}
 .sb.done .sb-t[aria-pressed="true"] .new{opacity:1;transform:none}
 .sb.done .sb-t[aria-pressed="false"]{opacity:.35}
-.sb-act{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.sb-act{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:22px;text-align:center}
 .sb-hint{color:var(--muted,#6d6782);font-size:14px;margin:0}
 .sb-hint button{background:none;border:0;padding:0;font:inherit;color:var(--accent,#5b21d6);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .sb-go[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
@@ -183,8 +183,8 @@
       </div>
       <div class="sb-grid" id="sbGrid" role="group" aria-label="Tools your business uses today"></div>
       <div class="sb-act">
-        <p class="sb-hint"><span id="sbHint">Tap the tools you use — or <button type="button" id="sbAll">select the usual 12</button>.</span><span id="sbHintDone" hidden>Each tile now shows what replaces it.</span></p>
-        <button type="button" class="button button-grad sb-go" id="sbGo" disabled>Replace with Adviuz →</button>
+<button type="button" class="button button-grad sb-go" id="sbGo" disabled>Replace with Adviuz →</button>
+                <p class="sb-hint"><span id="sbHint">Tap the tools you use — or <button type="button" id="sbAll">select the usual 12</button>.</span><span id="sbHintDone" hidden>Each tile now shows what replaces it.</span></p>
       </div>
       <div class="sb-out" id="sbOut">
         <div>
