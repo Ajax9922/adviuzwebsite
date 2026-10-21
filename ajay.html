@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ajay Sheria — Founder, Adviuz</title>
-<meta name="description" content="Ajay Sheria, Founder of Adviuz. Save my contact, book a free demo, or leave your details.">
+<meta name="description" content="Ajay Sheria, Founder of Adviuz. Save my contact or book a free demo.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#160f2b">
 <link rel="icon" href="/assets/favicon.svg?v=4" type="image/svg+xml"><link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png?v=4">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=4">
 <meta property="og:title" content="Ajay Sheria — Founder, Adviuz">
-<meta property="og:description" content="Save my contact, book a free demo, or leave your details.">
+<meta property="og:description" content="Save my contact or book a free demo.">
 <meta property="og:image" content="https://adviuz.com/assets/ajay-card.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,12 @@
 <style>
 body{background:#f6f3fc}
 .vc{max-width:480px;margin:0 auto;min-height:100svh;background:#fff;box-shadow:0 0 60px rgba(35,8,53,.08)}
-.vc-top{position:relative;background:radial-gradient(120% 90% at 80% 0%,#5b21d6 0%,rgba(91,33,214,0) 60%),linear-gradient(160deg,#160f2b 0%,#2a1250 100%);color:#fff;padding:26px 24px 76px;text-align:center;overflow:hidden}
+.vc-top{position:relative;background:radial-gradient(120% 90% at 80% 0%,#5b21d6 0%,rgba(91,33,214,0) 60%),linear-gradient(160deg,#160f2b 0%,#2a1250 100%);color:#fff;padding:22px 22px 92px;text-align:center;overflow:hidden}
 .vc-top::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(214,77,245,.45),rgba(214,77,245,0) 70%)}
-.vc-logo{height:24px;width:auto;display:block;margin:0 auto;position:relative;z-index:1}
-.vc-photo{width:132px;height:132px;border-radius:50%;object-fit:cover;display:block;margin:-66px auto 0;border:5px solid #fff;box-shadow:0 16px 36px rgba(35,8,53,.25);position:relative;z-index:2;background:#ddd}
+.vc-bar{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
+.vc-logo{height:22px;width:auto;display:block}
+.vc-est{font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 11px}
+.vc-photo{width:132px;height:132px;border-radius:50%;object-fit:cover;display:block;margin:-66px auto 0;filter:grayscale(1);border:5px solid #fff;box-shadow:0 16px 36px rgba(35,8,53,.25);position:relative;z-index:2;background:#ddd}
 .vc-id{text-align:center;padding:14px 24px 0}
 .vc-id h1{font-size:28px;letter-spacing:-.02em;margin:0;line-height:1.15}
 .vc-id .role{margin:6px 0 0;color:var(--accent,#5b21d6);font-weight:700;font-size:15px}
@@ -51,6 +53,14 @@ body{background:#f6f3fc}
 .vc-form .field-row{display:block}
 .vc-form textarea{min-height:76px}
 .vc-form .bk-submit{width:100%;justify-content:center}
+.vc-ben{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vc-ben li{padding:16px 14px;border-radius:18px;background:#faf8fe;border:1px solid #efe9fa}
+.vc-ben .ic{width:38px;height:38px;border-radius:12px;background:var(--grad,linear-gradient(90deg,#4f0cf0,#d64df5));color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.vc-ben .ic svg{width:20px;height:20px}
+.vc-ben b{display:block;font-size:15px;line-height:1.3}
+.vc-ben span:not(.ic){display:block;font-size:13px;color:var(--muted,#6d6782);margin-top:4px;line-height:1.45}
+.vc-book{display:flex;justify-content:center;width:100%;margin-top:18px;padding:16px;font-size:17px}
+.vc-sec .vc-book-note{text-align:center;margin:10px 0 0;font-size:13px;color:var(--muted,#6d6782)}
 .vc-foot{text-align:center;padding:30px 24px 40px;color:var(--muted,#6d6782);font-size:13px}
 .vc-foot a{color:var(--accent,#5b21d6);font-weight:700;text-decoration:none}
 .vc-soc{display:flex;justify-content:center;gap:10px;margin-bottom:14px}
@@ -63,13 +73,13 @@ body{background:#f6f3fc}
 <body>
 <main class="vc">
   <header class="vc-top">
-    <img class="vc-logo" src="assets/logo-white.png" alt="Adviuz" width="118" height="25">
+    <div class="vc-bar"><img class="vc-logo" src="assets/logo-white.png" alt="Adviuz" width="118" height="25"><span class="vc-est">Est. 2014</span></div>
   </header>
   <img class="vc-photo" src="assets/ajay-card.webp" alt="Ajay Sheria" width="480" height="480">
   <div class="vc-id">
     <h1>Ajay Sheria</h1>
     <p class="role">Founder, Adviuz</p>
-    <p class="tag">From designing your flyers to helping you close the deals — new enquiries, followed up by call, text and email, booked into your calendar.</p>
+    <p class="tag">From flyer design to distribution, and from lead generation to closing deals — everything in one place.</p>
   </div>
 
   <a class="button button-grad vc-save" href="assets/ajay-sheria.vcf" download="Ajay-Sheria-Adviuz.vcf" id="vcSave">
@@ -84,45 +94,17 @@ body{background:#f6f3fc}
     <a class="vc-act" href="mailto:ajay.s@adviuz.com?subject=Great%20to%20meet%20you"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>Email</a>
   </nav>
 
-  <a class="vc-demo" href="/book">
-    <div><b>Book a free 30-minute demo</b><span>Video call or phone — pick a time that suits you</span></div><i aria-hidden="true">→</i>
-  </a>
-
   <section class="vc-sec">
-    <h2>What Adviuz does</h2>
-    <p>One managed system, from first enquiry to booked appointment.</p>
-    <ul class="vc-what">
-      <li><span class="n">1</span><div><b>Digital flyers that bring new enquiries</b><span>Your offer shown to people nearby. You pay only for flyers viewed for at least 25 seconds.</span></div></li>
-      <li><span class="n">2</span><div><b>Every lead followed up</b><span>An instant text and an AI call within 60 seconds, then follow-up by call, text and email.</span></div></li>
-      <li><span class="n">3</span><div><b>Booked, reminded, rebooked</b><span>Appointments go into your calendar with reminders and a plan to rebook missed visits.</span></div></li>
+    <h2>Digital Flyer benefits</h2>
+    <p>Your offer, shown to the right local audience — without the paper.</p>
+    <ul class="vc-ben">
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/><path d="M3 3l18 18"/></svg></span><b>No printing</b><span>No print runs or mailbox drops — your flyer goes digital.</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span><b>Distribution guarantee</b><span>Every viewed flyer you buy is delivered — or we keep delivering.</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Detailed reports</b><span>Live views, people reached and leads, all in your dashboard.</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/></svg></span><b>Pay only for viewed flyers</b><span>Charged only when someone views your flyer for 25+ seconds.</span></li>
     </ul>
-  </section>
-
-  <section class="vc-sec">
-    <h2>Leave your details</h2>
-    <p>I’ll get back to you after the event.</p>
-    <div class="vc-form">
-      <form id="ctForm" novalidate>
-        <div class="field"><label for="ctName">Your name</label><input id="ctName" name="name" type="text" autocomplete="name" required></div>
-        <div class="field"><label for="ctBiz">Practice or business name</label><input id="ctBiz" name="business" type="text" autocomplete="organization"></div>
-        <div class="field"><label for="ctPhone">Phone</label><div class="phone-wrap"><select id="ctCC" autocomplete="tel-country-code" aria-label="Country code"></select><input id="ctPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required></div></div>
-        <div class="field"><label for="ctEmail">Email</label><input id="ctEmail" name="email" type="email" autocomplete="email"></div>
-        <div class="field"><label for="ctMsg">Anything you’d like to talk about? (optional)</label><textarea id="ctMsg" name="message" rows="3" placeholder="e.g. more new patients, missed calls, no-shows"></textarea></div>
-        <div class="hp" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <div class="consent-box">
-          <label class="consent"><input type="checkbox" id="ctConsent">
-            <span>I agree to receive calls — including automated and AI voice calls — texts and emails from Adviuz about my request and its services, in Canada or the United States. Consent is not a condition of purchase. Message &amp; data rates may apply; message frequency varies. Reply STOP to opt out, HELP for help.</span></label>
-          <p class="consent-fine">Adviuz (Instad Web Services Ltd.) · Scotiabank Building, 111 2nd Ave S Unit 400, Saskatoon SK · <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> · <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>. You can withdraw consent at any time.</p>
-        </div>
-        <button class="button button-grad bk-submit" type="submit">Send my details</button>
-        <p class="bk-error" id="ctError"></p>
-      </form>
-      <div class="bk-confirm" id="ctConfirm">
-        <div class="big">✓</div>
-        <h3>Thanks — got it!</h3>
-        <p style="color:var(--muted);font-size:15px">Great to meet you. I’ll be in touch soon.</p>
-      </div>
-    </div>
+    <a class="button button-grad vc-book" href="/book">Book a free demo</a>
+    <p class="vc-book-note">30 minutes · video call or phone · no obligation</p>
   </section>
 
   <footer class="vc-foot">
@@ -138,7 +120,6 @@ body{background:#f6f3fc}
 <script>
 document.getElementById('vcSave').addEventListener('click',function(){var t=document.getElementById('vcToast');t.classList.add('on');setTimeout(function(){t.classList.remove('on');},2600);});
 </script>
-<script src="js/booking.js?v=20261021a" defer></script>
 <script src="/js/tracking.js?v=20261005" defer></script>
 </body>
 </html>
