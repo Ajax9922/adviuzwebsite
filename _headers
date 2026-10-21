@@ -3,7 +3,8 @@
   Referrer-Policy: no-referrer
 
 /assets/*.vcf
-  Content-Type: text/vcard; charset=utf-8
+  Content-Type: text/x-vcard; charset=utf-8
+  Content-Disposition: inline; filename="Ajay-Sheria.vcf"
 
 /ajay
   X-Robots-Tag: noindex, nofollow
