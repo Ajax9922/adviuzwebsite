@@ -1,3 +1,9 @@
 /showcase/*
   X-Robots-Tag: noindex, nofollow, noarchive
   Referrer-Policy: no-referrer
+
+/assets/*.vcf
+  Content-Type: text/vcard; charset=utf-8
+
+/ajay
+  X-Robots-Tag: noindex, nofollow

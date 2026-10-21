@@ -83,6 +83,14 @@ function clearErr(el){
   var e=f.querySelector('.f-err');if(e)e.remove();
 }
 var FAKE_TOKENS=['test','testing','tester','tests','fake','asdf','asd','sdf','qwe','qwer','qwerty','zxc','zxcv','abc','abcd','abcde','xyz','aaa','bbb','na','n/a','none','nil','xxx','demo','sample','asdasd','dsa','lol','hi','hello','hey','me','you'];
+function isKeyRun(w){
+  var rows=['qwertyuiop','asdfghjkl','zxcvbnm'];
+  for(var r=0;r<rows.length;r++){
+    var row=rows[r],rev=row.split('').reverse().join('');
+    for(var i=0;i+4<=row.length;i++){if(w.indexOf(row.substr(i,4))>=0||w.indexOf(rev.substr(i,4))>=0)return true;}
+  }
+  return false;
+}
 function looksFake(s){
   var t=String(s||'').trim().toLowerCase();
   if(t.replace(/[^a-z]/g,'').length<2)return true;
@@ -91,7 +99,7 @@ function looksFake(s){
   for(var i=0;i<words.length;i++){
     var w=words[i];
     if(FAKE_TOKENS.indexOf(w)>=0)return true;
-    if(w.length>=4&&(/^[asdfghjkl]+$/.test(w)||/^[qwertyuiop]+$/.test(w)||/^[zxcvbnm]+$/.test(w)))return true; // keyboard mash
+    if(isKeyRun(w))return true; // keyboard runs like asdf, qwer, zxcv (real names like Shah or Sasha pass)
     if(w.length>=7&&!/[aeiouy]/.test(w))return true; // long vowelless mash
   }
   return false;
