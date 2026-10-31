@@ -3657,3 +3657,16 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .rp-fab{position:absolute;right:14px;bottom:62px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#6a1ef0,#c04df5);display:grid;place-items:center;box-shadow:0 8px 20px rgba(106,30,240,.45),0 0 0 6px rgba(192,77,245,.15);pointer-events:none}
 /* AI Conversion Engine: on phones the hero animation sits above "It listens, like a person would" */
 @media (max-width:720px){.ce-hv-slot.ce-hv-slot2{margin:34px 0 30px!important;display:flex;justify-content:center}}
+/* "What a new lead experiences" timeline: more breathing room on phones */
+@media (max-width:720px){
+  .ce-scn-tabs{gap:8px 8px;margin-bottom:22px}
+  .ce-scn .fl{padding:26px 20px 12px;margin-top:4px}
+  .ce-scn .fl li{column-gap:18px;padding-bottom:30px}
+  .ce-scn .fl li:last-child{padding-bottom:16px}
+  .ce-scn .fl-node{width:42px;height:42px}
+  .ce-scn .fl-node svg{width:17px;height:17px}
+  .ce-scn .fl-when{font-size:12px;letter-spacing:.02em;margin-bottom:3px}
+  .ce-scn .fl b{font-size:16px;line-height:1.3;margin-top:0}
+  .ce-scn .fl-d{font-size:13.5px;line-height:1.5;margin-top:4px}
+  .ce-scn .fl::before{left:41px;top:34px;bottom:50px}
+}
