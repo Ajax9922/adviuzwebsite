@@ -525,7 +525,7 @@ p{margin:0 0 18px}
 .plat-note{margin-top:24px;text-align:center;font-size:14px;color:var(--faint);font-style:italic}
 @media (max-width:900px){.plats{grid-template-columns:1fr}}
 @media (max-width:720px){
-  .hero-vid-slot{display:block;margin:4px 0 20px}
+  .hero-vid-slot{display:block;margin:20px 0 6px}
   .hero-vid-slot .video-stage{margin:0;border-radius:18px}
   .hero .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .hero .hero-actions .button{width:100%;justify-content:center;text-align:center;padding:14px 8px;font-size:15px}
