@@ -3720,3 +3720,4 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 /* Partners page: commission cards (3 → 1 column on phones) */
 .features.pt-com{margin-top:34px;grid-template-columns:repeat(3,1fr)}
 @media (max-width:820px){.features.pt-com{grid-template-columns:1fr;max-width:520px}}
+.pt-terms{margin-top:14px}.pt-terms a{color:var(--accent);font-weight:700}

@@ -570,6 +570,11 @@ function bindContact(){
     if(!phoneFmt){showErr(phoneEl,'Please enter a valid phone number.');bad=true;}
     var em=emailEl.value.trim();
     if(em&&!emailCheck(em).ok){showErr(emailEl,'That email address doesn’t look right.');bad=true;}
+    var isPartner=form.getAttribute('data-kind')==='partner_application';
+    if(isPartner&&!em){showErr(emailEl,'Please enter your email — your partner login is sent there.');bad=true;}
+    var termsEl=document.getElementById('ctTerms'),ctErrEl=document.getElementById('ctError');
+    if(!bad&&termsEl&&!termsEl.checked){if(ctErrEl){ctErrEl.textContent='Please agree to the Partner Programme Terms to apply.';ctErrEl.style.display='block';}bad=true;}
+    else if(ctErrEl&&termsEl){ctErrEl.style.display='none';}
     if(bad)return;
     var btn=form.querySelector('.bk-submit');btn.disabled=true;btn.textContent='Sending…';
     if(t0&&Date.now()-t0<3000){form.style.display='none';confirmEl.style.display='block';return;}
@@ -586,6 +591,8 @@ function bindContact(){
           consent:document.getElementById('ctConsent').checked,
           website:form.querySelector('[name=website]').value,
           kind:(form.getAttribute('data-kind')||''),
+          terms_accepted:(termsEl?termsEl.checked:undefined),
+          terms_version:(termsEl?'partner-terms-2026-10-31':undefined),
           ref:(window.advRef?window.advRef():''),
           page:location.pathname
         })
