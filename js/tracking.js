@@ -71,6 +71,14 @@
     }
   }, { passive: true });
 
+  // ---- Lead: a real demo booking or contact message was accepted by the server ----
+  document.addEventListener('adviuz:lead', function (e) {
+    var t = (e.detail && e.detail.type) || 'demo';
+    mEvent('Lead', { content_name: t === 'demo' ? 'Demo booking' : 'Contact form' });
+    if (t === 'demo') mEvent('Schedule');
+    aEvent('generate_lead', { form: t });
+  });
+
   // ---- Purchase: fires once on the welcome page after Stripe ----
   if (/\/welcome(\.html)?$/.test(location.pathname)) {
     var plan = new URLSearchParams(location.search).get('plan') || '';

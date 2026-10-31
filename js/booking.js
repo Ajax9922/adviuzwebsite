@@ -490,6 +490,7 @@ function runWizard(){
       });
       const out=await res.json().catch(()=>({}));
       if(!res.ok||!out.success)throw new Error(out.error||'Request failed');
+      try{document.dispatchEvent(new CustomEvent('adviuz:lead',{detail:{type:'demo'}}));}catch(x){}
       document.getElementById('bkConfirmText').textContent='Your demo is requested for '+slotLabel()+'. We’ll confirm by text and email shortly.';
       form.style.display='none';document.getElementById('bkStep1').style.display='none';
       confirmEl.style.display='block';
@@ -588,6 +589,7 @@ function bindContact(){
       });
       var out=await res.json().catch(function(){return {};});
       if(!res.ok||!out.success)throw new Error(out.error||'Request failed');
+      try{document.dispatchEvent(new CustomEvent('adviuz:lead',{detail:{type:'contact'}}));}catch(x){}
       form.style.display='none';confirmEl.style.display='block';
     }catch(ex){
       err.textContent='Something went wrong sending your message. Please try again, or call us at +1 647 250 1152.';
