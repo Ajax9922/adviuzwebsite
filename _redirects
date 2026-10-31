@@ -1,4 +1,5 @@
 # Partner links: adviuz.com/p/CODE opens the site credited to that partner
 /p/:code      /?ref=:code   302
+/r/:code      /?ref=:code   302
 /get-quote    /book         302
 /quote        /book         302
