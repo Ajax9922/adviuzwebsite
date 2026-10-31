@@ -4,7 +4,7 @@
   var box = document.getElementById('rpScroll');
   if (!box) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var SPEED = 38;            // px per second
+  var SPEED = 58;            // px per second
   var dir = 1, pauseUntil = 0, userUntil = 0, visible = false, last = 0, raf = 0, pos = 0;
   function frame(t) {
     raf = 0;
