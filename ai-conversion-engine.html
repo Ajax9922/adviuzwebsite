@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261012d">
-<link rel="stylesheet" href="css/main.css?v=20261030e">
+<link rel="stylesheet" href="css/main.css?v=20261030f">
 
 <link rel="canonical" href="https://adviuz.com/ai-conversion-engine.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -294,7 +294,16 @@
       </ul>
     </div>
     <figure class="ce-rep-fig">
-      <img src="assets/ai-reports.webp" alt="The Reports screen in the Adviuz hub: tasks handled by the AI, leads handled, appointments booked, deals closed, tasks per day and a live activity log" width="1040" height="2213" loading="lazy">
+      <div class="rp-phone">
+        <div class="rp-screen">
+          <div class="rp-status" aria-hidden="true"><span>9:41</span><i class="rp-notch"></i><span class="rp-sig"><b></b><b></b><b></b><b></b></span></div>
+          <img class="rp-top" src="assets/ai-reports-top.webp" alt="" width="800" height="156" aria-hidden="true">
+          <div class="rp-scroll" id="rpScroll" tabindex="0" aria-label="Example Reports screen in the Adviuz hub — scroll to see it all">
+            <img src="assets/ai-reports-body.webp" alt="The Reports screen in the Adviuz hub: 1,284 tasks handled by the AI, 112 of 115 leads handled, 31 appointments booked and 14 deals closed; tasks per day for 14 days; a lead-to-deal funnel; calls, texts, emails and call summaries; and a live activity log" width="800" height="2766" loading="lazy">
+          </div>
+          <img class="rp-nav" src="assets/ai-reports-nav.webp" alt="" width="800" height="116" aria-hidden="true">
+        </div>
+      </div>
       <figcaption>Example dashboard with illustrative numbers. Results vary by business.</figcaption>
     </figure>
   </div>
@@ -420,5 +429,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 <script src="js/ce-compare.js?v=20261005" defer></script>
 <script src="js/booking.js?v=20261030a" defer></script>
 <script src="/js/fab.js?v=20261030a" defer></script>
+<script src="/js/ce-report.js?v=20261030a" defer></script>
 </body>
 </html>

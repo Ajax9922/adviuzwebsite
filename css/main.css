@@ -3640,6 +3640,17 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .ce-rep-list li::after{content:"";position:absolute;left:6px;top:9px;width:5px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .ce-rep-list b{color:var(--ink)}
 .ce-rep-fig{margin:0;display:flex;flex-direction:column;align-items:center}
-.ce-rep-fig img{width:100%;max-width:360px;height:auto;border-radius:30px;box-shadow:var(--shadow)}
+.ce-rep-fig>img{width:100%;max-width:360px;height:auto;border-radius:30px;box-shadow:var(--shadow)}
 .ce-rep-fig figcaption{margin-top:12px;font-size:12.5px;color:var(--muted);text-align:center}
-@media (max-width:900px){.ce-rep{grid-template-columns:1fr;gap:30px}.ce-rep-fig img{max-width:320px}}
+@media (max-width:900px){.ce-rep{grid-template-columns:1fr;gap:30px}}
+/* Reports phone: auto-scrolling screen */
+.rp-phone{width:310px;max-width:86vw;padding:11px;border-radius:46px;background:#121018;box-shadow:0 30px 60px -20px rgba(35,8,53,.45),inset 0 0 0 2px #2c2838}
+.rp-screen{position:relative;border-radius:36px;overflow:hidden;background:#f1f0f5;display:flex;flex-direction:column;height:600px;max-height:calc(86vw * 1.95)}
+.rp-status{height:30px;background:#17112b;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font:600 12px var(--font-body);flex:0 0 auto}
+.rp-notch{width:84px;height:22px;border-radius:12px;background:#000;margin-top:4px}
+.rp-sig{display:flex;align-items:flex-end;gap:2px}.rp-sig b{width:3px;background:#fff;border-radius:1px}.rp-sig b:nth-child(1){height:4px}.rp-sig b:nth-child(2){height:6px}.rp-sig b:nth-child(3){height:8px}.rp-sig b:nth-child(4){height:10px}
+.rp-top,.rp-nav{display:block;width:100%;height:auto;flex:0 0 auto}
+.rp-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rp-scroll::-webkit-scrollbar{display:none}
+.rp-scroll img{display:block;width:100%;height:auto}
+.rp-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
