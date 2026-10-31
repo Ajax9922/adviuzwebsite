@@ -3811,3 +3811,23 @@ html.mdr-lock,html.mdr-lock body{overflow:hidden}
 .plv-foot .plv-tag{flex:1;padding:0}
 .plv-foot .plv-nav{position:static;margin:0;width:40px;height:40px;border:1px solid var(--line);box-shadow:none;background:#fff}
 .plv-img{display:block}.plv-img img{margin:0 auto}
+/* "What your customer sees": real Adviuz ad */
+.aj-mini .cr-img{display:block;width:100%;height:auto;border-radius:10px;margin:8px 0}
+.aj-yt{padding:0;overflow:hidden}
+.aj-yt .yt-play{position:relative;background:#000}
+.aj-yt .yt-play .cr-img{margin:0;border-radius:0}
+.yt-adt{position:absolute;left:6px;bottom:6px;background:#f9c513;color:#000;font-size:7.5px;font-weight:800;padding:2px 5px;border-radius:3px}
+.yt-skip{position:absolute;right:0;bottom:6px;background:rgba(0,0,0,.75);color:#fff;font-size:8px;padding:3px 7px;border:1px solid #666}
+.yt-row{display:flex;align-items:center;gap:7px;padding:8px 10px}
+.yt-row .av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#6a1ef0,#c04df5);flex:0 0 auto}
+.yt-row div{flex:1;min-width:0;display:flex;flex-direction:column}
+.yt-row b{font-size:9.5px;line-height:1.2;color:var(--ink)}.yt-row span{font-size:8px;color:var(--muted)}
+.yt-row em{font-style:normal;font-size:8.5px;font-weight:700;background:#065fd4;color:#fff;border-radius:999px;padding:4px 8px}
+.aj-yt .aj-tap{left:auto;right:12px;top:auto;bottom:6px;margin-left:0}
+.fl-img.fl-real{height:auto;padding:0;overflow:hidden;background:#f3eefd}
+.fl-img.fl-real img{display:block;width:100%;height:auto}
+.aj-flyer .fl-logo i{background:linear-gradient(135deg,#4f10f0,#d65bf2)}
+.aj-flyer .fl-head em{background:linear-gradient(90deg,#4f10f0,#d65bf2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.aj-flyer .fl-btn{background:linear-gradient(90deg,#4f10f0,#d65bf2)}
+.aj-flyer .fl-tel{color:#5b14e0}
+.aj-flyer .fl-tag{background:linear-gradient(135deg,#4f10f0,#d65bf2)}
