@@ -3622,3 +3622,8 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 /* Times Group crest is detailed: show it a little larger */
 .trust-track img.tall.tg{height:clamp(42px,4.2vw,56px)}
 @media (max-width:720px){.trust-track img.tall.tg{height:36px}}
+
+/* Logo with a caption underneath (RE/MAX – V21 Realty) */
+.trust-track .tl-cap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:0 0 auto}
+.trust-track .tl-cap small{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6b6b78;white-space:nowrap;line-height:1}
+@media (max-width:720px){.trust-track .tl-cap small{font-size:10px}}
