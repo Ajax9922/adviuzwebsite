@@ -3631,3 +3631,15 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 /* Advanced Hair Studio logo includes the city line: show it larger so it stays readable */
 .trust-track img.tall.ahs{height:clamp(50px,4.8vw,64px)}
 @media (max-width:720px){.trust-track img.tall.ahs{height:42px}}
+
+/* AI Conversion Engine – Reports section */
+.ce-rep{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.ce-rep-list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px}
+.ce-rep-list li{position:relative;padding-left:30px;color:var(--ink-soft);line-height:1.55}
+.ce-rep-list li::before{content:"";position:absolute;left:0;top:5px;width:18px;height:18px;border-radius:50%;background:var(--grad)}
+.ce-rep-list li::after{content:"";position:absolute;left:6px;top:9px;width:5px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.ce-rep-list b{color:var(--ink)}
+.ce-rep-fig{margin:0;display:flex;flex-direction:column;align-items:center}
+.ce-rep-fig img{width:100%;max-width:360px;height:auto;border-radius:30px;box-shadow:var(--shadow)}
+.ce-rep-fig figcaption{margin-top:12px;font-size:12.5px;color:var(--muted);text-align:center}
+@media (max-width:900px){.ce-rep{grid-template-columns:1fr;gap:30px}.ce-rep-fig img{max-width:320px}}
