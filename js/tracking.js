@@ -1,12 +1,14 @@
-/* Adviuz – ad tracking (Google Ads + Meta Pixel).
+/* Adviuz – visitor + ad tracking (Google Analytics 4 + Google Ads + Meta Pixel).
    HOW TO USE: paste your IDs between the quotes below and upload this file again.
    Nothing loads until an ID is filled in. These IDs are public, not secrets.
+     GA4_ID             – from Google Analytics > Admin > Data streams > Web, looks like 'G-ABC123XYZ9'
      GOOGLE_ADS_ID      – from Google Ads > Goals > Conversions > tag setup, looks like 'AW-123456789'
      GOOGLE_PURCHASE    – the "Purchase" conversion label, looks like 'AbCdEfGhIjK'
      GOOGLE_CALL        – the "Call our AI" click conversion label
      META_PIXEL_ID      – from Meta Events Manager, a number like '1234567890123456'          */
 (function () {
   var CFG = {
+    GA4_ID:          '',
     GOOGLE_ADS_ID:   '',
     GOOGLE_PURCHASE: '',
     GOOGLE_CALL:     '',
@@ -23,14 +25,18 @@
     document.head.appendChild(s);
   }
 
-  // ---- Google Ads ----
-  if (CFG.GOOGLE_ADS_ID) {
-    addScript('https://www.googletagmanager.com/gtag/js?id=' + CFG.GOOGLE_ADS_ID);
+  // ---- Google Analytics 4 + Google Ads (one shared Google tag) ----
+  var GID = CFG.GA4_ID || CFG.GOOGLE_ADS_ID;
+  if (GID) {
+    addScript('https://www.googletagmanager.com/gtag/js?id=' + GID);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     gtag('js', new Date());
-    gtag('config', CFG.GOOGLE_ADS_ID);
+    if (CFG.GA4_ID) gtag('config', CFG.GA4_ID);
+    if (CFG.GOOGLE_ADS_ID) gtag('config', CFG.GOOGLE_ADS_ID);
   }
+  // GA4 named events (show up in Analytics > Reports > Engagement > Events)
+  function aEvent(name, data) { if (window.gtag && CFG.GA4_ID) gtag('event', name, data || {}); }
 
   // ---- Meta Pixel ----
   if (CFG.META_PIXEL_ID) {
@@ -57,10 +63,11 @@
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (href.indexOf('tel:') === 0) { gEvent(CFG.GOOGLE_CALL, {}); mEvent('Contact'); }
+    if (href.indexOf('tel:') === 0) { gEvent(CFG.GOOGLE_CALL, {}); mEvent('Contact'); aEvent('click_call'); }
     else if (a.classList.contains('ce-buy')) {
       var plan = a.getAttribute('data-plan');
       mEvent('InitiateCheckout', { content_name: plan, value: VALUE[plan] || 0, currency: 'CAD' });
+      aEvent('begin_checkout', { value: VALUE[plan] || 0, currency: 'CAD', items: [{ item_id: plan }] });
     }
   }, { passive: true });
 
@@ -74,6 +81,7 @@
       var v = VALUE[plan];
       gEvent(CFG.GOOGLE_PURCHASE, { value: v, currency: 'CAD' });
       mEvent('Purchase', { value: v, currency: 'CAD', content_name: plan });
+      aEvent('purchase', { value: v, currency: 'CAD', transaction_id: plan + '-' + Date.now(), items: [{ item_id: plan }] });
       if (/-m$/.test(plan)) mEvent('Subscribe', { value: v, currency: 'CAD', predicted_ltv: v * 12 });
     }
   }
