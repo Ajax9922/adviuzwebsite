@@ -3627,3 +3627,7 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .trust-track .tl-cap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:0 0 auto}
 .trust-track .tl-cap small{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6b6b78;white-space:nowrap;line-height:1}
 @media (max-width:720px){.trust-track .tl-cap small{font-size:10px}}
+
+/* Advanced Hair Studio logo includes the city line: show it larger so it stays readable */
+.trust-track img.tall.ahs{height:clamp(50px,4.8vw,64px)}
+@media (max-width:720px){.trust-track img.tall.ahs{height:42px}}
