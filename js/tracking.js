@@ -8,7 +8,7 @@
      META_PIXEL_ID      – from Meta Events Manager, a number like '1234567890123456'          */
 (function () {
   var CFG = {
-    GA4_ID:          '',
+    GA4_ID:          'G-0C85CFCNN8',
     GOOGLE_ADS_ID:   '',
     GOOGLE_PURCHASE: '',
     GOOGLE_CALL:     '',
