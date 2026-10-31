@@ -80,7 +80,7 @@
     try { localStorage.setItem('adv_prov', prov); } catch (e) {}
     var b = el('coGo'); b.disabled = true; b.textContent = 'Opening secure payment…';
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan, province: prov, back: back }) })
+      body: JSON.stringify({ plan: plan, province: prov, back: back, ref: (window.advRef ? window.advRef() : '') }) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
         if (x.ok && x.j && x.j.url) { location.href = x.j.url; }

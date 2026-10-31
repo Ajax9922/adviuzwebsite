@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get a Quote — Adviuz</title>
+<meta name="description" content="Get an instant estimate for a digital flyer campaign: choose your audience, area and budget, see estimated viewed flyers and leads, and get your quote.">
+<link rel="icon" href="/assets/favicon.svg?v=5" type="image/svg+xml"><link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png?v=5"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=5">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css?v=20261012d">
+<link rel="stylesheet" href="css/main.css?v=20261031d">
+<link rel="canonical" href="https://adviuz.com/get-quote">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:site_name" content="Adviuz">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get a Quote — Adviuz">
+<meta property="og:description" content="Get an instant estimate for a digital flyer campaign: choose your audience, area and budget, see estimated viewed flyers and leads, and get your quote.">
+<meta property="og:url" content="https://adviuz.com/get-quote">
+<meta property="og:image" content="https://adviuz.com/assets/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="/">Digital Flyers</a>
+      <a href="/ai-conversion-engine.html">AI Conversion Engine</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://hub.adviuz.ca" class="only-m">Log in</a>
+    </nav>
+    <div class="nav-actions">
+      <span class="nav-phone" role="button" tabindex="0" title="Click to copy" onclick="(function(b){var t='+1 647 250 1152';function ok(){b.classList.add('ok');setTimeout(function(){b.classList.remove('ok')},1500)}if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,ok)}else{ok()}})(this)" onkeydown="if(event.key==='Enter'){this.click()}"><svg class="np-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><span class="np-num">+1 647 250 1152</span><i class="np-done">Copied ✓</i></span>
+      <a class="button button-grad" href="/book">Book a demo</a>
+      <a class="button button-outline nav-login" href="https://hub.adviuz.ca">Log in</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="section wash gq-sec">
+  <div class="container">
+    <div class="center gq-head">
+      <span class="kicker">Digital Flyers</span>
+      <h1>Get your campaign quote</h1>
+      <p class="lead">Answer a few quick questions and see your estimate instantly. You're charged only for flyers people view for at least 25 seconds.</p>
+      <p class="gq-ref" id="gqRef" hidden>Referred by an Adviuz partner <b id="gqRefCode"></b></p>
+    </div>
+
+    <div class="gq-grid">
+      <form class="gq-card" id="gqForm" novalidate>
+        <div class="gq-step">
+          <p class="gq-q"><span>1</span>Who are your customers?</p>
+          <div class="gq-opts" role="radiogroup" aria-label="Who are your customers?">
+            <label class="gq-opt"><input type="radio" name="btype" value="b2c" checked><b>Consumers</b><small>People and families (B2C)</small></label>
+            <label class="gq-opt"><input type="radio" name="btype" value="b2b"><b>Businesses</b><small>Companies and decision-makers (B2B)</small></label>
+          </div>
+        </div>
+
+        <div class="gq-step">
+          <p class="gq-q"><span>2</span>Your industry and goal</p>
+          <div class="field-row">
+            <div class="field"><label for="gqInd">Industry</label><select id="gqInd" name="industry" required>
+              <option value="">Choose…</option><option>Retail &amp; e-commerce</option><option>Restaurants &amp; food</option><option>Real estate</option><option>Health, dental &amp; wellness</option><option>Beauty &amp; personal care</option><option>Automotive</option><option>Education &amp; training</option><option>Home services</option><option>Professional services</option><option>Technology &amp; software</option><option>Manufacturing &amp; industrial</option><option>Finance &amp; insurance</option><option>Events &amp; hospitality</option><option>Other</option></select></div>
+            <div class="field"><label for="gqGoal">Main goal</label><select id="gqGoal" name="goal">
+              <option>New leads and enquiries</option><option>More bookings or appointments</option><option>Store or showroom visits</option><option>Product or brand launch</option><option>Event sign-ups</option></select></div>
+          </div>
+        </div>
+
+        <div class="gq-step">
+          <p class="gq-q"><span>3</span>Where should your flyer be seen?</p>
+          <div class="field"><label for="gqArea">City, region or "All of Canada"</label><input id="gqArea" name="area" type="text" placeholder="e.g. Saskatoon and area" autocomplete="address-level2" required></div>
+        </div>
+
+        <div class="gq-step">
+          <p class="gq-q"><span>4</span>Your campaign budget</p>
+          <div class="gq-chips" id="gqChips">
+            <button type="button" data-v="1000">$1,000</button><button type="button" data-v="2500">$2,500</button><button type="button" data-v="5000" class="on">$5,000</button><button type="button" data-v="10000">$10,000</button><button type="button" data-v="25000">$25,000</button><button type="button" data-v="50000">$50,000+</button>
+          </div>
+          <div class="field gq-custom"><label for="gqBudget">Or enter an amount (CAD)</label><input id="gqBudget" name="budget" type="number" inputmode="numeric" min="1000" step="100" value="5000"></div>
+        </div>
+
+        <div class="gq-step" id="gqContact">
+          <p class="gq-q"><span>5</span>Where should we send your quote?</p>
+          <div class="field-row">
+            <div class="field"><label for="gqBiz">Business name</label><input id="gqBiz" name="business" type="text" autocomplete="organization" required></div>
+            <div class="field"><label for="gqName">Your name</label><input id="gqName" name="name" type="text" autocomplete="name" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="gqEmail">Email</label><input id="gqEmail" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="gqPhone">Phone</label><input id="gqPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(306) 555-0123" required></div>
+          </div>
+          <div class="field"><label for="gqProv">Province or territory</label><select id="gqProv" name="province" required></select></div>
+          <div class="hp" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+          <div class="consent-box">
+            <label class="consent"><input type="checkbox" id="gqConsent">
+              <span>I agree to receive calls — including automated and AI voice calls — texts and emails from Adviuz about my quote and its services, in Canada or the United States. Consent is not a condition of purchase. Message &amp; data rates may apply; message frequency varies. Reply STOP to opt out, HELP for help.</span></label>
+            <p class="consent-fine">Adviuz (Instad Web Services Ltd.) · Scotiabank Building, 111 2nd Ave S Unit 400, Saskatoon SK · <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> · <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>. You can withdraw consent at any time.</p>
+          </div>
+          <button class="button button-grad gq-submit" type="submit" id="gqSubmit">Get my quote</button>
+          <p class="bk-error" id="gqError"></p>
+        </div>
+      </form>
+
+      <aside class="gq-est" id="gqEst" aria-live="polite">
+        <p class="gq-est-k">Your estimate</p>
+        <div class="gq-est-big" id="gqTotal">$5,000</div>
+        <p class="gq-est-s">Campaign budget, plus applicable tax</p>
+        <ul class="gq-est-list">
+          <li><span>Viewed flyers</span><b id="gqViews">≈ 1,000</b><small>Each one viewed for at least 25 seconds</small></li>
+          <li><span>Estimated leads</span><b id="gqLeads">5 – 10</b><small>People who call you or leave their details</small></li>
+          <li><span>Brand exposure</span><b>Included</b><small>Everyone who sees your flyer without opening it costs you nothing</small></li>
+        </ul>
+        <div class="gq-consult" id="gqConsult" hidden>
+          <p><b>Campaigns of $50,000 or more</b> are planned with you on a short consultation call, so platforms, targeting and reporting are set up around your team.</p>
+          <a class="button button-grad" href="/book">Book a consultation</a>
+        </div>
+        <p class="gq-fine">Estimates only. Results vary by business, offer, audience and area. Your final quote is confirmed before you pay.</p>
+      </aside>
+    </div>
+
+    <div class="gq-done" id="gqDone" hidden>
+      <div class="big">✓</div>
+      <h2>Your quote is on its way</h2>
+      <p id="gqDoneText">We'll email your quote and a secure payment link shortly. Questions? Call us at <a href="tel:+16472501152">+1 647 250 1152</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo-white.png" alt="Adviuz">
+        <p>A Digital Flyer Distribution Platform</p>
+        
+        <div class="soc-row"><a href="https://www.facebook.com/adviuz" aria-label="Adviuz on Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.3-.1-2.4-.1-2.3 0-3.9 1.4-3.9 4v2.4H7.7V14h2.7v8h3.1z"/></svg></a><a href="https://x.com/adviuz" aria-label="Adviuz on X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5H22l-6.8 7.8 8 11.2h-6.3l-4.9-6.4-5.6 6.4H3.2l7.3-8.3L2.8 2.5h6.5l4.4 5.8 5.2-5.8zm-1.1 19h1.7L7.1 4.3H5.3l12.5 17.2z"/></svg></a><a href="https://www.instagram.com/adviuz_com/" aria-label="Adviuz on Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/playlist?list=PLkqeu4o8E-C5BopNMoS0ZogFiTpYu6jlG" aria-label="Adviuz on YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-1-2.4-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.7.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.9 9.1.9 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.5.3 7.5.3s4.6 0 7.7-.4c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 14.9V8.5l6.2 3.2-6.2 3.2z"/></svg></a><a href="https://in.linkedin.com/company/adviuz" aria-label="Adviuz on LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 3H3.6C2.7 3 2 3.7 2 4.6v14.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V4.6c0-.9-.7-1.6-1.6-1.6zM8 18.3H5.3V9.7H8v8.6zM6.6 8.5c-.9 0-1.6-.7-1.6-1.6S5.7 5.3 6.6 5.3s1.6.7 1.6 1.6-.7 1.6-1.6 1.6zM18.7 18.3H16v-4.2c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2v4.3h-2.7V9.7h2.6v1.2h0c.4-.7 1.3-1.4 2.6-1.4 2.7 0 3.2 1.8 3.2 4.1v4.7z"/></svg></a></div>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/why-adviuz.html">Why Adviuz</a></li>
+          <li><a href="/partners.html">Partners</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="https://hub.adviuz.ca">Client login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="/">Digital Flyers</a></li>
+          <li><a href="/ai-conversion-engine.html">AI Conversion Engine</a></li>
+          <li><a href="/book">Book a Demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/refund-policy.html">Refund Policy</a></li>
+          <li><a href="/data-deletion.html">Data Deletion</a></li>
+        </ul>
+      </div>
+      <div class="f-touch">
+        <h3>Get in touch</h3>
+        <ul class="f-contact"><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><a href="mailto:relations@adviuz.com">relations@adviuz.com</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><a href="tel:+16472501152">+1 647 250 1152</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><span class="nw">Scotiabank Building,</span> <span class="nw">111 2nd Ave S, Unit 400,</span> <span class="nw">Saskatoon, SK</span></span></li></ul>
+      </div>
+    </div>
+    <div class="f-bottom"><div class="footer-legal">© 2026 Instad Web Services Ltd., operating as Adviuz. All rights reserved.</div><div class="footer-ask"><span class="askai-label">Ask AI about us</span><div class="ai-chips"><a href="https://chatgpt.com/?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">ChatGPT</a><a href="https://claude.ai/new?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">Claude</a><a href="https://www.perplexity.ai/search?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">Perplexity</a><a href="https://gemini.google.com/app" target="_blank" rel="noopener" data-askai-copy>Gemini</a></div></div></div>
+  </div>
+  <div class="footer-mark" aria-hidden="true">adviuz</div>
+</footer>
+
+<script>
+const t=document.getElementById('menuToggle'),n=document.getElementById('navLinks');
+t.addEventListener('click',()=>{const open=n.classList.toggle('open');t.setAttribute('aria-expanded',open);});
+document.addEventListener('click',e=>{if(n.classList.contains('open')&&!n.contains(e.target)&&!t.contains(e.target)){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+n.addEventListener('click',e=>{if(e.target.closest('a')){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');t.setAttribute('aria-expanded','false');}});
+</script>
+<script src="/js/tracking.js?v=20261030d" defer></script>
+<script src="/js/askai.js?v=20261031a" defer></script>
+<script src="/js/ref.js?v=20261031a"></script>
+<script src="/js/quote.js?v=20261031a" defer></script>
+</body>
+</html>

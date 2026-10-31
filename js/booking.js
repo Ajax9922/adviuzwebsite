@@ -485,6 +485,7 @@ function runWizard(){
           consent:document.getElementById('bkConsent').checked,
           message:'Interested in: '+sols.join(' + '),
           website:form.querySelector('[name=website]').value,
+          ref:(window.advRef?window.advRef():''),
           page:location.pathname
         })
       });
@@ -584,6 +585,8 @@ function bindContact(){
           timezone:tz,
           consent:document.getElementById('ctConsent').checked,
           website:form.querySelector('[name=website]').value,
+          kind:(form.getAttribute('data-kind')||''),
+          ref:(window.advRef?window.advRef():''),
           page:location.pathname
         })
       });
