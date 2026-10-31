@@ -53,7 +53,7 @@
     cur = (i + items.length) % items.length;
     var name = items[cur].querySelector('.lb-name').textContent.trim(), m = MAP[name];
     ttl.textContent = m[2] ? (m[2] === 'a premium news website' ? name + ' and other premium news sites' : m[2]) : name;
-    img.src = P + m[0] + '.webp'; img.alt = (m[1] ? 'Real Adviuz ad on ' : 'Illustrative preview of an Adviuz flyer on ') + name;
+    img.src = P + m[0] + '.webp?v=2'; img.alt = (m[1] ? 'Real Adviuz ad on ' : 'Illustrative preview of an Adviuz flyer on ') + name;
     tag.textContent = m[1] ? 'Real Adviuz ad screenshot' : 'Illustrative preview — actual layout varies by platform and device';
     tag.classList.toggle('real', !!m[1]);
   }
