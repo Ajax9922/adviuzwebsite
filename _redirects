@@ -1,3 +1,4 @@
-# Partner links: adviuz.com/p/CODE opens the quote page credited to that partner
-/p/:code   /get-quote?ref=:code   302
-/quote     /get-quote             301
+# Partner links: adviuz.com/p/CODE opens the site credited to that partner
+/p/:code      /?ref=:code   302
+/get-quote    /book         302
+/quote        /book         302
