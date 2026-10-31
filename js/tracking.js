@@ -12,7 +12,7 @@
     GOOGLE_ADS_ID:   '',
     GOOGLE_PURCHASE: '',
     GOOGLE_CALL:     '',
-    META_PIXEL_ID:   ''
+    META_PIXEL_ID:   '2157779675091864'
   };
 
   // Plan values in CAD (Essential includes the $300 setup fee), used for the purchase event on the welcome page
