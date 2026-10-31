@@ -3717,3 +3717,6 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .gq-opt input[type=radio]{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;margin:0!important;pointer-events:none}
 .gq-sec{padding-top:84px}
 @media (max-width:560px){.gq-sec{padding-top:64px}}
+/* Partners page: commission cards (3 → 1 column on phones) */
+.features.pt-com{margin-top:34px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:820px){.features.pt-com{grid-template-columns:1fr;max-width:520px}}
