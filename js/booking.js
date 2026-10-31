@@ -572,6 +572,7 @@ function bindContact(){
     if(em&&!emailCheck(em).ok){showErr(emailEl,'That email address doesn’t look right.');bad=true;}
     var isPartner=form.getAttribute('data-kind')==='partner_application';
     if(isPartner&&!em){showErr(emailEl,'Please enter your email — your partner login is sent there.');bad=true;}
+    if(isPartner){['ctType','ctCount','ctWhen'].forEach(function(id){var e=document.getElementById(id);if(!e)return;clearErr(e);if(!e.value){showErr(e,'Please choose an option.');bad=true;}});}
     var termsEl=document.getElementById('ctTerms'),ctErrEl=document.getElementById('ctError');
     if(!bad&&termsEl&&!termsEl.checked){if(ctErrEl){ctErrEl.textContent='Please agree to the Partner Programme Terms to apply.';ctErrEl.style.display='block';}bad=true;}
     else if(ctErrEl&&termsEl){ctErrEl.style.display='none';}
@@ -585,7 +586,10 @@ function bindContact(){
         body:JSON.stringify({
           name:nameEl.value.trim(),phone:phoneFmt,email:em,
           business:bizEl.value.trim(),
-          message:document.getElementById('ctMsg').value.trim(),
+          message:(function(){var m=document.getElementById('ctMsg').value.trim();if(!isPartner)return m;var L=[];
+            [].forEach.call(form.querySelectorAll('[data-q]'),function(el){var v=el.matches('select,input')?el.value.trim():[].map.call(el.querySelectorAll('input:checked'),function(c){return c.value}).join(', ');if(v)L.push(el.getAttribute('data-q')+': '+v);});
+            return 'PARTNER APPLICATION\n'+L.join('\n')+(m?'\nNotes: '+m:'');})(),
+          partner:(isPartner?{role:(document.getElementById('ctRole')||{}).value||'',type:(document.getElementById('ctType')||{}).value||'',clients:(document.getElementById('ctCount')||{}).value||'',industries:[].map.call(form.querySelectorAll('#ctInd input:checked'),function(c){return c.value}),start:(document.getElementById('ctWhen')||{}).value||'',website:(document.getElementById('ctWeb')||{}).value||''}:undefined),
           country:ccEl?ccEl.value:'',
           timezone:tz,
           consent:document.getElementById('ctConsent').checked,
@@ -619,3 +623,6 @@ function boot(){
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();
 })();
+/* Clear a field's error as soon as the visitor fixes it */
+document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('#ctForm,#bkForm')&&typeof clearErr==='function')clearErr(e.target);},true);
+document.addEventListener('change',function(e){if(e.target.closest&&e.target.closest('#ctForm,#bkForm')&&typeof clearErr==='function')clearErr(e.target);},true);

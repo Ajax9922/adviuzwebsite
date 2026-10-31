@@ -3850,3 +3850,13 @@ html.mdr-lock,html.mdr-lock body{overflow:hidden}
 .ytm-next i{width:84px;height:48px;border-radius:6px;background:#e5e5e5;flex:0 0 auto}
 .ytm-next div{display:flex;flex-direction:column;gap:2px}.ytm-next b{font-size:10px;color:#111}.ytm-next span{font-size:8.5px;color:#777}
 @media (prefers-reduced-motion:reduce){.aj-scene.on .ytm-prog{animation:none;width:70%}}
+/* Partner application: better questions */
+.pt-chips{display:flex;flex-wrap:wrap;gap:8px}
+.pt-chips label{position:relative;cursor:pointer}
+.pt-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.pt-chips span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13.5px;color:var(--ink-soft);background:var(--paper)}
+.pt-chips input:checked+span{background:var(--grad);border-color:transparent;color:#fff}
+.pt-chips input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px}
+.pt-note{margin:12px 0 0;font-size:12.5px;color:var(--muted);text-align:center}
+.pt-step span{min-width:36px;width:auto;padding:0 8px}
+#ctForm select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:var(--paper)}

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261005">
-<link rel="stylesheet" href="css/main.css?v=20261031u">
+<link rel="stylesheet" href="css/main.css?v=20261031v">
 
 <link rel="canonical" href="https://adviuz.com/partners.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -120,14 +120,21 @@
       <p class="lead" style="margin-top:14px">There's nothing to buy and no quota. You introduce, we handle the demo, the campaign, and the client — and your commission is tracked on every order.</p>
     </div>
     <div class="bk-card"><form id="ctForm" data-kind="partner_application" novalidate>
-        <p class="bk-label">PARTNER APPLICATION</p>
+        <p class="bk-label">PARTNER APPLICATION · TAKES 2 MINUTES</p>
         <div class="field"><label for="ctName">Your name</label><input id="ctName" name="name" type="text" autocomplete="name" required></div>
         <div class="field"><label for="ctBiz">Business name</label><input id="ctBiz" name="business" type="text" autocomplete="organization"></div>
         <div class="field-row">
           <div class="field"><label for="ctPhone">Phone</label><div class="phone-wrap"><select id="ctCC" autocomplete="tel-country-code" aria-label="Country code"></select><input id="ctPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required></div></div>
           <div class="field"><label for="ctEmail">Email</label><input id="ctEmail" name="email" type="email" autocomplete="email"></div>
         </div>
-        <div class="field"><label for="ctMsg">Tell us about yourself — who you work with, and how you&rsquo;d refer businesses to Adviuz</label><textarea id="ctMsg" name="message" rows="4"></textarea></div>
+        <div class="field"><label for="ctRole">Your role</label><input id="ctRole" type="text" data-q="Role" placeholder="e.g. Owner, Marketing consultant" autocomplete="organization-title"></div>
+        <div class="field-row"><div class="field"><label for="ctType">What best describes you?</label><select id="ctType" data-q="What best describes you?" required><option value="">Choose…</option><option>Marketing or ad agency</option><option>Marketing / business consultant</option><option>Web designer or developer</option><option>Bookkeeper or accountant</option><option>Business coach</option><option>Sales professional</option><option>Franchise or community network</option><option>Influencer or content creator</option><option>Other</option></select></div>
+        <div class="field"><label for="ctCount">How many businesses do you work with?</label><select id="ctCount" data-q="How many businesses do you work with?" required><option value="">Choose…</option><option>0–10</option><option>11–50</option><option>51–200</option><option>200+</option></select></div>
+        </div>
+        <div class="field"><label>Industries your contacts are in <small style="font-weight:400;color:var(--muted)">(pick any)</small></label><div class="pt-chips" id="ctInd" data-q="Industries"><label><input type="checkbox" value="Real estate"><span>Real estate</span></label><label><input type="checkbox" value="Medical & dental"><span>Medical & dental</span></label><label><input type="checkbox" value="Home services"><span>Home services</span></label><label><input type="checkbox" value="Restaurants & food"><span>Restaurants & food</span></label><label><input type="checkbox" value="Retail"><span>Retail</span></label><label><input type="checkbox" value="Beauty & wellness"><span>Beauty & wellness</span></label><label><input type="checkbox" value="Automotive"><span>Automotive</span></label><label><input type="checkbox" value="Legal & finance"><span>Legal & finance</span></label><label><input type="checkbox" value="Education"><span>Education</span></label><label><input type="checkbox" value="B2B / corporate"><span>B2B / corporate</span></label><label><input type="checkbox" value="Other"><span>Other</span></label></div></div>
+        <div class="field-row"><div class="field"><label for="ctWhen">When could you make your first referral?</label><select id="ctWhen" data-q="When could you make your first referral?" required><option value="">Choose…</option><option>This week</option><option>This month</option><option>This quarter</option><option>Still exploring</option></select></div>
+        <div class="field"><label for="ctWeb">Website or LinkedIn <small style="font-weight:400;color:var(--muted)">(optional)</small></label><input id="ctWeb" type="url" data-q="Website" placeholder="https://"></div></div>
+        <div class="field"><label for="ctMsg">Anything else we should know? <small style="font-weight:400;color:var(--muted)">(optional)</small></label><textarea id="ctMsg" name="message" rows="3" placeholder="How you would introduce Adviuz to your contacts"></textarea></div>
         <div class="hp" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
         <div class="consent-box">
         <label class="consent"><input type="checkbox" id="ctConsent">
@@ -137,13 +144,25 @@
         <label class="consent pt-terms"><input type="checkbox" id="ctTerms"><span>I have read and agree to the <a href="/partner-terms" target="_blank" rel="noopener">Partner Programme Terms</a>.</span></label>
         <button class="button button-grad bk-submit" type="submit">Apply to partner</button>
         <p class="bk-error" id="ctError"></p>
+        <p class="pt-note">We review every application, and we accept partners who are a good fit for our clients.</p>
       </form>
       <div id="ctConfirm" style="display:none">
         <p class="bk-label">APPLICATION RECEIVED</p>
         <h3 style="margin:8px 0 10px">Thanks — we'll be in touch.</h3>
-        <p style="font-size:15px;color:var(--muted);line-height:1.7">We review every application. Once you're approved, you'll get an email with your partner login and your personal link.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.7">We review every application within 2 business days. Once you're approved, we'll book a short welcome call and send your partner login and personal link.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section">
+  <div class="container center"><span class="kicker">After you apply</span><h2>What happens next</h2></div>
+  <div class="container pt-steps">
+    <div class="pt-step"><span>48h</span><h3>We review</h3><p>We look at every application within 2 business days.</p></div>
+    <div class="pt-step"><span>Call</span><h3>Welcome call</h3><p>A short call to understand your contacts and how you'd like to refer.</p></div>
+    <div class="pt-step"><span>Login</span><h3>Your portal</h3><p>You get your partner login, your personal link and ready-to-share materials.</p></div>
+    <div class="pt-step"><span>Go</span><h3>Start referring</h3><p>Share your link or add businesses in your portal, and track every commission.</p></div>
   </div>
 </section>
 
@@ -213,7 +232,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   els.forEach(el=>io.observe(el));
 }
 </script>
-<script src="js/booking.js?v=20261031b" defer></script>
+<script src="js/booking.js?v=20261031d" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
 <script src="/js/fab.js?v=20261030a" defer></script>
