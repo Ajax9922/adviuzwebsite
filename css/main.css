@@ -3618,3 +3618,7 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .aj-tap::after,.tap2::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:3px solid rgba(230,90,252,.85);opacity:0}
 .aj-tap.hit::after,.tap2.hit::after{animation:ajring 1.2s ease forwards}
 @keyframes ajring{0%,28%{opacity:0;transform:scale(.55)}42%{opacity:1}100%{opacity:0;transform:scale(2.4)}}
+
+/* Times Group crest is detailed: show it a little larger */
+.trust-track img.tall.tg{height:clamp(42px,4.2vw,56px)}
+@media (max-width:720px){.trust-track img.tall.tg{height:36px}}
