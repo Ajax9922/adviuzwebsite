@@ -3655,3 +3655,5 @@ main>section:has(+.ce-cta-sec){padding-bottom:64px}
 .rp-scroll img{display:block;width:100%;height:auto}
 .rp-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .rp-fab{position:absolute;right:14px;bottom:62px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#6a1ef0,#c04df5);display:grid;place-items:center;box-shadow:0 8px 20px rgba(106,30,240,.45),0 0 0 6px rgba(192,77,245,.15);pointer-events:none}
+/* AI Conversion Engine: on phones the hero animation sits above "It listens, like a person would" */
+@media (max-width:720px){.ce-hv-slot.ce-hv-slot2{margin:34px 0 30px!important;display:flex;justify-content:center}}
