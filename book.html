@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261012d">
-<link rel="stylesheet" href="css/main.css?v=20261031v">
+<link rel="stylesheet" href="css/main.css?v=20261102bf">
 <style>
 /* Booking page (/book?t=…) — lead-facing; brand inside the card comes from the campaign */
 .bp-card{width:100%;max-width:620px;margin:30px auto 0;background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2);border-radius:20px;box-shadow:0 18px 50px rgba(35,8,53,.08);padding:28px 24px}
@@ -95,6 +95,12 @@
     <div id="vDemo" hidden>
       <div class="bkd-grid">
         <div class="bkd-left">
+          <div class="bf-box" data-promo>
+            <span class="bf-pill"><i aria-hidden="true"></i>Black Friday sale</span>
+            <h2>Book your demo and start by 30 November to get:</h2>
+            <ul><li>AI Conversion Engine included free</li><li>Both one-time setup fees waived</li></ul>
+            <p>Applies to Digital Flyers plans started on or before 30 November 2026.</p>
+          </div>
           <span class="kicker">Free 30-minute demo</span>
           <h1 class="bkd-h">Book your free demo</h1>
           <p class="bkd-lead">Digital Flyers to bring you new leads, the AI Conversion Engine to turn them into bookings — or the complete system. We’ll show you how it works on your business, on a video call or phone.</p>
@@ -426,10 +432,11 @@ document.addEventListener('click',e=>{if(n.classList.contains('open')&&!n.contai
 n.addEventListener('click',e=>{if(e.target.closest('a')){n.classList.remove('open');mt.setAttribute('aria-expanded','false');}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');mt.setAttribute('aria-expanded','false');}});
 </script>
-<script src="js/booking.js?v=20261102tz" defer></script>
+<script src="js/booking.js?v=20261102bf" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
 <script src="/js/askai.js?v=20261031a" defer></script>
 <script src="/js/mnav.js?v=20261031b" defer></script>
+<script src="/js/promo.js?v=20261102" defer></script>
 </body>
 </html>

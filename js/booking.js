@@ -486,7 +486,7 @@ function runWizard(){
           slot_iso:(selSlot&&selSlot.iso)||'',
           timezone:(function(){try{return advTz(Intl.DateTimeFormat().resolvedOptions().timeZone||'')}catch(x){return ''}})(),
           consent:document.getElementById('bkConsent').checked,
-          message:'Interested in: '+sols.join(' + '),
+          message:'Interested in: '+sols.join(' + ')+(/[?&]offer=bf/.test(location.search)?' · Black Friday offer':''),
           website:form.querySelector('[name=website]').value,
           ref:(window.advRef?window.advRef():''),
           page:location.pathname
@@ -510,7 +510,7 @@ function initWizard(host){
   // Pre-tick the solution that matches the page (or ?solution=flyers|ai)
   try{var q=(new URLSearchParams(location.search).get('solution')||'').toLowerCase(),pth=location.pathname;
     var want=q==='ai'||/ai-conversion/.test(pth)?'AI Conversion Engine':(q==='flyers'||pth==='/'||/index/.test(pth)?'Digital Flyers':'');
-    if(q==='both'||/black-friday/.test(pth)){var cb=host.querySelector('input[name=solution][value="Complete Solution"]');if(cb)cb.checked=true;}
+    if(q==='both'||/[?&]offer=bf/.test(location.search)){var cb=host.querySelector('input[name=solution][value="Complete Solution"]');if(cb)cb.checked=true;}
     else if(want){var b=host.querySelector('input[name=solution][value="'+want+'"]');if(b)b.checked=true;}
   }catch(e){}
   runWizard();

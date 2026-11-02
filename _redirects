@@ -3,3 +3,4 @@
 /r/:code      /?ref=:code   302
 /get-quote    /book         302
 /quote        /book         302
+/black-friday  /book?offer=bf  302
