@@ -38,6 +38,9 @@ function fetchSlotFeed(){
   }).catch(function(){return null;});
   return slotFeedP;
 }
+// tzfix-1 (2026-11-02): AB/BC/MB stopped changing clocks on Nov 1 2026 but the server's time-zone data
+// is old, so send zones that already have the right clock all year (same time, server reads it right).
+function advTz(z){return ({'America/Edmonton':'America/Swift_Current','America/Calgary':'America/Swift_Current','America/Yellowknife':'America/Swift_Current','America/Inuvik':'America/Swift_Current','America/Vancouver':'America/Dawson_Creek','America/Winnipeg':'America/Atikokan','America/Rainy_River':'America/Atikokan'})[z]||z;}
 function detectISO(){
   try{
     var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
@@ -424,7 +427,7 @@ function runWizard(){
   }
   function slotLabelFull(){ // hub-facing; the backend re-reads this time in the visitor's timezone
     if(selSlot&&selSlot.ms){
-      let z='America/Regina';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||z;}catch(e){}
+      let z='America/Regina';try{z=advTz(Intl.DateTimeFormat().resolvedOptions().timeZone||z);}catch(e){}
       try{
         const txt=new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:z}).format(new Date(selSlot.ms));
         return txt.replace(/, (\d)/,' — $1')+(selSlot.t?' ('+selSlot.t+' CST)':'');
@@ -481,7 +484,7 @@ function runWizard(){
           country:iso,
           requested_slot:slotLabelFull(),
           slot_iso:(selSlot&&selSlot.iso)||'',
-          timezone:(function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(x){return ''}})(),
+          timezone:(function(){try{return advTz(Intl.DateTimeFormat().resolvedOptions().timeZone||'')}catch(x){return ''}})(),
           consent:document.getElementById('bkConsent').checked,
           message:'Interested in: '+sols.join(' + '),
           website:form.querySelector('[name=website]').value,
@@ -579,7 +582,7 @@ function bindContact(){
     if(bad)return;
     var btn=form.querySelector('.bk-submit');btn.disabled=true;btn.textContent='Sending…';
     if(t0&&Date.now()-t0<3000){form.style.display='none';confirmEl.style.display='block';return;}
-    var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+    var tz='';try{tz=advTz(Intl.DateTimeFormat().resolvedOptions().timeZone||'');}catch(x){}
     try{
       var res=await fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-lead',{
         method:'POST',headers:{'Content-Type':'application/json'},
