@@ -510,7 +510,7 @@ function initWizard(host){
   // Pre-tick the solution that matches the page (or ?solution=flyers|ai)
   try{var q=(new URLSearchParams(location.search).get('solution')||'').toLowerCase(),pth=location.pathname;
     var want=q==='ai'||/ai-conversion/.test(pth)?'AI Conversion Engine':(q==='flyers'||pth==='/'||/index/.test(pth)?'Digital Flyers':'');
-    if(q==='both'){var cb=host.querySelector('input[name=solution][value="Complete Solution"]');if(cb)cb.checked=true;}
+    if(q==='both'||/black-friday/.test(pth)){var cb=host.querySelector('input[name=solution][value="Complete Solution"]');if(cb)cb.checked=true;}
     else if(want){var b=host.querySelector('input[name=solution][value="'+want+'"]');if(b)b.checked=true;}
   }catch(e){}
   runWizard();
