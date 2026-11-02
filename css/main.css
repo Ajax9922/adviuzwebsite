@@ -3862,7 +3862,7 @@ html.mdr-lock,html.mdr-lock body{overflow:hidden}
 #ctForm select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--font-body);font-size:15px;color:var(--ink);background:var(--paper)}
 
 /* ===== Black Friday promo bar (top of every marketing page) — remove after 30 Nov ===== */
-.promo-bar{position:relative;z-index:61;display:block;overflow:hidden;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;line-height:1;white-space:nowrap}
+.promo-bar{position:sticky;top:0;height:38px;z-index:61;display:block;overflow:hidden;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;line-height:1;white-space:nowrap}
 .promo-bar:hover .promo-track,.promo-bar:focus-visible .promo-track{animation-play-state:paused}
 .promo-track{display:flex;width:max-content;animation:promoScroll 38s linear infinite;will-change:transform}
 .promo-track span{display:inline-flex;align-items:center;padding:12px 0}
@@ -3881,3 +3881,7 @@ html.mdr-lock,html.mdr-lock body{overflow:hidden}
 .bf-box li{position:relative;padding-left:27px;font-weight:600;color:var(--ink-soft);font-size:15px}
 .bf-box li::before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:var(--grad);color:#fff;font-size:10px;font-weight:800;display:grid;place-items:center}
 .bf-box p{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
+/* Bar stays pinned at the top; push the floating header below it while the bar exists */
+body:has(.promo-bar) .site-header{top:calc(env(safe-area-inset-top,0px) + 52px)}
+body:has(.promo-bar)::before{top:calc(38px + env(safe-area-inset-top,0px));height:48px}
+.promo-bar{padding-top:env(safe-area-inset-top,0px);height:calc(38px + env(safe-area-inset-top,0px))}
