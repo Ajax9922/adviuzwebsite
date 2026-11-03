@@ -4,3 +4,4 @@
 /get-quote    /book         302
 /quote        /book         302
 /black-friday  /book?offer=bf  302
+/plans/:code  /plans?ref=:code  302
