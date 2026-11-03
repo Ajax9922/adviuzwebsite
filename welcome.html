@@ -145,7 +145,11 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 </script>
 <script>
 (function(){var p=new URLSearchParams(location.search).get('plan')||'';var N={'ce-essential':'Essential','ce-pro':'Pro','ce-max':'Max'};
-if(N[p]){document.getElementById('wlLead').textContent='Your AI Conversion Engine '+N[p]+' plan is confirmed. A confirmation email and your Stripe receipt are on their way.';}})();
+if(N[p]){document.getElementById('wlLead').textContent='Your AI Conversion Engine '+N[p]+' plan is confirmed. A confirmation email and your Stripe receipt are on their way.';}
+var F={'df-growth':'Growth','df-scale':'Scale','df-pro':'Pro'};
+if(F[p]){document.getElementById('wlLead').textContent='Your Digital Flyers '+F[p]+' plan is confirmed. A confirmation email and your Stripe receipt are on their way.';
+var L=document.querySelectorAll('.ce-steps li');var T=[['We contact you','Our team reaches out by email or phone and sends your hub login.'],['Send your content, approve your design','Upload your logo, photos and offer in the hub. We design your flyer and nothing goes live until you approve it.'],['Go live and get leads','We set up your audience, area and platforms. Your flyer goes live and every lead comes to your phone, with the AI Conversion Engine following up.']];
+for(var i=0;i<L.length&&i<3;i++){L[i].querySelector('h3').textContent=T[i][0];L[i].querySelector('p').textContent=T[i][1];}}})();
 </script>
 
 <script src="/js/ref.js?v=20261031a"></script>
