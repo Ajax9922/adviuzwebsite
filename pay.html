@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pay for your plan · Adviuz</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg?v=5" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#230835;--grad:linear-gradient(135deg,#4000f3,#e65afc);--wash:#faf9ff;--line:#ece8f2;--muted:#5f5868;--faint:#8a8291;--accent:#4b0fe0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:var(--wash);-webkit-font-smoothing:antialiased}
+.top{height:4px;background:var(--grad)}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:flex-end;gap:8px;text-decoration:none}.brand img{height:20px;display:block}
+.brand span{font-size:11px;color:var(--faint);padding-left:8px;border-left:1px solid #ddd;line-height:11px}
+.secure{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+main{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.bf{display:inline-flex;align-items:center;gap:6px;background:#fff0f6;color:#c0398f;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px}
+.bf:before{content:'';width:6px;height:6px;border-radius:50%;background:#e0368f}
+h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:12px 0 4px}
+.sub{font-size:14px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:16px;box-shadow:0 8px 24px rgba(35,8,53,.06)}
+.plan-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.plan-name{font-size:19px;font-weight:700}.plan-who{font-size:13px;color:var(--faint);margin-top:2px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--grad);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.price{margin-top:12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price b{font-size:34px;letter-spacing:-.03em}.price s{color:#c0398f;font-size:15px}.price span{font-size:13px;color:var(--muted)}
+.save{font-size:13px;color:#c0398f;font-weight:600;margin-top:2px}
+.box{background:#f5f0ff;border-radius:14px;padding:12px 14px;margin-top:14px;display:grid;gap:5px;font-size:13.5px}
+.box .big{font-size:22px;font-weight:700;color:#4a10e0}.box .big small{font-size:14px;color:var(--ink);font-weight:600}
+.more{font-size:13px;color:var(--accent);font-weight:600;margin-top:12px;display:inline-block;background:none;border:0;font-family:inherit;cursor:pointer;padding:0}
+.incl{display:none;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:12px;font-size:13px}
+.incl.open{display:grid}
+.incl div{display:flex;gap:7px;align-items:flex-start}
+.incl div:before{content:'✓';color:#6b2cf5;font-weight:700}
+h2{font-size:16px;font-weight:700;margin-bottom:4px}
+.hint{font-size:13px;color:var(--faint);margin-bottom:6px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
+input,select{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);outline:none;appearance:none;-webkit-appearance:none}
+input:focus,select:focus{border-color:#7a3bff;box-shadow:0 0 0 4px rgba(122,59,255,.12)}
+.sel{position:relative}.sel:after{content:'';position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;font-weight:400;color:var(--muted);margin-top:14px;line-height:1.45;cursor:pointer}
+.consent input{width:20px;height:20px;flex:0 0 20px;padding:0;border-radius:6px;appearance:auto;-webkit-appearance:checkbox;accent-color:#4b0fe0;margin-top:1px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.tot{display:grid;gap:6px;font-size:14px}
+.tot div{display:flex;justify-content:space-between;gap:10px}.tot .muted{color:var(--muted)}
+.tot .grand{border-top:1px solid var(--line);padding-top:10px;margin-top:4px;font-size:18px;font-weight:700}
+.btn{display:block;width:100%;border:0;margin-top:16px;padding:16px;border-radius:14px;background:var(--grad);color:#fff;font:inherit;font-size:16px;font-weight:700;box-shadow:0 12px 30px rgba(64,0,243,.28);cursor:pointer}
+.btn[disabled]{opacity:.6;cursor:wait}
+.err{display:none;margin-top:12px;background:#fdecec;border:1px solid #f5c2c2;color:#b42318;font-size:13px;border-radius:10px;padding:10px 12px}
+.pay-ways{text-align:center;font-size:12.5px;color:var(--faint);margin-top:10px}
+.foot{text-align:center;font-size:12px;color:var(--faint);margin-top:22px;line-height:1.7}
+.foot a{color:var(--muted)}
+.loading{text-align:center;color:var(--faint);padding:60px 0;font-size:14px}
+</style></head>
+<body>
+<div class="top"></div>
+<header>
+  <a class="brand" href="/"><img src="/assets/logo.png" alt="Adviuz" width="94" height="20"><span>Est. 2014</span></a>
+  <div class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure checkout</div>
+</header>
+<main id="app"><div class="loading">Loading your plan…</div></main>
+<script>
+/* Adviuz pay page (/pay?plan=growth|scale|pro&seg=b2b|b2c).
+   Prices come from the server (website-plan-pay) — this page only displays them.
+   On submit the server creates the lead + quote and returns the secure quote link. */
+(function () {
+  var API = 'https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-plan-pay';
+  var OK_HOST = 'hub.adviuz.ca';
+  var INCL = ['AI Conversion Engine','Flyer design','Unlimited design edits','Audience targeting','Multi-platform reach','Remarketing',
+    'Campaign updates','Campaign optimization','Ad creative variations','Distribution guarantee','Live reporting','Lead contact details',
+    'Lead management','Instant lead follow-up','Appointment booking','After-appointment follow-up','Deal closing assistance','Pause anytime'];
+  var qs = new URLSearchParams(location.search);
+  var planKey = String(qs.get('plan') || '').toLowerCase(), seg = String(qs.get('seg') || 'b2c').toLowerCase();
+  var app = document.getElementById('app'), P = null, PROVS = [];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function m0(v) { return '$' + Number(v).toLocaleString('en-CA'); }
+  function m2(v) { return '$' + Number(v).toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function fail(msg) {
+    app.innerHTML = '<div class="card" style="text-align:center"><h2>Sorry, this payment page could not open</h2><p class="hint" style="margin-top:8px">' + esc(msg) +
+      '</p><p style="margin-top:12px;font-size:14px">Call <a href="tel:+16472501152">+1 647 250 1152</a> or email <a href="mailto:sales@adviuz.ca">sales@adviuz.ca</a> and we will send you a payment link.</p></div>';
+  }
+  function render() {
+    var ends = P.offer_ends ? new Date(P.offer_ends + 'T12:00:00').toLocaleDateString('en-CA', { month: 'long', day: 'numeric' }) : '';
+    var items = P.items.slice();
+    var first = items.shift() || '';
+    var fm = first.match(/^([\d,]+)\s+(.*)$/);
+    var big = fm ? '<div class="big">' + esc(fm[1]) + ' <small>' + esc(fm[2]) + '</small></div>' : '<div class="big">' + esc(first) + '</div>';
+    var opts = '<option value="">Choose…</option>' + PROVS.map(function (p) { return '<option value="' + p.code + '">' + esc(p.name) + '</option>'; }).join('');
+    app.innerHTML =
+      (P.offer ? '<span class="bf">Black Friday price · ends ' + esc(ends) + '</span>' : '') +
+      '<h1>Pay for your plan</h1>' +
+      '<p class="sub">Digital Flyers + AI Conversion Engine · plans for businesses that sell to ' + (seg === 'b2b' ? 'other businesses' : 'consumers') + '</p>' +
+      '<div class="card"><div class="plan-head"><div><div class="plan-name">' + esc(P.label) + ' Plan</div><div class="plan-who">' + esc(P.who) + '</div></div>' +
+        (P.key === 'scale' ? '<span class="tag">RECOMMENDED</span>' : '') + '</div>' +
+        '<div class="price"><b>' + m0(P.price) + '</b>' + (P.save > 0 ? '<s>' + m0(P.was) + '</s>' : '') + '<span>+ tax · one-time</span></div>' +
+        (P.save > 0 ? '<div class="save">You save ' + m0(P.save) + ' · valid 12 months · pause anytime</div>' : '<div class="save" style="color:var(--muted);font-weight:400">Valid 12 months · pause anytime</div>') +
+        '<div class="box">' + big + items.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>' +
+        '<button class="more" type="button" id="moreBtn">See everything included ›</button>' +
+        '<div class="incl" id="incl">' + INCL.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div></div>' +
+      '<form class="card" id="f" novalidate><h2>Your details</h2><div class="hint">We use these for your invoice and to set up your account.</div>' +
+        '<label for="nm">Your name</label><input id="nm" autocomplete="name" placeholder="Full name" required>' +
+        '<label for="bz">Business name</label><input id="bz" autocomplete="organization" placeholder="Business name" required>' +
+        '<label for="em">Email</label><input id="em" type="email" autocomplete="email" placeholder="you@business.com" required>' +
+        '<label for="ph">Phone</label><input id="ph" type="tel" autocomplete="tel" placeholder="(416) 555-0123" required>' +
+        '<label for="pv">Province or territory</label><div class="sel"><select id="pv" required>' + opts + '</select></div>' +
+        '<input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<label class="consent"><input type="checkbox" id="cs"><span>I agree to receive calls, texts and emails from Adviuz about my order and its services. Reply STOP to opt out anytime.</span></label>' +
+      '</form>' +
+      '<div class="card"><div class="tot"><div><span>' + esc(P.label) + ' Plan' + (P.offer ? ' (Black Friday)' : '') + '</span><span>' + m2(P.price) + '</span></div>' +
+        '<div class="muted"><span id="taxl">Tax (choose your province)</span><span id="tax">—</span></div>' +
+        '<div class="grand"><span>Total today</span><span id="tot">' + m2(P.price) + ' + tax</span></div></div>' +
+        '<button class="btn" type="button" id="go">Continue to secure payment →</button><div class="err" id="err"></div>' +
+        '<div class="pay-ways">Card or Apple Pay through Stripe · or e-transfer to sales@adviuz.ca</div></div>' +
+      '<div class="foot">Questions? Call <a href="tel:+16472501152">+1 647 250 1152</a> · <a href="mailto:sales@adviuz.ca">sales@adviuz.ca</a><br>' +
+        'By paying you agree to our <a href="/terms.html">Terms</a> and <a href="/refund-policy.html">Refund Policy</a>.<br>© 2026 Adviuz · Instad Web Services Limited</div>';
+
+    document.getElementById('moreBtn').onclick = function () {
+      var el = document.getElementById('incl'), open = el.classList.toggle('open');
+      this.textContent = open ? 'Hide the full list ‹' : 'See everything included ›';
+    };
+    var pv = document.getElementById('pv');
+    pv.onchange = function () {
+      var p = PROVS.filter(function (x) { return x.code === pv.value; })[0];
+      if (!p) { document.getElementById('taxl').textContent = 'Tax (choose your province)'; document.getElementById('tax').textContent = '—'; document.getElementById('tot').textContent = m2(P.price) + ' + tax'; return; }
+      var tax = Math.round(P.price * p.rate * 100) / 100;
+      document.getElementById('taxl').textContent = p.label + ' (' + (p.rate * 100).toFixed(3).replace(/\.?0+$/, '') + '%, ' + p.name + ')';
+      document.getElementById('tax').textContent = m2(tax);
+      document.getElementById('tot').textContent = m2(P.price + tax) + ' CAD';
+    };
+    document.getElementById('go').onclick = submit;
+  }
+  function showErr(msg) { var e = document.getElementById('err'); e.textContent = msg; e.style.display = msg ? 'block' : 'none'; }
+  function submit() {
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var d = v('ph').replace(/\D/g, '');
+    var msg = v('nm').length < 2 ? 'Please enter your name.' : !v('bz') ? 'Please enter your business name.' :
+      !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('em')) ? 'Please enter a valid email.' :
+      !(d.length === 10 || (d.length === 11 && d[0] === '1')) ? 'Please enter a valid phone number.' :
+      !v('pv') ? 'Please choose your province or territory.' :
+      !document.getElementById('cs').checked ? 'Please tick the box so we can contact you about your order.' : '';
+    if (msg) { showErr(msg); return; }
+    showErr('');
+    var btn = document.getElementById('go'); btn.disabled = true; btn.textContent = 'Opening secure payment…';
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+      plan: planKey, seg: seg, name: v('nm'), business: v('bz'), email: v('em'), phone: v('ph'), province: v('pv'),
+      consent: true, website: v('hp') }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (j) {
+        var ok = false; try { var u = new URL(j.url); ok = u.protocol === 'https:' && u.hostname === OK_HOST; } catch (e) {}
+        if (j && j.ok && ok) { location.href = j.url; return; }
+        throw new Error((j && j.error) || 'Payment page could not open.');
+      })
+      .catch(function (e) { btn.disabled = false; btn.textContent = 'Continue to secure payment →'; showErr(e.message + ' You can also call +1 647 250 1152.'); });
+  }
+  if (!/^(growth|scale|pro)$/.test(planKey) || !/^(b2b|b2c)$/.test(seg)) { fail('This link is missing the plan.'); return; }
+  fetch(API + '?plan=' + planKey + '&seg=' + seg).then(function (r) { return r.json(); }).then(function (j) {
+    if (!j || !j.plan) throw new Error((j && j.error) || 'Plan not found.');
+    P = j.plan; PROVS = j.provinces || []; render();
+  }).catch(function (e) { fail(e.message); });
+})();
+</script>
+</body></html>
