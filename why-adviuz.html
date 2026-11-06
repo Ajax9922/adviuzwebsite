@@ -412,13 +412,13 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   }
   $('sbAll').addEventListener('click',function(){if(done)return;tiles().forEach(function(b){b.setAttribute('aria-pressed','true');});recount();});
   go.addEventListener('click',function(){
-    var s=sel();if(!s.length)return;done=true;go.disabled=true;
+    var s=sel();if(!s.length)return;var byAuto=autoGo;done=true;go.disabled=true;
     s.forEach(function(b,i){setTimeout(function(){b.classList.add('flip');},RM?0:i*110);});
     sb.classList.add('done');
     setTimeout(function(){
       setStats({l:1,b:1,s:0},['Adviuz login','Prepaid balance','Callers to hire']);
       out.classList.add('on');$('sbHint').hidden=true;$('sbHintDone').hidden=false;
-      if(!autoGo&&matchMedia('(max-width:900px)').matches)out.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+      if(!byAuto&&matchMedia('(max-width:900px)').matches)out.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
     },RM?0:s.length*110+250);
   });
   $('sbReset').addEventListener('click',function(){
@@ -428,22 +428,31 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     recount();sb.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
   });
 
-  /* Autoplay: when the builder scrolls into view, tick the usual tools one by one,
-     then show the Adviuz side. Any real tap or key press stops it. */
-  var sbAutoOn=true,sbTimers=[];
+  /* Autoplay (like a video): starts as soon as the page opens, ticks the usual tools
+     one by one, flips to Adviuz, holds, then replays. Loops only while the builder is
+     on screen. Any real tap or key press stops it for good. */
+  var sbAutoOn=true,sbTimers=[],sbVisible=false,sbWaiting=true;
   function stopAuto(){if(!sbAutoOn)return;sbAutoOn=false;sbTimers.forEach(clearTimeout);sbTimers=[];sb.classList.remove('sb-auto');}
   sb.addEventListener('pointerdown',stopAuto,true);sb.addEventListener('keydown',stopAuto,true);
+  function softReset(){
+    done=false;sb.classList.remove('done');out.classList.remove('on');
+    tiles().forEach(function(b){b.setAttribute('aria-pressed','false');b.classList.remove('flip');});
+    $('sbHint').hidden=false;$('sbHintDone').hidden=true;recount();
+  }
   function sbPlay(){
-    if(!sbAutoOn||done)return;
+    if(!sbAutoOn)return;
+    if(done)softReset();
     sb.classList.add('sb-auto');
-    var ts=tiles(),step=RM?0:240;
-    ts.forEach(function(b,i){sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;b.setAttribute('aria-pressed','true');recount();},300+i*step));});
-    sbTimers.push(setTimeout(function(){if(!sbAutoOn||done)return;autoGo=true;go.click();autoGo=false;sb.classList.remove('sb-auto');sbAutoOn=false;},300+ts.length*step+(RM?0:1000)));
+    var ts=tiles(),step=RM?0:240,t=RM?0:700;
+    ts.forEach(function(b,i){sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;b.setAttribute('aria-pressed','true');recount();},t+i*step));});
+    t+=ts.length*step+(RM?0:900);
+    sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;autoGo=true;go.click();autoGo=false;},t));
+    if(RM)return;
+    sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;if(sbVisible)sbPlay();else sbWaiting=true;},t+ts.length*110+5200));
   }
   if('IntersectionObserver' in window){
-    var sio=new IntersectionObserver(function(es){if(es[0].isIntersecting){sio.disconnect();sbPlay();}},{threshold:.35});
-    sio.observe(grid);
-  }
+    new IntersectionObserver(function(es){sbVisible=es[0].isIntersecting;if(sbVisible&&sbWaiting&&sbAutoOn){sbWaiting=false;sbPlay();}},{threshold:.35}).observe(grid);
+  } else { sbVisible=true;sbWaiting=false;sbPlay(); }
 
   /* ---------- 2. One lead, two ways ---------- */
   var FLOW={
