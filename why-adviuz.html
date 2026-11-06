@@ -32,16 +32,43 @@
 .wy-step i{font-style:normal;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--grad,linear-gradient(90deg,#4f0cf0,#d64df5));color:#fff;font-size:12px;letter-spacing:0}
 
 /* --- 1. Stack builder --- */
-.sb{max-width:1060px;margin:34px auto 0;background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2);border-radius:26px;box-shadow:0 24px 60px rgba(35,8,53,.08);padding:28px}
-.sb-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-.sb-stat{border-radius:16px;background:var(--wash,#f7f4fd);padding:14px 16px;transition:background .5s ease,color .5s ease}
-.sb-stat b{display:block;font-size:clamp(28px,3.4vw,38px);line-height:1;letter-spacing:-.02em;color:var(--ink,#1c0f33);font-variant-numeric:tabular-nums;transition:color .5s}
-.sb-stat span{display:block;margin-top:6px;font-size:13.5px;color:var(--muted,#6d6782);font-weight:600;transition:color .5s}
-.sb.done .sb-stat{background:linear-gradient(135deg,#160f2b,#321360)}
-.sb.done .sb-stat b{color:#fff}
-.sb.done .sb-stat span{color:rgba(255,255,255,.75)}
-.sb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.sb-t{position:relative;min-height:88px;text-align:left;border:1.5px solid var(--line,#e2dbf0);background:var(--paper,#fff);border-radius:16px;padding:14px 14px 12px 14px;cursor:pointer;font:inherit;color:var(--ink-soft,#3c3552);transition:border-color .2s,box-shadow .2s,transform .15s,opacity .4s;perspective:800px}
+.st{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch;max-width:1060px;margin:38px auto 0}
+.st-old,.st-new{border-radius:26px;padding:28px}
+.st-old{background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2)}
+.st-new{background:linear-gradient(150deg,#160f2b,#3a1670);color:#fff;display:flex;flex-direction:column;align-items:flex-start}
+.st-tag{margin:0 0 14px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#6d6782)}
+.st-new .st-tag{color:#cbb8ff}
+.st-old h3{display:flex;align-items:baseline;gap:8px;margin:18px 0 10px;font-size:18px;color:var(--ink,#1c0f33)}
+.st-old h3:first-of-type{margin-top:0}
+.st-old h3 b{font-size:30px;letter-spacing:-.02em}
+.st-chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.st-chips li{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;background:var(--wash,#f5f2fb);border:1px solid var(--line,#e7e2f2);font-size:14px;font-weight:600;color:var(--ink-soft,#2c2443)}
+.st-chips svg{color:var(--muted,#8a84a0);flex:0 0 auto}
+.st-total{margin:20px 0 0;padding-top:16px;border-top:1px dashed var(--line,#e2dbf0);font-weight:700;color:#b3245f}
+.st-arrow{align-self:center;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--grad,linear-gradient(135deg,#4f10f0,#d65bf2))}
+.st-new img{height:28px;width:auto}
+.st-big{margin:14px 0 0;font-size:clamp(36px,4.4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.st-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:20px}
+.st-nums div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 14px}
+.st-nums b{display:block;font-size:30px;line-height:1}
+.st-nums span{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.75)}
+.st-ticks{list-style:none;padding:0;margin:20px 0 24px;display:grid;gap:10px}
+.st-ticks li{display:flex;gap:10px;align-items:center;font-weight:600;font-size:15.5px}
+.st-ticks svg{flex:0 0 22px;width:22px;height:22px;padding:4px;border-radius:50%;background:var(--grad,linear-gradient(135deg,#4f10f0,#d65bf2));color:#fff}
+.st-new .button{margin-top:auto}
+/* animation */
+.st .st-chips li{opacity:0;transform:translateY(8px) scale(.96);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--i) * 90ms)}
+.st .st-total{opacity:0;transition:opacity .4s ease 1.2s}
+.st .st-arrow{opacity:0;transform:scale(.6);transition:opacity .4s ease 1.45s,transform .5s cubic-bezier(.3,1.6,.5,1) 1.45s}
+.st .st-new{opacity:0;transform:translateX(24px);transition:opacity .6s ease 1.7s,transform .6s cubic-bezier(.2,.8,.2,1) 1.7s}
+.st.in .st-chips li,.st.in .st-total,.st.in .st-arrow,.st.in .st-new{opacity:1;transform:none}
+.ch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1060px;margin:30px auto 0;text-align:left}
+.ch{background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2);border-radius:22px;padding:24px}
+.ch .n{font-size:13px;font-weight:800;color:var(--accent,#5b21d6);letter-spacing:.06em}
+.ch b{display:block;font-size:20px;line-height:1.25;color:var(--ink,#1c0f33);margin-top:10px}
+.ch p{margin:10px 0 0;color:var(--muted,#6d6782);font-size:15px;line-height:1.6}
+@media (max-width:900px){.st{grid-template-columns:1fr;gap:14px;max-width:560px}.st-arrow{justify-self:center;transform:rotate(90deg)}.st.in .st-arrow{transform:rotate(90deg)}.st-old,.st-new{padding:22px}.ch-grid{grid-template-columns:1fr;max-width:520px}}
+@media (prefers-reduced-motion:reduce){.st *,.st .st-new{transition:none!important}}
 .wy-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .wy-hero-txt h1{margin:12px 0 16px}
 .wy-hero-txt .lead{margin:0}
@@ -53,40 +80,7 @@
 .wy-vid{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line,#e2dbf0);background:#0d0618;aspect-ratio:1/1;box-shadow:0 30px 60px rgba(28,18,54,.12)}
 .wy-vid video{display:block;width:100%;height:100%;object-fit:cover}
 .wy-vid-tag{position:absolute;left:14px;bottom:14px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(13,6,24,.72);border-radius:999px;padding:7px 12px}
-.wy-sb-head{margin-top:64px}
-@media (max-width:900px){.wy-hero-grid{display:flex;flex-direction:column;gap:0}.wy-hero-txt{display:contents}.wy-hero-txt .kicker{order:1;align-self:center}.wy-hero-txt h1{order:2;text-align:center}.wy-vid{order:3;width:100%;margin:6px 0 24px}.wy-hero-txt .lead{order:4;text-align:center}.wy-hero-pts{order:5;align-self:center}.wy-hero-btns{order:6;width:100%}.wy-hero-trust{order:7;text-align:center}.wy-hero-txt{text-align:center}.wy-hero-pts{justify-items:center}.wy-hero-pts li{text-align:left}.wy-hero-btns{justify-content:center}.wy-hero-btns .button{flex:1 1 100%}.wy-sb-head{margin-top:48px}}
-.sb-t:hover{border-color:#cdbff0}
-.sb-auto .sb-t[aria-pressed="true"]{animation:sbPop .35s ease-out}
-@keyframes sbPop{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){.sb-auto .sb-t[aria-pressed="true"]{animation:none}}
-.sb-t:active{transform:scale(.97)}
-.sb-t:focus-visible{outline:2px solid var(--accent,#5b21d6);outline-offset:2px}
-.sb-t .ic{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;border:1.5px solid #cfc6e4;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;color:transparent;transition:all .2s}
-.sb-t .ic::before{content:"+";color:#a99dc8;font-weight:700}
-.sb-t .old{display:block;font-weight:700;font-size:14.5px;padding-right:22px;line-height:1.3}
-.sb-t .cost{display:block;margin-top:6px;font-size:12px;color:var(--muted,#6d6782)}
-.sb-t .new{position:absolute;inset:0;border-radius:14.5px;padding:14px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#f3ecff,#fbefff);opacity:0;transform:rotateX(-80deg);transform-origin:top;transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.sb-t .new small{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent,#5b21d6)}
-.sb-t .new b{font-size:14px;line-height:1.3;color:var(--ink,#1c0f33);margin-top:4px}
-.sb-t[aria-pressed="true"]{border-color:transparent;background:linear-gradient(var(--paper,#fff),var(--paper,#fff)) padding-box,var(--grad,linear-gradient(90deg,#4f0cf0,#d64df5)) border-box;box-shadow:0 10px 24px rgba(64,0,243,.12)}
-.sb-t[aria-pressed="true"] .ic{background:var(--grad,linear-gradient(90deg,#4f0cf0,#d64df5));border-color:transparent}
-.sb-t[aria-pressed="true"] .ic::before{content:"✓";color:#fff}
-.sb.done .sb-t{cursor:default}
-.sb.done .sb-t[aria-pressed="true"] .new{opacity:1;transform:none}
-.sb.done .sb-t[aria-pressed="false"]{opacity:.35}
-.sb-act{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:22px;text-align:center}
-.sb-hint{color:var(--muted,#6d6782);font-size:14px;margin:0}
-.sb-hint button{background:none;border:0;padding:0;font:inherit;color:var(--accent,#5b21d6);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.sb-go[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
-.sb.done .sb-go{display:none}
-.sb-out{display:none;margin-top:22px;border-radius:20px;padding:24px;background:linear-gradient(135deg,#160f2b,#321360);color:#fff;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.sb-out.on{display:flex;animation:sbIn .6s cubic-bezier(.2,.8,.2,1)}
-.sb-out img{height:24px;width:auto;display:block;margin-bottom:10px}
-.sb-out b{display:block;font-size:20px;letter-spacing:-.01em}
-.sb-out p{margin:6px 0 0;color:rgba(255,255,255,.75);font-size:14.5px}
-.sb-out .acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.sb-out .reset{background:none;border:0;color:rgba(255,255,255,.75);font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-@keyframes sbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.wy-hero-grid{display:flex;flex-direction:column;gap:0}.wy-hero-txt{display:contents}.wy-hero-txt .kicker{order:1;align-self:center}.wy-hero-txt h1{order:2;text-align:center}.wy-vid{order:3;width:100%;margin:6px 0 24px}.wy-hero-txt .lead{order:4;text-align:center}.wy-hero-pts{order:5;align-self:center}.wy-hero-btns{order:6;width:100%}.wy-hero-trust{order:7;text-align:center}.wy-hero-txt{text-align:center}.wy-hero-pts{justify-items:center}.wy-hero-pts li{text-align:left}.wy-hero-btns{justify-content:center}.wy-hero-btns .button{flex:1 1 100%}}
 
 /* --- 2. One lead, two ways --- */
 .ol{max-width:900px;margin:30px auto 0}
@@ -117,35 +111,11 @@
 .ol-note{font-size:13px;color:var(--muted,#6d6782);margin:14px 0 0}
 
 /* --- 3. Flip cards --- */
-.fc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1060px;margin:30px auto 0}
-.fc{display:block;width:100%;min-width:0;perspective:1200px;height:230px;border:0;padding:0;margin:0;background:none;cursor:pointer;font:inherit;text-align:left;color:inherit}
-.fc-in{display:block}
-.fc-f,.fc-b{text-align:left}
-.fc-in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
-.fc[aria-pressed="true"] .fc-in{transform:rotateY(180deg)}
-.fc-f,.fc-b{position:absolute;inset:0;border-radius:22px;padding:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column}
-.fc-f{background:var(--paper,#fff);border:1px solid var(--line,#e7e2f2);box-shadow:0 18px 44px rgba(35,8,53,.07)}
-.fc-f .n{font-size:13px;font-weight:800;color:var(--accent,#5b21d6);letter-spacing:.06em}
-.fc-f b{font-size:22px;line-height:1.25;letter-spacing:-.01em;color:var(--ink,#1c0f33);margin-top:12px}
-.fc-f .tap{margin-top:auto;font-size:13.5px;color:var(--muted,#6d6782);display:flex;align-items:center;gap:8px}
-.fc-f .tap::before{content:"↻";display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:var(--wash,#f2eefb);color:var(--accent,#5b21d6);font-weight:700}
-.fc-b{background:linear-gradient(135deg,#160f2b,#321360);color:#fff;transform:rotateY(180deg);justify-content:center}
-.fc-b b{font-size:17px;margin-bottom:8px}
-.fc-b p{margin:0;color:rgba(255,255,255,.8);font-size:15px;line-height:1.6}
-.fc:focus-visible{outline:2px solid var(--accent,#5b21d6);outline-offset:4px;border-radius:22px}
 
 @media (max-width:900px){
-  .sb{padding:18px;border-radius:22px}
-  .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sb-stat{padding:12px}
-  .sb-stats{position:sticky;top:calc(env(safe-area-inset-top,0px) + 124px);z-index:3;background:var(--paper,#fff);padding:8px 0;margin-top:-8px;border-radius:16px}
-  .sb-stat span{font-size:12px}
-  .fc-grid{grid-template-columns:1fr;max-width:460px}
-  .fc{height:200px}
 }
 @media (max-width:420px){.ol-seg button{padding:10px 14px;font-size:14px}.ol-card{padding:20px 18px}}
 @media (prefers-reduced-motion:reduce){
-  .sb-t .new,.fc-in,.ol-list li,.ol-end,.ol-pill{transition:none}
   .ol-seg button.nudge{animation:none}
 }
 /* --- closing CTA (light, centred) --- */
@@ -202,7 +172,7 @@
         </ul>
         <div class="wy-hero-btns">
           <a class="button button-grad" href="/book">Book a free demo</a>
-          <a class="button button-outline" href="#sb">Build your stack ↓</a>
+          <a class="button button-outline" href="#stack">See the difference ↓</a>
         </div>
         <p class="wy-hero-trust">Since 2014 · Headquartered in Canada</p>
       </div>
@@ -212,38 +182,43 @@
       </div>
     </div>
 
-    <div class="center wy-sb-head"><span class="wy-step"><i>1</i>Build your stack</span><p class="lead" style="max-width:600px;margin:10px auto 0">Tap the tools your business uses today and see what Adviuz replaces.</p></div>
-    <div class="sb" id="sb" style="margin-top:14px">
-      <div class="sb-stats" aria-live="polite">
-        <div class="sb-stat"><b id="sbL">0</b><span id="sbLl">Logins to manage</span></div>
-        <div class="sb-stat"><b id="sbB">0</b><span id="sbBl">Separate bills</span></div>
-        <div class="sb-stat"><b id="sbS">0</b><span id="sbSl">People to hire</span></div>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="container">
+    <div class="center">
+      <span class="wy-step"><i>1</i>The difference</span>
+      <h2 style="margin:12px 0 10px">12 things to juggle, or 1 system.</h2>
+      <p class="lead" style="max-width:660px;margin:0 auto">To find leads and turn them into customers, most businesses hire 4 people and pay for 8 apps. Adviuz replaces all of it.</p>
+    </div>
+    <div class="st" id="st">
+      <div class="st-old">
+        <p class="st-tag">Without Adviuz</p>
+        <h3><b>4</b> people to hire</h3>
+        <ul class="st-chips"><li style="--i:0"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Graphic designer</li><li style="--i:1"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Ads manager</li><li style="--i:2"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Lead callers</li><li style="--i:3"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Appointment setters</li></ul>
+        <h3><b>8</b> apps to pay for</h3>
+        <ul class="st-chips"><li style="--i:4"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Ad platforms</li><li style="--i:5"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Landing pages</li><li style="--i:6"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>CRM</li><li style="--i:7"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Email tool</li><li style="--i:8"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Texting app</li><li style="--i:9"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Call recording</li><li style="--i:10"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Booking app</li><li style="--i:11"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 12h6"/></svg>Reports</li></ul>
+        <p class="st-total">= 12 logins, bills and salaries to manage</p>
       </div>
-      <div class="sb-grid" id="sbGrid" role="group" aria-label="Tools your business uses today"></div>
-      <div class="sb-act">
-<button type="button" class="button button-grad sb-go" id="sbGo" disabled>Replace with Adviuz →</button>
-                <p class="sb-hint"><span id="sbHint">Tap the tools you use — or <button type="button" id="sbAll">select the usual 12</button>.</span><span id="sbHintDone" hidden>Each tile now shows what replaces it.</span></p>
-      </div>
-      <div class="sb-out" id="sbOut">
-        <div>
-          <img src="assets/logo-white.png" alt="Adviuz" width="118" height="25">
-          <b>One login. One prepaid balance. Fully managed.</b>
-          <p>We set it up and run it. You approve the flyer and meet your customers.</p>
-        </div>
-        <div class="acts">
-          <a class="button button-grad" href="/book">Book a free demo</a>
-          <button type="button" class="reset" id="sbReset">Start over</button>
-        </div>
+      <div class="st-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="st-new">
+        <p class="st-tag">With Adviuz</p>
+        <img src="assets/logo-white.png" alt="Adviuz" width="140" height="30">
+        <p class="st-big">1 system</p>
+        <div class="st-nums"><div><b>1</b><span>login</span></div><div><b>1</b><span>prepaid balance</span></div><div><b>0</b><span>callers to hire</span></div></div>
+        <ul class="st-ticks"><li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>We design and run your campaigns</li><li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>AI calls, texts and books every lead</li><li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every view and lead in one dashboard</li></ul>
+        <a class="button button-grad" href="/book">Book a free demo</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="one-lead">
+<section class="section wash" id="one-lead">
   <div class="container center">
     <span class="wy-step"><i>2</i>Follow one lead</span>
     <h2 style="margin:12px 0 10px">Same lead. Two very different evenings.</h2>
-    <p class="lead" style="max-width:640px;margin:0 auto">A new lead fills in your form on a Friday evening. Switch between the two to see what happens next.</p>
+    <p class="lead" style="max-width:640px;margin:0 auto">A new lead fills in your form on a Friday evening. Watch what happens next, the usual way and with Adviuz.</p>
     <div class="ol" id="ol">
       <div class="ol-seg" role="tablist" aria-label="Compare">
         <span class="ol-pill" id="olPill"></span>
@@ -260,24 +235,14 @@
   </div>
 </section>
 
-<section class="section wash">
+<section class="section">
   <div class="container center">
     <span class="wy-step"><i>3</i>What changes</span>
     <h2 style="margin:12px 0 10px">Three things you stop worrying about</h2>
-    <p class="lead" style="max-width:600px;margin:0 auto">Tap a card to flip it.</p>
-    <div class="fc-grid">
-      <button type="button" class="fc" aria-pressed="false"><span class="fc-in">
-        <span class="fc-f"><span class="n">01</span><b>No callers to hire or train</b><span class="tap">Tap to see how</span></span>
-        <span class="fc-b"><b>Fully managed</b><p>We design and run your campaign. The AI follows up with every lead by call, text and email and books appointments into your calendar.</p></span>
-      </span></button>
-      <button type="button" class="fc" aria-pressed="false"><span class="fc-in">
-        <span class="fc-f"><span class="n">02</span><b>Pay for attention, not clicks</b><span class="tap">Tap to see how</span></span>
-        <span class="fc-b"><b>Viewed flyers only</b><p>With Digital Flyers you pay only for flyers people view for at least 25 seconds — not for clicks or impressions.</p></span>
-      </span></button>
-      <button type="button" class="fc" aria-pressed="false"><span class="fc-in">
-        <span class="fc-f"><span class="n">03</span><b>Bonus with every package</b><span class="tap">Tap to see what’s included</span></span>
-        <span class="fc-b"><b>Included as a bonus</b><p>AI call minutes, texts, emails, call minutes and months of flyer design — with the CRM included at no charge.</p></span>
-      </span></button>
+    <div class="ch-grid">
+      <div class="ch"><span class="n">01</span><b>No callers to hire or train</b><p>We design and run your campaign. The AI follows up with every lead by call, text and email and books appointments into your calendar.</p></div>
+      <div class="ch"><span class="n">02</span><b>Pay for attention, not clicks</b><p>With Digital Flyers you pay only for flyers people view for at least 25 seconds, not for clicks or impressions.</p></div>
+      <div class="ch"><span class="n">03</span><b>Bonus with every package</b><p>AI call minutes, texts, emails, call minutes and months of flyer design, with the CRM included at no charge.</p></div>
     </div>
   </div>
 </section>
@@ -367,92 +332,10 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(id){return document.getElementById(id);}
 
-  /* ---------- 1. Stack builder ---------- */
-  var TOOLS=[
-    ['Graphic designer','A person to pay','Flyer design by our team',0,1,1],
-    ['Ad platforms','Login + monthly bill','Distribution on 15+ platforms',1,1,0],
-    ['Ads manager','A person to pay','Campaign run by our team',0,1,1],
-    ['Landing page builder','Login + monthly bill','Flyer page with call & form buttons',1,1,0],
-    ['CRM subscription','Login + monthly bill','CRM with pipeline & reminders',1,1,0],
-    ['Email marketing tool','Login + monthly bill','Follow-up emails in your brand’s voice',1,1,0],
-    ['Texting app','Login + monthly bill','Instant text to every new lead',1,1,0],
-    ['Phone & call recording','Login + monthly bill','Calls recorded & transcribed',1,1,0],
-    ['Booking app','Login + monthly bill','Booked into your calendar',1,1,0],
-    ['Reporting dashboard','Login + monthly bill','Live campaign reports',1,1,0],
-    ['Staff to call every lead','People to pay','AI calls every new lead',0,1,1],
-    ['Appointment setters','People to pay','AI books & sends reminders',0,1,1]
-  ];
-  var sb=$('sb'),grid=$('sbGrid'),go=$('sbGo'),out=$('sbOut'),done=false,autoGo=false;
-  var cur={l:0,b:0,s:0};
-  TOOLS.forEach(function(t,i){
-    var b=document.createElement('button');b.type='button';b.className='sb-t';b.setAttribute('aria-pressed','false');b.dataset.i=i;
-    b.innerHTML='<span class="ic" aria-hidden="true"></span><span class="old"></span><span class="cost"></span><span class="new" aria-hidden="true"><small>With Adviuz</small><b></b></span>';
-    b.querySelector('.old').textContent=t[0];b.querySelector('.cost').textContent=t[1];b.querySelector('.new b').textContent=t[2];
-    b.addEventListener('click',function(){if(done)return;b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');recount();});
-    grid.appendChild(b);
-  });
-  function tiles(){return [].slice.call(grid.children);}
-  function sel(){return tiles().filter(function(b){return b.getAttribute('aria-pressed')==='true';});}
-  function animNum(el,from,to){
-    if(RM||from===to){el.textContent=to;return;}
-    var t0=null,d=550;
-    function f(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/d),e=1-Math.pow(1-p,3);el.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(f);}
-    requestAnimationFrame(f);
-  }
-  function setStats(n,labels){
-    animNum($('sbL'),cur.l,n.l);animNum($('sbB'),cur.b,n.b);animNum($('sbS'),cur.s,n.s);cur=n;
-    $('sbLl').textContent=labels[0];$('sbBl').textContent=labels[1];$('sbSl').textContent=labels[2];
-  }
-  var BEFORE=['Logins to manage','Separate bills','People to hire'];
-  function recount(){
-    var n={l:0,b:0,s:0};
-    sel().forEach(function(b){var t=TOOLS[+b.dataset.i];n.l+=t[3];n.b+=t[4];n.s+=t[5];});
-    setStats(n,BEFORE);
-    go.disabled=!sel().length;
-  }
-  $('sbAll').addEventListener('click',function(){if(done)return;tiles().forEach(function(b){b.setAttribute('aria-pressed','true');});recount();});
-  go.addEventListener('click',function(){
-    var s=sel();if(!s.length)return;var byAuto=autoGo;done=true;go.disabled=true;
-    s.forEach(function(b,i){setTimeout(function(){b.classList.add('flip');},RM?0:i*110);});
-    sb.classList.add('done');
-    setTimeout(function(){
-      setStats({l:1,b:1,s:0},['Adviuz login','Prepaid balance','Callers to hire']);
-      out.classList.add('on');$('sbHint').hidden=true;$('sbHintDone').hidden=false;
-      if(!byAuto&&matchMedia('(max-width:900px)').matches)out.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
-    },RM?0:s.length*110+250);
-  });
-  $('sbReset').addEventListener('click',function(){
-    done=false;sb.classList.remove('done');out.classList.remove('on');
-    tiles().forEach(function(b){b.setAttribute('aria-pressed','false');b.classList.remove('flip');});
-    $('sbHint').hidden=false;$('sbHintDone').hidden=true;
-    recount();sb.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
-  });
-
-  /* Autoplay (like a video): starts as soon as the page opens, ticks the usual tools
-     one by one, flips to Adviuz, holds, then replays. Loops only while the builder is
-     on screen. Any real tap or key press stops it for good. */
-  var sbAutoOn=true,sbTimers=[],sbVisible=false,sbWaiting=true;
-  function stopAuto(){if(!sbAutoOn)return;sbAutoOn=false;sbTimers.forEach(clearTimeout);sbTimers=[];sb.classList.remove('sb-auto');}
-  sb.addEventListener('pointerdown',stopAuto,true);sb.addEventListener('keydown',stopAuto,true);
-  function softReset(){
-    done=false;sb.classList.remove('done');out.classList.remove('on');
-    tiles().forEach(function(b){b.setAttribute('aria-pressed','false');b.classList.remove('flip');});
-    $('sbHint').hidden=false;$('sbHintDone').hidden=true;recount();
-  }
-  function sbPlay(){
-    if(!sbAutoOn)return;
-    if(done)softReset();
-    sb.classList.add('sb-auto');
-    var ts=tiles(),step=RM?0:240,t=RM?0:700;
-    ts.forEach(function(b,i){sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;b.setAttribute('aria-pressed','true');recount();},t+i*step));});
-    t+=ts.length*step+(RM?0:900);
-    sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;autoGo=true;go.click();autoGo=false;},t));
-    if(RM)return;
-    sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;if(sbVisible)sbPlay();else sbWaiting=true;},t+ts.length*110+5200));
-  }
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){sbVisible=es[0].isIntersecting;if(sbVisible&&sbWaiting&&sbAutoOn){sbWaiting=false;sbPlay();}},{threshold:.35}).observe(grid);
-  } else { sbVisible=true;sbWaiting=false;sbPlay(); }
+  /* ---------- 1. The difference: animate in once ---------- */
+  var st=$('st');
+  if(st){if(RM||!('IntersectionObserver' in window))st.classList.add('in');
+    else{var sio=new IntersectionObserver(function(es){if(es[0].isIntersecting){st.classList.add('in');sio.disconnect();}},{threshold:.25});sio.observe(st);}}
 
   /* ---------- 2. One lead, two ways ---------- */
   var FLOW={
@@ -471,7 +354,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       ['Before the visit','Reminders 24 hours before, the morning of, and 1 hour before.']
     ],end:['good','✓ Appointment on your calendar']}
   };
-  var ol=$('ol'),list=$('olList'),endEl=$('olEnd'),pill=$('olPill'),bU=$('olU'),bA=$('olA'),timers=[],seenAdz=false;
+  var olTouched=false,ol=$('ol'),list=$('olList'),endEl=$('olEnd'),pill=$('olPill'),bU=$('olU'),bA=$('olA'),timers=[],seenAdz=false;
   function clear(){timers.forEach(clearTimeout);timers=[];}
   function placePill(btn){pill.style.width=btn.offsetWidth+'px';pill.style.transform='translateX('+(btn.offsetLeft-5)+'px)';}
   function play(k){
@@ -488,11 +371,11 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     });
     timers.push(setTimeout(function(){
       endEl.textContent=f.end[1];endEl.className='ol-end '+f.end[0]+' in';
-      if(k==='usual'&&!seenAdz)bA.classList.add('nudge');
+      if(k==='usual'&&!seenAdz){bA.classList.add('nudge');if(!olTouched)timers.push(setTimeout(function(){if(!olTouched)play('adz');},RM?0:2600));}
     },RM?0:250+f.steps.length*520));
   }
-  bU.addEventListener('click',function(){play('usual');});
-  bA.addEventListener('click',function(){play('adz');});
+  bU.addEventListener('click',function(){olTouched=true;play('usual');});
+  bA.addEventListener('click',function(){olTouched=true;play('adz');});
   window.addEventListener('resize',function(){placePill(ol.classList.contains('adz')?bA:bU);});
   var started=false;
   if('IntersectionObserver' in window){
@@ -501,10 +384,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   }else{play('usual');}
   placePill(bU);
 
-  /* ---------- 3. Flip cards ---------- */
-  [].forEach.call(document.querySelectorAll('.fc'),function(c){
-    c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true');});
-  });
 })();
 </script>
 
