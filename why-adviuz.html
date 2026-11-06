@@ -42,6 +42,19 @@
 .sb.done .sb-stat span{color:rgba(255,255,255,.75)}
 .sb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .sb-t{position:relative;min-height:88px;text-align:left;border:1.5px solid var(--line,#e2dbf0);background:var(--paper,#fff);border-radius:16px;padding:14px 14px 12px 14px;cursor:pointer;font:inherit;color:var(--ink-soft,#3c3552);transition:border-color .2s,box-shadow .2s,transform .15s,opacity .4s;perspective:800px}
+.wy-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.wy-hero-txt h1{margin:12px 0 16px}
+.wy-hero-txt .lead{margin:0}
+.wy-hero-pts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.wy-hero-pts li{position:relative;padding-left:30px;font-weight:600;color:var(--ink-soft,#2c2443)}
+.wy-hero-pts li::before{content:"✓";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--grad,linear-gradient(135deg,#4f10f0,#d65bf2));color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
+.wy-hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.wy-hero-trust{margin:16px 0 0;font-size:14px;color:var(--muted,#6d6782)}
+.wy-vid{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line,#e2dbf0);background:#0d0618;aspect-ratio:1/1;box-shadow:0 30px 60px rgba(28,18,54,.12)}
+.wy-vid video{display:block;width:100%;height:100%;object-fit:cover}
+.wy-vid-tag{position:absolute;left:14px;bottom:14px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(13,6,24,.72);border-radius:999px;padding:7px 12px}
+.wy-sb-head{margin-top:64px}
+@media (max-width:900px){.wy-hero-grid{display:flex;flex-direction:column;gap:0}.wy-hero-txt{display:contents}.wy-hero-txt .kicker{order:1;align-self:center}.wy-hero-txt h1{order:2;text-align:center}.wy-vid{order:3;width:100%;margin:6px 0 24px}.wy-hero-txt .lead{order:4;text-align:center}.wy-hero-pts{order:5;align-self:center}.wy-hero-btns{order:6;width:100%}.wy-hero-trust{order:7;text-align:center}.wy-hero-txt{text-align:center}.wy-hero-pts{justify-items:center}.wy-hero-pts li{text-align:left}.wy-hero-btns{justify-content:center}.wy-hero-btns .button{flex:1 1 100%}.wy-sb-head{margin-top:48px}}
 .sb-t:hover{border-color:#cdbff0}
 .sb-auto .sb-t[aria-pressed="true"]{animation:sbPop .35s ease-out}
 @keyframes sbPop{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
@@ -177,13 +190,29 @@
 <main>
 <section class="section wash wy-hero">
   <div class="container">
-    <div class="center">
-      <span class="kicker">Why Adviuz</span>
-      <h1>One system instead of twelve.</h1>
-      <p class="lead">Most businesses piece together a designer, ad tools, a CRM, texting and booking apps — then hire people to chase every lead. Watch how it adds up — then tap to try your own.</p>
+    <div class="wy-hero-grid">
+      <div class="wy-hero-txt">
+        <span class="kicker">Why Adviuz</span>
+        <h1>One system instead of twelve.</h1>
+        <p class="lead">Most businesses piece together a designer, ad tools, a CRM, texting and booking apps, then hire people to chase every lead. Adviuz runs all of it as one managed system, from your flyer to the deal.</p>
+        <ul class="wy-hero-pts">
+          <li>Pay only for flyers viewed for 25 seconds</li>
+          <li>AI follows up with every lead and books appointments</li>
+          <li>One login, one prepaid balance, fully managed</li>
+        </ul>
+        <div class="wy-hero-btns">
+          <a class="button button-grad" href="/book">Book a free demo</a>
+          <a class="button button-outline" href="#sb">Build your stack ↓</a>
+        </div>
+        <p class="wy-hero-trust">Since 2014 · Headquartered in Canada</p>
+      </div>
+      <div class="wy-vid">
+        <video id="wyVid" src="assets/how-we-are-different.mp4" poster="assets/how-we-are-different.webp" muted loop playsinline autoplay preload="metadata" width="720" height="720" aria-label="Video: seven differences between doing it yourself and using Adviuz"></video>
+        <span class="wy-vid-tag">How we're different · 38 sec</span>
+      </div>
     </div>
 
-    <div class="center" style="margin-top:30px"><span class="wy-step"><i>1</i>Build your stack</span></div>
+    <div class="center wy-sb-head"><span class="wy-step"><i>1</i>Build your stack</span><p class="lead" style="max-width:600px;margin:10px auto 0">Tap the tools your business uses today and see what Adviuz replaces.</p></div>
     <div class="sb" id="sb" style="margin-top:14px">
       <div class="sb-stats" aria-live="polite">
         <div class="sb-stat"><b id="sbL">0</b><span id="sbLl">Logins to manage</span></div>
@@ -470,6 +499,15 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 })();
 </script>
 
+<script>
+(function(){var v=document.getElementById('wyVid');if(!v)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.controls=true;return;}
+  if(!('IntersectionObserver' in window)){v.preload='auto';v.play&&v.play().catch(function(){v.controls=true;});return;}
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){v.controls=true;});}else v.pause();
+  });},{threshold:.25}).observe(v);
+})();
+</script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
 <script src="/js/fab.js?v=20261030a" defer></script>
