@@ -61,7 +61,7 @@ input:focus,select:focus{border-color:#7a3bff;box-shadow:0 0 0 4px rgba(122,59,2
 </header>
 <main id="app"><div class="loading">Loading your plan…</div></main>
 <script>
-/* Adviuz pay page (/pay?plan=growth|scale|pro&seg=b2b|b2c).
+/* Adviuz pay page (/pay?plan=growth|scale|pro|pilot&seg=b2b|b2c).
    Prices come from the server (website-plan-pay) — this page only displays them.
    On submit the server creates the lead + quote and returns the secure quote link. */
 (function () {
@@ -94,7 +94,7 @@ input:focus,select:focus{border-color:#7a3bff;box-shadow:0 0 0 4px rgba(122,59,2
       '<div class="card"><div class="plan-head"><div><div class="plan-name">' + esc(P.label) + ' Plan</div><div class="plan-who">' + esc(P.who) + '</div></div>' +
         (P.key === 'scale' ? '<span class="tag">RECOMMENDED</span>' : '') + '</div>' +
         '<div class="price"><b>' + m0(P.price) + '</b>' + (P.save > 0 ? '<s>' + m0(P.was) + '</s>' : '') + '<span>+ tax · one-time</span></div>' +
-        (P.save > 0 ? '<div class="save">You save ' + m0(P.save) + ' · valid 12 months · pause anytime</div>' : '<div class="save" style="color:var(--muted);font-weight:400">Valid 12 months · pause anytime</div>') +
+        (P.save > 0 ? '<div class="save">You save ' + m0(P.save) + ' · valid 12 months · pause anytime</div>' : '<div class="save" style="color:var(--muted);font-weight:400">' + (P.key === 'pilot' ? 'Valid 6 months · upgrade to any plan later' : 'Valid 12 months · pause anytime') + '</div>') +
         '<div class="box">' + big + items.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>' +
         '<button class="more" type="button" id="moreBtn">See everything included ›</button>' +
         '<div class="incl" id="incl">' + INCL.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div></div>' +
@@ -153,7 +153,7 @@ input:focus,select:focus{border-color:#7a3bff;box-shadow:0 0 0 4px rgba(122,59,2
       })
       .catch(function (e) { btn.disabled = false; btn.textContent = 'Continue to secure payment →'; showErr(e.message + ' You can also call +1 647 250 1152.'); });
   }
-  if (!/^(growth|scale|pro)$/.test(planKey) || !/^(b2b|b2c)$/.test(seg)) { fail('This link is missing the plan.'); return; }
+  if (!/^(growth|scale|pro|pilot)$/.test(planKey) || !/^(b2b|b2c)$/.test(seg)) { fail('This link is missing the plan.'); return; }
   fetch(API + '?plan=' + planKey + '&seg=' + seg).then(function (r) { return r.json(); }).then(function (j) {
     if (!j || !j.plan) throw new Error((j && j.error) || 'Plan not found.');
     P = j.plan; PROVS = j.provinces || []; render();
