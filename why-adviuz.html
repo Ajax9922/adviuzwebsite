@@ -43,6 +43,9 @@
 .sb-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .sb-t{position:relative;min-height:88px;text-align:left;border:1.5px solid var(--line,#e2dbf0);background:var(--paper,#fff);border-radius:16px;padding:14px 14px 12px 14px;cursor:pointer;font:inherit;color:var(--ink-soft,#3c3552);transition:border-color .2s,box-shadow .2s,transform .15s,opacity .4s;perspective:800px}
 .sb-t:hover{border-color:#cdbff0}
+.sb-auto .sb-t[aria-pressed="true"]{animation:sbPop .35s ease-out}
+@keyframes sbPop{0%{transform:scale(.94)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.sb-auto .sb-t[aria-pressed="true"]{animation:none}}
 .sb-t:active{transform:scale(.97)}
 .sb-t:focus-visible{outline:2px solid var(--accent,#5b21d6);outline-offset:2px}
 .sb-t .ic{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;border:1.5px solid #cfc6e4;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;color:transparent;transition:all .2s}
@@ -122,6 +125,7 @@
   .sb{padding:18px;border-radius:22px}
   .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sb-stat{padding:12px}
+  .sb-stats{position:sticky;top:calc(env(safe-area-inset-top,0px) + 124px);z-index:3;background:var(--paper,#fff);padding:8px 0;margin-top:-8px;border-radius:16px}
   .sb-stat span{font-size:12px}
   .fc-grid{grid-template-columns:1fr;max-width:460px}
   .fc{height:200px}
@@ -176,7 +180,7 @@
     <div class="center">
       <span class="kicker">Why Adviuz</span>
       <h1>One system instead of twelve.</h1>
-      <p class="lead">Most businesses piece together a designer, ad tools, a CRM, texting and booking apps — then hire people to chase every lead. Try it yourself: tap what your business uses today.</p>
+      <p class="lead">Most businesses piece together a designer, ad tools, a CRM, texting and booking apps — then hire people to chase every lead. Watch how it adds up — then tap to try your own.</p>
     </div>
 
     <div class="center" style="margin-top:30px"><span class="wy-step"><i>1</i>Build your stack</span></div>
@@ -349,7 +353,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     ['Staff to call every lead','People to pay','AI calls every new lead',0,1,1],
     ['Appointment setters','People to pay','AI books & sends reminders',0,1,1]
   ];
-  var sb=$('sb'),grid=$('sbGrid'),go=$('sbGo'),out=$('sbOut'),done=false;
+  var sb=$('sb'),grid=$('sbGrid'),go=$('sbGo'),out=$('sbOut'),done=false,autoGo=false;
   var cur={l:0,b:0,s:0};
   TOOLS.forEach(function(t,i){
     var b=document.createElement('button');b.type='button';b.className='sb-t';b.setAttribute('aria-pressed','false');b.dataset.i=i;
@@ -385,7 +389,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     setTimeout(function(){
       setStats({l:1,b:1,s:0},['Adviuz login','Prepaid balance','Callers to hire']);
       out.classList.add('on');$('sbHint').hidden=true;$('sbHintDone').hidden=false;
-      if(matchMedia('(max-width:900px)').matches)out.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+      if(!autoGo&&matchMedia('(max-width:900px)').matches)out.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
     },RM?0:s.length*110+250);
   });
   $('sbReset').addEventListener('click',function(){
@@ -394,6 +398,23 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     $('sbHint').hidden=false;$('sbHintDone').hidden=true;
     recount();sb.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
   });
+
+  /* Autoplay: when the builder scrolls into view, tick the usual tools one by one,
+     then show the Adviuz side. Any real tap or key press stops it. */
+  var sbAutoOn=true,sbTimers=[];
+  function stopAuto(){if(!sbAutoOn)return;sbAutoOn=false;sbTimers.forEach(clearTimeout);sbTimers=[];sb.classList.remove('sb-auto');}
+  sb.addEventListener('pointerdown',stopAuto,true);sb.addEventListener('keydown',stopAuto,true);
+  function sbPlay(){
+    if(!sbAutoOn||done)return;
+    sb.classList.add('sb-auto');
+    var ts=tiles(),step=RM?0:240;
+    ts.forEach(function(b,i){sbTimers.push(setTimeout(function(){if(!sbAutoOn)return;b.setAttribute('aria-pressed','true');recount();},300+i*step));});
+    sbTimers.push(setTimeout(function(){if(!sbAutoOn||done)return;autoGo=true;go.click();autoGo=false;sb.classList.remove('sb-auto');sbAutoOn=false;},300+ts.length*step+(RM?0:1000)));
+  }
+  if('IntersectionObserver' in window){
+    var sio=new IntersectionObserver(function(es){if(es[0].isIntersecting){sio.disconnect();sbPlay();}},{threshold:.35});
+    sio.observe(grid);
+  }
 
   /* ---------- 2. One lead, two ways ---------- */
   var FLOW={
