@@ -81,6 +81,7 @@
       <video src="assets/how-it-works-narrated.mp4" poster="assets/how-it-works-narrated.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: how Adviuz works, with captions"></video>
       <button class="vplay" id="vplay" aria-label="Play video"><span>▶</span></button>
       <button class="vsound" id="vsound" type="button" aria-label="Turn sound on and watch from the start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9.5l5 5M22 9.5l-5 5"/></svg><span>Tap for sound</span></button>
+      <button class="vfs" id="vfs" type="button" aria-label="Watch full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Full screen</span></button>
     </div>
     </div>
   </div>
@@ -449,8 +450,14 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     if(vid.muted){vid.muted=false;vid.currentTime=0;setSnd(true);tryPlay();}else{vid.muted=true;setSnd(false);}});
   btn.addEventListener('click',e=>{e.stopPropagation();delete stage.dataset.user;tryPlay();});
   stage.addEventListener('click',()=>{if(vid.paused){delete stage.dataset.user;tryPlay();}else{stage.dataset.user='1';vid.pause();}});
+  const fsb=document.getElementById('vfs'),fsOn=()=>document.fullscreenElement||document.webkitFullscreenElement;
+  fsb.addEventListener('click',e=>{e.stopPropagation();
+    if(fsOn()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+    if(stage.requestFullscreen){stage.requestFullscreen().then(()=>{if(screen.orientation&&screen.orientation.lock)screen.orientation.lock('landscape').catch(()=>{});tryPlay();}).catch(()=>{if(vid.webkitEnterFullscreen)vid.webkitEnterFullscreen();});}
+    else if(vid.webkitEnterFullscreen){vid.webkitEnterFullscreen();tryPlay();}});
+  document.addEventListener('fullscreenchange',()=>{if(!fsOn()&&screen.orientation&&screen.orientation.unlock)try{screen.orientation.unlock();}catch(_){}});
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){vid.removeAttribute('autoplay');vid.pause();stage.classList.add('paused');return;}
-  if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){if(vid.paused&&!stage.dataset.user)tryPlay();}else if(!vid.paused){vid.pause();}}),{threshold:.3}).observe(stage);}
+  if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){if(vid.paused&&!stage.dataset.user)tryPlay();}else if(!vid.paused&&!fsOn()){vid.pause();}}),{threshold:.3}).observe(stage);}
   else tryPlay();
 })();
 

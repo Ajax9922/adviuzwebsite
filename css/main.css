@@ -3998,3 +3998,9 @@ body:has(.promo-bar)::before{top:calc(38px + env(safe-area-inset-top,0px));heigh
 .snd-on .vsound{background:rgba(35,8,53,.78);box-shadow:none}
 .vsound:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @media (max-width:720px){.vsound{left:10px;top:10px;font-size:12px;padding:7px 11px 7px 9px;gap:6px}.vsound svg{width:15px;height:15px}}
+.vfs{position:absolute;right:14px;top:14px;z-index:3;display:inline-flex;align-items:center;gap:7px;border:0;border-radius:999px;background:rgba(35,8,53,.78);color:#fff;font:700 13px/1 var(--font-body);padding:9px 13px 9px 10px;cursor:pointer}
+.vfs svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.video-stage:fullscreen{background:#000;border-radius:0;display:flex;align-items:center}
+.video-stage:fullscreen video{position:static!important;height:100%!important;background:#000!important}
+.video-stage:fullscreen .vfs span{display:none}
+@media (max-width:720px){.vfs{right:10px;top:10px;padding:7px}.vfs span{display:none}}
