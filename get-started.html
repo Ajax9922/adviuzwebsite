@@ -396,6 +396,10 @@
 @media(max-width:560px){.bx{padding:20px 16px}.bx-opts button{padding:9px 14px;font-size:14px}}
 
 .gs-bar{transform:translateY(110%);transition:transform .25s}.gs-bar.on{transform:none}
+.pl-dur{display:inline-flex;align-items:center;gap:6px;margin:8px 0 2px;font-size:12.5px;font-weight:600;color:#4b0fe0;background:#f1ebff;border-radius:999px;padding:4px 10px 4px 7px}
+.pl-dur svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.pl-dur b{font-weight:800}
+.pl-cons{font-size:22px!important;line-height:1.2}
 </style>
 </head>
 <body>
@@ -766,6 +770,9 @@
   var FLY=[{key:'fly-1000',buy:'fly1000',g:'fly',name:'1,000 Flyer Views',price:5000,setup:300,list:[{t:'1,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 3 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-2500',buy:'fly2500',g:'fly',name:'2,500 Flyer Views',price:12500,setup:300,rec:1,list:[{t:'2,500 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 4 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-5000',buy:'fly5000',g:'fly',name:'5,000 Flyer Views',price:25000,setup:300,list:[{t:'5,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 5 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]}];
+  FLY.push({key:'fly-10000',g:'fly',name:'10,000 Flyer Views',consult:1,price:0,list:[{t:'10,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 12 months'},{t:'Dedicated campaign planning'},{t:'Package validity: 12 months'}]});
+  var DUR={'bf-pilot':'1 week','bf-growth':'1 month','fly-1000':'1 month','bf-scale':'3 months','fly-2500':'3 months','bf-pro':'6 months','fly-5000':'6 months','fly-10000':'1 year'};
+  var CLK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var AI=[{key:'ai-essential',ce:'ce-essential',g:'ai',name:'Essential',for:'For a business with a steady flow of new leads',price:600,setup:300,cap:'Follows up with about <b>400 new leads</b>',allow:'400 AI minutes · 2,000 texts, emails and call minutes',
             list:[{k:'fee',t:'One-time setup: $300'},{t:'Lasts 120 days',em:'(about 4 months)'},{t:'Recharge only when you need more'}]},
           {key:'ai-pro',ce:'ce-pro',g:'ai',name:'Pro',for:'For a business running regular ad campaigns',price:1000,rec:1,cap:'Follows up with about <b>800 new leads</b>',boost:'2× the leads of Essential',allow:'800 AI minutes · 4,000 texts, emails and call minutes',
@@ -813,9 +820,9 @@
     var save=(x.std&&x.std>x.price)?x.std-x.price:0;
     var feats=(x.g==='fly'?FEAT_FONLY:(x.g==='ai'?FEAT_AI:FEAT_FLY)).map(function(g){return '<div class="pf-g"><b>'+g[0]+'</b><ul>'+g[1].map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul></div>';}).join('');
     return '<div class="pl-card'+(x.rec?' pl-rec':'')+'">'+(x.rec?'<span class="pl-badge">RECOMMENDED</span>':'')
-      +'<div class="pl-top"><div class="pl-tl"><h4>'+esc(x.title||x.name)+'</h4>'+(x.for?'<p class="pl-for">'+esc(x.for)+'</p>':'')+(x.g==='bf'&&BF&&save?'<span class="pl-bfb">Black Friday</span>':'')+'</div>'
-      +'<div class="pl-tr">'+(save?'<div class="pl-p pl-pa" data-from="'+x.std+'" data-to="'+x.price+'">'+$m(x.std)+'</div>':'<div class="pl-p">'+$m(x.price)+'</div>')+'<div class="pl-pn">CAD + applicable tax</div>'
-      +(save?'<div class="pl-sv pl-pa-sv"><s>'+$m(x.std)+'</s> <b>Save '+$m(save)+'</b></div>':'')+'</div></div>'
+      +'<div class="pl-top"><div class="pl-tl"><h4>'+esc(x.title||x.name)+'</h4>'+(x.for?'<p class="pl-for">'+esc(x.for)+'</p>':'')+(DUR[x.key]?'<span class="pl-dur">'+CLK+'Typically used over <b>'+DUR[x.key]+'</b></span>':'')+(x.g==='bf'&&BF&&save?'<span class="pl-bfb">Black Friday</span>':'')+'</div>'
+      +'<div class="pl-tr">'+(x.consult?'<div class="pl-p pl-cons">By consultation</div><div class="pl-pn">For $50,000+ plans</div>':(save?'<div class="pl-p pl-pa" data-from="'+x.std+'" data-to="'+x.price+'">'+$m(x.std)+'</div>':'<div class="pl-p">'+$m(x.price)+'</div>')+'<div class="pl-pn">CAD + applicable tax</div>'
+      +(save?'<div class="pl-sv pl-pa-sv"><s>'+$m(x.std)+'</s> <b>Save '+$m(save)+'</b></div>':''))+'</div></div>'
       +(x.cap?'<div class="pl-cap">'+x.cap+(x.boost?'<span class="pl-boost">'+esc(x.boost)+'</span>':'')+'</div>':'')
       +'<div class="pl-inc">'+esc(x.inc||'Includes')+'</div><ul class="pl-list">'+x.list.map(function(l){return '<li'+(l.k?' class="pl-'+l.k+'"':'')+'>'+esc(l.t)+(l.em?' <em>'+esc(l.em)+'</em>':'')+'</li>';}).join('')+'</ul>'
       +(x.allow?'<p class="pl-allow">'+esc(x.allow)+'</p>':'')
@@ -823,6 +830,7 @@
         +(x.aiVal?'<div class="pl-offv"><span>$</span><em>Access to AI engine + <b>'+$m(x.aiVal)+' worth of AI credits</b></em></div>':'')+'</div>':'')
       +'<details class="pl-feat"><summary><span class="pf-open">See all features</span><span class="pf-close">Hide features</span><span class="pf-chev" aria-hidden="true"></span></summary><div class="pf-body">'+feats+'</div></details>'
       +(x.ce?'<a class="pl-buy'+(x.rec?'':'')+' ce-buy" data-plan="'+x.ce+'" href="/ai-conversion-engine.html?buy='+x.ce+'">Buy now</a>'
+            :x.consult?'<a class="pl-buy" href="/book?solution=flyers">Book a consultation</a>'
             :'<a class="pl-buy'+(save||x.rec?' pl-buy-dk':'')+'" href="#buy" data-k="'+x.key+'">'+(save?'Get started &rarr;':'Buy now')+'</a>')+'</div>';
   }
   var grid=document.getElementById('ppGrid');
@@ -830,7 +838,7 @@
     document.getElementById('ppIntro').textContent=INTRO[tab];
     document.getElementById('ppSeg').hidden=tab!=='bf';
     var xs=tab==='bf'?BFP[seg]:tab==='fly'?FLY:AI;
-    grid.className='pp-grid'+(tab==='bf'?' g4':'');
+    grid.className='pp-grid'+(tab!=='ai'?' g4':'');
     grid.innerHTML=xs.map(planCard).join('');
     priceAnim();
     if(!sel||(!CARDS[sel.key]))pickKey(tab==='ai'?'bf-scale':xs.filter(function(x){return x.rec;})[0].key,true);
@@ -937,7 +945,7 @@
     var L=[],tot=0;
     if(v){L.push([n(v)+' flyer views',FLY[v]]);L.push(['Flyer setup',300]);tot+=FLY[v]+300;}
     if(a!=='none'){var p=AI[a];L.push(['AI Conversion Engine: '+p[4]+' ('+n(p[2])+' AI minutes)',p[0]]);if(p[1]){L.push(['AI setup',p[1]]);}tot+=p[0]+p[1];}
-    document.getElementById('bxV').textContent=v?('About '+n(v)+' people view your flyer for 25 seconds.'):'No flyer views. AI follow-up only, for leads you already get.';
+    document.getElementById('bxV').textContent=v?('About '+n(v)+' people view your flyer for 25 seconds. Typically used over '+({1000:'1 month',2500:'3 months',5000:'6 months'})[v]+'.'):'No flyer views. AI follow-up only, for leads you already get.';
     document.getElementById('bxA').textContent=a==='none'?'No AI follow-up. Your team calls every lead.':('Calls, texts and emails your leads within seconds, books appointments and keeps following up.');
     document.getElementById('bxLines').innerHTML=L.map(function(x){return '<div><span>'+x[0]+'</span><span>'+m(x[1])+'</span></div>';}).join('')||'<div><span>Pick at least one part.</span><span></span></div>';
     document.getElementById('bxTot').textContent=tot?m(tot)+' + tax':'—';
