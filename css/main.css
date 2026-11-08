@@ -3986,3 +3986,15 @@ body:has(.promo-bar)::before{top:calc(38px + env(safe-area-inset-top,0px));heigh
   .pp-pill{font-size:11.5px;padding:8px 14px}
 }
 @media (max-width:520px){.pp-steps{grid-template-columns:1fr}.pp-fair li{flex-direction:column;align-items:flex-start;gap:4px}.pp-offer{flex-direction:column;align-items:flex-start}}
+
+/* Narrated hero video: keep the whole 16:9 frame (captions are burned in), true colours */
+.video-stage.narr{background:#fff}
+.video-stage.narr video,.video-stage.narr img{opacity:1}
+.hero .video-stage.narr video,.hero .video-stage.narr img{object-fit:contain!important;background:#fff}
+.vsound{position:absolute;left:14px;top:14px;z-index:3;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:700 14px/1 var(--font-body);padding:10px 16px 10px 12px;cursor:pointer;box-shadow:0 8px 22px rgba(64,0,243,.35)}
+.vsound svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vsound svg path:first-child{fill:currentColor;stroke:none}
+.vsound .w{display:none}.snd-on .vsound .w{display:inline}.snd-on .vsound .x{display:none}
+.snd-on .vsound{background:rgba(35,8,53,.78);box-shadow:none}
+.vsound:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media (max-width:720px){.vsound{left:10px;top:10px;font-size:12px;padding:7px 11px 7px 9px;gap:6px}.vsound svg{width:15px;height:15px}}

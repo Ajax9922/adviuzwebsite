@@ -76,14 +76,11 @@
       <div class="hero-vid-slot" id="heroVidSlot"></div>
     </div>
     <div class="hero-visual" id="heroVisual">
-    <div class="video-stage" id="howVideo">
-      <img src="assets/hero.webp" alt="" aria-hidden="true">
-      <video src="assets/how-it-works.mp4" muted loop playsinline autoplay preload="metadata"></video>
+    <div class="video-stage narr" id="howVideo">
+      <img src="assets/how-it-works-narrated.webp" alt="" aria-hidden="true">
+      <video src="assets/how-it-works-narrated.mp4" poster="assets/how-it-works-narrated.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: how Adviuz works, with captions"></video>
       <button class="vplay" id="vplay" aria-label="Play video"><span>▶</span></button>
-      <div class="vcap">
-        <div class="vcap-text" id="vcapText" aria-live="polite"></div>
-        <div class="vcap-dots" id="vcapDots"></div>
-      </div>
+      <button class="vsound" id="vsound" type="button" aria-label="Turn sound on and watch from the start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9.5l5 5M22 9.5l-5 5"/></svg><span>Tap for sound</span></button>
     </div>
     </div>
   </div>
@@ -437,31 +434,24 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     else sec.classList.remove('tt-on');
   });},{threshold:0}).observe(sec);
 })();
-/* Video captions */
+/* Hero video: narrated "How it works" (captions are inside the video). Starts muted; "Tap for sound" restarts it with sound. */
 (function(){
-  const caps=['Flyer Design','Audience Selection','Go Live','Get Charged only for Viewed Flyers','Receive Leads & Reports'];
-  const cuts=[0,2.0,4.5,6.5,8.3]; /* seconds where each scene starts in how-it-works.mp4 */
-  const txt=document.getElementById('vcapText'),dots=document.getElementById('vcapDots'),stage=document.getElementById('howVideo');
-  if(!txt)return;
-  caps.forEach(()=>{const i=document.createElement('i');dots.appendChild(i);});
-  const ds=[...dots.children];let idx=-1;
-  function show(i){if(i===idx)return;idx=i;
-    txt.innerHTML='<span class="line"><span class="num">'+(i+1)+'</span>'+caps[i]+'</span>';
-    ds.forEach((d,j)=>d.classList.toggle('on',j===i));}
-  const vid=stage.querySelector('video');
-  const btn=document.getElementById('vplay');
-  if(vid&&vid.getAttribute('src')){
-    stage.classList.add('has-video');
-    vid.addEventListener('timeupdate',()=>{let i=0;const t=vid.currentTime;while(i<cuts.length-1&&t>=cuts[i+1])i++;show(i);});
-    vid.addEventListener('pause',()=>stage.classList.add('paused'));
-    vid.addEventListener('play',()=>stage.classList.remove('paused'));
-    const tryPlay=()=>vid.play().then(()=>stage.classList.remove('paused')).catch(()=>stage.classList.add('paused'));
-    btn.addEventListener('click',tryPlay);
-    stage.addEventListener('click',e=>{if(e.target!==btn&&!btn.contains(e.target)){vid.paused?tryPlay():vid.pause();}});
-    show(0);tryPlay();
-  }else{
-    show(0);setInterval(()=>show((idx+1)%caps.length),2600);
-  }
+  const stage=document.getElementById('howVideo');if(!stage)return;
+  const vid=stage.querySelector('video'),btn=document.getElementById('vplay'),snd=document.getElementById('vsound');
+  if(!vid)return;
+  stage.classList.add('has-video');
+  vid.addEventListener('pause',()=>stage.classList.add('paused'));
+  vid.addEventListener('play',()=>stage.classList.remove('paused'));
+  const tryPlay=()=>vid.play().then(()=>stage.classList.remove('paused')).catch(()=>stage.classList.add('paused'));
+  function setSnd(on){stage.classList.toggle('snd-on',on);snd.querySelector('span').textContent=on?'Sound on':'Tap for sound';
+    snd.setAttribute('aria-label',on?'Mute video':'Turn sound on and watch from the start');}
+  snd.addEventListener('click',e=>{e.stopPropagation();
+    if(vid.muted){vid.muted=false;vid.currentTime=0;setSnd(true);tryPlay();}else{vid.muted=true;setSnd(false);}});
+  btn.addEventListener('click',e=>{e.stopPropagation();delete stage.dataset.user;tryPlay();});
+  stage.addEventListener('click',()=>{if(vid.paused){delete stage.dataset.user;tryPlay();}else{stage.dataset.user='1';vid.pause();}});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){vid.removeAttribute('autoplay');vid.pause();stage.classList.add('paused');return;}
+  if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){if(vid.paused&&!stage.dataset.user)tryPlay();}else if(!vid.paused){vid.pause();}}),{threshold:.3}).observe(stage);}
+  else tryPlay();
 })();
 
 
