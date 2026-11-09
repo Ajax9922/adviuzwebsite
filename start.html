@@ -407,35 +407,45 @@
 .pl-dur b{font-weight:800}
 .pl-cons{font-size:22px!important;line-height:1.2}
 
-/* ===== Step-by-step landing (start.html) ===== */
-.stb{display:flex;justify-content:center;gap:6px;margin:8px auto 0;padding:0 16px;max-width:720px}
-.stb button{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;border:0;background:none;font:700 15px/1.2 var(--font-body);color:var(--muted);padding:12px 6px;border-bottom:3px solid var(--line);cursor:pointer}
-.stb button i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--line);color:var(--muted);font-style:normal;font-size:13px;font-weight:800;flex:0 0 auto}
-.stb button.on{color:var(--ink);border-color:transparent;border-image:var(--grad) 1}
-.stb button.on i{background:var(--grad);color:#fff}
-.stb button.done i{background:#e9e2ff;color:var(--accent)}
-.stb button[disabled]{cursor:default}
-[data-st]{display:none}
-[data-st].show{display:block;animation:stIn .5s cubic-bezier(.2,.8,.2,1)}
-@keyframes stIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.st1{padding:26px 0 10px;text-align:center}
-.st1 .kicker{display:inline-block}
-.st1 h1{font-size:clamp(30px,4.4vw,52px);margin:8px 0 6px;letter-spacing:-.03em}
-.st1 h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.st1 .lead{margin:0 auto 22px;max-width:640px}
-.st-vwrap{max-width:min(1040px,calc((100svh - 390px)*16/9));min-width:min(100%,560px);margin:0 auto}
-.sx-vid.tall{aspect-ratio:9/16;height:min(calc(100svh - 290px),760px);min-height:400px;width:auto;margin:0 auto;max-width:100%}
-.st-next{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 18px;margin:20px 0 6px;min-height:52px}
-.st-skip{opacity:0;pointer-events:none;transition:opacity .4s}
-.st-skip.on{opacity:1;pointer-events:auto}
-.st-hint{color:var(--muted);font-size:14.5px}
-.st-again{display:block;width:max-content;margin:14px auto 0;background:none;border:0;font:700 15px var(--font-body);color:var(--accent);cursor:pointer}
+/* ===== /start ad landing page ===== */
+.sh{padding:34px 0 30px;overflow:hidden}
+.sh-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.sh h1{font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.04em;margin:14px 0 14px}
+.sh h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sh .lead{max-width:520px;margin:0 0 22px}
+.sh-btns{display:flex;flex-wrap:wrap;gap:12px}
+.sh-btns .button{display:inline-flex;align-items:center;gap:10px}
+.sh-btns .button svg{width:18px;height:18px;fill:currentColor}
+.sh-ticks{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:14.5px;font-weight:600}
+.sh-ticks li:before{content:"\2713";color:var(--accent);font-weight:800;margin-right:7px}
+.ph-wrap{position:relative;display:flex;justify-content:center}
+.ph-wrap:before{content:"";position:absolute;width:120%;aspect-ratio:1;left:-10%;top:50%;transform:translateY(-50%);background:radial-gradient(closest-side,rgba(160,110,255,.28),rgba(230,90,252,.12) 55%,transparent 75%);z-index:0}
+.ph{position:relative;z-index:1;width:min(300px,72vw);aspect-ratio:9/19;border-radius:46px;background:#1c1230;padding:11px;box-shadow:0 50px 90px -30px rgba(35,8,53,.55),0 0 0 2px #3a2c55 inset;border:0;cursor:pointer;display:block;transform:rotate(-2deg);transition:transform .35s}
+.ph:hover{transform:rotate(0) scale(1.02)}
+.ph-scr{display:block;position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#fff url(assets/hiw-mobile.webp) center/cover no-repeat}
+.ph-scr:before{content:"";position:absolute;left:50%;top:9px;width:30%;height:20px;border-radius:12px;background:#1c1230;transform:translateX(-50%);z-index:2}
+
+.ph-play{position:absolute;left:50%;top:87.5%;z-index:3;width:78px;height:78px;border-radius:50%;background:var(--grad);transform:translate(-50%,-50%);box-shadow:0 16px 44px rgba(64,0,243,.5)}
+.ph-play:before{content:"";position:absolute;inset:-12px;border-radius:50%;border:3px solid rgba(255,255,255,.75);animation:phR 2s infinite}
+.ph-play:after{content:"";position:absolute;left:30px;top:23px;border-left:24px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent}
+@keyframes phR{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
+.ph-play,.ph-cap{display:block}.ph-cap{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;color:#fff;font-weight:800;font-size:17px;line-height:1.25;padding:0 18px}
+.ph-cap small{display:block;font-weight:600;font-size:13px;opacity:.85;margin-top:3px}
+.trust{padding-top:26px!important}
 .st-ask{display:flex;flex-direction:column;align-items:center;gap:12px;margin:6px auto 26px}
 .st-ask>span{font-weight:800;color:var(--ink);font-size:17px}
 .st-ask .gs-seg{flex-wrap:wrap;justify-content:center}
-.pl-card.pl-hl{outline:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:3px solid transparent;box-shadow:0 24px 60px rgba(64,0,243,.22);transform:translateY(-4px);transition:transform .3s,box-shadow .3s}
-.st3-help{text-align:center;color:var(--muted);margin:18px 0 0}
-.st3-help a,.st3-help button{color:var(--accent);font-weight:700;background:none;border:0;font:inherit;cursor:pointer;padding:0}
+.pl-card.pl-hl{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:3px solid transparent;box-shadow:0 24px 60px rgba(64,0,243,.22);transform:translateY(-4px);transition:transform .3s,box-shadow .3s}
+.co-back{position:relative;z-index:2;display:inline-flex;margin-top:64px!important;align-items:center;gap:8px;background:none;border:0;font:700 15px var(--font-body);color:var(--accent);cursor:pointer;padding:0;margin:0 0 6px}
+#buy{padding-top:24px}
+body[data-view="checkout"] .promo-bar{display:none}
+/* full-screen video */
+.vf{position:fixed;inset:0;z-index:200;background:#07030f;display:flex;align-items:center;justify-content:center}
+.vf[hidden]{display:none}
+.vf video{width:100%;height:100%;object-fit:contain;background:#07030f}
+.vf-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:2;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;cursor:pointer;backdrop-filter:blur(6px)}
+html.vf-lock,html.vf-lock body{overflow:hidden}
+@media(max-width:860px){.sh{padding:14px 0 22px;text-align:center}.sh-grid{grid-template-columns:1fr;gap:18px;justify-items:center}.sh-txt{display:contents}.sh .gs-pill{order:1;margin:0}.sh h1{order:2;margin:0;font-size:clamp(34px,10vw,46px)}.ph-wrap{order:3}.sh-btns{order:4;justify-content:center}.sh .lead,.sh-ticks,.sh-btns [data-play]{display:none}.ph{width:min(230px,58vw)}}
 /* chat */
 .cb-fab{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:800 15px/1 var(--font-body);padding:14px 20px 14px 14px;box-shadow:0 14px 34px rgba(64,0,243,.4);cursor:pointer}
 .cb-fab svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -461,9 +471,10 @@
 .cb-tip[hidden]{display:none}
 body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .cb-note{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
-@media(max-width:720px){.st1 .lead{display:none}.st1 h1{margin-bottom:16px}.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:80px}
-  .stb button span{display:none}.stb button{flex:0 0 auto;padding:10px 14px}.stb button.on span{display:inline}
+@media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:80px}
   .cb{right:0;bottom:0;width:100vw;max-width:100vw;height:82svh;border-radius:22px 22px 0 0}.cb-fab{right:12px;bottom:12px;padding:12px 16px 12px 12px;font-size:14px}}
+
+body[data-view="checkout"] .cb-tip{display:none}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -475,53 +486,48 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
     <div class="nav-actions">
       <a class="nav-phone" href="tel:+16472501152">+1 647 250 1152</a>
-      <a class="button button-grad" href="#plans" data-go="2">See plans</a>
+      <a class="button button-grad" href="#plans">See plans</a>
     </div>
   </div>
 </header>
 
 <main>
-<nav class="stb" id="stBar" aria-label="Steps">
-  <button type="button" data-go="1"><i>1</i><span>Watch</span></button>
-  <button type="button" data-go="2"><i>2</i><span>Choose your plan</span></button>
-  <button type="button" data-go="3"><i>3</i><span>Pay</span></button>
-</nav>
-
-<section class="st1" data-st="1" id="watch">
-  <div class="container">
-    <span class="kicker">Step 1 · Watch</span>
-    <h1>How <span>Digital Flyers</span> work</h1>
-    <p class="lead">See the whole process in about 2 minutes, from your flyer to booked customers. Then choose your plan.</p>
-    <div class="st-vwrap">
-      <div class="sx-vid" id="sxVid">
-        <video id="stVideo" muted playsinline autoplay preload="metadata" aria-label="Video: how Digital Flyers work, with captions"></video>
-        <button class="sx-snd" id="sxSnd" type="button" aria-label="Turn sound on and watch from the start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9.5l5 5M22 9.5l-5 5"/></svg><span>Tap for sound</span></button>
-        <button class="sx-play" id="sxPlay" type="button" aria-label="Play video"><span></span></button>
-        <button class="sx-fs" id="sxFs" type="button" aria-label="Watch full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Full screen</span></button>
+<div id="pgMain">
+<section class="sh">
+  <div class="container sh-grid">
+    <div class="sh-txt">
+      <p class="gs-pill" data-bf><i aria-hidden="true"></i>Black Friday · ends 30 November</p>
+      <h1>How <span>Digital Flyers</span> work</h1>
+      <p class="lead">Your flyer reaches the right people on 15+ platforms. You pay only when someone views it for 25 seconds, and AI follows up every lead.</p>
+      <div class="sh-btns">
+        <a class="button button-grad" href="#" data-play><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Watch the 2-minute video</a>
+        <a class="button button-outline" href="#plans">See plans &amp; pricing</a>
       </div>
+      <ul class="sh-ticks"><li>Prepaid, $0 monthly</li><li>Pay only for 25-second views</li><li>Since 2014</li></ul>
     </div>
-    <div class="st-next">
-      <span class="st-hint" id="stHint">Your plans appear when the video ends.</span>
-      <button type="button" class="button button-outline st-skip" id="stSkip">Skip to plans &rarr;</button>
+    <div class="ph-wrap">
+      <button type="button" class="ph" data-play aria-label="Play the video: How Digital Flyers work"><span class="ph-scr"></span><span class="ph-play"></span></button>
     </div>
   </div>
 </section>
-<section class="sx-trust" data-st="1" aria-label="About Adviuz">
+<section class="trust" aria-label="Global brands using digital flyers">
   <div class="container">
-    <div class="sx-stats">
+    <h2 class="trust-head">Trusted by <span class="grad-text">Global Brands</span></h2>
+  </div>
+  <div class="trust-viewport">
+    <div class="trust-track"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"></div>
+  </div>
+  <section class="sx-trust" aria-label="About Adviuz" style="border:0;padding-top:0"><div class="container"><div class="sx-stats">
       <div><b>Since 2014</b><span>Headquartered in Canada</span></div>
       <div><b>17M+</b><span>Flyers delivered</span></div>
       <div><b>100K+</b><span>Leads generated</span></div>
       <div><b>15+</b><span>Platforms, one campaign</span></div>
     </div>
-    <div class="sx-logos" aria-label="Brands that have used digital flyers"><img loading="lazy" src="assets/brands/uber.png" alt="Uber"><img loading="lazy" class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img loading="lazy" class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img loading="lazy" class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img loading="lazy" class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img loading="lazy" src="assets/brands/suzuki.png" alt="Suzuki"><img loading="lazy" src="assets/brands/allensolly.png" alt="Allen Solly"><img loading="lazy" class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img loading="lazy" src="assets/brands/skoda.png" alt="Škoda"><img loading="lazy" src="assets/brands/remax.png" alt="RE/MAX"></div>
-  </div>
-</section>
-
-<section class="gs-sec wash" id="plans" data-st="2">
+    </div></section>
+<section class="gs-sec wash" id="plans">
   <div class="container">
     <div class="gs-center">
-      <span class="kicker">Step 2 · Choose your plan</span>
+      <span class="kicker">Plans &amp; pricing</span>
       <h2>Choose your plan. Go live this week.</h2>
       <p class="lead">One-time prepaid payment. No monthly fees. Buy online in about a minute.</p>
     </div>
@@ -549,11 +555,10 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
       <p class="pp-build">Prefer to choose each part? <a href="#build">Build your own plan &rarr;</a></p>
       <p class="gs-fine pp-fine">Prices in CAD, plus tax for your province. Planning $50,000+? <a href="/book?solution=both">Book a consultation</a>.</p>
     </div>
-    <button type="button" class="st-again" id="stAgain">&#9654; Watch the video again</button>
   </div>
 </section>
 
-<section class="gs-sec" id="build" data-st="2b" hidden>
+<section class="gs-sec" id="build" hidden>
   <div class="container">
     <div class="gs-center"><span class="kicker">Build your own</span><h2>Prefer to choose each part?</h2><p class="lead">Pick your flyer views and your follow-up plan. We'll show your total, and the bundle that gets you more for less.</p></div>
     <div class="bx">
@@ -573,9 +578,26 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   </div>
 </section>
 
-<section class="gs-sec" id="buy" data-st="3">
+<!-- 9. RISK REVERSAL -->
+<section class="gs-sec">
+  <div class="container gs-center">
+    <span class="kicker">No risk</span>
+    <h2>Buy with confidence.</h2>
+    <div class="sx-safe">
+      <div><b>100% distribution guarantee</b><span>Every billed flyer is a real view, shown live in your dashboard. Any shortfall is topped up at no cost.</span></div>
+      <div><b>You approve everything</b><span>Nothing goes live until you approve your flyer.</span></div>
+      <div><b>Prepaid, $0 monthly</b><span>One payment. No contracts, no monthly fees.</span></div>
+      <div><b>Pause anytime</b><span>Switch your campaign off from your phone whenever you like.</span></div>
+    </div>
+    <p class="st3-help" style="text-align:center;color:var(--muted);margin:18px 0 0">Questions? <button type="button" data-chat style="background:none;border:0;font:inherit;color:var(--accent);font-weight:700;cursor:pointer;padding:0">Ask us here</button> or call <a href="tel:+16472501152">+1 647 250 1152</a>.</p>
+  </div>
+</section>
+
+</div>
+<section class="gs-sec" id="buy" hidden>
   <div class="container">
-    <div class="gs-center"><span class="kicker">Step 3 · Pay</span><h2>Buy your plan</h2><p class="lead">Enter your details and pay securely by card or Apple Pay. Takes about a minute.</p></div>
+    <button type="button" class="co-back" id="coBack">&larr; Back to plans</button>
+    <div class="gs-center"><span class="kicker">Checkout</span><h2>Buy your plan</h2><p class="lead">Enter your details and pay securely by card or Apple Pay. Takes about a minute.</p></div>
     <div class="gq">
       <aside class="gq-sum" aria-live="polite">
         <span class="gq-tag" id="qSeg"></span>
@@ -618,22 +640,12 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   </div>
 </section>
 
-<!-- 9. RISK REVERSAL -->
-<section class="gs-sec" data-st="3">
-  <div class="container gs-center">
-    <span class="kicker">No risk</span>
-    <h2>Buy with confidence.</h2>
-    <div class="sx-safe">
-      <div><b>100% distribution guarantee</b><span>Every billed flyer is a real view, shown live in your dashboard. Any shortfall is topped up at no cost.</span></div>
-      <div><b>You approve everything</b><span>Nothing goes live until you approve your flyer.</span></div>
-      <div><b>Prepaid, $0 monthly</b><span>One payment. No contracts, no monthly fees.</span></div>
-      <div><b>Pause anytime</b><span>Switch your campaign off from your phone whenever you like.</span></div>
-    </div>
-    <p class="st3-help">Questions first? <button type="button" data-chat>Ask us here</button> or call <a href="tel:+16472501152">+1 647 250 1152</a>.</p>
-  </div>
-</section>
-
 </main>
+
+<div class="vf" id="vfOv" hidden role="dialog" aria-label="Video: how Digital Flyers work">
+  <video id="vfVid" playsinline preload="none"></video>
+  <button type="button" class="vf-x" id="vfX" aria-label="Close video">&times;</button>
+</div>
 
 <button type="button" class="cb-fab" id="cbFab" aria-label="Open questions chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Questions? Ask us</button>
 <div class="cb-tip" id="cbTip" hidden>Questions before you choose? Ask me here.</div>
@@ -829,7 +841,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   }
   grid.addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;e.preventDefault();pickKey(b.dataset.k);
     goStage(3);});
-  $('qChange').addEventListener('click',function(){goStage(2);});
+  $('qChange').addEventListener('click',function(){history.back();});
   $('qPv').addEventListener('change',sum);
   $('qForm').addEventListener('submit',function(e){
     e.preventDefault();var err=$('qErr'),go=$('qGo');err.textContent='';
@@ -904,53 +916,58 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   new IntersectionObserver(function(e){at=e[0].isIntersecting;u();}).observe(buy);})();
 </script>
 <script>
-/* ===== Step-by-step flow: 1 Watch -> 2 Choose -> 3 Pay ===== */
+/* ===== /start: video in a phone (tap = full screen), plans, then a separate checkout view ===== */
 (function(){
-  var cur=0,seen={1:1},bar=document.getElementById('stBar'),RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var v=document.getElementById('stVideo'),st=document.getElementById('sxVid'),snd=document.getElementById('sxSnd'),pl=document.getElementById('sxPlay'),fs=document.getElementById('sxFs');
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='page',lastY=0;
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
-  v.poster=tall?'assets/hiw-mobile.webp':'assets/hiw-desktop.webp';v.width=tall?720:1280;v.height=tall?1280:720;
-  v.src=tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4';
-  if(tall){st.classList.add('tall');fs.style.display='none';}
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
-  function play(){var p=v.play();if(p&&p.then)p.then(function(){st.classList.remove('paused');}).catch(function(){st.classList.add('paused');});}
+  /* ---- full-screen video ---- */
+  var ov=document.getElementById('vfOv'),v=document.getElementById('vfVid'),marks={25:0,50:0,75:0};
+  function openVideo(){
+    if(!v.src){v.src=tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4';v.poster=tall?'assets/hiw-mobile.webp':'assets/hiw-desktop.webp';}
+    ov.hidden=false;document.documentElement.classList.add('vf-lock');v.currentTime=0;v.muted=false;
+    var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.play();});
+    try{if(ov.requestFullscreen)ov.requestFullscreen().catch(function(){});else if(v.webkitEnterFullscreen&&!ov.webkitRequestFullscreen)v.webkitEnterFullscreen();}catch(_){}
+    track('VideoPlay');
+  }
+  function closeVideo(toPlans){
+    v.pause();ov.hidden=true;document.documentElement.classList.remove('vf-lock');
+    try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
+    if(toPlans)document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});
+  }
+  [].forEach.call(document.querySelectorAll('[data-play]'),function(b){b.addEventListener('click',function(e){e.preventDefault();openVideo();});});
+  document.getElementById('vfX').addEventListener('click',function(){closeVideo(true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)closeVideo(false);});
+  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&!ov.hidden)closeVideo(false);});
+  v.addEventListener('webkitendfullscreen',function(){closeVideo(true);});
+  v.addEventListener('timeupdate',function(){var p=v.duration?v.currentTime/v.duration*100:0;for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
+  v.addEventListener('ended',function(){track('WatchedVideo');closeVideo(true);});
+  /* ---- page <-> checkout ---- */
+  var main=document.getElementById('pgMain'),co=document.getElementById('buy');
   window.goStage=function(n,noPush){
-    if(n===cur)return;cur=n;seen[n]=1;document.body.setAttribute('data-stage',n);
-    [].forEach.call(document.querySelectorAll('[data-st]'),function(s){var k=s.getAttribute('data-st');s.classList.toggle('show',k===String(n)||(k==='2b'&&n===2&&!document.getElementById('build').hidden));});
-    [].forEach.call(bar.querySelectorAll('button'),function(b){var k=+b.dataset.go;b.classList.toggle('on',k===n);b.classList.toggle('done',k!==n&&!!seen[k]);});
-    if(n!==1&&!v.paused)v.pause();
-    if(n===1&&!RM)play();
-    window.scrollTo({top:0,behavior:RM?'auto':'smooth'});
-    if(!noPush)try{history.pushState({st:n},'','#'+['','watch','plans','pay'][n]);}catch(_){}
-    if(n===2){track('ViewPlans');try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();}
-    if(n===3){track('ViewCheckout');if(!tall)setTimeout(function(){var f=document.getElementById('qNm');if(f)f.focus({preventScroll:true});},500);}
+    var to=n===3?'checkout':'page';
+    if(to!==cur){
+      if(to==='checkout')lastY=scrollY;
+      cur=to;main.hidden=to==='checkout';co.hidden=to!=='checkout';document.body.setAttribute('data-view',to);
+      if(!noPush)try{history.pushState({v:to},'',to==='checkout'?'#checkout':location.pathname+location.search);}catch(_){}
+      if(to==='checkout'){scrollTo(0,0);track('ViewCheckout');if(!tall)setTimeout(function(){var f=document.getElementById('qNm');if(f)f.focus({preventScroll:true});},300);}
+      else scrollTo(0,lastY);
+    }
+    if(n===2&&to==='page')document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});
   };
-  addEventListener('popstate',function(e){goStage((e.state&&e.state.st)||1,true);});
-  /* any link or button pointing at a step */
+  addEventListener('popstate',function(e){goStage(e.state&&e.state.v==='checkout'?3:1,true);});
+  try{history.replaceState({v:'page'},'',location.pathname+location.search+(location.hash==='#plans'?'#plans':''));}catch(_){}
+  co.hidden=true;document.body.setAttribute('data-view','page');
+  document.getElementById('coBack').addEventListener('click',function(){history.back();});
+  /* in-page links */
   document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-go],a[href^="#"]');if(!a)return;
-    var h=a.dataset.go||a.getAttribute('href');e.preventDefault();
-    if(['1','2','3','#watch','#plans','#buy','#pay','#build'].indexOf(h)<0)return;
-    if(h==='#build'){var b=document.getElementById('build');b.hidden=false;b.classList.add('show');b.scrollIntoView({behavior:RM?'auto':'smooth'});return;}
-    goStage(h==='1'||h==='#watch'?1:(h==='3'||h==='#buy'||h==='#pay')?3:2);
+    var a=e.target.closest('a[href^="#"]');if(!a)return;var h=a.getAttribute('href');
+    if(h==='#plans'){e.preventDefault();goStage(2);}
+    else if(h==='#build'){e.preventDefault();var b=document.getElementById('build');b.hidden=false;b.scrollIntoView({behavior:RM?'auto':'smooth'});}
+    else if(h==='#buy'||h==='#ai-engine'||h==='#'){e.preventDefault();}
   });
-  /* video: muted autoplay with captions; "Tap for sound" restarts with sound; plans open when it ends */
-  v.addEventListener('pause',function(){st.classList.add('paused');});v.addEventListener('play',function(){st.classList.remove('paused');});
-  function setSnd(on){st.classList.toggle('snd-on',on);snd.querySelector('span').textContent=on?'Sound on':'Tap for sound';snd.setAttribute('aria-label',on?'Mute video':'Turn sound on and watch from the start');}
-  snd.addEventListener('click',function(e){e.stopPropagation();if(v.muted){v.muted=false;v.currentTime=0;setSnd(true);play();track('VideoSoundOn');}else{v.muted=true;setSnd(false);}});
-  pl.addEventListener('click',function(e){e.stopPropagation();play();});
-  st.addEventListener('click',function(){if(v.paused)play();else v.pause();});
-  if(window.adviuzFull&&!tall)window.adviuzFull(fs,v,play);
-  var marks={25:0,50:0,75:0};
-  v.addEventListener('timeupdate',function(){
-    if(v.currentTime>10)document.getElementById('stSkip').classList.add('on');
-    var p=v.duration?v.currentTime/v.duration*100:0;for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}
-  });
-  setTimeout(function(){document.getElementById('stSkip').classList.add('on');},10000);
-  v.addEventListener('ended',function(){track('WatchedVideo');if(document.fullscreenElement)try{document.exitFullscreen();}catch(_){}
-    var o=document.querySelector('.vov');if(o){var c=o.querySelector('.vov-x');if(c)c.click();}goStage(2);});
-  document.getElementById('stSkip').addEventListener('click',function(){track('SkipVideo',{at:Math.round(v.currentTime)});goStage(2);});
-  document.getElementById('stAgain').addEventListener('click',function(){v.currentTime=0;goStage(1);});
+  /* plans seen -> analytics + chat hint */
+  if('IntersectionObserver' in window){var seen=0;new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting&&!seen){seen=1;track('ViewPlans');try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();}});},{threshold:.25}).observe(document.getElementById('plans'));}
   /* "How soon do you want results?" highlights the matching plan */
   var ask=document.getElementById('stAsk');
   ask.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var k=b.dataset.pick,fly=k.indexOf('fly-')===0;
@@ -962,11 +979,9 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     if(card){card.classList.add('pl-hl');card.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});}
     track('PickTimeline',{plan:k});
   });
-  /* start: honour #plans / #pay links, else the video */
-  var h=location.hash,first=h==='#plans'?2:(h==='#pay'||h==='#buy')?3:1;
-  try{history.replaceState({st:first},'',first===1?location.pathname+location.search:'#'+['','watch','plans','pay'][first]);}catch(_){}
-  goStage(first,true);if(first===1&&RM){v.removeAttribute('autoplay');st.classList.add('paused');}
-
+  /* client logos: restart the scroll from the first logo each time it comes into view */
+  (function(){var sec=document.querySelector('.trust'),tr=document.querySelector('.trust-track');if(!sec||!tr||!('IntersectionObserver' in window))return;
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tr.classList.add('tt-reset');void tr.offsetWidth;tr.classList.remove('tt-reset');sec.classList.add('tt-on');}else sec.classList.remove('tt-on');});},{threshold:0}).observe(sec);})();
   /* ===== Questions chat: answers only from approved Adviuz content ===== */
   var BF=Date.now()<Date.UTC(2026,11,1,6,0,0),PH='<a href="tel:+16472501152">+1 647 250 1152</a>',DEMO='<a href="/book?solution=both">book a free demo</a>';
   var QA=[
@@ -994,7 +1009,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function ans(q){asked[q[0]]=1;var a=typeof q[2]==='function'?q[2]():q[2];setTimeout(function(){say(a);drawChips();},350);track('ChatAnswer',{q:q[0]});}
   function open(){tip.hidden=true;cb.hidden=false;fab.hidden=true;fab.classList.remove('pulse');if(!greeted){greeted=true;say('Hi! Ask me anything about Digital Flyers, the plans or how it works. Tap a question or type your own.');drawChips();}if(!tall)setTimeout(function(){inp.focus();},50);track('ChatOpen');}
   function close(){cb.hidden=true;fab.hidden=false;}
-  function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur===2&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
+  function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur==='page'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
   tip.addEventListener('click',open);
   fab.addEventListener('click',open);document.getElementById('cbX').addEventListener('click',close);
   document.addEventListener('click',function(e){if(e.target.closest('[data-chat]'))open();});
@@ -1005,7 +1020,6 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     if(best)ans(best);else{setTimeout(function(){say('Good question. I don\'t have an approved answer for that here, so please call '+PH+' (Mon–Fri, 10 AM–6 PM CST) or '+DEMO+' and we\'ll answer it for you.');drawChips();},350);track('ChatNoAnswer');}
   });
 })();
-
 </script>
 <script src="/js/checkout.js?v=20261031a" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
