@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Plan Table Styles | Adviuz</title>
+<title>Plans | Adviuz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css?v=20261005">
@@ -132,34 +132,27 @@ td.l{text-align:left;font-weight:600;white-space:nowrap}
 .seg{display:inline-flex;border-radius:999px;padding:5px;background:#f1ecfa;margin:0 auto 18px}.seg b{padding:9px 16px;border-radius:999px;font-size:14px}.seg b.on{background:var(--ink);color:#fff}
 .cen{text-align:center}
 .tip{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:6px;border-radius:50%;border:1.5px solid currentColor;opacity:.55;font:800 10px/1 Georgia,serif;font-style:italic;vertical-align:1px}
+
+/* ===== fit the whole table + buttons in one screen, scaled to the window height ===== */
+.wrap{padding:clamp(8px,1.6vh,24px) 20px}
+.opt{margin:0}
+.v1l .box{padding:clamp(12px,2vh,30px) 26px clamp(10px,1.6vh,22px)}
+.v1l .seg{margin-bottom:clamp(4px,1vh,16px)}.v1l .seg b{padding:clamp(6px,.9vh,9px) 16px;font-size:clamp(13px,1.6vh,14px)}
+.v1l th{padding:clamp(6px,1vh,14px) 10px}
+.v1l td{padding:clamp(5px,1.05vh,14px) 10px;font-size:clamp(14px,1.75vh,16px)}
+.v1l td.l{font-size:clamp(13.5px,1.7vh,15.5px)}
+.v1l .tag{font-size:clamp(10px,1.2vh,11px);padding:4px 9px;margin-bottom:clamp(3px,.6vh,8px)}
+.v1l .pn{font-size:clamp(16px,2.1vh,20px)}.v1l .was{font-size:clamp(12px,1.5vh,14px)}.v1l .pr{font-size:clamp(28px,4.2vh,40px)}
+.v1l .l i.ic{width:clamp(24px,3vh,30px);height:clamp(24px,3vh,30px)}.v1l .l i.ic svg{width:clamp(14px,1.8vh,17px);height:clamp(14px,1.8vh,17px)}
+.v1l .btn{padding:clamp(9px,1.3vh,14px) 10px;font-size:clamp(14px,1.75vh,16px);max-width:210px}
+.v1l .arw{top:clamp(34px,5vh,60px)}
+.v1l .save td{font-size:clamp(15px,1.95vh,18px)}
+.wdots{margin-top:clamp(6px,1vh,14px)}.v1l .fine{margin-top:clamp(6px,1vh,14px)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><img src="assets/logo.png" alt="Adviuz"><span>Preview only · desktop styles</span></div>
-  <h1>3 desktop styles for the comparison table</h1>
-  <p class="intro">Same table, same rows and prices as the version you locked. Only the look changes: colour, depth and how strongly Scale stands out.</p>
-  <nav class="tabs"><a href="#s1">1 · Midnight premium</a><a href="#s1l">1 · Light</a><a href="#s1c">1 · Compact</a><a href="#s2">2 · Colour-coded plans</a><a href="#s3">3 · Floating columns</a></nav>
-
-  <section class="opt v1" id="s1"><div class="oh"><span>STYLE 1</span><h2>Midnight premium</h2></div>
-    <p class="why">Dark purple panel with soft glows, like a premium product page. Prices and the recommended Scale column glow; green ticks pop against the dark background. Feels high-end and stands out from the white page around it.</p>
-    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T1"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
-
-  <section class="opt v1l" id="s1l"><div class="oh"><span>STYLE 1 · LIGHT</span><h2>Daylight premium</h2></div>
-    <p class="why">The same premium feel as Style 1, but light: a soft lilac panel with gentle purple and pink glows, the Scale column as a raised white card with a gradient price, and green ticks on white.</p>
-    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="win"><button type="button" class="arw prev" aria-label="Previous plans">&#8249;</button><table id="T1L"></table><button type="button" class="arw next" aria-label="More plans">&#8250;</button></div><div class="wdots" id="T1Ld"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
-
-  <section class="opt v1l cmp" id="s1c"><div class="oh"><span>STYLE 1 · COMPACT</span><h2>Daylight premium, one screen</h2></div>
-    <p class="why">Same light style and slider, tightened so the whole table, prices and buttons fit on one laptop screen without scrolling: slimmer rows, smaller icons and one-line labels.</p>
-    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="win"><button type="button" class="arw prev" aria-label="Previous plans">&#8249;</button><table id="T1C"></table><button type="button" class="arw next" aria-label="More plans">&#8250;</button></div><div class="wdots" id="T1Cd"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
-
-  <section class="opt v2" id="s2"><div class="oh"><span>STYLE 2</span><h2>Colour-coded plans</h2></div>
-    <p class="why">Each plan gets its own coloured header that gets richer from Pilot to Pro, so bigger plans feel bigger. Scale's header is the brand gradient and slightly larger. Soft striped rows with icons make long rows easy to follow.</p>
-    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T2"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
-
-  <section class="opt v3" id="s3"><div class="oh"><span>STYLE 3</span><h2>Floating columns</h2></div>
-    <p class="why">Each plan is its own white column floating on a soft lilac background, like four cards standing side by side. Scale's column has a gradient top and is raised above the others. Light and modern, closest to your current look.</p>
-    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T3"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+  <section class="opt v1l" id="s1l"><div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="win"><button type="button" class="arw prev" aria-label="Previous plans">&#8249;</button><table id="T1L"></table><button type="button" class="arw next" aria-label="More plans">&#8250;</button></div><div class="wdots" id="T1Ld"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
 </div>
 <script>
 var PL=[{n:'Pilot',was:1899,pr:982,v:200,dist:'10K–20K',ed:'1 month',ai:100,msg:500,use:'1 week',val:'3 months',save:917,lim:1},
@@ -184,13 +177,13 @@ function build(id,v){
  h+='<tr class="save"><td class="l"><i class="ic"><svg viewBox="0 0 24 24">'+IC.tag+'</svg></i>You save</td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'">'+d(p.save)+'</td>';}).join('')+'</tr>';
  h+='<tr><td class="l"></td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'"><a class="btn" href="#">'+(p.lim?'Start Pilot':'Choose '+p.n)+'</a></td>';}).join('')+'</tr></tbody>';
  document.getElementById(id).innerHTML=h;}
-build('T1',1);build('T1L',1);
+build('T1L',1);
 function slider(id){var t=document.getElementById(id),w=t.parentNode,st=0,N=PL.length,V=3,dots=document.getElementById(id+'d');
  function show(dir){t.querySelectorAll('th,td').forEach(function(c){var m=c.className.match(/\bp(\d)\b/);if(!m)return;var i=+m[1],on=i>=st&&i<st+V;c.style.display=on?'':'none';c.classList.toggle('col',i===st+1);if(on&&dir){c.classList.remove('sl','sr');void c.offsetWidth;c.classList.add(dir>0?'sl':'sr');}});
   w.querySelector('.prev').disabled=st===0;w.querySelector('.next').disabled=st+V>=N;
   dots.innerHTML=Array.from({length:N-V+1},function(_,k){return '<i class="'+(k===st?'on':'')+'"></i>';}).join('');}
  w.querySelector('.prev').onclick=function(){if(st>0){st--;show(-1);}};w.querySelector('.next').onclick=function(){if(st+V<N){st++;show(1);}};show(0);}
-build('T1C',1);slider('T1L');slider('T1C');build('T2',2);build('T3',3);
+slider('T1L');
 </script>
 </body>
 </html>
