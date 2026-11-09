@@ -149,11 +149,55 @@ td.l{text-align:left;font-weight:600;white-space:nowrap}
 .v1l .save td{font-size:clamp(15px,1.95vh,18px)}
 .wdots{margin-top:clamp(6px,1vh,14px)}.v1l .fine{margin-top:clamp(6px,1vh,14px)}
 .pr.cons{font-size:clamp(22px,3.2vh,30px)!important}
+
+/* ===== phones: the locked mobile plan card ===== */
+.bm{display:none}
+@media(max-width:760px){.bm{display:block}
+ .bm-tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none}
+ .bm-tabs button{flex:1 1 0;min-width:0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 2px;font:800 13px Inter,sans-serif;color:var(--ink);cursor:pointer;line-height:1.2}
+ .bm-tabs button small{display:block;font-size:10.5px;font-weight:700;color:var(--mut)}
+ .bm-tabs button.on{background:var(--g);color:#fff;border-color:transparent}.bm-tabs button.on small{color:rgba(255,255,255,.85)}
+ .bm-card{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box;border-radius:24px;padding:22px 18px;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+ .bm-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+ .bm-h h3{margin:0;font-size:24px}.bm-h .rb{margin:0 0 6px}
+ .bm-p{text-align:right}.bm-p s{color:#9a8fb8;font-size:14px}.bm-p b{display:block;font-size:32px;letter-spacing:-.02em;line-height:1.05}.bm-p small{font-size:12px;color:var(--mut)}
+ .bm-save{display:inline-block;margin:12px 0 4px;font-size:14px;font-weight:800;color:var(--ok);background:#e9f9ef;border-radius:999px;padding:6px 12px}
+ .bm-rows{list-style:none;margin:10px 0 18px;padding:0}
+ .bm-rows li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+ .bm-rows li span:first-child{color:var(--mut)}.bm-rows li span:last-child{font-weight:700;text-align:right}
+ .bm-rows .yes{color:var(--ok)}
+ .bm-hint{text-align:center;font-size:13px;color:var(--mut);margin:12px 0 0}}
+.bm-dots{display:flex;justify-content:center;gap:7px;margin:12px 0 0}.bm-dots i{width:8px;height:8px;border-radius:50%;background:#ddd3f5}.bm-dots i.on{width:22px;border-radius:5px;background:var(--g)}
+@media(max-width:760px){.tabs{position:static}
+ .bm-tabs{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -14px;padding:4px 14px 12px!important}
+ .bm-tabs::-webkit-scrollbar{display:none}
+ .bm-tabs button{flex:0 0 auto!important;min-width:84px!important;scroll-snap-align:center;padding:8px 14px!important;border-radius:999px!important;font-size:13.5px!important}
+ .bm-tabs button small{display:inline!important;margin-left:4px;font-size:11.5px!important}
+ .bm-card{touch-action:pan-y;transition:transform .25s,opacity .25s}.bm-card.out{opacity:.2}}
+.lim{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b4235a;background:#ffe8f0;border-radius:999px;padding:4px 9px;margin-bottom:6px;white-space:nowrap}
+.bm-card{position:relative}
+.bm-swipe{display:none;position:absolute;left:50%;top:44%;z-index:3;transform:translate(-50%,-50%);flex-direction:column;align-items:center;gap:6px;pointer-events:none;background:rgba(35,8,53,.82);color:#fff;border-radius:22px;padding:16px 22px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 16px 40px rgba(35,8,53,.35);opacity:0}
+.bm-hand svg{width:38px;height:38px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+.bm-card.nudge{animation:bmNudge 2.6s ease-in-out 2}
+.bm-card.nudge .bm-swipe{display:flex;animation:bmShow 5.2s ease forwards}
+.bm-card.nudge .bm-hand{animation:bmHand 1.3s ease-in-out 4}
+@keyframes bmNudge{0%,100%{transform:translateX(0)}20%{transform:translateX(-38px)}40%{transform:translateX(0)}60%{transform:translateX(26px)}80%{transform:translateX(0)}}
+@keyframes bmHand{0%,100%{transform:translateX(18px)}50%{transform:translateX(-18px)}}
+@keyframes bmShow{0%{opacity:0}8%,85%{opacity:1}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.bm-card.nudge,.bm-card.nudge .bm-hand{animation:none}}
+.tip{display:inline-grid;place-items:center;width:17px;height:17px;margin-left:6px;border-radius:50%;border:1.5px solid #b9a6ec;background:#fff;color:#6a2cff;font:800 11px/1 Georgia,serif;font-style:italic;cursor:pointer;vertical-align:1px;padding:0}
+.tipbox{position:absolute;z-index:50;max-width:260px;background:#230835;color:#fff;font-size:13.5px;line-height:1.45;border-radius:14px;padding:12px 14px;box-shadow:0 16px 40px rgba(35,8,53,.35)}
+.tipbox:after{content:"";position:absolute;left:var(--ax,20px);top:-6px;width:12px;height:12px;background:#230835;transform:rotate(45deg)}
+@media(max-width:760px){.win,.wdots,.v1l .box>.fine{display:none!important}.v1l .box{padding:18px 14px 20px}.wrap{padding:12px 14px}
+ .rb{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--g);border-radius:999px;padding:5px 10px}
+ .bm .btn{max-width:none;background:var(--g);color:#fff;padding:15px;font-size:16px;box-shadow:0 14px 30px -12px rgba(64,0,243,.55)}
+ .bm-fine{font-size:12px;color:var(--mut);text-align:center;margin:12px 0 0;line-height:1.5}}
+
 </style>
 </head>
 <body>
 <div class="wrap">
-  <section class="opt v1l" id="s1l"><div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="win"><button type="button" class="arw prev" aria-label="Previous plans">&#8249;</button><table id="T1L"></table><button type="button" class="arw next" aria-label="More plans">&#8250;</button></div><div class="wdots" id="T1Ld"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+  <section class="opt v1l" id="s1l"><div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="win"><button type="button" class="arw prev" aria-label="Previous plans">&#8249;</button><table id="T1L"></table><button type="button" class="arw next" aria-label="More plans">&#8250;</button></div><div class="wdots" id="T1Ld"></div><div class="bm" id="BM"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
 </div>
 <script>
 var PL=[{n:'Pilot',was:1899,pr:982,v:200,dist:'10K–20K',ed:'1 month',ai:100,msg:500,use:'1 week',val:'3 months',save:917,lim:1},
@@ -188,6 +232,28 @@ function slider(id){var t=document.getElementById(id),w=t.parentNode,st=0,N=PL.l
   var pg=Math.ceil(N/V),cur=st+V>=N?pg-1:Math.floor(st/V);dots.innerHTML=Array.from({length:pg},function(_,k){return '<i class="'+(k===cur?'on':'')+'"></i>';}).join('');}
  var PG=[];for(var q=0;q<N;q+=V)PG.push(Math.min(q,N-V));var pi=0;w.querySelector('.prev').onclick=function(){if(pi>0){pi--;st=PG[pi];show(-1);}};w.querySelector('.next').onclick=function(){if(pi<PG.length-1){pi++;st=PG[pi];show(1);}};show(0);}
 slider('T1L');
+var TIPS={'Estimated distribution':'How many people your flyer is likely to reach on their screens (this is distribution, not views). It is usually 50 to 100 times your flyer views, and can be higher or lower depending on your audience, offer and market. An estimate, not a guarantee.','Flyer views':'A view counts only when someone keeps your flyer open for 25 seconds. You pay only for these views.','First flyer design':'Our team designs your first flyer from your logo, photos and offer. Nothing goes live until you approve it.','Unlimited design editing':'Ask for as many changes to your flyer as you like during this time.','AI Conversion Engine':'Our AI calls, texts and emails every new enquiry within seconds, books appointments and keeps following up.','AI minutes':'Minutes the AI spends talking with your leads on calls.','Texts, emails':'Texts, emails and regular call minutes to your leads for follow-ups, reminders and remarketing.','Setup':'Our team sets up your flyer account and your AI ($300 each). Included free.','Typically used over':'How long most businesses take to use these views. You can go faster or slower.','Recharge validity':'How long you have to use your views and credits, from the day you pay.'};
+function TL(l){for(var k in TIPS)if(l.indexOf(k)===0)return l+'<button type="button" class="tip" data-tip="'+TIPS[k]+'" aria-label="What does this mean?">i</button>';return l;}
+function MROWS(p){return [['Estimated distribution*',p.dist],['Flyer views (25-second views)',f(p.v)],['First flyer design','Included',1],['Unlimited design editing',p.ed],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Setup ($600 value)','Included',1],['Typically used over',p.use],['Recharge validity',p.val]];}
+function bmInner(p){return '<div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.lim?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p">'+(p.cons?'<s style="text-decoration:none">Custom pricing</s><b style="font-size:24px">Contact us</b>':'<s>'+d(p.was)+'</s><b>'+d(p.pr)+'</b><small>CAD + tax</small>')+'</div></div>'
+ +(p.cons?'':'<span class="bm-save">You save '+d(p.save)+'</span>')
+ +'<ul class="bm-rows">'+MROWS(p).map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
+ +'<a class="btn" href="'+(p.cons?'/book?solution=both':'#')+'">'+(p.cons?'Contact us':p.lim?'Start the Pilot':'Choose '+p.n)+' &rarr;</a>';}
+var all=PL,bmSel=0;function bm(){
+ document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Contact':d(x.pr))+'</small></button>';}).join('')+'</div>'
+ +'<div class="bm-card">'+bmInner(all[bmSel])+'</div><div class="bm-dots">'+all.map(function(x,k){return '<i class="'+(k===bmSel?'on':'')+'"></i>';}).join('')+'</div><p class="bm-hint">Swipe the card or tap a plan to compare</p><p class="bm-fine">Prices in CAD + tax · Prepaid · $0 monthly<br>*Estimated distribution is an estimate, not a guarantee</p>';
+ if(!window._bmHinted){var hc=document.querySelector('#BM .bm-card');hc.insertAdjacentHTML('beforeend','<div class="bm-swipe" aria-hidden="true"><span class="bm-hand"><svg viewBox="0 0 24 24"><path d="M8 13V5a2 2 0 014 0v6M12 11V4a2 2 0 014 0v7M16 11V6a2 2 0 014 0v8a7 7 0 01-7 7h-1a7 7 0 01-6-3l-3-5a2 2 0 013-2l2 2"/></svg></span><b>Swipe</b></div>');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();hc.classList.add('nudge');}},{threshold:.6});io.observe(hc);}else hc.classList.add('nudge');}
+ window._bmHinted=window._bmHinted||!!document.querySelector('#BM .bm-card.nudge');var on=document.querySelector('#BM .bm-tabs .on');if(on)on.parentNode.scrollLeft=on.offsetLeft-(on.parentNode.clientWidth-on.offsetWidth)/2;
+ var c=document.querySelector('#BM .bm-card'),x0=null,y0=0;c.addEventListener('touchstart',function(e){window._bmHinted=1;c.classList.remove('nudge');x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+ c.addEventListener('touchmove',function(e){if(x0==null)return;var dx=e.touches[0].clientX-x0;if(Math.abs(dx)>Math.abs(e.touches[0].clientY-y0))c.style.transform='translateX('+dx*0.6+'px)';},{passive:true});
+ c.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;c.style.transform='';if(Math.abs(dx)>50){var n=bmSel+(dx<0?1:-1);if(n>=0&&n<all.length){bmSel=n;bm();}}});}
+document.getElementById('BM').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;window._bmHinted=1;bmSel=+b.dataset.k;bm();});bm();
+(function(){var box=null;function close(){if(box){box.remove();box=null;}}
+document.addEventListener('click',function(e){var t=e.target.closest('.tip');if(!t){if(!e.target.closest('.tipbox'))close();return;}e.preventDefault();e.stopPropagation();var same=box&&box._t===t;close();if(same)return;
+ box=document.createElement('div');box.className='tipbox';box.textContent=t.dataset.tip;box._t=t;document.body.appendChild(box);var r=t.getBoundingClientRect(),w=Math.min(260,innerWidth-24),x=Math.max(12,Math.min(r.left+r.width/2-w/2,innerWidth-w-12));
+ box.style.width=w+'px';box.style.left=(x+scrollX)+'px';box.style.top=(r.bottom+scrollY+10)+'px';box.style.setProperty('--ax',(r.left+r.width/2-x-6)+'px');},true);
+addEventListener('scroll',close,{passive:true});})();
 </script>
 </body>
 </html>
