@@ -1169,7 +1169,7 @@ html,body{overflow-x:hidden}
   document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
   document.getElementById('phNext').addEventListener('click',function(e){e.stopPropagation();unlock();});
   /* returning visitors who already watched see the next step straight away */
-  try{if(sessionStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
+  try{if(sessionStorage.getItem(KEY)==='1'||new URLSearchParams(location.search).has('lead')){ready(false);ph.classList.add('seen');}}catch(_){}
   /* ---- screens: watch -> ask -> plans -> checkout (header stays the same) ---- */
   window.goView=function(n,noPush){
     if(n==='plans'&&!seg)n='ask';if(n==='plans'&&!info)n='info';
