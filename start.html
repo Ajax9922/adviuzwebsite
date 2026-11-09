@@ -555,6 +555,18 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .ph.desk .ph-big{top:14px}
 .ph.desk ~ .x{}
 .sh .ph-wrap{margin-bottom:38px}
+
+.inf-f{max-width:620px;margin:6px auto 0;display:grid;gap:14px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:0 20px 50px -24px rgba(35,8,53,.22)}
+.inf-r{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.inf-f label{display:grid;gap:6px;font-weight:700;font-size:14px;color:var(--ink)}
+.inf-f input:not([type=checkbox]){font:inherit;font-weight:400;font-size:16px;border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fff;color:var(--ink);width:100%}
+.inf-f input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.inf-ck{display:flex!important;align-items:flex-start;gap:10px!important;font-weight:400!important;font-size:13.5px!important;color:var(--muted)!important}
+.inf-ck input{width:20px;height:20px;margin-top:1px;flex:0 0 auto;accent-color:var(--accent)}
+.inf-go{width:100%;justify-content:center;font-size:17px}.inf-go[disabled]{opacity:.7}
+.inf .container{padding:0 16px;box-sizing:border-box}#iErr{color:#c0265a}
+.inf-fine{margin:0;text-align:center;font-size:12.5px;color:var(--muted)}.inf-fine a{color:var(--accent)}
+@media(max-width:560px){.inf-r{grid-template-columns:1fr}.inf-f{padding:20px 16px}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -601,6 +613,24 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
       <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>Consumers</b><span>People and families</span><small>B2C</small></div></button>
       <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Business owners</b><span>Owners and decision-makers at companies</span><small>B2B</small></div></button>
     </div>
+  </div>
+</section>
+<section class="aud inf" id="inf" data-v="info" hidden>
+  <div class="container">
+    <span class="kicker">Almost there</span>
+    <h2>Where should we send your plan details?</h2>
+    <p>Your plans are on the next screen.</p>
+    <form class="inf-f" id="infF" novalidate>
+      <div class="inf-r"><label>Your name<input id="iNm" autocomplete="name" placeholder="Full name" required></label>
+      <label>Business name<input id="iBz" autocomplete="organization" placeholder="Business name" required></label></div>
+      <div class="inf-r"><label>Email<input id="iEm" type="email" autocomplete="email" placeholder="you@business.com" required></label>
+      <label>Phone<input id="iPh" type="tel" autocomplete="tel" placeholder="(416) 555-0123" required></label></div>
+      <input class="gq-hp" id="iWs" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="inf-ck"><input type="checkbox" id="iCk"> <span>I agree to receive calls (including AI calls), texts and emails from Adviuz about its services. Reply STOP to opt out anytime.</span></label>
+      <p class="gq-err" id="iErr" role="alert"></p>
+      <button class="button button-grad inf-go" type="submit" id="iGo">Show my plans &rarr;</button>
+      <p class="inf-fine">We never share your details. See our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    </form>
   </div>
 </section>
 <div data-v="plans" hidden><section class="gs-sec wash" id="plans">
@@ -908,7 +938,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 <script>
 /* ===== /start: watch first (video in a big phone, tap = big screen), then "who are your customers?", then plans ===== */
 (function(){
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='',seg='';
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='',seg='',info=false;
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
@@ -951,7 +981,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   try{if(sessionStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
   /* ---- screens: watch -> ask -> plans -> checkout (header stays the same) ---- */
   window.goView=function(n,noPush){
-    if(n==='plans'&&!seg)n='ask';
+    if(n==='plans'&&!seg)n='ask';if(n==='plans'&&!info)n='info';
     if(n!=='watch'&&!unlocked)n='watch';
     if(n===cur)return;cur=n;document.body.setAttribute('data-view',n);
     [].forEach.call(document.querySelectorAll('[data-v]'),function(x){var on=x.getAttribute('data-v')===n;x.hidden=!on;if(on){x.classList.remove('vin');void x.offsetWidth;x.classList.add('vin');}});
@@ -971,8 +1001,30 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     [].forEach.call(aud.querySelectorAll('[data-aud]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
     var sb=document.querySelector('#ppSeg [data-seg="'+seg+'"]');if(sb)sb.click();
     document.getElementById('plSeg').textContent=seg==='b2b'?'Plans for advertising to business owners (B2B)':'Plans for advertising to consumers (B2C)';
-    track('PickAudience',{audience:seg});setTimeout(function(){goView('plans');},180);
+    track('PickAudience',{audience:seg});setTimeout(function(){goView(info?'plans':'info');},180);
   });
+
+  /* details form -> Adviuz Sales lead (website-lead), then plans; checkout is pre-filled */
+  (function(){var f=document.getElementById('infF'),err=document.getElementById('iErr'),go=document.getElementById('iGo');
+    var LEAD='https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-lead';
+    f.addEventListener('submit',function(e){e.preventDefault();err.textContent='';
+      var g=function(id){return document.getElementById(id).value.trim();},d=g('iPh').replace(/\D/g,'');
+      if(g('iNm').length<2)return err.textContent='Please enter your name.';
+      if(!g('iBz'))return err.textContent='Please enter your business name.';
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g('iEm')))return err.textContent='Please enter a valid email.';
+      if(!(d.length===10||(d.length===11&&d[0]==='1')))return err.textContent='Please enter a valid phone number.';
+      if(!document.getElementById('iCk').checked)return err.textContent='Please tick the box so we can send you your plan details.';
+      go.disabled=true;go.textContent='One moment…';
+      var done=function(){info=true;go.disabled=false;go.textContent='Show my plans →';
+        [['qNm','iNm'],['qBz','iBz'],['qEm','iEm'],['qPh','iPh']].forEach(function(p){var a=document.getElementById(p[0]);if(a&&!a.value)a.value=g(p[1]);});
+        var ck=document.getElementById('qCk');if(ck)ck.checked=true;
+        try{if(window.fbq)fbq('track','Lead',{content_name:'start-'+seg});if(window.gtag)gtag('event','generate_lead',{audience:seg});}catch(_){}
+        goView('plans');};
+      var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:location.href.split('#')[0],
+        message:'Watched the how-it-works video on adviuz.com/start · Advertises to: '+(seg==='b2b'?'Business owners (B2B)':'Consumers (B2C)')+' · Interested in: Digital Flyers + AI Conversion Engine'};
+      var t=setTimeout(done,6000);
+      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
+    });})();
   document.getElementById('plChange').addEventListener('click',function(){goView('ask');});
   /* Pilot Project highlight -> checkout */
   document.addEventListener('click',function(e){var b=e.target.closest('[data-pilot]');if(!b)return;e.preventDefault();if(window.gsBuy)window.gsBuy('bf-pilot');});
