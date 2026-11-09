@@ -97,13 +97,28 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 @media(max-width:700px){.g4{grid-template-columns:1fr;gap:26px}}
 .b .bh td{background:#f6f2ff;color:#4b0fe0!important;font-weight:800!important;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;text-align:left!important;border-radius:10px}
 .b tbody tr:last-child td,.b tbody tr:nth-last-child(2) td{border-bottom:0}
+.bm{display:none}
+@media(max-width:760px){.b .scroll{display:none}.bm{display:block}
+ .bm-tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none}
+ .bm-tabs button{flex:1 1 0;min-width:0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 2px;font:800 13px Inter,sans-serif;color:var(--ink);cursor:pointer;line-height:1.2}
+ .bm-tabs button small{display:block;font-size:10.5px;font-weight:700;color:var(--mut)}
+ .bm-tabs button.on{background:var(--g);color:#fff;border-color:transparent}.bm-tabs button.on small{color:rgba(255,255,255,.85)}
+ .bm-card{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box;border-radius:24px;padding:22px 18px;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+ .bm-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+ .bm-h h3{margin:0;font-size:24px}.bm-h .rb{margin:0 0 6px}
+ .bm-p{text-align:right}.bm-p s{color:#9a8fb8;font-size:14px}.bm-p b{display:block;font-size:32px;letter-spacing:-.02em;line-height:1.05}.bm-p small{font-size:12px;color:var(--mut)}
+ .bm-save{display:inline-block;margin:12px 0 4px;font-size:14px;font-weight:800;color:var(--ok);background:#e9f9ef;border-radius:999px;padding:6px 12px}
+ .bm-rows{list-style:none;margin:10px 0 18px;padding:0}
+ .bm-rows li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+ .bm-rows li span:first-child{color:var(--mut)}.bm-rows li span:last-child{font-weight:700;text-align:right}
+ .bm-rows .yes{color:var(--ok)}
+ .bm-hint{text-align:center;font-size:13px;color:var(--mut);margin:12px 0 0}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span style="font-size:13px;color:var(--mut)">Preview only · not linked from the site</span></div>
   <h1>3 ways to show the plans</h1>
-  <p class="intro"><b>Update:</b> validity is now 3 · 6 · 9 · 12 · 18 months, the top plan is <b>Ultra</b>, and higher plans get bonuses that grow (bonus flyer views, group texts/emails/AI calls, custom follow-up plans, priority setup, monthly review call). The more they buy, the more they get on top.</p>
   <p class="intro">Same layouts as before, now with four plans: <b>1,000 · 3,000 · 6,000 · 12,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
   <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. The 12,000-view 1-year plan totals over $50,000, so it shows "By consultation" (your rule for $50K+). Nothing here is live: tell me the prices you want and I'll put them in.</div>
   <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a></nav>
@@ -112,7 +127,7 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
     <div class="stage"><div class="g4" id="A"></div><div class="pilotbar" id="AP"></div><p class="fine">Prepaid · $0 monthly · Secure payment by Stripe</p></div></section>
   <section class="opt b" id="b"><div class="oh"><span>OPTION B</span><h2>Side-by-side comparison</h2></div>
     <p class="why"><b>Why it closes faster:</b> every plan in one table, row by row, so comparing takes seconds. The highlighted column steers them to the recommended plan.</p>
-    <div class="stage"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="scroll"><table id="B"></table></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · Black Friday prices end Nov 30</p></div></section>
+    <div class="stage"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="scroll"><table id="B"></table></div><div class="bm" id="BM"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · Black Friday prices end Nov 30</p></div></section>
   <section class="opt c3" id="c"><div class="oh"><span>OPTION C</span><h2>Value stack</h2></div>
     <p class="why"><b>Why it closes faster:</b> like your live demo, each card adds up what they get with its value, shows the total value, then the Black Friday price, with the guarantees under the buttons.</p>
     <div class="stage"><div class="g4" id="C"></div>
@@ -121,9 +136,9 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 <script>
 var P=[
  {n:'Growth',v:1000,bv:0,ai:500,aiv:750,m:3,use:'1 month',price:4974,valid:6,grp:0,cfp:0,pri:0,rev:0},
- {n:'Scale',v:3000,bv:300,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1,valid:9,grp:1,cfp:1,pri:0,rev:0},
- {n:'Pro',v:6000,bv:900,ai:3000,aiv:2700,m:5,use:'6 months',price:29563,valid:12,grp:1,cfp:2,pri:1,rev:1},
- {n:'Ultra',v:12000,bv:2400,ai:6000,aiv:4800,m:12,use:'1 year',cons:1,valid:18,grp:1,cfp:3,pri:1,rev:1}];
+ {n:'Scale',v:3000,bv:0,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1,valid:9,grp:1,cfp:1,pri:0,rev:0},
+ {n:'Pro',v:6000,bv:0,ai:3000,aiv:2700,m:5,use:'6 months',price:29563,valid:12,grp:1,cfp:2,pri:1,rev:1},
+ {n:'Ultra',v:12000,bv:0,ai:6000,aiv:4800,m:12,use:'1 year',cons:1,valid:18,grp:1,cfp:3,pri:1,rev:1}];
 var PILOT={n:'Pilot',v:200,bv:0,ai:100,aiv:200,m:1,use:'1 week',price:982,valid:3,grp:0,cfp:0,pri:0,rev:0};
 function f(x){return x.toLocaleString('en-CA');}function d(x){return '$'+f(x);}
 [PILOT].concat(P).forEach(function(p){p.ed=p.m*99;p.val=(p.v+p.bv)*5+p.aiv+600+p.ed;p.msg=p.v*2.5;p.save=p.cons?0:p.val-p.price;p.valid=p.valid||12;});
@@ -132,7 +147,7 @@ function btn(p,t){return '<a class="btn" href="#">'+(p.cons?'Book a consultation
 function priceA(p){return p.cons?'<div class="val">Total value <s>'+d(p.val)+'</s></div><div class="pr cons">By consultation</div>':'<div class="val">Total value <s>'+d(p.val)+'</s> · <span class="save">Save '+d(p.save)+'</span></div><div class="pr">'+d(p.price)+' <small>CAD + tax</small></div>';}
 document.getElementById('A').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="for">Typically used over '+p.use+'</p><div>'+priceA(p)+'</div>'
  +'<div class="big"><b>'+f(p.v)+'</b> flyer views + <b>full access</b> to the AI Conversion Engine ('+f(p.ai)+' AI minutes)</div>'
- +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid '+p.valid+' months, pause anytime</li>'+(p.bv?'<li><b>Bonus: +'+f(p.bv)+' flyer views</b></li>':'')+'</ul>'
+ +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid '+p.valid+' months, pause anytime</li>'+'</ul>'
  +'<details><summary>What\'s included</summary><p>'+f(p.msg)+' texts, '+f(p.msg)+' emails and '+f(p.msg)+' call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>'+btn(p,'Choose '+p.n)+'</div>';}).join('');
 document.getElementById('AP').innerHTML='<p><b>Not sure yet? Try the Pilot Project</b><br>200 flyer views + full access to the AI Conversion Engine · first flyer design included · <s style="color:#9a8fb8">$1,899</s> <b>$982</b></p><a class="btn" href="#">Start the Pilot &rarr;</a>';
 var all=[PILOT].concat(P),R=function(l,fn,c){return '<tr><td>'+l+'</td>'+all.map(function(p){return '<td class="'+(p.rec?'col ':'')+(c||'')+'">'+fn(p)+'</td>';}).join('')+'</tr>';};
@@ -140,8 +155,15 @@ document.getElementById('B').innerHTML='<thead><tr><th></th>'+all.map(function(p
  +R('Flyer views (25-second views)',function(p){return f(p.v);})+R('Typically used over',function(p){return p.use;})+R('First flyer design',function(){return 'Included';},'yes')
  +R('AI Conversion Engine',function(){return 'Full access';},'yes')+R('AI minutes',function(p){return f(p.ai);})+R('Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);})
  +R('Unlimited design edits',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Valid for',function(p){return '<b>'+p.valid+' months</b>';})
- +'<tr class="bh"><td colspan="6">Bonuses that grow with your plan</td></tr>'+R('Bonus flyer views',function(p){return p.bv?'<b class="yes">+'+f(p.bv)+'</b>':'<span style="color:#c9c2d9">—</span>';})+R('Group texts, emails &amp; AI calls',function(p){return p.grp?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('Custom follow-up plans built by our team',function(p){return p.cfp?'<b>'+p.cfp+'</b>':'<span style="color:#c9c2d9">—</span>';})+R('Priority setup',function(p){return p.pri?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('Monthly 30-minute review call',function(p){return p.rev?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
+ +R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
  +'<tr><td></td>'+all.map(function(p){return '<td'+(p.rec?' class="col"':'')+'><a class="btn'+(p.rec?'':' lt')+'" href="#">'+(p.cons?'Consult':p.n==='Pilot'?'Start Pilot':'Choose')+'</a></td>';}).join('')+'</tr></tbody>';
+var bmSel=2;function bm(){var p=all[bmSel],rows=[['Flyer views (25-second views)',f(p.v)],['Typically used over',p.use],['First flyer design','Included',1],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Unlimited design edits',p.m+' month'+(p.m>1?'s':'')],['Setup ($600 value)','Included',1],['Valid for',p.valid+' months']];
+ document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Consult':d(x.price))+'</small></button>';}).join('')+'</div>'
+ +'<div class="bm-card"><div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p"><s>'+d(p.val)+'</s>'+(p.cons?'<b style="font-size:24px">By consultation</b>':'<b>'+d(p.price)+'</b><small>CAD + tax</small>')+'</div></div>'
+ +(p.cons?'':'<span class="bm-save">You save '+d(p.save)+'</span>')
+ +'<ul class="bm-rows">'+rows.map(function(r){return '<li><span>'+r[0]+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
+ +'<a class="btn" href="#">'+(p.cons?'Book a consultation':p.n==='Pilot'?'Start the Pilot':'Choose '+p.n)+' &rarr;</a></div><p class="bm-hint">Tap a plan above to compare</p>';}
+document.getElementById('BM').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;bmSel=+b.dataset.k;bm();});bm();
 document.getElementById('C').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="out">Your flyer seen <b>'+f(p.v)+' times</b> for 25 seconds each · typically over <b>'+p.use+'</b></p>'
  +'<ul class="stack"><li><span>'+f(p.v)+' flyer views</span><span>'+d(p.v*5)+'</span></li><li><span>AI Conversion Engine · '+f(p.ai)+' min</span><span>'+d(p.aiv)+'</span></li><li class="free"><span>First flyer design</span><span>INCLUDED</span></li><li><span>Design edits · '+p.m+' months</span><span>'+d(p.ed)+'</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>'
  +'<div class="tot"><span>Total value</span><s>'+d(p.val)+'</s></div>'
