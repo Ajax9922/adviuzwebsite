@@ -131,15 +131,27 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 @keyframes bmHand{0%,100%{transform:translateX(18px)}50%{transform:translateX(-18px)}}
 @keyframes bmShow{0%{opacity:0}8%,85%{opacity:1}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.bm-card.nudge,.bm-card.nudge .bm-hand{animation:none}}
+.tip{display:inline-grid;place-items:center;width:17px;height:17px;margin-left:6px;border-radius:50%;border:1.5px solid #b9a6ec;background:#fff;color:#6a2cff;font:800 11px/1 Georgia,serif;font-style:italic;cursor:pointer;vertical-align:1px;padding:0}
+.tipbox{position:absolute;z-index:50;max-width:260px;background:#230835;color:#fff;font-size:13.5px;line-height:1.45;border-radius:14px;padding:12px 14px;box-shadow:0 16px 40px rgba(35,8,53,.35)}
+.tipbox:after{content:"";position:absolute;left:var(--ax,20px);top:-6px;width:12px;height:12px;background:#230835;transform:rotate(45deg)}
+.dlist{display:grid;gap:22px;max-width:520px;margin:0 auto}
+.dlist .bm-card{display:block;border:1.5px solid var(--line);border-radius:24px;padding:22px 18px;background:#fff;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
+.dlist .bm-card.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+.dlist .bm-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.dlist .bm-h h3{margin:0;font-size:24px}.dlist .rb{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--g);border-radius:999px;padding:5px 10px;margin:0 0 6px}
+.dlist .bm-p{text-align:right}.dlist .bm-p s{color:#9a8fb8;font-size:14px}.dlist .bm-p b{display:block;font-size:32px;letter-spacing:-.02em;line-height:1.05}.dlist .bm-p small{font-size:12px;color:var(--mut)}
+.dlist .bm-save{display:inline-block;margin:12px 0 4px;font-size:14px;font-weight:800;color:var(--ok);background:#e9f9ef;border-radius:999px;padding:6px 12px}
+.dlist .bm-rows{list-style:none;margin:10px 0 18px;padding:0}.dlist .bm-rows li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.dlist .bm-rows li span:first-child{color:var(--mut)}.dlist .bm-rows li span:last-child{font-weight:700;text-align:right}.dlist .bm-rows .yes{color:var(--ok)}
+@media(min-width:1000px){.dlist{max-width:none;grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span style="font-size:13px;color:var(--mut)">Preview only · not linked from the site</span></div>
-  <h1>3 ways to show the plans</h1>
+  <h1>4 ways to show the plans</h1>
   <p class="intro">Same layouts as before, now with four plans: <b>1,000 · 3,000 · 6,000 · 12,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
   <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. The 12,000-view 1-year plan totals over $50,000, so it shows "By consultation" (your rule for $50K+). Nothing here is live: tell me the prices you want and I'll put them in.</div>
-  <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a></nav>
+  <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a><a href="#d">D · Card after card</a></nav>
   <section class="opt a" id="a"><div class="oh"><span>OPTION A</span><h2>Simple &amp; decisive</h2></div>
     <p class="why"><b>Why it closes faster:</b> each card shows only what decides the purchase: the price drop, one line of what they get and how long it typically lasts. The full list hides under "What's included".</p>
     <div class="stage"><div class="g4" id="A"></div><div class="pilotbar" id="AP"></div><p class="fine">Prepaid · $0 monthly · Secure payment by Stripe</p></div></section>
@@ -151,6 +163,9 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
     <div class="stage"><div class="g4" id="C"></div>
       <div class="safe"><span>✓ 100% distribution guarantee</span><span>✓ You approve the flyer first</span><span>✓ Prepaid, $0 monthly</span><span>✓ Pause anytime</span></div>
       <p class="fine">Not sure yet? <a href="#" style="color:var(--acc);font-weight:800">Try the Pilot Project (limited period) · <s style="color:#9a8fb8">$1,899</s> $982</a></p></div></section>
+<section class="opt d" id="d"><div class="oh"><span>OPTION D</span><h2>Card after card</h2></div>
+    <p class="why"><b>Why it closes faster:</b> same detail as B, but every plan is its own full card, one below the other. On a phone people just keep scrolling; nothing is hidden behind a swipe. The Pilot comes first.</p>
+    <div class="stage"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="dlist" id="D"></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · Black Friday prices end Nov 30</p></div></section>
 <script>
 var P=[
  {n:'Growth',v:1000,bv:0,ai:500,aiv:750,m:3,use:'1 month',price:4974,valid:6,grp:0,cfp:0,pri:0,rev:0},
@@ -168,19 +183,24 @@ document.getElementById('A').innerHTML=P.map(function(p){return '<div class="c'+
  +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid '+p.valid+' months, pause anytime</li>'+'</ul>'
  +'<details><summary>What\'s included</summary><p>'+f(p.msg)+' texts, '+f(p.msg)+' emails and '+f(p.msg)+' call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>'+btn(p,'Choose '+p.n)+'</div>';}).join('');
 document.getElementById('AP').innerHTML='<p><b>Not sure yet? Try the Pilot Project</b> <span class="lim">Limited period</span><br>200 flyer views + full access to the AI Conversion Engine · first flyer design included · <s style="color:#9a8fb8">$1,899</s> <b>$982</b></p><a class="btn" href="#">Start the Pilot &rarr;</a>';
-var all=[PILOT].concat(P),R=function(l,fn,c){return '<tr><td>'+l+'</td>'+all.map(function(p){return '<td class="'+(p.rec?'col ':'')+(c||'')+'">'+fn(p)+'</td>';}).join('')+'</tr>';};
+var TIPS={'Flyer views':'A view counts only when someone keeps your flyer open for 25 seconds. You pay only for these views.','First flyer design':'Our team designs your first flyer from your logo, photos and offer. Nothing goes live until you approve it.','Unlimited design editing':'Ask for as many changes to your flyer as you like during this time.','AI Conversion Engine':'Our AI calls, texts and emails every new enquiry within seconds, books appointments and keeps following up.','AI minutes':'Minutes the AI spends talking with your leads on calls.','Texts, emails':'Texts, emails and regular call minutes to your leads for follow-ups, reminders and remarketing.','Setup':'Our team sets up your flyer account and your AI ($300 each). Included free.','Typically used over':'How long most businesses take to use these views. You can go faster or slower.','Recharge validity':'How long you have to use your views and credits, from the day you pay.'};
+function TL(l){for(var k in TIPS)if(l.indexOf(k)===0)return l+'<button type="button" class="tip" data-tip="'+TIPS[k]+'" aria-label="What does this mean?">i</button>';return l;}
+function ROWS(p){return [['Flyer views (25-second views)',f(p.v)],['First flyer design','Included',1],['Unlimited design editing',p.m+' month'+(p.m>1?'s':'')],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Setup ($600 value)','Included',1],['Typically used over',p.use],['Recharge validity',p.valid+' months']];}
+var all=[PILOT].concat(P),R=function(l,fn,c){return '<tr><td>'+TL(l)+'</td>'+all.map(function(p){return '<td class="'+(p.rec?'col ':'')+(c||'')+'">'+fn(p)+'</td>';}).join('')+'</tr>';};
 document.getElementById('B').innerHTML='<thead><tr><th></th>'+all.map(function(p){return '<th'+(p.rec?' class="col"':'')+'>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.n==='Pilot'?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3><div class="v"><s>'+d(p.val)+'</s></div><div class="p'+(p.cons?' cons':'')+'">'+(p.cons?'Consult':d(p.price))+'</div></th>';}).join('')+'</tr></thead><tbody>'
- +R('Flyer views (25-second views)',function(p){return f(p.v);})+R('Typically used over',function(p){return p.use;})+R('First flyer design',function(){return 'Included';},'yes')
+ +R('Flyer views (25-second views)',function(p){return f(p.v);})+R('First flyer design',function(){return 'Included';},'yes')
  +R('Unlimited design editing',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('AI Conversion Engine',function(){return 'Full access';},'yes')+R('AI minutes',function(p){return f(p.ai);})
- +R('Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Recharge validity',function(p){return '<b>'+p.valid+' months</b>';})
+ +R('Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Typically used over',function(p){return p.use;})+R('Recharge validity',function(p){return '<b>'+p.valid+' months</b>';})
  +R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
  +'<tr><td></td>'+all.map(function(p){return '<td'+(p.rec?' class="col"':'')+'><a class="btn'+(p.rec?'':' lt')+'" href="#">'+(p.cons?'Consult':p.n==='Pilot'?'Start Pilot':'Choose')+'</a></td>';}).join('')+'</tr></tbody>';
-var bmSel=0;function bm(){var p=all[bmSel],rows=[['Flyer views (25-second views)',f(p.v)],['Typically used over',p.use],['First flyer design','Included',1],['Unlimited design editing',p.m+' month'+(p.m>1?'s':'')],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Setup ($600 value)','Included',1],['Recharge validity',p.valid+' months']];
- document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Consult':d(x.price))+'</small></button>';}).join('')+'</div>'
- +'<div class="bm-card"><div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.n==='Pilot'?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p"><s>'+d(p.val)+'</s>'+(p.cons?'<b style="font-size:24px">By consultation</b>':'<b>'+d(p.price)+'</b><small>CAD + tax</small>')+'</div></div>'
+function bmInner(p){var rows=ROWS(p);return '<div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.n==='Pilot'?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p"><s>'+d(p.val)+'</s>'+(p.cons?'<b style="font-size:24px">By consultation</b>':'<b>'+d(p.price)+'</b><small>CAD + tax</small>')+'</div></div>'
  +(p.cons?'':'<span class="bm-save">You save '+d(p.save)+'</span>')
- +'<ul class="bm-rows">'+rows.map(function(r){return '<li><span>'+r[0]+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
- +'<a class="btn" href="#">'+(p.cons?'Book a consultation':p.n==='Pilot'?'Start the Pilot':'Choose '+p.n)+' &rarr;</a></div><div class="bm-dots">'+all.map(function(x,k){return '<i class="'+(k===bmSel?'on':'')+'"></i>';}).join('')+'</div><p class="bm-hint">Swipe the card or tap a plan to compare</p>';
+ +'<ul class="bm-rows">'+rows.map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
+ +'<a class="btn" href="#">'+(p.cons?'Book a consultation':p.n==='Pilot'?'Start the Pilot':'Choose '+p.n)+' &rarr;</a>';}
+document.getElementById('D').innerHTML=all.map(function(p){return '<div class="bm-card dc'+(p.rec?' hl':'')+'">'+bmInner(p)+'</div>';}).join('');
+var bmSel=0;function bm(){var p=all[bmSel],rows=ROWS(p);
+ document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Consult':d(x.price))+'</small></button>';}).join('')+'</div>'
+ +'<div class="bm-card">'+bmInner(p)+'</div><div class="bm-dots">'+all.map(function(x,k){return '<i class="'+(k===bmSel?'on':'')+'"></i>';}).join('')+'</div><p class="bm-hint">Swipe the card or tap a plan to compare</p>';
  if(!window._bmHinted){var hc=document.querySelector('#BM .bm-card');hc.insertAdjacentHTML('beforeend','<div class="bm-swipe" aria-hidden="true"><span class="bm-hand"><svg viewBox="0 0 24 24"><path d="M8 13V5a2 2 0 014 0v6M12 11V4a2 2 0 014 0v7M16 11V6a2 2 0 014 0v8a7 7 0 01-7 7h-1a7 7 0 01-6-3l-3-5a2 2 0 013-2l2 2"/></svg></span><b>Swipe</b></div>');
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();hc.classList.add('nudge');}},{threshold:.6});io.observe(hc);}else hc.classList.add('nudge');}
  window._bmHinted=window._bmHinted||!!document.querySelector('#BM .bm-card.nudge');var on=document.querySelector('#BM .bm-tabs .on');if(on)on.scrollIntoView({inline:'center',block:'nearest'});
@@ -188,6 +208,11 @@ var bmSel=0;function bm(){var p=all[bmSel],rows=[['Flyer views (25-second views)
  c.addEventListener('touchmove',function(e){if(x0==null)return;var dx=e.touches[0].clientX-x0;if(Math.abs(dx)>Math.abs(e.touches[0].clientY-y0))c.style.transform='translateX('+dx*0.6+'px)';},{passive:true});
  c.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;c.style.transform='';if(Math.abs(dx)>50){var n=bmSel+(dx<0?1:-1);if(n>=0&&n<all.length){bmSel=n;bm();}}});}
 document.getElementById('BM').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;window._bmHinted=1;bmSel=+b.dataset.k;bm();});bm();
+(function(){var box=null;function close(){if(box){box.remove();box=null;}}
+document.addEventListener('click',function(e){var t=e.target.closest('.tip');if(!t){if(!e.target.closest('.tipbox'))close();return;}e.preventDefault();e.stopPropagation();var same=box&&box._t===t;close();if(same)return;
+ box=document.createElement('div');box.className='tipbox';box.textContent=t.dataset.tip;box._t=t;document.body.appendChild(box);var r=t.getBoundingClientRect(),w=Math.min(260,innerWidth-24),x=Math.max(12,Math.min(r.left+r.width/2-w/2,innerWidth-w-12));
+ box.style.width=w+'px';box.style.left=(x+scrollX)+'px';box.style.top=(r.bottom+scrollY+10)+'px';box.style.setProperty('--ax',(r.left+r.width/2-x-6)+'px');},true);
+addEventListener('scroll',close,{passive:true});})();
 document.getElementById('C').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="out">Your flyer seen <b>'+f(p.v)+' times</b> for 25 seconds each · typically over <b>'+p.use+'</b></p>'
  +'<ul class="stack"><li><span>'+f(p.v)+' flyer views</span><span>'+d(p.v*5)+'</span></li><li><span>AI Conversion Engine · '+f(p.ai)+' min</span><span>'+d(p.aiv)+'</span></li><li class="free"><span>First flyer design</span><span>INCLUDED</span></li><li><span>Design edits · '+p.m+' months</span><span>'+d(p.ed)+'</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>'
  +'<div class="tot"><span>Total value</span><s>'+d(p.val)+'</s></div>'
