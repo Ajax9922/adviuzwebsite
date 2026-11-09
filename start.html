@@ -497,27 +497,43 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .cb-note{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
 @media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:80px}
   .cb{right:0;bottom:0;width:100vw;max-width:100vw;height:82svh;border-radius:22px 22px 0 0}.cb-fab{right:12px;bottom:12px;padding:12px 16px 12px 12px;font-size:14px}}
+
+/* ===== v4 screens ===== */
+[data-v][hidden]{display:none!important}
+.vin{animation:stIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes stIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.sx-head .nav{justify-content:center}
+.aud{min-height:calc(100svh - 120px);display:flex;align-items:center;padding:30px 0 50px}
+.aud .container{width:100%}
+.aud-opts small{display:inline-block;margin-top:2px;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--accent);background:#f1ebff;border-radius:999px;padding:4px 10px}
+.pt-tabs,#ppSeg,.pp-build,#ppIntro{display:none!important}
+#plans{padding-top:30px}
+.pl-chg{background:none;border:0;font:700 14px var(--font-body);color:var(--accent);text-decoration:underline;cursor:pointer;margin-left:6px}
+.pilot{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:26px auto 0;max-width:1100px;padding:24px 28px;border-radius:24px;border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;box-shadow:0 24px 60px -18px rgba(64,0,243,.35);text-align:left}
+.pilot-tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--grad);border-radius:999px;padding:6px 12px}
+.pilot h3{margin:10px 0 6px;font-size:26px}.pilot p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.pilot-r{flex:0 0 auto;text-align:right}.pilot-p{font-size:38px;font-weight:800;color:var(--ink);line-height:1}.pilot-n{font-size:13px;color:var(--muted);margin:6px 0 12px}
+.pilot-b{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;padding:13px 22px;text-decoration:none;box-shadow:0 12px 30px -8px rgba(64,0,243,.55)}
+.lp-foot{background:#0f0820;color:rgba(255,255,255,.7);text-align:center;padding:30px 0 34px;font-size:13.5px;margin-top:40px}
+.lp-foot img{filter:brightness(0) invert(1);opacity:.9;margin-bottom:8px}.lp-foot p{margin:4px 0}.lp-legal a{color:rgba(255,255,255,.85)}
+.co-back{margin-top:24px!important}
+.aud-opts button>div{display:flex;flex-direction:column;align-items:center;gap:4px}
+@media(max-width:760px){.aud-opts button>div{align-items:flex-start}}
+@media(max-width:760px){.pilot{flex-direction:column;align-items:stretch;text-align:left;padding:20px}.pilot-r{text-align:left}.pilot-b{width:100%;justify-content:center}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
 <body>
-<a class="promo-bar" href="#plans" data-promo aria-label="Black Friday sale: Full access to AI Conversion Engine and both one-time setup fees waived. Ends 30 November. See plans."><div class="promo-track" aria-hidden="true"><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span><span><i class="pdot" aria-hidden="true"></i><b>BLACK FRIDAY SALE</b><i>•</i>Full access to AI Conversion Engine<i>•</i>Both one-time setup fees waived<i>•</i>Ends 30 November<i>•</i><em>See plans →</em><i>•</i></span></div></a>
 
 <header class="site-header sx-head">
   <div class="container nav">
     <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
-    <div class="nav-actions">
-      <a class="nav-phone" href="tel:+16472501152">+1 647 250 1152</a>
-      <a class="button button-grad unl-only" href="#plans">See plans</a>
-    </div>
   </div>
 </header>
 
 <main>
-<div id="pgMain">
-<section class="sh">
+<section class="sh" data-v="watch">
   <div class="container">
-    <p class="gs-pill" data-bf><i aria-hidden="true"></i>Black Friday · ends 30 November</p>
     <h1>How <span>Digital Flyers</span> work</h1>
     <p class="sh-sub">Watch the 2-minute video, then see your plans.</p>
     <div class="ph-wrap">
@@ -541,38 +557,22 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
       </button>
     </div>
   </div>
-</section>
-<div id="after" hidden>
-<section class="aud" id="aud">
+</section><section class="aud" id="aud" data-v="ask" hidden>
   <div class="container">
     <span class="kicker">One quick question</span>
-    <h2>Who do you want to advertise to?</h2>
-    <p>We'll show you the plans made for them.</p>
+    <h2>Who are your customers?</h2>
+    <p>Pick one and we'll show the plans made for them.</p>
     <div class="aud-opts">
-      <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>Families</b><span>People and households near you</span></div></button>
-      <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Businesses</b><span>Owners and decision-makers at companies</span></div></button>
+      <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>Consumers</b><span>People and families</span><small>B2C</small></div></button>
+      <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Business owners</b><span>Owners and decision-makers at companies</span><small>B2B</small></div></button>
     </div>
   </div>
 </section>
-<section class="trust" aria-label="Global brands using digital flyers">
-  <div class="container">
-    <h2 class="trust-head">Trusted by <span class="grad-text">Global Brands</span></h2>
-  </div>
-  <div class="trust-viewport">
-    <div class="trust-track"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"></div>
-  </div>
-  <section class="sx-trust" aria-label="About Adviuz" style="border:0;padding-top:0"><div class="container"><div class="sx-stats">
-      <div><b>Since 2014</b><span>Headquartered in Canada</span></div>
-      <div><b>17M+</b><span>Flyers delivered</span></div>
-      <div><b>100K+</b><span>Leads generated</span></div>
-      <div><b>15+</b><span>Platforms, one campaign</span></div>
-    </div>
-    </div></section>
-<section class="gs-sec wash" id="plans" hidden>
+<div data-v="plans" hidden><section class="gs-sec wash" id="plans">
   <div class="container">
     <div class="gs-center">
-      <span class="kicker">Plans &amp; pricing</span>
-      <h2>Choose your plan. Go live this week.</h2>
+      <span class="kicker" id="plSeg">Plans</span> <button type="button" class="pl-chg" id="plChange">Change</button>
+      <h2>Choose your plan.</h2>
       <p class="lead">One-time prepaid payment. No monthly fees. Buy online in about a minute.</p>
     </div>
     <div class="pp-wrap">
@@ -590,32 +590,27 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
       </div>
       <p class="npintro" id="ppIntro"></p>
       <div class="pp-grid" id="ppGrid"></div>
+      <div id="ppPilot"></div>
       <p class="pp-build">Prefer to choose each part? <a href="#build">Build your own plan &rarr;</a></p>
       <p class="gs-fine pp-fine">Prices in CAD, plus tax for your province. Planning $50,000+? <a href="/book?solution=both">Book a consultation</a>.</p>
     </div>
   </div>
 </section>
 
-<section class="gs-sec" id="build" hidden>
+<section class="trust" aria-label="Global brands using digital flyers">
   <div class="container">
-    <div class="gs-center"><span class="kicker">Build your own</span><h2>Prefer to choose each part?</h2><p class="lead">Pick your flyer views and your follow-up plan. We'll show your total, and the bundle that gets you more for less.</p></div>
-    <div class="bx">
-      <div class="bx-step"><span class="bx-n">1</span><div><b>Flyer views</b><div class="bx-opts" data-g="v">
-        <button type="button" data-v="0">None</button><button type="button" data-v="1000" aria-pressed="true">1,000</button><button type="button" data-v="2500">2,500</button><button type="button" data-v="5000">5,000</button></div>
-        <p class="bx-hint" id="bxV"></p></div></div>
-      <div class="bx-step"><span class="bx-n">2</span><div><b>AI follow-up</b><div class="bx-opts" data-g="a">
-        <button type="button" data-a="none">None</button><button type="button" data-a="essential">Essential</button><button type="button" data-a="pro" aria-pressed="true">Pro</button><button type="button" data-a="max">Max</button></div>
-        <p class="bx-hint" id="bxA"></p></div></div>
-      <div class="bx-sum">
-        <div class="bx-lines" id="bxLines"></div>
-        <div class="bx-tot"><span>Your total</span><b id="bxTot"></b></div>
-        <div class="bx-deal" id="bxDeal"></div>
-        <div class="bx-act" id="bxAct"></div>
-      </div>
-    </div>
+    <h2 class="trust-head">Trusted by <span class="grad-text">Global Brands</span></h2>
   </div>
-</section>
-
+  <div class="trust-viewport">
+    <div class="trust-track"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"></div>
+  </div>
+  <section class="sx-trust" aria-label="About Adviuz" style="border:0;padding-top:0"><div class="container"><div class="sx-stats">
+      <div><b>Since 2014</b><span>Headquartered in Canada</span></div>
+      <div><b>17M+</b><span>Flyers delivered</span></div>
+      <div><b>100K+</b><span>Leads generated</span></div>
+      <div><b>15+</b><span>Platforms, one campaign</span></div>
+    </div>
+    </div></section>
 <!-- 9. RISK REVERSAL -->
 <section class="gs-sec">
   <div class="container gs-center">
@@ -631,8 +626,8 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   </div>
 </section>
 
-</div></div>
-<section class="gs-sec" id="buy" hidden>
+</div>
+<section class="gs-sec" id="buy" data-v="checkout" hidden>
   <div class="container">
     <button type="button" class="co-back" id="coBack">&larr; Back to plans</button>
     <div class="gs-center"><span class="kicker">Checkout</span><h2>Buy your plan</h2><p class="lead">Enter your details and pay securely by card or Apple Pay. Takes about a minute.</p></div>
@@ -693,53 +688,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   <form class="cb-f" id="cbF"><input id="cbIn" autocomplete="off" placeholder="Type your question…" aria-label="Your question"><button type="submit">Ask</button></form>
   <div class="cb-note">Answers come from Adviuz's own plan and FAQ details.</div>
 </div>
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <img src="assets/logo-white.png" alt="Adviuz">
-        <p>A Digital Flyer Distribution Platform</p>
-        
-        <div class="soc-row"><a href="https://www.facebook.com/adviuz" aria-label="Adviuz on Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.6V4.6c-.3 0-1.3-.1-2.4-.1-2.3 0-3.9 1.4-3.9 4v2.4H7.7V14h2.7v8h3.1z"/></svg></a><a href="https://x.com/adviuz" aria-label="Adviuz on X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5H22l-6.8 7.8 8 11.2h-6.3l-4.9-6.4-5.6 6.4H3.2l7.3-8.3L2.8 2.5h6.5l4.4 5.8 5.2-5.8zm-1.1 19h1.7L7.1 4.3H5.3l12.5 17.2z"/></svg></a><a href="https://www.instagram.com/adviuz_com/" aria-label="Adviuz on Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/playlist?list=PLkqeu4o8E-C5BopNMoS0ZogFiTpYu6jlG" aria-label="Adviuz on YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-1-2.4-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.7.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.9 9.1.9 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.5.3 7.5.3s4.6 0 7.7-.4c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 14.9V8.5l6.2 3.2-6.2 3.2z"/></svg></a><a href="https://in.linkedin.com/company/adviuz" aria-label="Adviuz on LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 3H3.6C2.7 3 2 3.7 2 4.6v14.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V4.6c0-.9-.7-1.6-1.6-1.6zM8 18.3H5.3V9.7H8v8.6zM6.6 8.5c-.9 0-1.6-.7-1.6-1.6S5.7 5.3 6.6 5.3s1.6.7 1.6 1.6-.7 1.6-1.6 1.6zM18.7 18.3H16v-4.2c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2v4.3h-2.7V9.7h2.6v1.2h0c.4-.7 1.3-1.4 2.6-1.4 2.7 0 3.2 1.8 3.2 4.1v4.7z"/></svg></a></div>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/why-adviuz.html">Why Adviuz</a></li>
-          <li><a href="/partners.html">Partners</a></li>
-          <li><a href="/pricing.html">Pricing</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="https://hub.adviuz.ca">Client login</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Products</h3>
-        <ul>
-          <li><a href="/">Digital Flyers</a></li>
-          <li><a href="/ai-conversion-engine.html">AI Conversion Engine</a></li>
-          <li><a href="/book">Book a Demo</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li><li><a href="/partner-terms">Partner Terms</a></li>
-          <li><a href="/refund-policy.html">Refund Policy</a></li>
-          <li><a href="/data-deletion.html">Data Deletion</a></li>
-        </ul>
-      </div>
-      <div class="f-touch">
-        <h3>Get in touch</h3>
-        <ul class="f-contact"><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><a href="mailto:relations@adviuz.com">relations@adviuz.com</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4 1.6-.5 2.4a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 5 5.5a2 2 0 0 1 1.6-2z"/></svg><a href="tel:+16472501152">+1 647 250 1152</a></li><li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><span class="nw">Scotiabank Building,</span> <span class="nw">111 2nd Ave S, Unit 400,</span> <span class="nw">Saskatoon, SK</span></span></li></ul>
-      </div>
-    </div>
-    <div class="f-bottom"><div class="footer-legal">© 2026 Instad Web Services Ltd., operating as Adviuz. All rights reserved.</div><div class="footer-ask"><span class="askai-label">Ask AI about us</span><div class="ai-chips"><a href="https://chatgpt.com/?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">ChatGPT</a><a href="https://claude.ai/new?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">Claude</a><a href="https://www.perplexity.ai/search?q=What%20is%20Adviuz%20%28adviuz.com%29%2C%20and%20how%20could%20it%20help%20a%20brand%27s%20marketing%20team%20with%20campaigns%20and%20leads%3F" target="_blank" rel="noopener">Perplexity</a><a href="https://gemini.google.com/app" target="_blank" rel="noopener" data-askai-copy>Gemini</a></div></div></div>
-  </div>
-  <div class="footer-mark" aria-hidden="true">adviuz</div>
-</footer>
+<footer class="lp-foot"><div class="container"><img src="assets/logo.png" alt="Adviuz" width="96" height="20"><p>© 2026 Instad Web Services Ltd., operating as Adviuz · Canada</p><p class="lp-legal"><a href="/privacy.html" target="_blank" rel="noopener">Privacy</a> · <a href="/terms.html" target="_blank" rel="noopener">Terms</a> · <a href="/refund-policy.html" target="_blank" rel="noopener">Refund Policy</a></p></div></footer>
 <script>
 /* Plans & pricing — same plans, value maths and wording as the hub proposal (proposal/index.html: planTabs, bfShape, planCard2).
    Display only: the server sets the real price. Complete Solution + Flyer plans → website-plan-pay (records the order) →
@@ -753,14 +702,14 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function m2(v){return '$'+v.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});}
   function bfd(v,m,s,e,val,setup){return v+' viewed flyers · '+m+' AI call minutes · '+s+' texts, '+s+' emails and '+s+' call minutes to leads · Flyer design with unlimited edits for '+e+' month'+(e>1?'s':'')+(setup?' · Account and AI setup included':'')+' · Valid '+val+' months'+(val===12?', pause anytime':'')+'.';}
   var BFP={
-    b2c:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:999,std:0,rec:0,d:bfd('200','100','500',1,6,0)},
-         {key:'bf-growth',buy:'growth',name:'Growth',price:4999,std:6350,d:bfd('1,000','500','2,500',3,12,1)},
-         {key:'bf-scale',buy:'scale',name:'Scale',price:12499,std:14663,rec:1,d:bfd('2,500','1,250','6,250',4,12,1)},
-         {key:'bf-pro',buy:'pro',name:'Pro',price:24999,std:28100,d:bfd('5,000','2,500','12,500',5,12,1)}],
-    b2b:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:999,std:0,d:bfd('100','50','250',1,6,0)},
-         {key:'bf-growth',buy:'growth',name:'Growth',price:4999,std:6350,d:bfd('500','250','1,250',3,12,1)},
-         {key:'bf-scale',buy:'scale',name:'Scale',price:12499,std:14663,rec:1,d:bfd('1,250','625','3,125',4,12,1)},
-         {key:'bf-pro',buy:'pro',name:'Pro',price:24999,std:28100,d:bfd('2,500','1,250','6,250',5,12,1)}]};
+    b2c:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,rec:0,d:bfd('200','100','500',1,6,0)},
+         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('1,000','500','2,500',3,12,1)},
+         {key:'bf-scale',buy:'scale',name:'Scale',price:12468,std:14663,rec:1,d:bfd('2,500','1,250','6,250',4,12,1)},
+         {key:'bf-pro',buy:'pro',name:'Pro',price:24963,std:28100,d:bfd('5,000','2,500','12,500',5,12,1)}],
+    b2b:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,d:bfd('100','50','250',1,6,0)},
+         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('500','250','1,250',3,12,1)},
+         {key:'bf-scale',buy:'scale',name:'Scale',price:12468,std:14663,rec:1,d:bfd('1,250','625','3,125',4,12,1)},
+         {key:'bf-pro',buy:'pro',name:'Pro',price:24963,std:28100,d:bfd('2,500','1,250','6,250',5,12,1)}]};
   var FLY=[{key:'fly-1000',buy:'fly1000',g:'fly',name:'1,000 Flyer Views',price:5000,setup:300,list:[{t:'1,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 3 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-2500',buy:'fly2500',g:'fly',name:'2,500 Flyer Views',price:12500,setup:300,rec:1,list:[{t:'2,500 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 4 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-5000',buy:'fly5000',g:'fly',name:'5,000 Flyer Views',price:25000,setup:300,list:[{t:'5,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 5 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]}];
@@ -831,9 +780,16 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function draw(){
     document.getElementById('ppIntro').textContent=INTRO[tab];
     document.getElementById('ppSeg').hidden=tab!=='bf';
-    var xs=tab==='bf'?BFP[seg]:tab==='fly'?FLY:AI;
-    grid.className='pp-grid'+(tab!=='ai'?' g4':'');
+    var xs=tab==='bf'?BFP[seg].filter(function(x){return x.key!=='bf-pilot';}):tab==='fly'?FLY:AI;
+    grid.className='pp-grid';
     grid.innerHTML=xs.map(planCard).join('');
+    var pz=document.getElementById('ppPilot');
+    if(pz&&tab==='bf'){planCard(Object.assign({},BFP[seg][0]));var P=CARDS['bf-pilot'];
+      pz.innerHTML='<div class="pilot"><div class="pilot-l"><span class="pilot-tag">Not sure yet? Try it first</span><h3>Pilot Project</h3>'
+        +'<p>'+P.views+' flyer views · Full access to AI Conversion Engine · '+P.ai[0]+' AI minutes · Flyer design with unlimited edits for 1 month · Valid 6 months</p></div>'
+        +'<div class="pilot-r"><div class="pilot-p">'+$m(P.price)+'</div><div class="pilot-n">CAD + applicable tax'+(P.std>P.price?' · <s>'+$m(P.std)+'</s>':'')+'</div>'
+        +'<a class="pilot-b" href="#buy" data-pilot>Start the Pilot &rarr;</a></div></div>';}
+    else if(pz)pz.innerHTML='';
     priceAnim();
     if(!sel||(!CARDS[sel.key]))pickKey(tab==='ai'?'bf-scale':xs.filter(function(x){return x.rec;})[0].key,true);
     else if(sel.g==='bf'&&tab==='bf')pickKey(sel.key,true);
@@ -916,36 +872,6 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function tick(){var s=Math.max(0,Math.floor((END-Date.now())/1000));var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);
     el.textContent=d>0?(d+' day'+(d>1?'s':'')+' '+h+' h'):(h+' h '+m+' min');}
   tick();setInterval(tick,30000);})();
-/* Build your own: shows the total of the parts, then the matching bundle (same prices as the plans above) */
-(function(){
-  var BF=Date.now()<Date.UTC(2026,11,1,6,0,0);
-  var FLY={1000:5000,2500:12500,5000:25000},AI={essential:[600,300,400,'ce-essential','Essential'],pro:[1000,0,800,'ce-pro','Pro'],max:[2000,0,2000,'ce-max','Max']};
-  var BUN={1000:['bf-growth','Growth',4999,6350,500],2500:['bf-scale','Scale',12499,14663,1250],5000:['bf-pro','Pro',24999,28100,2500]};
-  var v=1000,a='pro';
-  function n(x){return x.toLocaleString('en-CA');}function m(x){return '$'+n(x);}
-  function draw(){
-    var L=[],tot=0;
-    if(v){L.push([n(v)+' flyer views',FLY[v]]);L.push(['Flyer setup',300]);tot+=FLY[v]+300;}
-    if(a!=='none'){var p=AI[a];L.push(['AI Conversion Engine: '+p[4]+' ('+n(p[2])+' AI minutes)',p[0]]);if(p[1]){L.push(['AI setup',p[1]]);}tot+=p[0]+p[1];}
-    document.getElementById('bxV').textContent=v?('About '+n(v)+' people view your flyer for 25 seconds. Typically used over '+({1000:'1 month',2500:'3 months',5000:'6 months'})[v]+'.'):'No flyer views. AI follow-up only, for leads you already get.';
-    document.getElementById('bxA').textContent=a==='none'?'No AI follow-up. Your team calls every lead.':('Calls, texts and emails your leads within seconds, books appointments and keeps following up.');
-    document.getElementById('bxLines').innerHTML=L.map(function(x){return '<div><span>'+x[0]+'</span><span>'+m(x[1])+'</span></div>';}).join('')||'<div><span>Pick at least one part.</span><span></span></div>';
-    document.getElementById('bxTot').textContent=tot?m(tot)+' + tax':'—';
-    var deal=document.getElementById('bxDeal'),act=document.getElementById('bxAct');deal.innerHTML='';act.innerHTML='';
-    if(v&&a!=='none'){var b=BUN[v],bp=BF?b[2]:b[3],save=tot-bp;
-      deal.innerHTML='<div class="bx-card"><span class="t">Make it a bundle</span><h4>'+b[1]+' package: '+m(bp)+(BF?' <small style="font-weight:600;color:var(--muted)">Black Friday</small>':'')+'</h4>'+
-        '<p>'+n(v)+' flyer views + '+n(b[4])+' AI minutes, flyer design, both setups included.'+(b[4]<AI[a][2]?' Need more AI minutes later? Recharge anytime.':'')+'</p>'+
-        (save>0?'<span class="sv">You save '+m(save)+'</span>':'')+'</div>';
-      act.innerHTML='<a class="button button-grad" href="#buy" data-bk="'+b[0]+'">Buy the '+b[1]+' bundle</a><p class="lnk">Want exactly this mix instead? <a href="tel:+16472501152">Call us</a> and we\'ll set it up.</p>';
-    } else if(v){act.innerHTML='<a class="button button-grad" href="#buy" data-bk="fly-'+v+'">Buy '+n(v)+' flyer views</a>';}
-    else if(a!=='none'){act.innerHTML='<a class="button button-grad ce-buy" data-plan="'+AI[a][3]+'" href="/ai-conversion-engine.html?buy='+AI[a][3]+'">Buy AI '+AI[a][4]+'</a>';}
-  }
-  [].forEach.call(document.querySelectorAll('.bx-opts'),function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-    [].forEach.call(g.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-    if(g.dataset.g==='v')v=Number(b.dataset.v);else a=b.dataset.a;draw();});});
-  document.getElementById('bxAct').addEventListener('click',function(e){var b=e.target.closest('[data-bk]');if(!b)return;e.preventDefault();if(window.gsBuy)window.gsBuy(b.dataset.bk,'b2c');});
-  draw();
-})();
 /* Mobile sticky bar */
 (function(){var bar=document.getElementById('sxBar'),hero=document.querySelector('.hero'),buy=document.getElementById('buy');if(!bar||!hero||!('IntersectionObserver' in window))return;
   var past=false,at=false;function u(){bar.classList.toggle('on',past&&!at);}
@@ -955,7 +881,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 <script>
 /* ===== /start: watch first (video in a big phone, tap = big screen), then "who are your customers?", then plans ===== */
 (function(){
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='page',lastY=0;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='',seg='';
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
@@ -967,8 +893,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     if(scroll)setTimeout(function(){nx.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});},350);
   }
   /* next step tapped: open the question + plans area */
-  function unlock(){document.body.classList.add('unlocked');document.getElementById('after').hidden=false;
-    document.getElementById('aud').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});track('NextStep');}
+  function unlock(){if(!v.paused)v.pause();track('NextStep');goView('ask');}
   document.getElementById('nxGo').addEventListener('click',function(){if(unlocked)unlock();else{ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');}});
   /* ---- video: plays inside the phone; big screen on tap; button to go back to small ---- */
   var ph=document.getElementById('ph'),scr=document.getElementById('phScr'),v=document.getElementById('vfVid'),ov=document.getElementById('vfOv'),big=false,started=false,marks={25:0,50:0,75:0};
@@ -996,40 +921,36 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
   /* returning visitors who already watched see the next step straight away */
   try{if(localStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
-  /* ---- step after the video: who are your customers? ---- */
-  var aud=document.getElementById('aud');
-  aud.addEventListener('click',function(e){var b=e.target.closest('[data-aud]');if(!b)return;var s=b.dataset.aud;
-    [].forEach.call(aud.querySelectorAll('[data-aud]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-    var sb=document.querySelector('#ppSeg [data-seg="'+s+'"]');if(sb)sb.click();
-    document.getElementById('plans').hidden=false;document.body.classList.add('picked');
-    document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});track('PickAudience',{audience:s});
-    try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();
-  });
-  /* ---- page <-> checkout ---- */
-  var main=document.getElementById('pgMain'),co=document.getElementById('buy');
-  window.goStage=function(n,noPush){
-    var to=n===3?'checkout':'page';
-    if(to!==cur){
-      if(to==='checkout'){lastY=scrollY;if(!v.paused)v.pause();}
-      cur=to;main.hidden=to==='checkout';co.hidden=to!=='checkout';document.body.setAttribute('data-view',to);
-      if(!noPush)try{history.pushState({v:to},'',to==='checkout'?'#checkout':location.pathname+location.search);}catch(_){}
-      if(to==='checkout'){scrollTo(0,0);track('ViewCheckout');if(!tall)setTimeout(function(){var f=document.getElementById('qNm');if(f)f.focus({preventScroll:true});},300);}
-      else scrollTo(0,lastY);
-    }
-    if(n===2&&to==='page')plansLink();
+  /* ---- screens: watch -> ask -> plans -> checkout (header stays the same) ---- */
+  window.goView=function(n,noPush){
+    if(n==='plans'&&!seg)n='ask';
+    if(n!=='watch'&&!unlocked)n='watch';
+    if(n===cur)return;cur=n;document.body.setAttribute('data-view',n);
+    [].forEach.call(document.querySelectorAll('[data-v]'),function(x){var on=x.getAttribute('data-v')===n;x.hidden=!on;if(on){x.classList.remove('vin');void x.offsetWidth;x.classList.add('vin');}});
+    if(n!=='watch'&&!v.paused)v.pause();
+    scrollTo(0,0);
+    if(!noPush)try{history.pushState({v:n},'','#'+n);}catch(_){}
+    if(n==='plans'){track('ViewPlans',{audience:seg});try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();}
+    if(n==='checkout'){track('ViewCheckout');if(!tall)setTimeout(function(){var f=document.getElementById('qNm');if(f)f.focus({preventScroll:true});},300);}
   };
-  function plansLink(){if(!unlocked){ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');ph.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});return;}
-    if(document.getElementById('after').hidden){unlock();return;}var p=document.getElementById('plans');(p.hidden?aud:p).scrollIntoView({behavior:RM?'auto':'smooth'});}
-  addEventListener('popstate',function(e){goStage(e.state&&e.state.v==='checkout'?3:1,true);});
-  try{history.replaceState({v:'page'},'',location.pathname+location.search);}catch(_){}
-  co.hidden=true;document.body.setAttribute('data-view','page');
-  document.getElementById('coBack').addEventListener('click',function(){history.back();});
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href^="#"]');if(!a)return;var h=a.getAttribute('href');
-    if(h==='#plans'){e.preventDefault();plansLink();}
-    else if(h==='#build'){e.preventDefault();var b=document.getElementById('build');b.hidden=false;b.scrollIntoView({behavior:RM?'auto':'smooth'});}
-    else if(h==='#buy'||h==='#ai-engine'||h==='#'){e.preventDefault();}
+  window.goStage=function(k){goView(k===3?'checkout':k===2?'plans':'watch');};
+  addEventListener('popstate',function(e){goView((e.state&&e.state.v)||'watch',true);});
+  try{history.replaceState({v:'watch'},'',location.pathname+location.search);}catch(_){}
+  goView('watch',true);
+  /* who are your customers? -> plans for them */
+  var aud=document.getElementById('aud');
+  aud.addEventListener('click',function(e){var b=e.target.closest('[data-aud]');if(!b)return;seg=b.dataset.aud;
+    [].forEach.call(aud.querySelectorAll('[data-aud]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    var sb=document.querySelector('#ppSeg [data-seg="'+seg+'"]');if(sb)sb.click();
+    document.getElementById('plSeg').textContent=seg==='b2b'?'Plans for advertising to business owners (B2B)':'Plans for advertising to consumers (B2C)';
+    track('PickAudience',{audience:seg});setTimeout(function(){goView('plans');},180);
   });
+  document.getElementById('plChange').addEventListener('click',function(){goView('ask');});
+  /* Pilot Project highlight -> checkout */
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-pilot]');if(!b)return;e.preventDefault();if(window.gsBuy)window.gsBuy('bf-pilot');});
+  document.getElementById('coBack').addEventListener('click',function(){history.back();});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var h=a.getAttribute('href');
+    if(['#plans','#buy','#build','#ai-engine','#'].indexOf(h)>=0){e.preventDefault();if(h==='#plans')goView('plans');}});
   /* client logos: restart the scroll from the first logo each time it comes into view */
   (function(){var sec=document.querySelector('.trust'),tr=document.querySelector('.trust-track');if(!sec||!tr||!('IntersectionObserver' in window))return;
     new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tr.classList.add('tt-reset');void tr.offsetWidth;tr.classList.remove('tt-reset');sec.classList.add('tt-on');}else sec.classList.remove('tt-on');});},{threshold:0}).observe(sec);})();
@@ -1040,7 +961,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     ['What counts as a view?',['view','25','second','count','timer','charged','pay for'],'A view counts only when someone keeps your flyer open for 25 seconds. A thin bar at the top of the flyer counts the time. If they switch to another app, the timer pauses. If they call you before the 25 seconds are up, that lead is free.'],
     ['How is this different from Facebook ads?',['facebook','meta','instagram ads','social media','ads','different','difference','google ads','boost'],'Regular ads charge for clicks and impressions, even when someone scrolls past in a second. That is like paying for the trailer. With Adviuz you pay for the full movie: 25 seconds of a customer\'s focused attention. Your flyer runs on 15+ platforms from one campaign, and our team designs and manages it for you.'],
     ['Which platforms?',['platform','where','youtube','tiktok','linkedin','whatsapp','google','news','apps','channels'],'Your flyer can run on YouTube, Facebook, Instagram, Messenger, WhatsApp, Threads, Google, TikTok, LinkedIn, X, news sites and mobile apps: 15+ platforms in one campaign. People who enquire also get your flyer by text and email.'],
-    ['How much does it cost?',['price','cost','how much','pricing','plans','expensive','cheap','budget','$'],function(){return BF?'Black Friday prices (CAD + tax): Pilot Project $999, Growth $4,999, Scale $12,499 and Pro $24,999. Each Complete Solution package includes flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation. The plans are right on this page.':'Prices (CAD + tax): Pilot Project $999, Growth $6,350, Scale $14,663 and Pro $28,100, each with flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation.';}],
+    ['How much does it cost?',['price','cost','how much','pricing','plans','expensive','cheap','budget','$'],function(){return BF?'Black Friday prices (CAD + tax): Pilot Project $982, Growth $4,974, Scale $12,468 and Pro $24,963. Each Complete Solution package includes flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation. The plans are right on this page.':'Prices (CAD + tax): Pilot Project $999, Growth $6,350, Scale $14,663 and Pro $28,100, each with flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation.';}],
     ['Which plan should I pick?',['which','pick','choose','recommend','best for','right plan','start'],'The Complete Solution brings you new enquiries and follows every one up. Flyer Pricing is for businesses with their own team to follow up leads. AI Engine Pricing is for businesses that already get leads. Not sure? Start with the Pilot Project. Use "How soon do you want results?" above the plans to see the usual fit.'],
     ['Is it a subscription?',['subscription','monthly','month','contract','recurring','commitment','cancel'],'No. It\'s a one-time prepaid payment with no monthly fees and no contract. Complete Solution and flyer packages are valid for 12 months and you can pause anytime (the Pilot is valid for 6 months).'],
     ['B2C or B2B?',['b2b','b2c','businesses','consumers','sell to'],'Pick B2C if your customers are people and families. Pick B2B if you sell to other businesses: your flyer reaches business decision-makers, so each package includes fewer, more targeted views.'],
@@ -1060,7 +981,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function ans(q){asked[q[0]]=1;var a=typeof q[2]==='function'?q[2]():q[2];setTimeout(function(){say(a);drawChips();},350);track('ChatAnswer',{q:q[0]});}
   function open(){tip.hidden=true;cb.hidden=false;fab.hidden=true;fab.classList.remove('pulse');if(!greeted){greeted=true;say('Hi! Ask me anything about Digital Flyers, the plans or how it works. Tap a question or type your own.');drawChips();}if(!tall)setTimeout(function(){inp.focus();},50);track('ChatOpen');}
   function close(){cb.hidden=true;fab.hidden=false;}
-  function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur==='page'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
+  function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur==='plans'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
   tip.addEventListener('click',open);
   fab.addEventListener('click',open);document.getElementById('cbX').addEventListener('click',close);
   document.addEventListener('click',function(e){if(e.target.closest('[data-chat]'))open();});
@@ -1075,6 +996,6 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 <script src="/js/checkout.js?v=20261031a" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
-<script src="/js/promo.js?v=20261102" defer></script>
+
 </body>
 </html>
