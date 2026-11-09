@@ -49,6 +49,24 @@ td.l{text-align:left;font-weight:600;white-space:nowrap}
 .v1 .seg{background:rgba(255,255,255,.08)}.v1 .seg b{color:#fff}.v1 .seg b.on{background:#fff;color:#170a2c}
 .v1 .fine{color:rgba(255,255,255,.55)}
 
+/* ===== 1 light · Daylight premium ===== */
+.v1l .box{position:relative;overflow:hidden;border-radius:32px;padding:34px 30px 26px;background:radial-gradient(55% 55% at 90% 0%,rgba(230,90,252,.22),transparent 70%),radial-gradient(50% 55% at 0% 100%,rgba(64,0,243,.16),transparent 70%),#fbf9ff;border:1px solid #ebe3fb;box-shadow:0 40px 90px -45px rgba(64,0,243,.45)}
+.v1l td{border-bottom:1px solid #ece6f8;color:var(--ink)}
+.v1l td.l{color:var(--mut)}
+.v1l .l i.ic{background:#fff;box-shadow:0 4px 12px -4px rgba(64,0,243,.25)}.v1l .l i.ic svg{stroke:#6a2cff}
+.v1l .yes{color:var(--ok)}.v1l .was{color:#9a8fb8}
+.v1l .col{background:#fff}
+.v1l thead .col{border-radius:22px 22px 0 0;box-shadow:0 -1px 0 #e2d6fb,-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb}
+.v1l tbody .col{box-shadow:-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb}
+.v1l tbody tr:last-child .col{border-radius:0 0 22px 22px;box-shadow:-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb,0 1px 0 #e2d6fb,0 30px 50px -20px rgba(64,0,243,.35)}
+.v1l thead .col .pr{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.v1l .rec{background:var(--g);color:#fff;box-shadow:0 0 22px rgba(230,90,252,.45)}
+.v1l .lim{background:#ffe8f0;color:#b4235a}
+.v1l .btn{background:#fff;color:#4b0fe0;border:1px solid #ddd0fa}.v1l .col .btn{background:var(--g);color:#fff;border:0;box-shadow:0 12px 30px -8px rgba(230,90,252,.55)}
+.v1l .save td{color:var(--ok);font-weight:800}
+.v1l .seg{background:#efe8fd}
+.v1l .fine{color:var(--mut)}
+
 /* ===== 2 · Colour-coded plans ===== */
 .v2 .box{border-radius:32px;padding:34px 30px 26px;background:#fff;border:1px solid var(--line);box-shadow:0 30px 70px -40px rgba(35,8,53,.35)}
 .v2 thead th{padding:0 8px 18px;vertical-align:bottom}
@@ -101,11 +119,15 @@ td.l{text-align:left;font-weight:600;white-space:nowrap}
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span>Preview only · desktop styles</span></div>
   <h1>3 desktop styles for the comparison table</h1>
   <p class="intro">Same table, same rows and prices as the version you locked. Only the look changes: colour, depth and how strongly Scale stands out.</p>
-  <nav class="tabs"><a href="#s1">1 · Midnight premium</a><a href="#s2">2 · Colour-coded plans</a><a href="#s3">3 · Floating columns</a></nav>
+  <nav class="tabs"><a href="#s1">1 · Midnight premium</a><a href="#s1l">1 · Light</a><a href="#s2">2 · Colour-coded plans</a><a href="#s3">3 · Floating columns</a></nav>
 
   <section class="opt v1" id="s1"><div class="oh"><span>STYLE 1</span><h2>Midnight premium</h2></div>
     <p class="why">Dark purple panel with soft glows, like a premium product page. Prices and the recommended Scale column glow; green ticks pop against the dark background. Feels high-end and stands out from the white page around it.</p>
     <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T1"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+
+  <section class="opt v1l" id="s1l"><div class="oh"><span>STYLE 1 · LIGHT</span><h2>Daylight premium</h2></div>
+    <p class="why">The same premium feel as Style 1, but light: a soft lilac panel with gentle purple and pink glows, the Scale column as a raised white card with a gradient price, and green ticks on white.</p>
+    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T1L"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
 
   <section class="opt v2" id="s2"><div class="oh"><span>STYLE 2</span><h2>Colour-coded plans</h2></div>
     <p class="why">Each plan gets its own coloured header that gets richer from Pilot to Pro, so bigger plans feel bigger. Scale's header is the brand gradient and slightly larger. Soft striped rows with icons make long rows easy to follow.</p>
@@ -138,7 +160,7 @@ function build(id,v){
  h+='<tr class="save"><td class="l"><i class="ic"><svg viewBox="0 0 24 24">'+IC.tag+'</svg></i>You save</td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'">'+d(p.save)+'</td>';}).join('')+'</tr>';
  h+='<tr><td class="l"></td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'"><a class="btn" href="#">'+(p.lim?'Start Pilot':'Choose '+p.n)+'</a></td>';}).join('')+'</tr></tbody>';
  document.getElementById(id).innerHTML=h;}
-build('T1',1);build('T2',2);build('T3',3);
+build('T1',1);build('T1L',1);build('T2',2);build('T3',3);
 </script>
 </body>
 </html>
