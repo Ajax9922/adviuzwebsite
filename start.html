@@ -718,6 +718,9 @@ html,body{overflow-x:hidden}
 @media(max-width:760px){.qbox-b{flex-direction:column}
  .tr2-t span{width:150px!important;height:72px!important;padding:0 14px!important}.tr2-t img{max-height:52px!important}
  .tr2-s b{font-size:22px!important}.tr2-s span{font-size:12.5px!important}.tr2-s i{width:38px!important;height:38px!important}.tr2-s svg{width:20px!important;height:20px!important}}
+
+.cb-typing{display:flex;gap:5px;align-items:center;width:max-content}.cb-typing i{width:7px;height:7px;border-radius:50%;background:#b9a6ec;animation:cbT 1s infinite}.cb-typing i:nth-child(2){animation-delay:.15s}.cb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cbT{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -893,11 +896,11 @@ html,body{overflow-x:hidden}
 <button type="button" class="cb-fab" id="cbFab" aria-label="Open questions chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Questions? Ask us</button>
 <div class="cb-tip" id="cbTip" hidden>Questions before you choose? Ask me here.</div>
 <div class="cb" id="cb" role="dialog" aria-label="Questions about Adviuz" hidden>
-  <div class="cb-h"><img src="assets/favicon.svg?v=5" alt=""><div><b>Adviuz Assistant</b><small>Answers about plans and how it works</small></div><button type="button" class="cb-x" id="cbX" aria-label="Close chat">&times;</button></div>
+  <div class="cb-h"><img src="assets/favicon.svg?v=5" alt=""><div><b>Adviuz Assistant</b><small>Ask anything · replies in seconds</small></div><button type="button" class="cb-x" id="cbX" aria-label="Close chat">&times;</button></div>
   <div class="cb-log" id="cbLog" aria-live="polite"></div>
   <div class="cb-chips" id="cbChips"></div>
   <form class="cb-f" id="cbF"><input id="cbIn" autocomplete="off" placeholder="Type your question…" aria-label="Your question"><button type="submit">Ask</button></form>
-  <div class="cb-note">Answers come from Adviuz's own plan and FAQ details.</div>
+  <div class="cb-note">Answered by the Adviuz AI · or call +1 647 250 1152, 24/7</div>
 </div>
 <footer class="lf"><div class="container"><div class="lf-top"><div class="lf-b"><img src="assets/logo.png" alt="Adviuz" width="110" height="23"><p>Digital flyers that reach the right people, and an AI that follows up every lead.</p></div><ul class="lf-pts"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Scotiabank Building, 111 2nd Ave S, Unit 400, Saskatoon, SK, Canada</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Since 2014 · 17M+ flyers delivered</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>100% distribution guarantee</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>Secure payments by Stripe</li></ul><div class="lf-c"><a href="tel:+16472501152"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg><span><small>Call us 24/7</small>+1 647 250 1152</span></a><a href="mailto:relations@adviuz.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>Email</small>relations@adviuz.com</span></a></div></div><div class="lf-bot"><span>© 2026 Instad Web Services Ltd., operating as Adviuz</span><span><a href="/privacy.html" target="_blank" rel="noopener">Privacy</a> · <a href="/terms.html" target="_blank" rel="noopener">Terms</a> · <a href="/refund-policy.html" target="_blank" rel="noopener">Refund Policy</a></span></div></div></footer>
 <script>
@@ -1183,7 +1186,7 @@ html,body{overflow-x:hidden}
   window.goView=function(n,noPush){
     if(n==='plans'&&!seg)n='ask';if(n==='plans'&&!info)n='info';
     if(n!=='watch'&&!unlocked)n='watch';
-    if(n===cur)return;cur=n;document.body.setAttribute('data-view',n);
+    if(n===cur)return;cur=n;document.body.setAttribute('data-view',n);document.body.classList.toggle('unlocked',n==='plans'||n==='checkout');
     [].forEach.call(document.querySelectorAll('[data-v]'),function(x){var on=x.getAttribute('data-v')===n;x.hidden=!on;if(on){x.classList.remove('vin');void x.offsetWidth;x.classList.add('vin');}});
     if(n!=='watch'&&!v.paused)v.pause();
     scrollTo(0,0);
@@ -1259,18 +1262,30 @@ html,body{overflow-x:hidden}
   function say(html,who){var d=document.createElement('div');d.className='cb-m '+(who||'bot');d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;}
   function drawChips(){chips.innerHTML=QA.filter(function(q){return !asked[q[0]];}).slice(0,6).map(function(q){return '<button type="button">'+esc(q[0])+'</button>';}).join('');}
   function ans(q){asked[q[0]]=1;var a=typeof q[2]==='function'?q[2]():q[2];setTimeout(function(){say(a);drawChips();},350);track('ChatAnswer',{q:q[0]});}
-  function open(){tip.hidden=true;cb.hidden=false;fab.hidden=true;fab.classList.remove('pulse');if(!greeted){greeted=true;say('Hi! Ask me anything about Digital Flyers, the plans or how it works. Tap a question or type your own.');drawChips();}if(!tall)setTimeout(function(){inp.focus();},50);track('ChatOpen');}
+  function open(){tip.hidden=true;cb.hidden=false;fab.hidden=true;fab.classList.remove('pulse');if(!greeted){greeted=true;say('Hi! Ask me anything about Digital Flyers, the plans or which plan fits your business. Tap a question or type your own.');drawChips();}if(!tall)setTimeout(function(){inp.focus();},50);track('ChatOpen');}
   function close(){cb.hidden=true;fab.hidden=false;}
   function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur==='plans'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
   tip.addEventListener('click',open);
   fab.addEventListener('click',open);document.getElementById('cbX').addEventListener('click',close);
   document.addEventListener('click',function(e){if(e.target.closest('[data-chat]'))open();});
   chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var q=QA.filter(function(x){return x[0]===b.textContent;})[0];if(q){say(esc(q[0]),'me');ans(q);}});
-  document.getElementById('cbF').addEventListener('submit',function(e){e.preventDefault();var t=inp.value.trim();if(!t)return;inp.value='';say(esc(t),'me');
+  var AIURL='https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-chat',aiChat=null,aiFirst=true,aiBusy=false;
+  function aiPost(b){return fetch(AIURL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json();});}
+  function typing(on){var t=document.getElementById('cbTyping');if(on&&!t){t=document.createElement('div');t.id='cbTyping';t.className='cb-m bot cb-typing';t.innerHTML='<i></i><i></i><i></i>';log.appendChild(t);log.scrollTop=log.scrollHeight;}else if(!on&&t)t.remove();}
+  function fmt(x){return esc(x).replace(/\+1 ?647 ?250 ?1152/g,PH).replace(/adviuz\.com\/book/gi,DEMO).replace(/\n/g,'<br>');}
+  function askAI(t,fallback){aiBusy=true;typing(true);
+    var go=function(){return aiPost({action:'msg',chat_id:aiChat,text:t,first:aiFirst}).then(function(j){aiFirst=false;if(!j||!j.reply)throw 0;typing(false);say(fmt(j.reply));drawChips();track('ChatAI');});};
+    (aiChat?go():aiPost({action:'start',page:location.pathname}).then(function(j){if(!j||!j.chat_id)throw 0;aiChat=j.chat_id;return go();}))
+      .catch(function(){typing(false);fallback();}).then(function(){aiBusy=false;});}
+  document.getElementById('cbF').addEventListener('submit',function(e){e.preventDefault();var t=inp.value.trim();if(!t||aiBusy)return;inp.value='';say(esc(t),'me');
+    askAI(t,function(){keyword(t);});
+  });
+  function keyword(t){
     var s=' '+t.toLowerCase().replace(/[^a-z0-9$\s-]/g,' ')+' ',best=null,bs=0;
     QA.forEach(function(q){var sc=0;q[1].forEach(function(k){if(s.indexOf(k.length<4?' '+k+' ':k)>=0)sc+=k.length>5?2:1;});if(sc>bs){bs=sc;best=q;}});
     if(best)ans(best);else{setTimeout(function(){say('Good question. I don\'t have an approved answer for that here, so please call '+PH+' (24/7) or '+DEMO+' and we\'ll answer it for you.');drawChips();},350);track('ChatNoAnswer');}
-  });
+ 
+  }
 })();
 </script>
 <script src="/js/checkout.js?v=20261031a" defer></script>
