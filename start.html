@@ -570,7 +570,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 
 /* plain header (no box) */
 .sx-head{position:relative!important;background:none!important;box-shadow:none!important}
-.sx-head .nav{background:none!important;box-shadow:none!important;border:0!important;justify-content:flex-start!important;padding-left:0!important;padding-right:0!important}
+.sx-head .nav{background:none!important;box-shadow:none!important;border:0!important;justify-content:space-between!important;padding-left:0!important;padding-right:0!important}
 /* hero: text left, video right */
 .sh2{padding:10px 0 30px;text-align:left}
 .sh2-g{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
@@ -593,6 +593,22 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 @media(max-width:860px){.sh2{padding:4px 0 26px}.sh2-g{grid-template-columns:1fr;gap:22px}.sh2-l{display:contents}
   .sh2-pill{order:1;justify-self:start}.sh2 h1{order:2;margin:0;font-size:clamp(40px,11vw,54px)}.sh2-pts{order:3;margin:0;gap:10px}.sh2-pts li{font-size:16px}
   .sh2-r{order:4}.sh2-nx{order:5}.sh2 .nx{max-width:none}.sh2 .ph-wrap{justify-content:center}.sh2-cap{text-align:center}}
+
+.hd-call{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);padding:8px 18px 8px 8px;border-radius:999px;background:#fff;border:1px solid #ece6f8;box-shadow:0 12px 30px -14px rgba(64,0,243,.35);transition:transform .2s}
+.hd-call:hover{transform:translateY(-2px)}
+.hd-ic{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--grad);flex:0 0 auto}
+.hd-ic svg{position:relative;z-index:1;width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:hdRing 2.4s ease-in-out infinite;transform-origin:50% 50%}
+.hd-ic i{position:absolute;inset:0;border-radius:50%;border:2px solid #8b5cff;animation:hdWave 2.4s ease-out infinite}
+.hd-ic i+i{animation-delay:.8s}
+@keyframes hdWave{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+@keyframes hdRing{0%,40%,100%{transform:rotate(0)}5%,15%,25%{transform:rotate(-16deg)}10%,20%,30%{transform:rotate(16deg)}}
+.hd-t{display:flex;flex-direction:column;line-height:1.15}
+.hd-t small{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#16a34a}
+.hd-t small em{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:hdLive 1.6s infinite}
+@keyframes hdLive{70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.hd-t b{font-size:19px;font-weight:800;letter-spacing:-.01em}
+@media(prefers-reduced-motion:reduce){.hd-ic svg,.hd-ic i,.hd-t small em{animation:none}}
+@media(max-width:860px){.hd-call{padding:0;border:0;box-shadow:none;background:none}.hd-t{display:none}.hd-ic{width:42px;height:42px}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -601,6 +617,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 <header class="site-header sx-head">
   <div class="container nav">
     <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
+    <a class="hd-call" href="tel:+16472501152" aria-label="Call us 24/7 on +1 647 250 1152"><span class="hd-ic"><i></i><i></i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg></span><span class="hd-t"><small><em></em>Call us 24/7</small><b>+1 647 250 1152</b></span></a>
   </div>
 </header>
 
@@ -706,7 +723,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   </div>
 </section>
 
-<section class="qcta"><div class="container"><div class="qbox"><div class="qbox-t"><h3>Have questions?</h3><p>Talk to us before you buy. We're happy to help you pick the right plan.</p></div><div class="qbox-b"><a class="button button-grad" href="tel:+16472501152"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>Call +1 647 250 1152</a><button type="button" class="button button-outline" data-chat><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat with us</button></div><p class="qbox-h">Mon–Fri, 10 AM–6 PM CST</p></div></div></section>
+<section class="qcta"><div class="container"><div class="qbox"><div class="qbox-t"><h3>Have questions?</h3><p>Talk to us before you buy. We're happy to help you pick the right plan.</p></div><div class="qbox-b"><a class="button button-grad" href="tel:+16472501152"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>Call +1 647 250 1152</a><button type="button" class="button button-outline" data-chat><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat with us</button></div><p class="qbox-h">24/7</p></div></div></section>
 </div>
 <section class="gs-sec" id="buy" data-v="checkout" hidden>
   <div class="container">
@@ -1080,7 +1097,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     ['Can I pause?',['pause','stop','validity','valid','expire','expiry'],'Yes. You can pause your campaign anytime from your phone. Packages are valid for 12 months (the Pilot for 6 months).'],
     ['How do I pay?',['pay','payment','card','apple pay','e-transfer','etransfer','invoice','stripe','secure'],'Pay securely by card or Apple Pay through Stripe, and your receipt comes by email. Prefer e-transfer? Call us on '+PH+'.'],
     ['Who is Adviuz?',['who','company','since','about','trust','legit','canada','experience'],'Adviuz has run digital flyer campaigns since 2014 and is headquartered in Canada. Over 17 million flyers delivered. Brands that have used digital flyers include Uber, Suzuki, RE/MAX, Škoda, MG Motors and Allen Solly.'],
-    ['Can I talk to someone?',['talk','human','person','someone','phone','contact','demo','speak'],'Yes. Call '+PH+' (Mon–Fri, 10 AM–6 PM CST) or '+DEMO+'.']
+    ['Can I talk to someone?',['talk','human','person','someone','phone','contact','demo','speak'],'Yes. Call '+PH+' (24/7) or '+DEMO+'.']
   ];
   var tip=document.getElementById('cbTip'),cb=document.getElementById('cb'),fab=document.getElementById('cbFab'),log=document.getElementById('cbLog'),chips=document.getElementById('cbChips'),inp=document.getElementById('cbIn'),greeted=false,autoDone=false,asked={};
   function esc(s){return String(s).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
@@ -1097,7 +1114,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   document.getElementById('cbF').addEventListener('submit',function(e){e.preventDefault();var t=inp.value.trim();if(!t)return;inp.value='';say(esc(t),'me');
     var s=' '+t.toLowerCase().replace(/[^a-z0-9$\s-]/g,' ')+' ',best=null,bs=0;
     QA.forEach(function(q){var sc=0;q[1].forEach(function(k){if(s.indexOf(k.length<4?' '+k+' ':k)>=0)sc+=k.length>5?2:1;});if(sc>bs){bs=sc;best=q;}});
-    if(best)ans(best);else{setTimeout(function(){say('Good question. I don\'t have an approved answer for that here, so please call '+PH+' (Mon–Fri, 10 AM–6 PM CST) or '+DEMO+' and we\'ll answer it for you.');drawChips();},350);track('ChatNoAnswer');}
+    if(best)ans(best);else{setTimeout(function(){say('Good question. I don\'t have an approved answer for that here, so please call '+PH+' (24/7) or '+DEMO+' and we\'ll answer it for you.');drawChips();},350);track('ChatNoAnswer');}
   });
 })();
 </script>
