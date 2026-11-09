@@ -95,12 +95,15 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 .cons{font-size:24px!important;line-height:1.1}.c3 .now{flex-wrap:wrap;gap:6px}.c3 .now b{font-size:32px}.a .pr{font-size:36px}.note{background:#fff7e6;border:1px solid #f5d79a;border-radius:16px;padding:14px 16px;font-size:14px;line-height:1.5;margin:0 0 18px}
 @media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.g4{grid-template-columns:1fr;gap:26px}}
+.b .bh td{background:#f6f2ff;color:#4b0fe0!important;font-weight:800!important;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;text-align:left!important;border-radius:10px}
+.b tbody tr:last-child td,.b tbody tr:nth-last-child(2) td{border-bottom:0}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span style="font-size:13px;color:var(--mut)">Preview only · not linked from the site</span></div>
   <h1>3 ways to show the plans</h1>
+  <p class="intro"><b>Update:</b> validity is now 3 · 6 · 9 · 12 · 18 months, the top plan is <b>Ultra</b>, and higher plans get bonuses that grow (bonus flyer views, group texts/emails/AI calls, custom follow-up plans, priority setup, monthly review call). The more they buy, the more they get on top.</p>
   <p class="intro">Same layouts as before, now with four plans: <b>1,000 · 3,000 · 6,000 · 12,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
   <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. The 12,000-view 1-year plan totals over $50,000, so it shows "By consultation" (your rule for $50K+). Nothing here is live: tell me the prices you want and I'll put them in.</div>
   <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a></nav>
@@ -117,27 +120,27 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
       <p class="fine">Not sure yet? <a href="#" style="color:var(--acc);font-weight:800">Try the Pilot Project · <s style="color:#9a8fb8">$1,899</s> $982</a></p></div></section>
 <script>
 var P=[
- {n:'Growth',v:1000,ai:500,aiv:750,m:3,use:'1 month',price:4974},
- {n:'Scale',v:3000,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1},
- {n:'Pro',v:6000,ai:3000,aiv:2700,m:5,use:'6 months',price:29563},
- {n:'Annual',v:12000,ai:6000,aiv:4800,m:12,use:'1 year',cons:1}];
-var PILOT={n:'Pilot',v:200,ai:100,aiv:200,m:1,use:'1 week',price:982,valid:6};
+ {n:'Growth',v:1000,bv:0,ai:500,aiv:750,m:3,use:'1 month',price:4974,valid:6,grp:0,cfp:0,pri:0,rev:0},
+ {n:'Scale',v:3000,bv:300,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1,valid:9,grp:1,cfp:1,pri:0,rev:0},
+ {n:'Pro',v:6000,bv:900,ai:3000,aiv:2700,m:5,use:'6 months',price:29563,valid:12,grp:1,cfp:2,pri:1,rev:1},
+ {n:'Ultra',v:12000,bv:2400,ai:6000,aiv:4800,m:12,use:'1 year',cons:1,valid:18,grp:1,cfp:3,pri:1,rev:1}];
+var PILOT={n:'Pilot',v:200,bv:0,ai:100,aiv:200,m:1,use:'1 week',price:982,valid:3,grp:0,cfp:0,pri:0,rev:0};
 function f(x){return x.toLocaleString('en-CA');}function d(x){return '$'+f(x);}
-[PILOT].concat(P).forEach(function(p){p.ed=p.m*99;p.val=p.v*5+p.aiv+600+p.ed;p.msg=p.v*2.5;p.save=p.cons?0:p.val-p.price;p.valid=p.valid||12;});
+[PILOT].concat(P).forEach(function(p){p.ed=p.m*99;p.val=(p.v+p.bv)*5+p.aiv+600+p.ed;p.msg=p.v*2.5;p.save=p.cons?0:p.val-p.price;p.valid=p.valid||12;});
 PILOT.val=1899;PILOT.save=917;
 function btn(p,t){return '<a class="btn" href="#">'+(p.cons?'Book a consultation':t)+' &rarr;</a>';}
 function priceA(p){return p.cons?'<div class="val">Total value <s>'+d(p.val)+'</s></div><div class="pr cons">By consultation</div>':'<div class="val">Total value <s>'+d(p.val)+'</s> · <span class="save">Save '+d(p.save)+'</span></div><div class="pr">'+d(p.price)+' <small>CAD + tax</small></div>';}
 document.getElementById('A').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="for">Typically used over '+p.use+'</p><div>'+priceA(p)+'</div>'
  +'<div class="big"><b>'+f(p.v)+'</b> flyer views + <b>full access</b> to the AI Conversion Engine ('+f(p.ai)+' AI minutes)</div>'
- +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid 12 months, pause anytime</li></ul>'
+ +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid '+p.valid+' months, pause anytime</li>'+(p.bv?'<li><b>Bonus: +'+f(p.bv)+' flyer views</b></li>':'')+'</ul>'
  +'<details><summary>What\'s included</summary><p>'+f(p.msg)+' texts, '+f(p.msg)+' emails and '+f(p.msg)+' call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>'+btn(p,'Choose '+p.n)+'</div>';}).join('');
 document.getElementById('AP').innerHTML='<p><b>Not sure yet? Try the Pilot Project</b><br>200 flyer views + full access to the AI Conversion Engine · first flyer design included · <s style="color:#9a8fb8">$1,899</s> <b>$982</b></p><a class="btn" href="#">Start the Pilot &rarr;</a>';
 var all=[PILOT].concat(P),R=function(l,fn,c){return '<tr><td>'+l+'</td>'+all.map(function(p){return '<td class="'+(p.rec?'col ':'')+(c||'')+'">'+fn(p)+'</td>';}).join('')+'</tr>';};
 document.getElementById('B').innerHTML='<thead><tr><th></th>'+all.map(function(p){return '<th'+(p.rec?' class="col"':'')+'>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><div class="v"><s>'+d(p.val)+'</s></div><div class="p'+(p.cons?' cons':'')+'">'+(p.cons?'Consult':d(p.price))+'</div></th>';}).join('')+'</tr></thead><tbody>'
  +R('Flyer views (25-second views)',function(p){return f(p.v);})+R('Typically used over',function(p){return p.use;})+R('First flyer design',function(){return 'Included';},'yes')
  +R('AI Conversion Engine',function(){return 'Full access';},'yes')+R('AI minutes',function(p){return f(p.ai);})+R('Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);})
- +R('Unlimited design edits',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Valid for',function(p){return p.valid+' months';})
- +R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
+ +R('Unlimited design edits',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Valid for',function(p){return '<b>'+p.valid+' months</b>';})
+ +'<tr class="bh"><td colspan="6">Bonuses that grow with your plan</td></tr>'+R('Bonus flyer views',function(p){return p.bv?'<b class="yes">+'+f(p.bv)+'</b>':'<span style="color:#c9c2d9">—</span>';})+R('Group texts, emails &amp; AI calls',function(p){return p.grp?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('Custom follow-up plans built by our team',function(p){return p.cfp?'<b>'+p.cfp+'</b>':'<span style="color:#c9c2d9">—</span>';})+R('Priority setup',function(p){return p.pri?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('Monthly 30-minute review call',function(p){return p.rev?'<span class="yes">Included</span>':'<span style="color:#c9c2d9">—</span>';})+R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
  +'<tr><td></td>'+all.map(function(p){return '<td'+(p.rec?' class="col"':'')+'><a class="btn'+(p.rec?'':' lt')+'" href="#">'+(p.cons?'Consult':p.n==='Pilot'?'Start Pilot':'Choose')+'</a></td>';}).join('')+'</tr></tbody>';
 document.getElementById('C').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="out">Your flyer seen <b>'+f(p.v)+' times</b> for 25 seconds each · typically over <b>'+p.use+'</b></p>'
  +'<ul class="stack"><li><span>'+f(p.v)+' flyer views</span><span>'+d(p.v*5)+'</span></li><li><span>AI Conversion Engine · '+f(p.ai)+' min</span><span>'+d(p.aiv)+'</span></li><li class="free"><span>First flyer design</span><span>INCLUDED</span></li><li><span>Design edits · '+p.m+' months</span><span>'+d(p.ed)+'</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>'
