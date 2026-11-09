@@ -45,9 +45,20 @@
         if (!window.ADV_LEAD) window.ADV_LEAD = j.lead_id;
         try { sessionStorage.setItem('adv_lead', j.lead_id); if (j.first_name && !sessionStorage.getItem('adv_name')) sessionStorage.setItem('adv_name', j.first_name); } catch (_) {}
       }
+      if (j.prefill) fillForms(j.prefill);
       window.ADV_VISITOR = { returning: !!j.returning, visits: j.visits || 1, first_name: j.first_name || '', lead_id: j.lead_id || '' };
       try { window.dispatchEvent(new CustomEvent('adv:visitor', { detail: window.ADV_VISITOR })); } catch (_) {}
     }).catch(function () {});
+
+  /* known lead: their details are already filled in on the checkout (and the details form) */
+  function fillForms(p) {
+    var map = { name: ['qNm', 'iNm'], business: ['qBz', 'iBz'], email: ['qEm', 'iEm'], phone: ['qPh', 'iPh'] };
+    Object.keys(map).forEach(function (k) {
+      if (!p[k]) return;
+      map[k].forEach(function (id) { var el = document.getElementById(id); if (el && !el.value) el.value = String(p[k]).slice(0, 160); });
+    });
+    var ck = document.getElementById('qCk'); if (ck && p.consent) ck.checked = true;
+  }
 
   /* what they do on the page */
   document.addEventListener('click', function (e) {

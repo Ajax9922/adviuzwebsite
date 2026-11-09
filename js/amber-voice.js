@@ -76,8 +76,8 @@
 
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   var fab = document.createElement('button');
-  fab.type = 'button'; fab.className = 'vc-fab'; fab.setAttribute('aria-label', 'Talk to Amber by voice');
-  fab.innerHTML = I.mic + '<b>Talk to Amber</b>';
+  fab.type = 'button'; fab.className = 'vc-fab'; fab.setAttribute('aria-label', 'Have questions? Talk to Amber by voice');
+  fab.innerHTML = I.mic + '<b>Have questions? Let\'s talk</b>';
   var box = document.createElement('div');
   box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Talk to Amber');
   box.innerHTML = '<div class="vc-top"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Amber</b><small>Adviuz AI assistant · voice</small></div>'
