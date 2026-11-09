@@ -437,8 +437,8 @@
 .vf{position:fixed;inset:0;z-index:200;background:#07030f;display:flex;align-items:center;justify-content:center}
 .vf[hidden]{display:none}
 .vf video{position:static;width:100%;height:100%;object-fit:contain;background:#07030f}
-.vf-min{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;font:700 14px/1 var(--font-body);padding:11px 16px;cursor:pointer;backdrop-filter:blur(6px)}
-.vf-min svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
+.vf-min{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);right:16px;z-index:2;display:grid;place-items:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.35);border-radius:14px;background:rgba(35,8,53,.82);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.vf-min svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
 html.vf-lock,html.vf-lock body{overflow:hidden}
 #after[hidden],#plans[hidden]{display:none}
 .aud{padding:40px 0 30px;text-align:center}
@@ -525,11 +525,11 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 <section class="aud" id="aud">
   <div class="container">
     <span class="kicker">One quick question</span>
-    <h2>Who are your customers?</h2>
-    <p>We'll show the plans made for them.</p>
+    <h2>Who do you want to advertise to?</h2>
+    <p>We'll show you the plans made for them.</p>
     <div class="aud-opts">
-      <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>People &amp; families</b><span>You sell to consumers</span></div></button>
-      <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Other businesses</b><span>You sell to companies (B2B)</span></div></button>
+      <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>Families</b><span>People and households near you</span></div></button>
+      <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Businesses</b><span>Owners and decision-makers at companies</span></div></button>
     </div>
   </div>
 </section>
@@ -561,10 +561,10 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
         <button type="button" role="tab" class="pt-tab" data-g="ai">AI Engine Pricing</button>
       </div>
       <div class="pp-seg" id="ppSeg">
-        <span>Your customers:</span>
-        <div class="gs-seg" role="group" aria-label="Your customers">
-          <button type="button" data-seg="b2c" aria-pressed="true">People &amp; families</button>
-          <button type="button" data-seg="b2b" aria-pressed="false">Other businesses</button>
+        <span>Advertise to:</span>
+        <div class="gs-seg" role="group" aria-label="Advertise to">
+          <button type="button" data-seg="b2c" aria-pressed="true">Families</button>
+          <button type="button" data-seg="b2b" aria-pressed="false">Businesses</button>
         </div>
       </div>
       <p class="npintro" id="ppIntro"></p>
@@ -660,7 +660,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 </main>
 
 <div class="vf" id="vfOv" hidden role="dialog" aria-label="Video: how Digital Flyers work">
-  <button type="button" class="vf-min" id="vfMin" aria-label="Back to small screen"><svg viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>Small screen</button>
+  <button type="button" class="vf-min" id="vfMin" aria-label="Exit full screen" title="Exit full screen"><svg viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></button>
 </div>
 
 <button type="button" class="cb-fab" id="cbFab" aria-label="Open questions chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Questions? Ask us</button>
@@ -778,7 +778,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     y.aiVal=aiVal;var eN=Number(e)||0;
     y.std=vN*(b2b?10:5)+aiVal+600+eN*99;
     if(!BF&&!isPilot){y.price=x.std;} // after Black Friday: standard price, still shown against total value
-    y.title=v+' Flyer Views';y.for=x.name+' package';y.inc='Package includes';y.views=v;y.months=eN;y.valid=val;y.ai=[m,sm,em,cm];
+    y.title=x.name;y.for=v+' flyer views · Full access to AI Conversion Engine · Unlimited design edits for '+e+' month'+(e==='1'?'':'s');y.inc='Package includes';y.views=v;y.months=eN;y.valid=val;y.ai=[m,sm,em,cm];
     y.list=[{t:v+' flyer views',em:'(25-second views)'},{k:'free',t:'First flyer design included'},{k:'free',t:'Unlimited design edits for '+e+' month'+(e==='1'?'':'s')},
       {k:'free',t:'Flyer account setup included',em:'($300 value)'},{k:'free',t:'AI setup included',em:'($300 value)'},{k:'tot',t:'Total setup value $600',em:'included free'},
       {t:'Package validity: '+val+' months'+(val==='12'?', pause anytime':'')}];
