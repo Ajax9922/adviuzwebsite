@@ -665,6 +665,51 @@ html,body{overflow-x:hidden}
 .pilot2-k{margin:0 auto 12px;width:max-content;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--grad);border-radius:999px;padding:8px 16px}
 .pilot2 .pl-card{border:3px solid transparent!important;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box!important;box-shadow:0 24px 60px -18px rgba(64,0,243,.35)}
 @media(min-width:900px){.pilot2{max-width:640px}}
+
+/* ===== new plan table (Daylight premium) + phone cards ===== */
+#ppGrid.np{display:block;position:relative;border-radius:32px;padding:clamp(14px,2vh,30px) 26px clamp(10px,1.6vh,22px);background:radial-gradient(55% 55% at 90% 0%,rgba(230,90,252,.22),transparent 70%),radial-gradient(50% 55% at 0% 100%,rgba(64,0,243,.16),transparent 70%),#fbf9ff;border:1px solid #ebe3fb;box-shadow:0 40px 90px -45px rgba(64,0,243,.45);text-align:center}
+.np-win{position:relative;padding:0 46px}
+.np-t{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.np-t th,.np-t td{text-align:center;padding:clamp(5px,1.05vh,14px) 10px;font-size:clamp(14px,1.75vh,16px);border-bottom:1px solid #ece6f8;color:var(--ink)}
+.np-t th{border-bottom:0;padding:clamp(6px,1vh,14px) 10px}
+.np-t td.l,.np-t th.l{width:30%;text-align:left;font-weight:600;color:var(--muted);white-space:nowrap;font-size:clamp(13.5px,1.7vh,15.5px)}
+.np-ic{display:inline-grid;place-items:center;width:clamp(24px,3vh,30px);height:clamp(24px,3vh,30px);border-radius:9px;margin-right:10px;vertical-align:middle;background:#fff;box-shadow:0 4px 12px -4px rgba(64,0,243,.25)}
+.np-ic svg{width:clamp(14px,1.8vh,17px);height:clamp(14px,1.8vh,17px);fill:none;stroke:#6a2cff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.np-t .y,.np-rows .y{color:#16a34a;font-weight:800}
+.np-tag{display:inline-block;font-size:clamp(10px,1.2vh,11px);font-weight:800;letter-spacing:.1em;border-radius:999px;padding:4px 9px;margin-bottom:clamp(3px,.6vh,8px)}
+.np-rec{background:var(--grad);color:#fff;box-shadow:0 0 22px rgba(230,90,252,.45)}.np-lim{background:#ffe8f0;color:#b4235a}
+.np-n{margin:0;font-size:clamp(16px,2.1vh,20px);font-weight:800}.np-was{font-size:clamp(12px,1.5vh,14px);color:#9a8fb8;text-decoration:line-through}
+.np-pr{font-size:clamp(28px,4.2vh,40px);font-weight:800;letter-spacing:-.03em;line-height:1.05}.np-pr.np-cons{font-size:clamp(22px,3.2vh,30px)}
+.np-t .mid{background:#fff;box-shadow:-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb}
+.np-t th.mid{border-radius:22px 22px 0 0;box-shadow:0 -1px 0 #e2d6fb,-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb}
+.np-t tbody tr:last-child .mid{border-radius:0 0 22px 22px;box-shadow:-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb,0 1px 0 #e2d6fb,0 30px 50px -20px rgba(64,0,243,.35)}
+.np-t th.mid .np-pr:not(.np-cons){background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.np-sv td{color:#16a34a!important;font-weight:800;font-size:clamp(15px,1.95vh,18px)!important}
+.np-btn{display:inline-flex;justify-content:center;width:100%;max-width:210px;border-radius:999px;font-weight:800;font-size:clamp(14px,1.75vh,16px);padding:clamp(9px,1.3vh,14px) 10px;text-decoration:none;background:#fff;color:#4b0fe0;border:1px solid #ddd0fa}
+.np-t .mid .np-btn{background:var(--grad);color:#fff;border:0;box-shadow:0 12px 30px -8px rgba(230,90,252,.55)}
+.np-arw{position:absolute;top:clamp(34px,5vh,60px);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid #ddd0fa;background:#fff;color:#4b0fe0;font:400 30px/1 var(--font-body);cursor:pointer;box-shadow:0 10px 26px -10px rgba(64,0,243,.45);display:grid;place-items:center;padding-bottom:4px}
+.np-arw.prev{left:0}.np-arw.next{right:0}.np-arw[disabled]{opacity:.3;cursor:default;box-shadow:none}
+.np-arw:not([disabled]){animation:npA 1.8s ease-in-out infinite}.np-arw.prev:not([disabled]){animation-name:npAl}
+@keyframes npA{50%{transform:translateX(5px)}}@keyframes npAl{50%{transform:translateX(-5px)}}
+.np-t .sl{animation:npSl .35s ease}.np-t .sr{animation:npSr .35s ease}
+@keyframes npSl{from{opacity:0;transform:translateX(30px)}}@keyframes npSr{from{opacity:0;transform:translateX(-30px)}}
+.np-dots{display:flex;justify-content:center;gap:7px;margin-top:clamp(6px,1vh,14px)}.np-dots i{width:8px;height:8px;border-radius:50%;background:#ddd3f5}.np-dots i.on{width:22px;border-radius:5px;background:var(--grad)}
+.np-fine{font-size:12px;color:var(--muted);margin:clamp(6px,1vh,14px) 0 0;line-height:1.5}
+.np-tip{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:6px;border-radius:50%;border:1.5px solid #b9a6ec;background:#fff;color:#6a2cff;font:800 10px/1 Georgia,serif;font-style:italic;cursor:pointer;vertical-align:1px;padding:0}
+.np-tipbox{position:absolute;z-index:200;max-width:260px;background:#230835;color:#fff;font-size:13.5px;line-height:1.45;border-radius:14px;padding:12px 14px;box-shadow:0 16px 40px rgba(35,8,53,.35)}
+.np-tipbox:after{content:"";position:absolute;left:var(--ax,20px);top:-6px;width:12px;height:12px;background:#230835;transform:rotate(45deg)}
+.np-m{display:none}
+@media(max-width:760px){.np-win,.np-dots{display:none}.np-m{display:block}#ppGrid.np{padding:16px 12px 18px}
+ .np-c{text-align:left;border:1.5px solid #ece6f8;background:#fff;border-radius:24px;padding:22px 18px;margin-bottom:20px;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
+ .np-c.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+ .np-ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.np-ch h3{margin:0;font-size:24px}
+ .np-cp{text-align:right}.np-cp s{color:#9a8fb8;font-size:14px}.np-cp b{display:block;font-size:32px;letter-spacing:-.02em;line-height:1.05}.np-cp small{font-size:12px;color:var(--muted)}
+ .np-save{display:inline-block;margin:12px 0 4px;font-size:14px;font-weight:800;color:#16a34a;background:#e9f9ef;border-radius:999px;padding:6px 12px}
+ .np-rows{list-style:none;margin:10px 0 18px;padding:0}.np-rows li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid #ece6f8;font-size:15px}
+ .np-rows li span:first-child{color:var(--muted)}.np-rows li span:last-child{font-weight:700;text-align:right;white-space:nowrap}
+ .np-c .np-btn{max-width:none;padding:15px;font-size:16px;background:var(--grad);color:#fff;border:0;box-shadow:0 14px 30px -12px rgba(64,0,243,.55)}
+ .np-c .np-btn.o{background:#fff;color:#4b0fe0;border:1.5px solid #ddd0fa;box-shadow:none}}
+#plans .pp-fine{display:none}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -857,16 +902,16 @@ html,body{overflow-x:hidden}
   function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
   function $m(n){return '$'+Number(n||0).toLocaleString('en-CA',{maximumFractionDigits:2});}
   function m2(v){return '$'+v.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});}
-  function bfd(v,m,s,e,val,setup){return v+' viewed flyers · '+m+' AI call minutes · '+s+' texts, '+s+' emails and '+s+' call minutes to leads · Flyer design with unlimited edits for '+e+' month'+(e>1?'s':'')+(setup?' · Account and AI setup included':'')+' · Valid '+val+' months'+(val===12?', pause anytime':'')+'.';}
+  function bfd(v,m,s,e,val,setup){return v+' viewed flyers · '+m+' AI call minutes · '+s+' texts, '+s+' emails and '+s+' call minutes to leads · Flyer design with unlimited edits for '+e+' month'+(e>1?'s':'')+(setup?' · Account and AI setup included':'')+' · Valid '+val+' months'+(val>3?', pause anytime':'')+'.';}
   var BFP={
-    b2c:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,rec:0,d:bfd('200','100','500',1,6,0)},
-         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('1,000','500','2,500',3,12,1)},
-         {key:'bf-scale',buy:'scale',name:'Scale',price:12468,std:14663,rec:1,d:bfd('2,500','1,250','6,250',4,12,1)},
-         {key:'bf-pro',buy:'pro',name:'Pro',price:24963,std:28100,d:bfd('5,000','2,500','12,500',5,12,1)}],
-    b2b:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,d:bfd('100','50','250',1,6,0)},
-         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('500','250','1,250',3,12,1)},
-         {key:'bf-scale',buy:'scale',name:'Scale',price:12468,std:14663,rec:1,d:bfd('1,250','625','3,125',4,12,1)},
-         {key:'bf-pro',buy:'pro',name:'Pro',price:24963,std:28100,d:bfd('2,500','1,250','6,250',5,12,1)}]};
+    b2c:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,rec:0,d:bfd('200','100','500',1,3,0)},
+         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('1,000','500','2,500',3,6,1)},
+         {key:'bf-scale',buy:'scale',name:'Scale',price:14537,std:17100,rec:1,d:bfd('3,000','1,500','7,500',4,9,1)},
+         {key:'bf-pro',buy:'pro',name:'Pro',price:29563,std:33300,d:bfd('6,000','3,000','15,000',5,12,1)}],
+    b2b:[{key:'bf-pilot',buy:'pilot',name:'Pilot Project',price:982,std:0,d:bfd('100','50','250',1,3,0)},
+         {key:'bf-growth',buy:'growth',name:'Growth',price:4974,std:6350,d:bfd('500','250','1,250',3,6,1)},
+         {key:'bf-scale',buy:'scale',name:'Scale',price:14537,std:17100,rec:1,d:bfd('1,500','750','3,750',4,9,1)},
+         {key:'bf-pro',buy:'pro',name:'Pro',price:29563,std:33300,d:bfd('3,000','1,500','7,500',5,12,1)}]};
   var FLY=[{key:'fly-1000',buy:'fly1000',g:'fly',name:'1,000 Flyer Views',price:5000,setup:300,list:[{t:'1,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 3 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-2500',buy:'fly2500',g:'fly',name:'2,500 Flyer Views',price:12500,setup:300,rec:1,list:[{t:'2,500 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 4 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]},
            {key:'fly-5000',buy:'fly5000',g:'fly',name:'5,000 Flyer Views',price:25000,setup:300,list:[{t:'5,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 5 months'},{k:'fee',t:'One-time setup fee: $300'},{t:'Package validity: 12 months'}]}];
@@ -934,13 +979,54 @@ html,body{overflow-x:hidden}
             :'<a class="pl-buy'+(save||x.rec?' pl-buy-dk':'')+'" href="#buy" data-k="'+x.key+'">'+(save?'Get started &rarr;':'Buy now')+'</a>')+'</div>';
   }
   var grid=document.getElementById('ppGrid');
+
+  /* ===== new plan table (locked design) ===== */
+  function npRender(sg){
+    var b2b=sg==='b2b',k=function(x){return x>=1e6?(x/1e6)+'M':(x/1e3)+'K';},f=function(x){return Number(x).toLocaleString('en-CA');};
+    var rate=function(m){return m<=100?2:m<=200?1.75:m<=500?1.5:m<=1250?1.25:m<=2000?1:m<=5000?.9:.8;};
+    var base=[[200,100,500,1,'1 week',3],[1000,500,2500,3,'1 month',6],[3000,1500,7500,4,'3 months',9],[6000,3000,15000,5,'6 months',12]];
+    var big=[['Ultra',12000,6000,30000,'12 months','1 year','18 months'],['Enterprise',24000,12000,60000,'Custom','Custom','Custom'],['Enterprise+',48000,24000,120000,'Custom','Custom','Custom']];
+    var P=BFP[sg].map(function(x,i){var q=base[i],dv=b2b?2:1,v=q[0]/dv,ai=q[1]/dv,ms=q[2]/dv,aiv=i===0?Math.round(ai*rate(ai)):Math.max(0,x.std-v*(b2b?10:5)-600);
+      var val=v*(b2b?10:5)+aiv+600+q[3]*99,pr=(!BF&&i>0)?x.std:x.price;
+      return {key:x.key,n:x.name==='Pilot Project'?'Pilot':x.name,v:v,dist:k(q[0]*50)+'–'+k(q[0]*100),ed:q[3]+' month'+(q[3]>1?'s':''),ai:ai,msg:ms,use:q[4],val:q[5]+' months',was:val,pr:pr,save:val-pr,lim:i===0,rec:x.rec};});
+    big.forEach(function(g){var dv=b2b?2:1;P.push({n:g[0],v:g[1]/dv,dist:k(g[1]*50)+'–'+k(g[1]*100),ed:g[4],ai:g[2]/dv,msg:g[3]/dv,use:g[5],val:g[6],cons:1});});
+    window._npP=P;
+    var T={'Estimated distribution':'How many people your flyer is likely to reach on their screens (this is distribution, not views). It is usually 50 to 100 times your flyer views, and can be higher or lower depending on your audience, offer and market. An estimate, not a guarantee.','Flyer views':'A view counts only when someone keeps your flyer open for 25 seconds. You pay only for these views.','First flyer design':'Our team designs your first flyer from your logo, photos and offer. Nothing goes live until you approve it.','Unlimited design editing':'Ask for as many changes to your flyer as you like during this time.','AI Conversion Engine':'Our AI calls, texts and emails every new enquiry within seconds, books appointments and keeps following up.','AI minutes':'Minutes the AI spends talking with your leads on calls.','Texts, emails':'Texts, emails and regular call minutes to your leads for follow-ups, reminders and remarketing.','Setup':'Our team sets up your flyer account and your AI ($300 each). Included free.','Typically used over':'How long most businesses take to use these views. You can go faster or slower.','Recharge validity':'How long you have to use your views and credits, from the day you pay.'};
+    var TL=function(l){for(var t in T)if(l.indexOf(t)===0)return l+'<button type="button" class="np-tip" data-tip="'+T[t]+'" aria-label="What does this mean?">i</button>';return l;};
+    var IC={users:'<circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/>',eye:'<circle cx="12" cy="12" r="3"/><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7z"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',loop:'<path d="M4 12a8 8 0 0114-5l2-2v6h-6l2.5-2.5A5 5 0 007 12"/><path d="M20 12a8 8 0 01-14 5l-2 2v-6h6l-2.5 2.5A5 5 0 0017 12"/>',bot:'<rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',msg:'<path d="M4 5h16v11H9l-5 4z"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',tag:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>'};
+    var ROWS=[['users','Estimated distribution*',function(p){return p.dist;}],['eye','Flyer views (25-second views)',function(p){return f(p.v);}],['pen','First flyer design',function(){return 'Included';},1],['loop','Unlimited design editing',function(p){return p.ed;}],['bot','AI Conversion Engine',function(){return 'Full access';},1],['clock','AI minutes',function(p){return f(p.ai);}],['msg','Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);}],['gear','Setup ($600 value)',function(){return 'Included';},1],['cal','Typically used over',function(p){return p.use;}],['shield','Recharge validity',function(p){return '<b>'+p.val+'</b>';}]];
+    var btn=function(p,cls){return p.cons?'<a class="np-btn'+cls+'" href="/book?solution=both" target="_blank" rel="noopener">Contact us</a>':'<a class="np-btn'+cls+'" href="#buy" data-k="'+p.key+'">'+(p.lim?'Start the Pilot':'Choose '+p.n)+'</a>';};
+    var tags=function(p){return p.rec?'<span class="np-tag np-rec">RECOMMENDED</span>':p.lim?'<span class="np-tag np-lim">LIMITED PERIOD</span>':'<span class="np-tag" style="visibility:hidden">-</span>';};
+    var price=function(p){return p.cons?'<div class="np-was" style="text-decoration:none">Custom pricing</div><div class="np-pr np-cons">Contact us</div>':'<div class="np-was">'+$m(p.was)+'</div><div class="np-pr">'+$m(p.pr)+'</div>';};
+    var t='<div class="np-win"><button type="button" class="np-arw prev" aria-label="Previous plans">&#8249;</button><table class="np-t"><thead><tr><th class="l"></th>'
+      +P.map(function(p,i){return '<th class="p'+i+'">'+tags(p)+'<p class="np-n">'+p.n+'</p>'+price(p)+'</th>';}).join('')+'</tr></thead><tbody>';
+    ROWS.forEach(function(r){t+='<tr><td class="l"><i class="np-ic"><svg viewBox="0 0 24 24">'+IC[r[0]]+'</svg></i>'+TL(r[1])+'</td>'+P.map(function(p,i){return '<td class="p'+i+(r[3]?' y':'')+'">'+r[2](p)+'</td>';}).join('')+'</tr>';});
+    t+='<tr class="np-sv"><td class="l"><i class="np-ic"><svg viewBox="0 0 24 24">'+IC.tag+'</svg></i>You save</td>'+P.map(function(p,i){return '<td class="p'+i+'">'+(p.cons?'Ask us':$m(p.save))+'</td>';}).join('')+'</tr>';
+    t+='<tr><td class="l"></td>'+P.map(function(p,i){return '<td class="p'+i+'">'+btn(p,'')+'</td>';}).join('')+'</tr></tbody></table><button type="button" class="np-arw next" aria-label="More plans">&#8250;</button></div><div class="np-dots"></div>';
+    var MR=function(p){return [['Estimated distribution*',p.dist],['Flyer views (25-second views)',f(p.v)],['First flyer design','Included',1],['Unlimited design editing',p.ed],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Setup ($600 value)','Included',1],['Typically used over',p.use],['Recharge validity',p.val]];};
+    var m='<div class="np-m">'+P.map(function(p){return '<div class="np-c'+(p.rec?' hl':'')+'"><div class="np-ch"><div>'+(p.rec?'<span class="np-tag np-rec">RECOMMENDED</span>':p.lim?'<span class="np-tag np-lim">LIMITED PERIOD</span>':'')+'<h3>'+p.n+'</h3></div><div class="np-cp">'+(p.cons?'<s style="text-decoration:none">Custom pricing</s><b style="font-size:24px">Contact us</b>':'<s>'+$m(p.was)+'</s><b>'+$m(p.pr)+'</b><small>CAD + tax</small>')+'</div></div>'
+      +(p.cons?'':'<span class="np-save">You save '+$m(p.save)+'</span>')+'<ul class="np-rows">'+MR(p).map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="y"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'+btn(p,p.rec?'':' o')+'</div>';}).join('')+'</div>';
+    return t+m+'<p class="np-fine">Prices in CAD + tax · Prepaid · $0 monthly'+(BF?' · Black Friday prices end Nov 30':'')+'<br>*Estimated distribution is an estimate of how many people may see your flyer (typically 50–100× your flyer views). It depends on your audience, offer and market, and is not guaranteed.</p>';
+  }
+  function npWire(g){
+    var t=g.querySelector('.np-t'),w=g.querySelector('.np-win'),dots=g.querySelector('.np-dots'),N=(window._npP||[]).length,V=3,PG=[],pi=0;for(var q=0;q<N;q+=V)PG.push(Math.min(q,N-V));
+    function show(dir){var st=PG[pi];t.querySelectorAll('th,td').forEach(function(c){var mm=c.className.match(/\bp(\d)\b/);if(!mm)return;var i=+mm[1],on=i>=st&&i<st+V;c.style.display=on?'':'none';c.classList.toggle('mid',i===st+1);if(on&&dir){c.classList.remove('sl','sr');void c.offsetWidth;c.classList.add(dir>0?'sl':'sr');}});
+      w.querySelector('.prev').disabled=pi===0;w.querySelector('.next').disabled=pi===PG.length-1;dots.innerHTML=PG.map(function(_,k){return '<i class="'+(k===pi?'on':'')+'"></i>';}).join('');}
+    w.querySelector('.prev').onclick=function(){if(pi>0){pi--;show(-1);}};w.querySelector('.next').onclick=function(){if(pi<PG.length-1){pi++;show(1);}};show(0);
+  }
+  (function(){var box=null;function close(){if(box){box.remove();box=null;}}
+    document.addEventListener('click',function(e){var t=e.target.closest('.np-tip');if(!t){if(!e.target.closest('.np-tipbox'))close();return;}e.preventDefault();e.stopPropagation();var same=box&&box._t===t;close();if(same)return;
+      box=document.createElement('div');box.className='np-tipbox';box.textContent=t.dataset.tip;box._t=t;document.body.appendChild(box);var r=t.getBoundingClientRect(),w=Math.min(260,innerWidth-24),x=Math.max(12,Math.min(r.left+r.width/2-w/2,innerWidth-w-12));
+      box.style.width=w+'px';box.style.left=(x+scrollX)+'px';box.style.top=(r.bottom+scrollY+10)+'px';box.style.setProperty('--ax',(r.left+r.width/2-x-6)+'px');},true);
+    addEventListener('scroll',close,{passive:true});})();
   function draw(){
     document.getElementById('ppIntro').textContent=INTRO[tab];
     document.getElementById('ppSeg').hidden=tab!=='bf';
     var xs=tab==='bf'?BFP[seg].filter(function(x){return x.key!=='bf-pilot';}):tab==='fly'?FLY:AI;
     grid.className='pp-grid';
-    grid.innerHTML=xs.map(planCard).join('');
-    var pz=document.getElementById('ppPilot');
+    if(tab==='bf'){BFP[seg].forEach(function(x){planCard(Object.assign({},x));});grid.className='np';grid.innerHTML=npRender(seg);npWire(grid);}
+    else grid.innerHTML=xs.map(planCard).join('');
+    var pz=document.getElementById('ppPilot');if(tab==='bf'&&pz){pz.innerHTML='';pz=null;}
     if(pz&&tab==='bf'){pz.innerHTML='<div class="pilot2"><p class="pilot2-k">Not sure yet? Try it first</p>'+planCard(Object.assign({},BFP[seg][0]))+'</div>';}
     else if(pz)pz.innerHTML='';
     priceAnim();
@@ -1146,15 +1232,15 @@ html,body{overflow-x:hidden}
     ['What counts as a view?',['view','25','second','count','timer','charged','pay for'],'A view counts only when someone keeps your flyer open for 25 seconds. A thin bar at the top of the flyer counts the time. If they switch to another app, the timer pauses. If they call you before the 25 seconds are up, that lead is free.'],
     ['How is this different from Facebook ads?',['facebook','meta','instagram ads','social media','ads','different','difference','google ads','boost'],'Regular ads charge for clicks and impressions, even when someone scrolls past in a second. That is like paying for the trailer. With Adviuz you pay for the full movie: 25 seconds of a customer\'s focused attention. Your flyer runs on 15+ platforms from one campaign, and our team designs and manages it for you.'],
     ['Which platforms?',['platform','where','youtube','tiktok','linkedin','whatsapp','google','news','apps','channels'],'Your flyer can run on YouTube, Facebook, Instagram, Messenger, WhatsApp, Threads, Google, TikTok, LinkedIn, X, news sites and mobile apps: 15+ platforms in one campaign. People who enquire also get your flyer by text and email.'],
-    ['How much does it cost?',['price','cost','how much','pricing','plans','expensive','cheap','budget','$'],function(){return BF?'Black Friday prices (CAD + tax): Pilot Project $982, Growth $4,974, Scale $12,468 and Pro $24,963. Each Complete Solution package includes flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation. The plans are right on this page.':'Prices (CAD + tax): Pilot Project $999, Growth $6,350, Scale $14,663 and Pro $28,100, each with flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation.';}],
-    ['Which plan should I pick?',['which','pick','choose','recommend','best for','right plan','start'],'The Complete Solution brings you new enquiries and follows every one up. Flyer Pricing is for businesses with their own team to follow up leads. AI Engine Pricing is for businesses that already get leads. Not sure? Start with the Pilot Project. Use "How soon do you want results?" above the plans to see the usual fit.'],
-    ['Is it a subscription?',['subscription','monthly','month','contract','recurring','commitment','cancel'],'No. It\'s a one-time prepaid payment with no monthly fees and no contract. Complete Solution and flyer packages are valid for 12 months and you can pause anytime (the Pilot is valid for 6 months).'],
+    ['How much does it cost?',['price','cost','how much','pricing','plans','expensive','cheap','budget','$'],function(){return BF?'Black Friday prices (CAD + tax): Pilot Project $982, Growth $4,974, Scale $14,537 and Pro $29,563. Each Complete Solution package includes flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation. The plans are right on this page.':'Prices (CAD + tax): Pilot Project $1,899, Growth $6,350, Scale $17,100 and Pro $33,300, each with flyer views, flyer design, the AI Conversion Engine and setup. Plans of $50,000+ are by consultation.';}],
+    ['Which plan should I pick?',['which','pick','choose','recommend','best for','right plan','start'],'The Complete Solution brings you new enquiries and follows every one up. Flyer Pricing is for businesses with their own team to follow up leads. AI Engine Pricing is for businesses that already get leads. Not sure? Start with the Pilot Project.'],
+    ['Is it a subscription?',['subscription','monthly','month','contract','recurring','commitment','cancel'],'No. It\'s a one-time prepaid payment with no monthly fees and no contract. You can use your plan within its recharge validity: Pilot 3 months, Growth 6, Scale 9 and Pro 12 months, and you can pause anytime.'],
     ['B2C or B2B?',['b2b','b2c','businesses','consumers','sell to'],'Pick B2C if your customers are people and families. Pick B2B if you sell to other businesses: your flyer reaches business decision-makers, so each package includes fewer, more targeted views.'],
     ['What does the AI do?',['ai','conversion engine','follow','call','text','sms','email','appointment','book','remind','amber'],'The AI Conversion Engine calls, texts and emails every new enquiry within seconds, books appointments into your calendar, sends reminders and keeps following up, including after the meeting. You stay in control: listen live, take over any call, and switch between AI and human anytime.'],
     ['What happens after I pay?',['after','pay','paid','next','onboard','get started','start'],'You get a receipt by email right away. Our team contacts you for your logo, photos and offer, designs your flyer and sets up your AI. Nothing goes live until you approve it.'],
     ['What do you need from me?',['need','logo','photo','content','material','send','provide'],'Your logo, a few photos, your offer, phone and WhatsApp numbers, website, address and area, business hours, and your brand colours if you have them. Our team designs the flyer from these.'],
     ['Do you guarantee leads?',['guarantee','results','leads','how many','roi','promise','refund'],'We guarantee distribution: every billed view is a real 25-second view shown live in your dashboard, and any shortfall is topped up at no cost. Leads and sales depend on your offer and market, so we don\'t promise a number of leads. See our <a href="/refund-policy.html">Refund Policy</a> for refunds.'],
-    ['Can I pause?',['pause','stop','validity','valid','expire','expiry'],'Yes. You can pause your campaign anytime from your phone. Packages are valid for 12 months (the Pilot for 6 months).'],
+    ['Can I pause?',['pause','stop','validity','valid','expire','expiry'],'Yes. You can pause your campaign anytime from your phone. Each plan has a recharge validity: Pilot 3 months, Growth 6, Scale 9 and Pro 12 months.'],
     ['How do I pay?',['pay','payment','card','apple pay','e-transfer','etransfer','invoice','stripe','secure'],'Pay securely by card or Apple Pay through Stripe, and your receipt comes by email. Prefer e-transfer? Call us on '+PH+'.'],
     ['Who is Adviuz?',['who','company','since','about','trust','legit','canada','experience'],'Adviuz has run digital flyer campaigns since 2014 and is headquartered in Canada. Over 17 million flyers delivered. Brands that have used digital flyers include Uber, Suzuki, RE/MAX, Škoda, MG Motors and Allen Solly.'],
     ['Can I talk to someone?',['talk','human','person','someone','phone','contact','demo','speak'],'Yes. Call '+PH+' (24/7) or '+DEMO+'.']
