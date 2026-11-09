@@ -1038,6 +1038,8 @@ html,body{overflow-x:hidden}
 /* ===== /start: watch first (video in a big phone, tap = big screen), then "who are your customers?", then plans ===== */
 (function(){
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='',seg='',info=false;
+  /* link sent to an existing lead (adviuz.com/start?lead=...) -> no details form, we already have them */
+  try{var QS=new URLSearchParams(location.search);if(QS.has('lead')){info=true;document.documentElement.classList.add('known-lead');}}catch(_){}
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
