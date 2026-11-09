@@ -150,8 +150,8 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 <div class="wrap">
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span style="font-size:13px;color:var(--mut)">Preview only · not linked from the site</span></div>
   <h1>4 ways to show the plans</h1>
-  <p class="intro">Same layouts as before, now with four plans: <b>1,000 · 3,000 · 6,000 · 12,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
-  <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. The 12,000-view 1-year plan totals over $50,000, so it shows "By consultation" (your rule for $50K+). Nothing here is live: tell me the prices you want and I'll put them in.</div>
+  <p class="intro">Same layouts as before, now with plans of <b>1,000 · 3,000 · 6,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
+  <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. Nothing here is live: tell me the prices you want and I'll put them in.</div>
   <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a><a href="#d">D · Card after card</a></nav>
   <section class="opt a" id="a"><div class="oh"><span>OPTION A</span><h2>Simple &amp; decisive</h2></div>
     <p class="why"><b>Why it closes faster:</b> each card shows only what decides the purchase: the price drop, one line of what they get and how long it typically lasts. The full list hides under "What's included".</p>
@@ -171,8 +171,7 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 var P=[
  {n:'Growth',v:1000,bv:0,ai:500,aiv:750,m:3,use:'1 month',price:4974,valid:6,grp:0,cfp:0,pri:0,rev:0},
  {n:'Scale',v:3000,bv:0,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1,valid:9,grp:1,cfp:1,pri:0,rev:0},
- {n:'Pro',v:6000,bv:0,ai:3000,aiv:2700,m:5,use:'6 months',price:29563,valid:12,grp:1,cfp:2,pri:1,rev:1},
- {n:'Ultra',v:12000,bv:0,ai:6000,aiv:4800,m:12,use:'1 year',cons:1,valid:18,grp:1,cfp:3,pri:1,rev:1}];
+ {n:'Pro',v:6000,bv:0,ai:3000,aiv:2700,m:5,use:'6 months',price:29563,valid:12,grp:1,cfp:2,pri:1,rev:1}];
 var PILOT={n:'Pilot',v:200,bv:0,ai:100,aiv:200,m:1,use:'1 week',price:982,valid:3,grp:0,cfp:0,pri:0,rev:0};
 function f(x){return x.toLocaleString('en-CA');}function d(x){return '$'+f(x);}
 [PILOT].concat(P).forEach(function(p){p.ed=p.m*99;p.val=(p.v+p.bv)*5+p.aiv+600+p.ed;p.msg=p.v*2.5;p.save=p.cons?0:p.val-p.price;p.valid=p.valid||12;});
