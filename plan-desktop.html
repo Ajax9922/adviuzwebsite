@@ -159,7 +159,7 @@ var IC={eye:'<circle cx="12" cy="12" r="3"/><path d="M2.5 12S6 5 12 5s9.5 7 9.5 
  bot:'<rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
  msg:'<path d="M4 5h16v11H9l-5 4z"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
  cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',tag:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>'};
-var ROWS=[['eye','Flyer views (25-second views)',function(p){return f(p.v);}],['users','Estimated distribution*',function(p){return p.dist;}],['pen','First flyer design',function(){return 'Included';},1],
+var ROWS=[['users','Estimated distribution*',function(p){return p.dist;}],['eye','Flyer views (25-second views)',function(p){return f(p.v);}],['pen','First flyer design',function(){return 'Included';},1],
  ['loop','Unlimited design editing',function(p){return p.ed;}],['bot','AI Conversion Engine',function(){return 'Full access';},1],['clock','AI minutes',function(p){return f(p.ai);}],
  ['msg','Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);}],['gear','Setup ($600 value)',function(){return 'Included';},1],['cal','Typically used over',function(p){return p.use;}],
  ['shield','Recharge validity',function(p){return '<b>'+p.val+'</b>';}]];
