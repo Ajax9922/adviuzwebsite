@@ -19,10 +19,10 @@
 
   var css = ''
     /* launcher */
-    + 'html body>.vc-fab{position:fixed;right:18px;bottom:86px;z-index:80;width:54px;height:54px;border-radius:50%;border:0;background:#fff;color:var(--accent,#5b17f0);box-shadow:0 12px 30px rgba(35,8,53,.22),0 0 0 1px var(--line,#e7e1f3);display:flex;align-items:center;justify-content:center;cursor:pointer}'
-    + '.vc-fab svg{width:24px;height:24px}'
-    + '.vc-fab b{position:absolute;right:62px;white-space:nowrap;background:#fff;color:var(--ink,#1c1030);font:700 13px var(--font-body,sans-serif);padding:8px 12px;border-radius:999px;box-shadow:0 8px 22px rgba(35,8,53,.16);pointer-events:none;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s}'
-    + '.vc-fab:hover b,.vc-fab:focus-visible b{opacity:1;transform:none}'
+    + 'html body>.vc-fab{position:fixed;right:18px;bottom:18px;z-index:80;width:auto;height:58px;border-radius:999px;border:0;background:var(--grad,linear-gradient(135deg,#4000f3,#e65afc));color:#fff;box-shadow:0 14px 34px rgba(64,0,243,.4);display:flex;align-items:center;gap:10px;padding:0 22px 0 18px;cursor:pointer;font:800 16px/1 var(--font-body,sans-serif)}'
+    + '.vc-fab svg{width:24px;height:24px}.vc-fab b{white-space:nowrap}'
+    + '.vc-fab.pulse::after{content:"";position:absolute;inset:0;border-radius:999px;box-shadow:0 0 0 0 rgba(122,60,255,.6);animation:vcP 2s infinite}'
+    + '@keyframes vcP{70%{box-shadow:0 0 0 16px rgba(122,60,255,0)}100%{box-shadow:0 0 0 0 rgba(122,60,255,0)}}'
     + 'body:not(.unlocked) .vc-fab{display:none}body.vc-open .vc-fab,body.vc-open .cb-fab,body.vc-open .cb-tip,body.vc-mini .vc-fab{display:none!important}'
     + 'body.vc-open{overflow:hidden}'
     /* full-screen view */
@@ -33,7 +33,7 @@
     + '.vc-top b{display:block;font-size:16px}.vc-top small{display:block;font-size:12.5px;opacity:.7}'
     + '.vc-ib{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}'
     + '.vc-ib[hidden]{display:none}.vc-ib svg{width:20px;height:20px}.vc-ib:hover{background:rgba(255,255,255,.18)}'
-    + '.vc-top .vc-min{margin-left:auto}'
+    + '.vc-top>div{flex:1;min-width:0}.vc-top .vc-ib{flex:none}'
     + '.vc-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:10px 22px;min-height:0}'
     + '.vc-orb{--l:0;position:relative;width:min(46vw,210px);height:min(46vw,210px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#d58bff 0%,#8a3dff 38%,#4f12e6 70%,#2a0a8a 100%);box-shadow:0 0 calc(40px + var(--l)*90px) rgba(150,80,255,.55);transform:scale(calc(1 + var(--l)*.12));transition:transform .09s linear,box-shadow .09s linear}'
     + '.vc-orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(190,140,255,.25)}'
@@ -64,7 +64,7 @@
     /* chat header shortcut */
     + '.cb-talk{border:0;background:rgba(255,255,255,.14);color:#fff;height:34px;border-radius:999px;padding:0 12px 0 10px;font:800 13px var(--font-body,sans-serif);display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-left:auto}'
     + '.cb-talk svg{width:16px;height:16px}.cb-talk+.cb-x{margin-left:8px}'
-    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:78px;width:50px;height:50px}.vc-fab b{display:none}.vc-cap p{font-size:16px}.vc-rb{width:60px;height:60px}}';
+    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:12px;height:56px;padding:0 18px 0 16px;font-size:15px}.vc-cap p{font-size:16px}.vc-rb{width:60px;height:60px}}';
 
   var I = {
     mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8.5 21h7"/></svg>',
@@ -81,9 +81,9 @@
   var box = document.createElement('div');
   box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Talk to Amber');
   box.innerHTML = '<div class="vc-top"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Amber</b><small>Adviuz AI assistant · voice</small></div>'
-    + '<button type="button" class="vc-ib vc-min" aria-label="Minimise" hidden>' + I.down + '</button><button type="button" class="vc-ib vc-x" aria-label="Close">' + I.end + '</button></div>'
+    + '<button type="button" class="vc-ib vc-min" aria-label="Minimise">' + I.down + '</button><button type="button" class="vc-ib vc-x" aria-label="Close and end">' + I.end + '</button></div>'
     + '<div class="vc-mid"><div class="vc-orb" aria-hidden="true"></div><p class="vc-st" aria-live="polite"></p><p class="vc-tm" hidden></p><div class="vc-cap" aria-live="polite"></div><p class="vc-sub"></p></div>'
-    + '<div class="vc-bot"><div class="vc-ctl"></div><p class="vc-note">You\'re speaking with our AI assistant. This conversation may be recorded. Prefer a person? Call <a href="' + TEL + '">' + PHONE + '</a> (24/7).</p></div>';
+    + '<div class="vc-bot"><div class="vc-ctl"></div><p class="vc-note">Amber is an AI assistant and can make mistakes, so please check important details like prices and what\'s included on this page before you buy. Conversations may be recorded. Prefer a person? Call <a href="' + TEL + '">' + PHONE + '</a> (24/7).</p></div>';
   var bar = document.createElement('div');
   bar.className = 'vc-bar'; bar.hidden = true;
   bar.innerHTML = '<i></i><span class="vc-bt">Amber</span><button type="button" class="vc-open">' + I.up + 'Open</button><button type="button" class="end">' + I.end + 'End</button>';
@@ -145,7 +145,6 @@
     }
     ctl.innerHTML = c;
     sTm.hidden = s !== 'live';
-    minB.hidden = s !== 'live';
     if (s !== 'live') { cap.innerHTML = ''; setMini(false); }
   }
   function setLevel(v) {
@@ -162,6 +161,7 @@
   }
   function openCheckout(key) {
     track('VoiceCheckout', { plan: key });
+    try { window.dispatchEvent(new CustomEvent('adv:checkout', { detail: { plan: key } })); } catch (_) {}
     setMini(true);
     try { if (typeof window.gsBuy === 'function') { window.gsBuy(key); return; } } catch (_) {}
     var a = document.querySelector('[data-k="' + key + '"]'); if (a) a.click();
@@ -188,14 +188,14 @@
 
   function start() {
     if (call || state === 'connecting') return;
-    muted = false; lastAct = 0; callId = ''; view('connecting'); track('VoiceStart');
+    muted = false; lastAct = 0; callId = ''; view('connecting'); track('VoiceStart'); if (window.advTrack) window.advTrack('voice');
     loadSDK().then(function () {
       var client = new window.AdvRetell.RetellClient({
         key: 'website',
         fetch: function (url, init) {
           var h = { 'Content-Type': 'application/json' };
           try { var v = init && init.headers && init.headers['X-Retell-Client-JS-SDK-Version']; if (v) h['x-retell-client-js-sdk-version'] = v; } catch (_) {}
-          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), name: visitorName(), audience: audience(), tz: tz(), page: location.pathname }) });
+          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), name: visitorName(), audience: audience(), tz: tz(), page: location.pathname, returning: !!(window.ADV_VISITOR && window.ADV_VISITOR.returning) }) });
         }
       });
       var me = client.createWebCall({
@@ -256,7 +256,7 @@
 
   fab.addEventListener('click', openV);
   $('.vc-x').addEventListener('click', closeV);
-  minB.addEventListener('click', function () { setMini(true); });
+  minB.addEventListener('click', function () { if (state === 'live') setMini(true); else { box.hidden = true; document.body.classList.remove('vc-open'); } });
   bar.querySelector('.vc-open').addEventListener('click', openV);
   bar.querySelector('.end').addEventListener('click', function () { end(); closeV(); });
   ctl.addEventListener('click', function (e) {

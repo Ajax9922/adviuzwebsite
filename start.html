@@ -491,11 +491,11 @@ body[data-view="checkout"] .promo-bar,body[data-view="checkout"] .cb-tip{display
 .cb-f{display:flex;gap:8px;padding:10px 12px 12px;background:#fff}
 .cb-f input{flex:1;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:999px;padding:11px 16px;min-width:0}
 .cb-f button{border:0;border-radius:999px;background:var(--grad);color:#fff;font:800 14px var(--font-body);padding:0 18px;cursor:pointer}
-.cb-tip{position:fixed;right:18px;bottom:152px;z-index:80;max-width:260px;background:#fff;border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:12px 14px;font-size:14px;line-height:1.4;color:var(--ink);box-shadow:0 16px 40px rgba(35,8,53,.18);cursor:pointer;animation:stIn .5s}
+.cb-tip{position:fixed;right:18px;bottom:162px;z-index:80;max-width:260px;background:#fff;border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:12px 14px;font-size:14px;line-height:1.4;color:var(--ink);box-shadow:0 16px 40px rgba(35,8,53,.18);cursor:pointer;animation:stIn .5s}
 .cb-tip[hidden]{display:none}
 body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .cb-note{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
-@media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:140px}
+@media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:150px}
   .cb{right:0;bottom:0;width:100vw;max-width:100vw;height:82svh;border-radius:22px 22px 0 0}.cb-fab{right:12px;bottom:12px;padding:12px 16px 12px 12px;font-size:14px}}
 
 /* ===== v4 screens ===== */
@@ -721,6 +721,10 @@ html,body{overflow-x:hidden}
 
 .cb-typing{display:flex;gap:5px;align-items:center;width:max-content}.cb-typing i{width:7px;height:7px;border-radius:50%;background:#b9a6ec;animation:cbT 1s infinite}.cb-typing i:nth-child(2){animation-delay:.15s}.cb-typing i:nth-child(3){animation-delay:.3s}
 @keyframes cbT{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+/* 2026-11-09: voice is the main helper; chat is the small round button above it */
+html body>.cb-fab{right:18px;bottom:96px;width:54px;height:54px;padding:0!important;gap:0!important;justify-content:center;font-size:0!important;background:#fff;color:var(--accent);box-shadow:0 12px 30px rgba(35,8,53,.22),0 0 0 1px var(--line)}
+html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-fab.pulse::after{display:none}
+@media(max-width:720px){html body>.cb-fab{right:12px;bottom:86px;width:52px;height:52px}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -894,7 +898,7 @@ html,body{overflow-x:hidden}
 </div>
 
 <button type="button" class="cb-fab" id="cbFab" aria-label="Open questions chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Questions? Ask us</button>
-<div class="cb-tip" id="cbTip" hidden>Questions before you choose? Ask me here.</div>
+<div class="cb-tip" id="cbTip" data-voice hidden>Questions before you choose? Talk to Amber: just tap and speak.</div>
 <div class="cb" id="cb" role="dialog" aria-label="Questions about Adviuz" hidden>
   <div class="cb-h"><img src="assets/favicon.svg?v=5" alt=""><div><b>Adviuz Assistant</b><small>Ask anything · replies in seconds</small></div><button type="button" class="cb-x" id="cbX" aria-label="Close chat">&times;</button></div>
   <div class="cb-log" id="cbLog" aria-live="polite"></div>
@@ -1135,6 +1139,9 @@ html,body{overflow-x:hidden}
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='',seg='',info=false;
   /* link sent to an existing lead (adviuz.com/start?lead=...) -> no details form, we already have them */
   try{var QS=new URLSearchParams(location.search);if(QS.has('lead')){info=true;document.documentElement.classList.add('known-lead');}}catch(_){}
+  /* returning visitor we already know (js/visitor.js): no details form again */
+  function knownVisitor(d){if(d&&d.lead_id){info=true;document.documentElement.classList.add('known-lead');}}
+  if(window.ADV_VISITOR)knownVisitor(window.ADV_VISITOR);window.addEventListener('adv:visitor',function(e){knownVisitor(e.detail);});
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
@@ -1226,7 +1233,7 @@ html,body{overflow-x:hidden}
       var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:location.href.split('#')[0],
         message:'Watched the how-it-works video on adviuz.com/start · Advertises to: '+(seg==='b2b'?'Business owners (B2B)':'Consumers (B2C)')+' · Interested in: Digital Flyers + AI Conversion Engine'};
       var t=setTimeout(done,6000);
-      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* they are on the page and can talk to Amber here: no automatic AI call for 60 minutes */fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'hold',lead:j.lead_id}),keepalive:true}).catch(function(){});}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
+      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;if(window.advTrack)window.advTrack('lead',j.lead_id);try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* they are on the page and can talk to Amber here: no automatic AI call for 60 minutes */fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'hold',lead:j.lead_id}),keepalive:true}).catch(function(){});}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
     });})();
   document.getElementById('plChange').addEventListener('click',function(){goView('ask');});
   /* Pilot Project highlight -> checkout */
@@ -1264,8 +1271,8 @@ html,body{overflow-x:hidden}
   function ans(q){asked[q[0]]=1;var a=typeof q[2]==='function'?q[2]():q[2];setTimeout(function(){say(a);drawChips();},350);track('ChatAnswer',{q:q[0]});}
   function open(){tip.hidden=true;cb.hidden=false;fab.hidden=true;fab.classList.remove('pulse');if(!greeted){greeted=true;say('Hi! Ask me anything about Digital Flyers, the plans or which plan fits your business. Tap a question or type your own.');drawChips();}if(!tall)setTimeout(function(){inp.focus();},50);track('ChatOpen');}
   function close(){cb.hidden=true;fab.hidden=false;}
-  function autoChat(){if(autoDone)return;autoDone=true;fab.classList.add('pulse');setTimeout(function(){if(cur==='plans'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
-  tip.addEventListener('click',open);
+  function autoChat(){if(autoDone)return;autoDone=true;var vf=document.querySelector('.vc-fab');if(vf)vf.classList.add('pulse');setTimeout(function(){if(cur==='plans'&&cb.hidden){tip.hidden=false;setTimeout(function(){tip.hidden=true;},9000);}},2500);}
+  /* the tip now opens voice (data-voice, handled by amber-voice.js) */
   fab.addEventListener('click',open);document.getElementById('cbX').addEventListener('click',close);
   document.addEventListener('click',function(e){if(e.target.closest('[data-chat]'))open();});
   chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var q=QA.filter(function(x){return x[0]===b.textContent;})[0];if(q){say(esc(q[0]),'me');ans(q);}});
@@ -1288,7 +1295,8 @@ html,body{overflow-x:hidden}
   }
 })();
 </script>
-<script src="/js/amber-voice.js?v=20261109c" defer></script>
+<script src="/js/visitor.js?v=20261109a" defer></script>
+<script src="/js/amber-voice.js?v=20261109e" defer></script>
 <script src="/js/checkout.js?v=20261031a" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
