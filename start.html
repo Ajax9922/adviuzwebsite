@@ -520,6 +520,33 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .aud-opts button>div{display:flex;flex-direction:column;align-items:center;gap:4px}
 @media(max-width:760px){.aud-opts button>div{align-items:flex-start}}
 @media(max-width:760px){.pilot{flex-direction:column;align-items:stretch;text-align:left;padding:20px}.pilot-r{text-align:left}.pilot-b{width:100%;justify-content:center}}
+
+.pilot-v{font-size:14px;color:var(--muted);font-weight:600}.pilot-v s{color:#9a8fb8}
+.pilot-p{transition:color .3s}.pilot-p.cut{text-decoration:line-through;text-decoration-color:#e0457b;text-decoration-thickness:4px;color:#9a8fb8}.pilot-p.new{color:var(--accent)}
+.pilot-n b{color:#16a34a}
+.pilot.done .pilot-p{animation:pPop .5s}@keyframes pPop{50%{transform:scale(1.12)}}
+.tr2{padding:20px 0 10px}
+.tr2-card{border:1px solid var(--line);border-radius:28px;background:#fff;padding:28px 0 26px;box-shadow:0 20px 50px -24px rgba(35,8,53,.2);overflow:hidden;text-align:center}
+.tr2-k{margin:0 0 18px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.tr2-m{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tr2-t{display:flex;width:max-content;animation:tr2 38s linear infinite}
+.tr2-t span{flex:0 0 auto;width:150px;height:56px;display:grid;place-items:center;padding:0 18px}
+.tr2-t img{max-width:100%;max-height:40px;object-fit:contain;filter:grayscale(1);opacity:.7}
+@keyframes tr2{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tr2-t{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+.tr2-s{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 26px 0;padding-top:22px;border-top:1px solid var(--line)}
+.tr2-s>div{display:flex;flex-direction:column;align-items:center;gap:4px}
+.tr2-s i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#f1ebff;margin-bottom:6px}
+.tr2-s svg{width:24px;height:24px;fill:none;stroke:#5a1fe0;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tr2-s b{font-size:26px;font-weight:800;color:var(--ink);letter-spacing:-.02em}.tr2-s span{font-size:13.5px;color:var(--muted)}
+.qcta{padding:10px 0 30px}
+.qbox{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 30px;border-radius:28px;background:var(--dark-grad);color:#fff;padding:30px 32px}
+.qbox h3{margin:0 0 4px;color:#fff;font-size:26px}.qbox p{margin:0;color:rgba(255,255,255,.8)}
+.qbox-b{display:flex;flex-wrap:wrap;gap:12px}.qbox-b .button{display:inline-flex;align-items:center;gap:10px}
+.qbox-b svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.qbox .button-outline{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.35)}
+.qbox-h{width:100%;font-size:13px;opacity:.75}
+@media(max-width:760px){.tr2-s{grid-template-columns:1fr 1fr;gap:20px 10px;margin:22px 16px 0}.tr2-t span{width:120px}.qbox{padding:24px 20px}.qbox-b,.qbox-b .button{width:100%;justify-content:center}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -597,20 +624,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   </div>
 </section>
 
-<section class="trust" aria-label="Global brands using digital flyers">
-  <div class="container">
-    <h2 class="trust-head">Trusted by <span class="grad-text">Global Brands</span></h2>
-  </div>
-  <div class="trust-viewport">
-    <div class="trust-track"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"><img src="assets/brands/uber.png" alt="Uber"><img class="tall" src="assets/brands/vanheusen.png" alt="Van Heusen"><img class="tall" src="assets/brands/mg.png" alt="MG — Morris Garages"><img class="tall tg" src="assets/brands/timesgroup.png" alt="The Times Group"><img class="tall ahs" src="assets/brands/ahs3.png" alt="Advanced Hair Studio"><img src="assets/brands/suzuki.png" alt="Suzuki"><img src="assets/brands/allensolly.png" alt="Allen Solly"><img class="tall" src="assets/brands/mit.png" alt="MIT ADT University"><img src="assets/brands/skoda.png" alt="Škoda"><span class="tl-cap"><img src="assets/brands/remax.png" alt="RE/MAX"><small>V21 Realty</small></span><img class="tall" src="assets/brands/louisphilippe.png" alt="Louis Philippe"><img src="assets/brands/yamaha.png" alt="Yamaha"><img class="tall" src="assets/brands/symbiosis.png" alt="Symbiosis International University"></div>
-  </div>
-  <section class="sx-trust" aria-label="About Adviuz" style="border:0;padding-top:0"><div class="container"><div class="sx-stats">
-      <div><b>Since 2014</b><span>Headquartered in Canada</span></div>
-      <div><b>17M+</b><span>Flyers delivered</span></div>
-      <div><b>100K+</b><span>Leads generated</span></div>
-      <div><b>15+</b><span>Platforms, one campaign</span></div>
-    </div>
-    </div></section>
+<section class="tr2"><div class="container"><div class="tr2-card"><p class="tr2-k">Trusted by global brands</p><div class="tr2-m" aria-label="Brands that have used digital flyers"><div class="tr2-t"><span><img src="assets/brands/uber.png" alt="Uber" loading="lazy"></span><span><img src="assets/brands/vanheusen.png" alt="Van Heusen" loading="lazy"></span><span><img src="assets/brands/mg.png" alt="MG Motor" loading="lazy"></span><span><img src="assets/brands/timesgroup.png" alt="The Times Group" loading="lazy"></span><span><img src="assets/brands/ahs3.png" alt="Advanced Hair Studio" loading="lazy"></span><span><img src="assets/brands/suzuki.png" alt="Suzuki" loading="lazy"></span><span><img src="assets/brands/allensolly.png" alt="Allen Solly" loading="lazy"></span><span><img src="assets/brands/mit.png" alt="MIT ADT University" loading="lazy"></span><span><img src="assets/brands/skoda.png" alt="Škoda" loading="lazy"></span><span><img src="assets/brands/remax.png" alt="RE/MAX" loading="lazy"></span><span><img src="assets/brands/louisphilippe.png" alt="Louis Philippe" loading="lazy"></span><span><img src="assets/brands/yamaha.png" alt="Yamaha" loading="lazy"></span><span><img src="assets/brands/symbiosis.png" alt="Symbiosis" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/uber.png" alt="Uber" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/vanheusen.png" alt="Van Heusen" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/mg.png" alt="MG Motor" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/timesgroup.png" alt="The Times Group" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/ahs3.png" alt="Advanced Hair Studio" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/suzuki.png" alt="Suzuki" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/allensolly.png" alt="Allen Solly" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/mit.png" alt="MIT ADT University" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/skoda.png" alt="Škoda" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/remax.png" alt="RE/MAX" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/louisphilippe.png" alt="Louis Philippe" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/yamaha.png" alt="Yamaha" loading="lazy"></span><span><img aria-hidden="true" src="assets/brands/symbiosis.png" alt="Symbiosis" loading="lazy"></span></div></div><div class="tr2-s"><div><i><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></i><b>Since 2014</b><span>Headquartered in Canada</span></div><div><i><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2"/></svg></i><b>17M+</b><span>Flyers delivered</span></div><div><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><b>100K+</b><span>Leads generated</span></div><div><i><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></i><b>15+</b><span>Platforms, one campaign</span></div></div></div></div></section>
 <!-- 9. RISK REVERSAL -->
 <section class="gs-sec">
   <div class="container gs-center">
@@ -622,10 +636,11 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
       <div><b>Prepaid, $0 monthly</b><span>One payment. No contracts, no monthly fees.</span></div>
       <div><b>Pause anytime</b><span>Switch your campaign off from your phone whenever you like.</span></div>
     </div>
-    <p class="st3-help" style="text-align:center;color:var(--muted);margin:18px 0 0">Questions? <button type="button" data-chat style="background:none;border:0;font:inherit;color:var(--accent);font-weight:700;cursor:pointer;padding:0">Ask us here</button> or call <a href="tel:+16472501152">+1 647 250 1152</a>.</p>
+    
   </div>
 </section>
 
+<section class="qcta"><div class="container"><div class="qbox"><div class="qbox-t"><h3>Have questions?</h3><p>Talk to us before you buy. We're happy to help you pick the right plan.</p></div><div class="qbox-b"><a class="button button-grad" href="tel:+16472501152"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>Call +1 647 250 1152</a><button type="button" class="button button-outline" data-chat><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat with us</button></div><p class="qbox-h">Mon–Fri, 10 AM–6 PM CST</p></div></div></section>
 </div>
 <section class="gs-sec" id="buy" data-v="checkout" hidden>
   <div class="container">
@@ -787,9 +802,13 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     if(pz&&tab==='bf'){planCard(Object.assign({},BFP[seg][0]));var P=CARDS['bf-pilot'];
       pz.innerHTML='<div class="pilot"><div class="pilot-l"><span class="pilot-tag">Not sure yet? Try it first</span><h3>Pilot Project</h3>'
         +'<p>'+P.views+' flyer views · Full access to AI Conversion Engine · '+P.ai[0]+' AI minutes · Flyer design with unlimited edits for 1 month · Valid 6 months</p></div>'
-        +'<div class="pilot-r"><div class="pilot-p">'+$m(P.price)+'</div><div class="pilot-n">CAD + applicable tax'+(P.std>P.price?' · <s>'+$m(P.std)+'</s>':'')+'</div>'
+        +'<div class="pilot-r"><div class="pilot-v">Total value <s>'+$m(P.std)+'</s></div><div class="pilot-p" data-from="'+P.std+'" data-to="'+P.price+'">'+$m(P.std)+'</div><div class="pilot-n">CAD + applicable tax · <b>You save '+$m(P.std-P.price)+'</b></div>'
         +'<a class="pilot-b" href="#buy" data-pilot>Start the Pilot &rarr;</a></div></div>';}
     else if(pz)pz.innerHTML='';
+    var pp=pz&&pz.querySelector('.pilot-p');
+    if(pp){var go=function(){if(pp._d)return;pp._d=1;pp.classList.add('cut');setTimeout(function(){pp.classList.remove('cut');pp.classList.add('new');var a=+pp.dataset.from,b=+pp.dataset.to,t0=null;
+        (function st(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1000),q=1-Math.pow(1-k,3);pp.textContent=$m(Math.round(a+(b-a)*q));if(k<1)requestAnimationFrame(st);else pz.querySelector('.pilot').classList.add('done');})(performance.now());},900);};
+      if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go();}},{threshold:.6});io.observe(pp);}else go();}
     priceAnim();
     if(!sel||(!CARDS[sel.key]))pickKey(tab==='ai'?'bf-scale':xs.filter(function(x){return x.rec;})[0].key,true);
     else if(sel.g==='bf'&&tab==='bf')pickKey(sel.key,true);
@@ -889,7 +908,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   function fmt(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
   /* video finished: the "next step" button unlocks under the phone */
   function ready(scroll){
-    if(!unlocked){unlocked=true;nx.classList.add('ready');try{localStorage.setItem(KEY,'1');}catch(_){}}
+    if(!unlocked){unlocked=true;nx.classList.add('ready');try{sessionStorage.setItem(KEY,'1');}catch(_){}}
     if(scroll)setTimeout(function(){nx.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});},350);
   }
   /* next step tapped: open the question + plans area */
@@ -920,7 +939,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   v.addEventListener('ended',function(){track('WatchedVideo');goSmall();ph.classList.add('done');ready(true);});
   document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
   /* returning visitors who already watched see the next step straight away */
-  try{if(localStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
+  try{if(sessionStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
   /* ---- screens: watch -> ask -> plans -> checkout (header stays the same) ---- */
   window.goView=function(n,noPush){
     if(n==='plans'&&!seg)n='ask';
