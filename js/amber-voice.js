@@ -1,7 +1,12 @@
-/* Adviuz website voice: "Talk to Amber" in the browser (2026-11-09).
-   Tap -> allow mic -> live voice conversation with Amber (the same AI as the Adviuz phone line).
-   The call is started by the website-voice function (server holds the Retell key); the Retell
-   browser SDK (/assets/retell-sdk-3.0.3.js, loaded only when the voice panel opens) carries the audio.
+/* Adviuz website voice: "Talk to Amber" in the browser.
+   v1 (2026-11-09): tap -> allow mic -> live voice with Amber.
+   v2 (2026-11-09, Ajax: "full screen like ChatGPT", "this is a deal closer"):
+     - full-screen voice view: big animated orb, live captions, round mute / end buttons, minimise
+     - talks to the separate "Adviuz Website Closer" agent (chosen on the server)
+     - when Amber opens a plan's checkout, the voice view shrinks to a small bar (the call keeps going)
+       and that plan's checkout opens on the page
+   The call is started by the website-voice function (server holds the Retell key); the Retell browser SDK
+   (/assets/retell-sdk-3.0.3.js, loaded only when the voice view opens) carries the audio.
    Opens from: the mic button (bottom right), any [data-voice] element, the chat header "Talk" button.
    On /start the mic button shows only once the plans are unlocked (body.unlocked), like the chat. */
 (function () {
@@ -10,61 +15,84 @@
   var SDK = '/assets/retell-sdk-3.0.3.js';
   var PHONE = '+1 647 250 1152', TEL = 'tel:+16472501152';
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sdkP = null, call = null, state = 'idle', muted = false, t0 = 0, tick = 0, lvlRaf = 0, lvl = 0;
+  var sdkP = null, call = null, callId = '', state = 'idle', muted = false, t0 = 0, tick = 0, poll = 0, lvlRaf = 0, lvl = 0, lastAct = 0, mini = false;
 
   var css = ''
+    /* launcher */
     + 'html body>.vc-fab{position:fixed;right:18px;bottom:86px;z-index:80;width:54px;height:54px;border-radius:50%;border:0;background:#fff;color:var(--accent,#5b17f0);box-shadow:0 12px 30px rgba(35,8,53,.22),0 0 0 1px var(--line,#e7e1f3);display:flex;align-items:center;justify-content:center;cursor:pointer}'
-    + '.vc-fab svg{width:24px;height:24px}.vc-fab:hover{transform:translateY(-1px)}'
+    + '.vc-fab svg{width:24px;height:24px}'
     + '.vc-fab b{position:absolute;right:62px;white-space:nowrap;background:#fff;color:var(--ink,#1c1030);font:700 13px var(--font-body,sans-serif);padding:8px 12px;border-radius:999px;box-shadow:0 8px 22px rgba(35,8,53,.16);pointer-events:none;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s}'
     + '.vc-fab:hover b,.vc-fab:focus-visible b{opacity:1;transform:none}'
-    + 'body:not(.unlocked) .vc-fab{display:none}body.vc-open .vc-fab,body.vc-open .cb-fab,body.vc-open .cb-tip{display:none!important}'
-    + 'html body>.vc{position:fixed;left:auto;right:18px;bottom:18px;z-index:95;width:360px;max-width:calc(100vw - 24px);background:#fff;border:1px solid var(--line,#e7e1f3);border-radius:24px;box-shadow:0 30px 80px rgba(35,8,53,.28);overflow:hidden;display:flex;flex-direction:column}'
-    + '.vc[hidden]{display:none}'
-    + '.vc-h{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--dark-grad,#1c1030);color:#fff}'
-    + '.vc-h img{width:38px;height:38px;border-radius:12px;background:#fff;padding:5px;object-fit:contain}'
-    + '.vc-h b{display:block;font-size:16px}.vc-h small{display:block;font-size:12.5px;opacity:.8}'
-    + '.vc-x{margin-left:auto;border:0;background:rgba(255,255,255,.14);color:#fff;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer}'
-    + '.vc-b{padding:26px 22px 20px;text-align:center;background:#faf8fd}'
-    + '.vc-orb{--l:0;position:relative;width:132px;height:132px;margin:0 auto 18px;border-radius:50%;background:var(--grad,#6a2bff);display:flex;align-items:center;justify-content:center;color:#fff}'
-    + '.vc-orb svg{width:46px;height:46px;position:relative;z-index:1}'
-    + '.vc-orb::before,.vc-orb::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(122,60,255,.28);transform:scale(calc(1 + var(--l)*.22));transition:transform .08s linear}'
-    + '.vc-orb::after{inset:-22px;border-color:rgba(122,60,255,.14);transform:scale(calc(1 + var(--l)*.4))}'
-    + '.vc[data-s="connecting"] .vc-orb::before{animation:vcP 1.4s ease-in-out infinite}'
-    + '@keyframes vcP{50%{transform:scale(1.12);opacity:.5}}'
-    + '.vc-st{font:800 18px var(--font-body,sans-serif);color:var(--ink,#1c1030);margin:0 0 4px}'
-    + '.vc-sub{font-size:14px;line-height:1.45;color:var(--muted,#6b6280);margin:0 auto 18px;max-width:280px}'
-    + '.vc-tm{font:700 13px var(--font-body,sans-serif);color:var(--muted,#6b6280);margin:-10px 0 16px;letter-spacing:.04em}'
-    + '.vc-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}'
-    + '.vc-btns button,.vc-btns a{border:0;border-radius:999px;font:800 15px var(--font-body,sans-serif);padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}'
-    + '.vc-go{background:var(--grad,#6a2bff);color:#fff;box-shadow:0 12px 28px rgba(64,0,243,.32)}'
-    + '.vc-go[disabled]{opacity:.6;cursor:default}'
-    + '.vc-mu{background:#fff;color:var(--ink,#1c1030);border:1px solid var(--line,#e7e1f3)!important}'
-    + '.vc-mu[aria-pressed="true"]{background:#fff3e8;color:#b45309}'
-    + '.vc-end{background:#e5484d;color:#fff}'
-    + '.vc-alt{background:#fff;color:var(--accent,#5b17f0);border:1px solid #ddd3f5!important}'
-    + '.vc-note{font-size:11.5px;color:var(--muted,#6b6280);text-align:center;padding:10px 14px 12px;background:#fff;border-top:1px solid var(--line,#e7e1f3)}'
-    + '.vc-note a{color:inherit}'
+    + 'body:not(.unlocked) .vc-fab{display:none}body.vc-open .vc-fab,body.vc-open .cb-fab,body.vc-open .cb-tip,body.vc-mini .vc-fab{display:none!important}'
+    + 'body.vc-open{overflow:hidden}'
+    /* full-screen view */
+    + 'html body>.vc{position:fixed;inset:0;left:0;top:0;width:100%;height:100%;height:100dvh;z-index:120;display:flex;flex-direction:column;color:#fff;background:radial-gradient(120% 80% at 50% 0%,#3a1477 0%,#170a2e 55%,#0d0619 100%);font-family:var(--font-body,sans-serif)}'
+    + '.vc[hidden]{display:none!important}'
+    + '.vc-top{display:flex;align-items:center;gap:12px;padding:max(14px,env(safe-area-inset-top)) 18px 10px}'
+    + '.vc-top img{width:34px;height:34px;border-radius:10px;background:#fff;padding:4px}'
+    + '.vc-top b{display:block;font-size:16px}.vc-top small{display:block;font-size:12.5px;opacity:.7}'
+    + '.vc-ib{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}'
+    + '.vc-ib[hidden]{display:none}.vc-ib svg{width:20px;height:20px}.vc-ib:hover{background:rgba(255,255,255,.18)}'
+    + '.vc-top .vc-min{margin-left:auto}'
+    + '.vc-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:10px 22px;min-height:0}'
+    + '.vc-orb{--l:0;position:relative;width:min(46vw,210px);height:min(46vw,210px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#d58bff 0%,#8a3dff 38%,#4f12e6 70%,#2a0a8a 100%);box-shadow:0 0 calc(40px + var(--l)*90px) rgba(150,80,255,.55);transform:scale(calc(1 + var(--l)*.12));transition:transform .09s linear,box-shadow .09s linear}'
+    + '.vc-orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(190,140,255,.25)}'
+    + '.vc[data-s="connecting"] .vc-orb{animation:vcB 1.6s ease-in-out infinite}'
+    + '.vc[data-s="idle"] .vc-orb,.vc[data-s="ended"] .vc-orb,.vc[data-s="error"] .vc-orb{animation:vcB 4s ease-in-out infinite}'
+    + '@keyframes vcB{50%{transform:scale(1.06);filter:brightness(1.15)}}'
+    + '.vc-st{font-weight:800;font-size:19px;text-align:center;margin:0}'
+    + '.vc-tm{font-size:13px;opacity:.6;letter-spacing:.05em;margin:-14px 0 0}'
+    + '.vc-cap{width:min(640px,100%);min-height:96px;max-height:30vh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;text-align:center;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%);mask-image:linear-gradient(to bottom,transparent 0,#000 30%)}'
+    + '.vc-cap p{margin:0;font-size:17px;line-height:1.45}.vc-cap p.u{opacity:.6;font-size:15px}'
+    + '.vc-sub{font-size:15px;line-height:1.5;opacity:.8;text-align:center;max-width:420px;margin:0}'
+    + '.vc-sub a{color:#fff}'
+    + '.vc-bot{padding:10px 18px max(18px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:14px}'
+    + '.vc-ctl{display:flex;gap:22px;align-items:center;justify-content:center;flex-wrap:wrap}'
+    + '.vc-rb{width:64px;height:64px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(255,255,255,.12);color:#fff}'
+    + '.vc-rb svg{width:26px;height:26px}.vc-rb[aria-pressed="true"]{background:#fff;color:#1c1030}'
+    + '.vc-rb.end{background:#e5484d}'
+    + '.vc-go,.vc-alt{border:0;border-radius:999px;font:800 16px var(--font-body,sans-serif);padding:16px 30px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}'
+    + '.vc-go{background:#fff;color:#2a0a8a}.vc-go svg{width:20px;height:20px}'
+    + '.vc-alt{background:rgba(255,255,255,.12);color:#fff}'
+    + '.vc-note{font-size:12px;opacity:.6;text-align:center;max-width:520px;margin:0}.vc-note a{color:#fff}'
+    /* minimised bar (call keeps going while they check out) */
+    + 'html body>.vc-bar{position:fixed;left:50%;transform:translateX(-50%);top:max(10px,env(safe-area-inset-top));z-index:121;display:flex;align-items:center;gap:10px;background:#1c0b38;color:#fff;border-radius:999px;padding:8px 8px 8px 14px;box-shadow:0 14px 40px rgba(20,5,45,.45);font:700 14px var(--font-body,sans-serif);width:auto;max-width:calc(100vw - 24px)}'
+    + '.vc-bar[hidden]{display:none!important}'
+    + '.vc-bar .vc-bt{white-space:nowrap}.vc-bar i{flex:none;width:10px;height:10px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.2)}'
+    + '.vc-bar button{border:0;border-radius:999px;height:36px;padding:0 14px;font:800 13px var(--font-body,sans-serif);cursor:pointer;background:rgba(255,255,255,.14);color:#fff;display:inline-flex;align-items:center;gap:6px}'
+    + '.vc-bar button.end{background:#e5484d}.vc-bar svg{width:16px;height:16px}'
+    /* chat header shortcut */
     + '.cb-talk{border:0;background:rgba(255,255,255,.14);color:#fff;height:34px;border-radius:999px;padding:0 12px 0 10px;font:800 13px var(--font-body,sans-serif);display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-left:auto}'
     + '.cb-talk svg{width:16px;height:16px}.cb-talk+.cb-x{margin-left:8px}'
-    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:78px;width:50px;height:50px}.vc-fab b{display:none}'
-    + 'html body>.vc{right:0;bottom:0;width:100vw;max-width:100vw;border-radius:22px 22px 0 0}.vc-b{padding-bottom:26px}}';
+    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:78px;width:50px;height:50px}.vc-fab b{display:none}.vc-cap p{font-size:16px}.vc-rb{width:60px;height:60px}}';
 
-  var MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8.5 21h7"/></svg>';
-  var OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18M9 9v2a3 3 0 005 2.2M15 9.3V6a3 3 0 00-5.7-1.3M5 11a7 7 0 0011.4 5.4M19 11a7 7 0 01-.6 2.8M12 18v3M8.5 21h7"/></svg>';
+  var I = {
+    mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8.5 21h7"/></svg>',
+    off: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18M9 9v2a3 3 0 005 2.2M15 9.3V6a3 3 0 00-5.7-1.3M5 11a7 7 0 0011.4 5.4M19 11a7 7 0 01-.6 2.8M12 18v3M8.5 21h7"/></svg>',
+    end: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+    up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>'
+  };
 
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   var fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'vc-fab'; fab.setAttribute('aria-label', 'Talk to Amber by voice');
-  fab.innerHTML = MIC + '<b>Talk to Amber</b>';
+  fab.innerHTML = I.mic + '<b>Talk to Amber</b>';
   var box = document.createElement('div');
-  box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Talk to Amber');
-  box.innerHTML = '<div class="vc-h"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Talk to Amber</b><small>Adviuz AI assistant · voice</small></div><button type="button" class="vc-x" aria-label="Close">&times;</button></div>'
-    + '<div class="vc-b"><div class="vc-orb" aria-hidden="true">' + MIC + '</div><p class="vc-st" aria-live="polite"></p><p class="vc-tm" hidden></p><p class="vc-sub"></p><div class="vc-btns"></div></div>'
-    + '<div class="vc-note">You\'re speaking with our AI assistant. This conversation may be recorded. Prefer a person? Call <a href="' + TEL + '">' + PHONE + '</a> (24/7).</div>';
-  document.body.appendChild(fab); document.body.appendChild(box);
-  var orb = box.querySelector('.vc-orb'), sT = box.querySelector('.vc-st'), sTm = box.querySelector('.vc-tm'), sSub = box.querySelector('.vc-sub'), btns = box.querySelector('.vc-btns');
+  box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Talk to Amber');
+  box.innerHTML = '<div class="vc-top"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Amber</b><small>Adviuz AI assistant · voice</small></div>'
+    + '<button type="button" class="vc-ib vc-min" aria-label="Minimise" hidden>' + I.down + '</button><button type="button" class="vc-ib vc-x" aria-label="Close">' + I.end + '</button></div>'
+    + '<div class="vc-mid"><div class="vc-orb" aria-hidden="true"></div><p class="vc-st" aria-live="polite"></p><p class="vc-tm" hidden></p><div class="vc-cap" aria-live="polite"></div><p class="vc-sub"></p></div>'
+    + '<div class="vc-bot"><div class="vc-ctl"></div><p class="vc-note">You\'re speaking with our AI assistant. This conversation may be recorded. Prefer a person? Call <a href="' + TEL + '">' + PHONE + '</a> (24/7).</p></div>';
+  var bar = document.createElement('div');
+  bar.className = 'vc-bar'; bar.hidden = true;
+  bar.innerHTML = '<i></i><span class="vc-bt">Amber</span><button type="button" class="vc-open">' + I.up + 'Open</button><button type="button" class="end">' + I.end + 'End</button>';
+  document.body.appendChild(fab); document.body.appendChild(box); document.body.appendChild(bar);
+  var $ = function (s) { return box.querySelector(s); };
+  var orb = $('.vc-orb'), sT = $('.vc-st'), sTm = $('.vc-tm'), cap = $('.vc-cap'), sSub = $('.vc-sub'), ctl = $('.vc-ctl'), minB = $('.vc-min'), barT = bar.querySelector('.vc-bt');
 
-  function track(n) { try { if (window.fbq) fbq('trackCustom', n); if (window.gtag) gtag('event', n); } catch (_) {} }
+  function track(n, p) { try { if (window.fbq) fbq('trackCustom', n, p || {}); if (window.gtag) gtag('event', n, p || {}); } catch (_) {} }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function leadId() {
     if (window.ADV_LEAD) return String(window.ADV_LEAD);
     try { var q = new URLSearchParams(location.search).get('lead'); if (q) return q; } catch (_) {}
@@ -77,6 +105,8 @@
     for (var i = 0; i < ids.length; i++) { var el = document.getElementById(ids[i]); if (el && el.value && el.value.trim()) return el.value.trim().slice(0, 80); }
     try { return (sessionStorage.getItem('adv_name') || '').slice(0, 80); } catch (_) { return ''; }
   }
+  function audience() { var e = document.getElementById('plSeg'); var t = e ? e.textContent : ''; return /B2B/.test(t) ? 'b2b' : /B2C/.test(t) ? 'b2c' : ''; }
+  function tz() { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (_) { return ''; } }
   function loadSDK() {
     if (window.AdvRetell) return Promise.resolve();
     if (!sdkP) sdkP = new Promise(function (res, rej) {
@@ -87,78 +117,118 @@
     });
     return sdkP;
   }
-  function clock() {
-    var s = Math.max(0, Math.floor((Date.now() - t0) / 1000));
-    sTm.textContent = Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2);
-  }
+  function clockTxt() { var s = Math.max(0, Math.floor((Date.now() - t0) / 1000)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  function btn(cls, html, label) { return '<button type="button" class="' + cls + '"' + (label ? ' aria-label="' + label + '"' : '') + '>' + html + '</button>'; }
   function view(s, msg) {
     state = s; box.setAttribute('data-s', s);
-    var b = '';
+    var c = '';
+    sSub.hidden = false; cap.hidden = s !== 'live';
     if (s === 'idle') {
-      sT.textContent = 'Have a quick chat with Amber';
-      sSub.textContent = msg || 'Ask about the plans, how Digital Flyers work, or which plan fits your business. Tap Start and allow your microphone.';
-      b = '<button type="button" class="vc-go">' + MIC + 'Start talking</button>';
+      sT.textContent = 'Talk to Amber';
+      sSub.textContent = msg || 'Ask anything about the plans or Digital Flyers. Amber can help you choose and get started right now.';
+      c = btn('vc-go', I.mic + 'Start talking');
     } else if (s === 'connecting') {
       sT.textContent = 'Connecting…';
       sSub.textContent = 'Allow the microphone if your browser asks.';
-      b = '<button type="button" class="vc-end">End</button>';
+      c = btn('vc-rb end', I.end, 'Cancel');
     } else if (s === 'live') {
-      sT.textContent = 'Amber is listening';
-      sSub.textContent = 'Speak naturally. You can interrupt any time.';
-      b = '<button type="button" class="vc-mu" aria-pressed="false">' + MIC + 'Mute</button><button type="button" class="vc-end">End call</button>';
+      sT.textContent = 'Amber is listening'; sSub.hidden = true;
+      c = btn('vc-rb mu', I.mic, 'Mute') + btn('vc-rb end', I.end, 'End conversation');
     } else if (s === 'ended') {
       sT.textContent = 'Thanks for talking with us';
-      sSub.textContent = msg || 'Ready to start? Pick a plan on this page, or book a free demo.';
-      b = '<button type="button" class="vc-go">' + MIC + 'Talk again</button><a class="vc-alt" href="/book?solution=both" target="_blank" rel="noopener">Book a free demo</a>';
+      sSub.textContent = msg || 'Ready to start? Pick your plan on this page, or book a free walkthrough.';
+      c = btn('vc-go back', 'See the plans') + '<a class="vc-alt" href="/book?solution=both" target="_blank" rel="noopener">Book a free demo</a>' + btn('vc-alt again', I.mic + 'Talk again');
     } else if (s === 'error') {
       sT.textContent = 'We couldn\'t connect';
       sSub.innerHTML = msg || ('Please try again, or call us on <a href="' + TEL + '">' + PHONE + '</a>, 24/7.');
-      b = '<button type="button" class="vc-go">Try again</button><a class="vc-alt" href="' + TEL + '">Call us</a>';
+      c = btn('vc-go again', 'Try again') + '<a class="vc-alt" href="' + TEL + '">Call us</a>';
     }
-    btns.innerHTML = b;
+    ctl.innerHTML = c;
     sTm.hidden = s !== 'live';
+    minB.hidden = s !== 'live';
+    if (s !== 'live') { cap.innerHTML = ''; setMini(false); }
   }
   function setLevel(v) {
     lvl = lvl * 0.7 + v * 0.3;
     if (!lvlRaf) lvlRaf = requestAnimationFrame(function () { lvlRaf = 0; orb.style.setProperty('--l', Math.min(1, lvl * 6).toFixed(3)); });
   }
-  function stopTimers() { clearInterval(tick); tick = 0; orb.style.setProperty('--l', 0); lvl = 0; }
+  function stopTimers() { clearInterval(tick); tick = 0; clearTimeout(poll); poll = 0; orb.style.setProperty('--l', 0); lvl = 0; }
+
+  /* captions + "open checkout" from Amber */
+  function drawCaps(lines) {
+    if (!Array.isArray(lines)) return;
+    var h = lines.slice(-3).map(function (l) { return '<p class="' + (l.role === 'user' ? 'u' : 'a') + '">' + esc(l.content || '') + '</p>'; }).join('');
+    if (cap.innerHTML !== h) cap.innerHTML = h;
+  }
+  function openCheckout(key) {
+    track('VoiceCheckout', { plan: key });
+    setMini(true);
+    try { if (typeof window.gsBuy === 'function') { window.gsBuy(key); return; } } catch (_) {}
+    var a = document.querySelector('[data-k="' + key + '"]'); if (a) a.click();
+  }
+  function pollLive() {
+    if (!call || !callId) return;
+    fetch(FN, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'live', call_id: callId }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || !call) return;
+        drawCaps(j.lines);
+        if (j.action && j.action.id && j.action.id !== lastAct) {
+          lastAct = j.action.id;
+          if (/^bf-(pilot|growth|scale|pro)$/.test(j.action.plan)) openCheckout(j.action.plan);
+        }
+      }).catch(function () {})
+      .then(function () { if (call && !document.hidden) poll = setTimeout(pollLive, 1800); else if (call) poll = setTimeout(pollLive, 4000); });
+  }
+  function setMini(on) {
+    mini = !!on && state === 'live';
+    if (mini) { box.hidden = true; document.body.classList.remove('vc-open'); document.body.classList.add('vc-mini'); bar.hidden = false; }
+    else { bar.hidden = true; document.body.classList.remove('vc-mini'); }
+  }
 
   function start() {
     if (call || state === 'connecting') return;
-    muted = false; view('connecting'); track('VoiceStart');
+    muted = false; lastAct = 0; callId = ''; view('connecting'); track('VoiceStart');
     loadSDK().then(function () {
       var client = new window.AdvRetell.RetellClient({
         key: 'website',
         fetch: function (url, init) {
           var h = { 'Content-Type': 'application/json' };
           try { var v = init && init.headers && init.headers['X-Retell-Client-JS-SDK-Version']; if (v) h['x-retell-client-js-sdk-version'] = v; } catch (_) {}
-          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), name: visitorName(), page: location.pathname }) });
+          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), name: visitorName(), audience: audience(), tz: tz(), page: location.pathname }) });
         }
       });
       var me = client.createWebCall({
-        agent_id: 'amber', /* replaced on the server */
+        agent_id: 'amber', /* chosen on the server */
         audio: RM ? undefined : { emitRawAudioSamples: true },
         hooks: {
           onStatus: function (s) {
             if (call !== me) return;
-            if (s === 'live') { view('live'); t0 = Date.now(); clock(); tick = setInterval(function () { clock(); if (state === 'live' && !muted) sT.textContent = me.isAgentTalking ? 'Amber is speaking' : 'Amber is listening'; }, 400); track('VoiceLive'); }
+            if (s === 'live') {
+              callId = me.callId || ''; view('live'); t0 = Date.now(); sTm.textContent = '0:00';
+              tick = setInterval(function () {
+                var t = clockTxt(); sTm.textContent = t; barT.textContent = 'Amber · ' + t;
+                if (state === 'live' && !muted) sT.textContent = me.isAgentTalking ? 'Amber is speaking' : 'Amber is listening';
+              }, 400);
+              poll = setTimeout(pollLive, 1200);
+              track('VoiceLive');
+            }
           },
           onAudio: function (a) {
             if (call !== me || !a || !a.length) return;
             var sum = 0; for (var i = 0; i < a.length; i += 8) sum += a[i] * a[i];
             setLevel(Math.sqrt(sum / (a.length / 8)));
           },
-          onEnd: function () { if (call !== me) return; call = null; stopTimers(); if (state !== 'error') view('ended'); },
+          onEnd: function () { if (call !== me) return; call = null; stopTimers(); if (state !== 'error') { view('ended'); if (box.hidden) { box.hidden = false; document.body.classList.add('vc-open'); } } },
           onError: function (e) {
             if (call !== me) return;
-            var m = String((e && (e.message || e.name)) || '');
-            var st0 = e && e.status;
+            var m = String((e && (e.message || e.name)) || ''), st0 = e && e.status;
             call = null; stopTimers();
             try { me.end(); } catch (_) {}
             if (/NotAllowed|Permission|denied/i.test(m)) view('error', 'Your browser blocked the microphone. Allow it in the address bar and try again, or call <a href="' + TEL + '">' + PHONE + '</a>.');
             else if (st0 === 429) view('error', 'Voice is busy right now. Please call us on <a href="' + TEL + '">' + PHONE + '</a>, 24/7.');
             else view('error');
+            box.hidden = false; document.body.classList.add('vc-open');
             track('VoiceError');
           }
         }
@@ -172,7 +242,7 @@
     else view('idle');
   }
   function openV() {
-    if (!box.hidden) return;
+    bar.hidden = true; document.body.classList.remove('vc-mini'); mini = false;
     var cb = document.getElementById('cb'); if (cb && !cb.hidden) { var x = document.getElementById('cbX'); if (x) x.click(); }
     box.hidden = false; document.body.classList.add('vc-open');
     if (state !== 'live' && state !== 'connecting') view('idle');
@@ -181,22 +251,27 @@
   }
   function closeV() {
     if (call) end();
-    box.hidden = true; document.body.classList.remove('vc-open');
+    box.hidden = true; bar.hidden = true; document.body.classList.remove('vc-open', 'vc-mini');
   }
 
   fab.addEventListener('click', openV);
-  box.querySelector('.vc-x').addEventListener('click', closeV);
-  btns.addEventListener('click', function (e) {
+  $('.vc-x').addEventListener('click', closeV);
+  minB.addEventListener('click', function () { setMini(true); });
+  bar.querySelector('.vc-open').addEventListener('click', openV);
+  bar.querySelector('.end').addEventListener('click', function () { end(); closeV(); });
+  ctl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    if (b.classList.contains('vc-go')) start();
-    else if (b.classList.contains('vc-end')) end();
-    else if (b.classList.contains('vc-mu') && call) {
+    if (b.classList.contains('vc-go') && !b.classList.contains('back') || b.classList.contains('again')) start();
+    else if (b.classList.contains('back')) closeV();
+    else if (b.classList.contains('end')) end();
+    else if (b.classList.contains('mu') && call) {
       muted = !muted; try { muted ? call.mute() : call.unmute(); } catch (_) {}
-      b.setAttribute('aria-pressed', muted ? 'true' : 'false');
-      b.innerHTML = (muted ? OFF + 'Unmute' : MIC + 'Mute');
+      b.setAttribute('aria-pressed', muted ? 'true' : 'false'); b.innerHTML = muted ? I.off : I.mic;
+      b.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
       sT.textContent = muted ? 'You\'re muted' : 'Amber is listening';
     }
   });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) { if (state === 'live') setMini(true); else closeV(); } });
   document.addEventListener('click', function (e) { if (e.target.closest('[data-voice]')) { e.preventDefault(); openV(); } });
   window.addEventListener('pagehide', function () { if (call) try { call.end(); } catch (_) {} });
 
@@ -204,7 +279,7 @@
   var cbh = document.querySelector('.cb-h'), cbx = document.getElementById('cbX');
   if (cbh && cbx) {
     var tb = document.createElement('button');
-    tb.type = 'button'; tb.className = 'cb-talk'; tb.setAttribute('data-voice', ''); tb.innerHTML = MIC + 'Talk';
+    tb.type = 'button'; tb.className = 'cb-talk'; tb.setAttribute('data-voice', ''); tb.innerHTML = I.mic + 'Talk';
     tb.setAttribute('aria-label', 'Talk to Amber by voice');
     cbh.insertBefore(tb, cbx);
   }
