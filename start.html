@@ -407,45 +407,56 @@
 .pl-dur b{font-weight:800}
 .pl-cons{font-size:22px!important;line-height:1.2}
 
-/* ===== /start ad landing page ===== */
-.sh{padding:34px 0 30px;overflow:hidden}
-.sh-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.sh h1{font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.04em;margin:14px 0 14px}
+/* ===== /start v3: watch first ===== */
+.sh{padding:18px 0 40px;text-align:center}
+.sh h1{font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-.04em;margin:12px 0 6px}
 .sh h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sh .lead{max-width:520px;margin:0 0 22px}
-.sh-btns{display:flex;flex-wrap:wrap;gap:12px}
-.sh-btns .button{display:inline-flex;align-items:center;gap:10px}
-.sh-btns .button svg{width:18px;height:18px;fill:currentColor}
-.sh-ticks{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:14.5px;font-weight:600}
-.sh-ticks li:before{content:"\2713";color:var(--accent);font-weight:800;margin-right:7px}
+.sh-sub{margin:0 auto 22px;color:var(--muted);font-size:17px;font-weight:600}
 .ph-wrap{position:relative;display:flex;justify-content:center}
-.ph-wrap:before{content:"";position:absolute;width:120%;aspect-ratio:1;left:-10%;top:50%;transform:translateY(-50%);background:radial-gradient(closest-side,rgba(160,110,255,.28),rgba(230,90,252,.12) 55%,transparent 75%);z-index:0}
-.ph{position:relative;z-index:1;width:min(300px,72vw);aspect-ratio:9/19;border-radius:46px;background:#1c1230;padding:11px;box-shadow:0 50px 90px -30px rgba(35,8,53,.55),0 0 0 2px #3a2c55 inset;border:0;cursor:pointer;display:block;transform:rotate(-2deg);transition:transform .35s}
-.ph:hover{transform:rotate(0) scale(1.02)}
-.ph-scr{display:block;position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#fff url(assets/hiw-mobile.webp) center/cover no-repeat}
-.ph-scr:before{content:"";position:absolute;left:50%;top:9px;width:30%;height:20px;border-radius:12px;background:#1c1230;transform:translateX(-50%);z-index:2}
-
-.ph-play{position:absolute;left:50%;top:87.5%;z-index:3;width:78px;height:78px;border-radius:50%;background:var(--grad);transform:translate(-50%,-50%);box-shadow:0 16px 44px rgba(64,0,243,.5)}
-.ph-play:before{content:"";position:absolute;inset:-12px;border-radius:50%;border:3px solid rgba(255,255,255,.75);animation:phR 2s infinite}
-.ph-play:after{content:"";position:absolute;left:30px;top:23px;border-left:24px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent}
+.ph-wrap:before{content:"";position:absolute;width:150%;aspect-ratio:1;left:-25%;top:50%;transform:translateY(-50%);background:radial-gradient(closest-side,rgba(160,110,255,.28),rgba(230,90,252,.12) 55%,transparent 75%);z-index:0;pointer-events:none}
+.ph{position:relative;z-index:1;height:min(calc(100svh - 250px),760px);min-height:460px;aspect-ratio:9/18.4;border-radius:52px;background:#1c1230;padding:12px;box-shadow:0 50px 90px -30px rgba(35,8,53,.55),0 0 0 2px #3a2c55 inset}
+.ph.nudge{animation:phN .6s}
+@keyframes phN{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.ph-scr{position:relative;display:block;width:100%;height:100%;border-radius:41px;overflow:hidden;background:#fff url(assets/hiw-mobile.webp) center/cover no-repeat}
+.ph-scr video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.ph-veil{position:absolute;inset:0;z-index:4;background:rgba(255,255,255,.35)}
+.ph.playing .ph-veil{display:none}
+.ph-isl{position:absolute;left:50%;top:10px;width:30%;height:22px;border-radius:12px;background:#1c1230;transform:translateX(-50%);z-index:7}
+.ph-btn{position:absolute;left:50%;top:50%;z-index:5;width:104px;height:104px;border-radius:50%;border:0;background:var(--grad);transform:translate(-50%,-50%);box-shadow:0 18px 50px rgba(64,0,243,.55);cursor:pointer}
+.ph-btn:before{content:"";position:absolute;inset:-14px;border-radius:50%;border:3px solid rgba(122,60,255,.55);animation:phR 2s infinite}
+.ph-btn:after{content:"";position:absolute;left:41px;top:31px;border-left:32px solid #fff;border-top:21px solid transparent;border-bottom:21px solid transparent}
 @keyframes phR{0%{transform:scale(.9);opacity:1}100%{transform:scale(1.35);opacity:0}}
-.ph-play,.ph-cap{display:block}.ph-cap{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;color:#fff;font-weight:800;font-size:17px;line-height:1.25;padding:0 18px}
-.ph-cap small{display:block;font-weight:600;font-size:13px;opacity:.85;margin-top:3px}
-.trust{padding-top:26px!important}
-.st-ask{display:flex;flex-direction:column;align-items:center;gap:12px;margin:6px auto 26px}
-.st-ask>span{font-weight:800;color:var(--ink);font-size:17px}
-.st-ask .gs-seg{flex-wrap:wrap;justify-content:center}
-.pl-card.pl-hl{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:3px solid transparent;box-shadow:0 24px 60px rgba(64,0,243,.22);transform:translateY(-4px);transition:transform .3s,box-shadow .3s}
-.co-back{position:relative;z-index:2;display:inline-flex;margin-top:64px!important;align-items:center;gap:8px;background:none;border:0;font:700 15px var(--font-body);color:var(--accent);cursor:pointer;padding:0;margin:0 0 6px}
-#buy{padding-top:24px}
-body[data-view="checkout"] .promo-bar{display:none}
-/* full-screen video */
+.ph-lbl{position:absolute;left:0;right:0;top:calc(50% + 74px);z-index:5;font-weight:800;font-size:16px;color:var(--ink)}
+.ph.playing .ph-btn,.ph.playing .ph-lbl{display:none}
+.ph.playing.paused .ph-btn{display:block}
+.ph-big,.ph-again{position:absolute;z-index:6;border:0;border-radius:999px;background:rgba(35,8,53,.78);color:#fff;font:700 13px/1 var(--font-body);padding:9px 13px;cursor:pointer;display:none;align-items:center;gap:6px}
+.ph-big{right:12px;top:40px}.ph-big svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
+.ph.playing .ph-big{display:inline-flex}
+.ph-again{left:50%;bottom:22px;transform:translateX(-50%);background:var(--grad)}
+.ph.done .ph-again{display:inline-flex}.ph.done .ph-big{display:none}
 .vf{position:fixed;inset:0;z-index:200;background:#07030f;display:flex;align-items:center;justify-content:center}
 .vf[hidden]{display:none}
-.vf video{width:100%;height:100%;object-fit:contain;background:#07030f}
-.vf-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:2;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;cursor:pointer;backdrop-filter:blur(6px)}
+.vf video{position:static;width:100%;height:100%;object-fit:contain;background:#07030f}
+.vf-min{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;font:700 14px/1 var(--font-body);padding:11px 16px;cursor:pointer;backdrop-filter:blur(6px)}
+.vf-min svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
 html.vf-lock,html.vf-lock body{overflow:hidden}
-@media(max-width:860px){.sh{padding:14px 0 22px;text-align:center}.sh-grid{grid-template-columns:1fr;gap:18px;justify-items:center}.sh-txt{display:contents}.sh .gs-pill{order:1;margin:0}.sh h1{order:2;margin:0;font-size:clamp(34px,10vw,46px)}.ph-wrap{order:3}.sh-btns{order:4;justify-content:center}.sh .lead,.sh-ticks,.sh-btns [data-play]{display:none}.ph{width:min(230px,58vw)}}
+#after[hidden],#plans[hidden]{display:none}
+.aud{padding:40px 0 30px;text-align:center}
+.aud h2{margin:8px 0 6px}
+.aud p{color:var(--muted);margin:0 0 22px}
+.aud-opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px;margin:0 auto}
+.aud-opts button{display:flex;flex-direction:column;align-items:center;gap:10px;border:2px solid var(--line);border-radius:24px;background:#fff;padding:26px 18px;cursor:pointer;font:inherit;box-shadow:0 14px 34px -16px rgba(35,8,53,.2);transition:transform .2s,border-color .2s}
+.aud-opts button:hover{transform:translateY(-3px);border-color:#c7b4ff}
+.aud-opts button[aria-pressed="true"]{border-color:transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:2px solid transparent}
+.aud-opts i{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--grad)}
+.aud-opts i svg{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.aud-opts b{font-size:22px;color:var(--ink)}.aud-opts span{font-size:14.5px;color:var(--muted)}
+.unl-only{display:none}body.unlocked .unl-only{display:inline-flex}
+body:not(.unlocked) .cb-fab,body:not(.unlocked) .cb-tip{display:none}
+.co-back{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:none;border:0;font:700 15px var(--font-body);color:var(--accent);cursor:pointer;padding:0;margin:64px 0 6px}
+#buy{padding-top:24px}
+body[data-view="checkout"] .promo-bar,body[data-view="checkout"] .cb-tip{display:none}
+@media(max-width:760px){.ph{height:auto;width:min(78vw,340px);min-height:0}.ph-btn{width:88px;height:88px}.ph-btn:after{left:35px;top:26px;border-left-width:27px;border-top-width:18px;border-bottom-width:18px}.ph-lbl{top:calc(50% + 64px)}.aud-opts{grid-template-columns:1fr}.aud-opts button{flex-direction:row;text-align:left;padding:18px}.aud-opts button>div{display:flex;flex-direction:column}}
 /* chat */
 .cb-fab{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;background:var(--grad);color:#fff;font:800 15px/1 var(--font-body);padding:14px 20px 14px 14px;box-shadow:0 14px 34px rgba(64,0,243,.4);cursor:pointer}
 .cb-fab svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -473,8 +484,6 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .cb-note{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
 @media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:80px}
   .cb{right:0;bottom:0;width:100vw;max-width:100vw;height:82svh;border-radius:22px 22px 0 0}.cb-fab{right:12px;bottom:12px;padding:12px 16px 12px 12px;font-size:14px}}
-
-body[data-view="checkout"] .cb-tip{display:none}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -486,7 +495,7 @@ body[data-view="checkout"] .cb-tip{display:none}
     <a class="brand" href="/" aria-label="Adviuz home"><img src="assets/logo.png" alt="Adviuz" width="118" height="25"><span class="brand-est">Est. 2014</span></a>
     <div class="nav-actions">
       <a class="nav-phone" href="tel:+16472501152">+1 647 250 1152</a>
-      <a class="button button-grad" href="#plans">See plans</a>
+      <a class="button button-grad unl-only" href="#plans">See plans</a>
     </div>
   </div>
 </header>
@@ -494,19 +503,33 @@ body[data-view="checkout"] .cb-tip{display:none}
 <main>
 <div id="pgMain">
 <section class="sh">
-  <div class="container sh-grid">
-    <div class="sh-txt">
-      <p class="gs-pill" data-bf><i aria-hidden="true"></i>Black Friday · ends 30 November</p>
-      <h1>How <span>Digital Flyers</span> work</h1>
-      <p class="lead">Your flyer reaches the right people on 15+ platforms. You pay only when someone views it for 25 seconds, and AI follows up every lead.</p>
-      <div class="sh-btns">
-        <a class="button button-grad" href="#" data-play><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Watch the 2-minute video</a>
-        <a class="button button-outline" href="#plans">See plans &amp; pricing</a>
-      </div>
-      <ul class="sh-ticks"><li>Prepaid, $0 monthly</li><li>Pay only for 25-second views</li><li>Since 2014</li></ul>
-    </div>
+  <div class="container">
+    <p class="gs-pill" data-bf><i aria-hidden="true"></i>Black Friday · ends 30 November</p>
+    <h1>How <span>Digital Flyers</span> work</h1>
+    <p class="sh-sub">Watch the 2-minute video, then see your plans.</p>
     <div class="ph-wrap">
-      <button type="button" class="ph" data-play aria-label="Play the video: How Digital Flyers work"><span class="ph-scr"></span><span class="ph-play"></span></button>
+      <div class="ph" id="ph">
+        <div class="ph-scr" id="phScr">
+          <span class="ph-isl"></span>
+          <video id="vfVid" playsinline preload="none" poster="assets/hiw-mobile.webp" aria-label="Video: how Digital Flyers work"></video>
+          <button type="button" class="ph-btn" id="phPlay" aria-label="Play the video: How Digital Flyers work"></button>
+          <span class="ph-veil"></span>
+          <button type="button" class="ph-big" id="phBig" aria-label="Watch on big screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Big screen</button>
+          <button type="button" class="ph-again" id="phAgain">&#8635; Watch again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="after" hidden>
+<section class="aud" id="aud">
+  <div class="container">
+    <span class="kicker">One quick question</span>
+    <h2>Who are your customers?</h2>
+    <p>We'll show the plans made for them.</p>
+    <div class="aud-opts">
+      <button type="button" data-aud="b2c"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/></svg></i><div><b>People &amp; families</b><span>You sell to consumers</span></div></button>
+      <button type="button" data-aud="b2b"><i><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg></i><div><b>Other businesses</b><span>You sell to companies (B2B)</span></div></button>
     </div>
   </div>
 </section>
@@ -524,18 +547,12 @@ body[data-view="checkout"] .cb-tip{display:none}
       <div><b>15+</b><span>Platforms, one campaign</span></div>
     </div>
     </div></section>
-<section class="gs-sec wash" id="plans">
+<section class="gs-sec wash" id="plans" hidden>
   <div class="container">
     <div class="gs-center">
       <span class="kicker">Plans &amp; pricing</span>
       <h2>Choose your plan. Go live this week.</h2>
       <p class="lead">One-time prepaid payment. No monthly fees. Buy online in about a minute.</p>
-    </div>
-    <div class="st-ask">
-      <span>How soon do you want results?</span>
-      <div class="gs-seg" id="stAsk" role="group" aria-label="How soon do you want results?">
-        <button type="button" data-pick="bf-pilot">Just testing</button><button type="button" data-pick="bf-growth">1 month</button><button type="button" data-pick="bf-scale">3 months</button><button type="button" data-pick="bf-pro">6 months</button><button type="button" data-pick="fly-10000">1 year</button>
-      </div>
     </div>
     <div class="pp-wrap">
       <div class="pt-tabs" role="tablist" aria-label="Choose what you need">
@@ -544,10 +561,10 @@ body[data-view="checkout"] .cb-tip{display:none}
         <button type="button" role="tab" class="pt-tab" data-g="ai">AI Engine Pricing</button>
       </div>
       <div class="pp-seg" id="ppSeg">
-        <span>Who do you sell to?</span>
-        <div class="gs-seg" role="group" aria-label="Who do you sell to?">
-          <button type="button" data-seg="b2c" aria-pressed="true">Consumers <small>B2C</small></button>
-          <button type="button" data-seg="b2b" aria-pressed="false">Businesses <small>B2B</small></button>
+        <span>Your customers:</span>
+        <div class="gs-seg" role="group" aria-label="Your customers">
+          <button type="button" data-seg="b2c" aria-pressed="true">People &amp; families</button>
+          <button type="button" data-seg="b2b" aria-pressed="false">Other businesses</button>
         </div>
       </div>
       <p class="npintro" id="ppIntro"></p>
@@ -593,7 +610,7 @@ body[data-view="checkout"] .cb-tip{display:none}
   </div>
 </section>
 
-</div>
+</div></div>
 <section class="gs-sec" id="buy" hidden>
   <div class="container">
     <button type="button" class="co-back" id="coBack">&larr; Back to plans</button>
@@ -643,8 +660,7 @@ body[data-view="checkout"] .cb-tip{display:none}
 </main>
 
 <div class="vf" id="vfOv" hidden role="dialog" aria-label="Video: how Digital Flyers work">
-  <video id="vfVid" playsinline preload="none"></video>
-  <button type="button" class="vf-x" id="vfX" aria-label="Close video">&times;</button>
+  <button type="button" class="vf-min" id="vfMin" aria-label="Back to small screen"><svg viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>Small screen</button>
 </div>
 
 <button type="button" class="cb-fab" id="cbFab" aria-label="Open questions chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>Questions? Ask us</button>
@@ -916,68 +932,74 @@ body[data-view="checkout"] .cb-tip{display:none}
   new IntersectionObserver(function(e){at=e[0].isIntersecting;u();}).observe(buy);})();
 </script>
 <script>
-/* ===== /start: video in a phone (tap = full screen), plans, then a separate checkout view ===== */
+/* ===== /start: watch first (video in a big phone, tap = big screen), then "who are your customers?", then plans ===== */
 (function(){
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='page',lastY=0;
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
-  /* ---- full-screen video ---- */
-  var ov=document.getElementById('vfOv'),v=document.getElementById('vfVid'),marks={25:0,50:0,75:0};
-  function openVideo(){
-    if(!v.src){v.src=tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4';v.poster=tall?'assets/hiw-mobile.webp':'assets/hiw-desktop.webp';}
-    ov.hidden=false;document.documentElement.classList.add('vf-lock');v.currentTime=0;v.muted=false;
-    var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.play();});
-    try{if(ov.requestFullscreen)ov.requestFullscreen().catch(function(){});else if(v.webkitEnterFullscreen&&!ov.webkitRequestFullscreen)v.webkitEnterFullscreen();}catch(_){}
-    track('VideoPlay');
+  var KEY='adviuz_hiw_done',unlocked=false;
+  function unlock(scroll){
+    if(!unlocked){unlocked=true;document.body.classList.add('unlocked');document.getElementById('after').hidden=false;try{localStorage.setItem(KEY,'1');}catch(_){}}
+    if(scroll)document.getElementById('aud').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
   }
-  function closeVideo(toPlans){
-    v.pause();ov.hidden=true;document.documentElement.classList.remove('vf-lock');
-    try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
-    if(toPlans)document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});
+  /* ---- video: plays inside the phone; big screen on tap; button to go back to small ---- */
+  var ph=document.getElementById('ph'),scr=document.getElementById('phScr'),v=document.getElementById('vfVid'),ov=document.getElementById('vfOv'),big=false,started=false,marks={25:0,50:0,75:0};
+  var SRC={s:'assets/hiw-mobile.mp4',b:tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4'};
+  function setSrc(u){if(v.getAttribute('src')===u)return;var t=v.currentTime||0,playing=started&&!v.paused;v.src=u;
+    v.addEventListener('loadedmetadata',function f(){v.removeEventListener('loadedmetadata',f);try{v.currentTime=t;}catch(_){}if(playing)v.play();});}
+  function goBig(){if(big)return;big=true;setSrc(SRC.b);ov.appendChild(v);ov.hidden=false;document.documentElement.classList.add('vf-lock');
+    try{if(ov.requestFullscreen)ov.requestFullscreen().catch(function(){});}catch(_){}}
+  function goSmall(){if(!big)return;big=false;try{if(document.fullscreenElement)document.exitFullscreen();}catch(_){}
+    setSrc(SRC.s);scr.appendChild(v);ov.hidden=true;document.documentElement.classList.remove('vf-lock');ph.scrollIntoView({block:'center'});}
+  function start(){
+    if(!started){started=true;ph.classList.add('playing');v.src=SRC.s;track('VideoPlay');}
+    v.muted=false;goBig();var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.play();});
   }
-  [].forEach.call(document.querySelectorAll('[data-play]'),function(b){b.addEventListener('click',function(e){e.preventDefault();openVideo();});});
-  document.getElementById('vfX').addEventListener('click',function(){closeVideo(true);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)closeVideo(false);});
-  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&!ov.hidden)closeVideo(false);});
-  v.addEventListener('webkitendfullscreen',function(){closeVideo(true);});
+  document.getElementById('phPlay').addEventListener('click',start);
+  document.getElementById('vfMin').addEventListener('click',goSmall);
+  document.getElementById('phBig').addEventListener('click',function(e){e.stopPropagation();goBig();if(v.paused)v.play();});
+  scr.addEventListener('click',function(e){if(!started||e.target.closest('button'))return;if(v.paused)v.play();else v.pause();});
+  v.addEventListener('pause',function(){ph.classList.add('paused');});v.addEventListener('play',function(){ph.classList.remove('paused');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&big)goSmall();});
+  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&big)goSmall();});
   v.addEventListener('timeupdate',function(){var p=v.duration?v.currentTime/v.duration*100:0;for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
-  v.addEventListener('ended',function(){track('WatchedVideo');closeVideo(true);});
+  v.addEventListener('ended',function(){track('WatchedVideo');goSmall();ph.classList.add('done');unlock(true);});
+  document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
+  /* returning visitors who already watched see the next step straight away */
+  try{if(localStorage.getItem(KEY)==='1'){unlock(false);ph.classList.add('seen');}}catch(_){}
+  /* ---- step after the video: who are your customers? ---- */
+  var aud=document.getElementById('aud');
+  aud.addEventListener('click',function(e){var b=e.target.closest('[data-aud]');if(!b)return;var s=b.dataset.aud;
+    [].forEach.call(aud.querySelectorAll('[data-aud]'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    var sb=document.querySelector('#ppSeg [data-seg="'+s+'"]');if(sb)sb.click();
+    document.getElementById('plans').hidden=false;document.body.classList.add('picked');
+    document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});track('PickAudience',{audience:s});
+    try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();
+  });
   /* ---- page <-> checkout ---- */
   var main=document.getElementById('pgMain'),co=document.getElementById('buy');
   window.goStage=function(n,noPush){
     var to=n===3?'checkout':'page';
     if(to!==cur){
-      if(to==='checkout')lastY=scrollY;
+      if(to==='checkout'){lastY=scrollY;if(!v.paused)v.pause();}
       cur=to;main.hidden=to==='checkout';co.hidden=to!=='checkout';document.body.setAttribute('data-view',to);
       if(!noPush)try{history.pushState({v:to},'',to==='checkout'?'#checkout':location.pathname+location.search);}catch(_){}
       if(to==='checkout'){scrollTo(0,0);track('ViewCheckout');if(!tall)setTimeout(function(){var f=document.getElementById('qNm');if(f)f.focus({preventScroll:true});},300);}
       else scrollTo(0,lastY);
     }
-    if(n===2&&to==='page')document.getElementById('plans').scrollIntoView({behavior:RM?'auto':'smooth'});
+    if(n===2&&to==='page')plansLink();
   };
+  function plansLink(){if(!unlocked){ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');ph.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});return;}
+    var p=document.getElementById('plans');(p.hidden?aud:p).scrollIntoView({behavior:RM?'auto':'smooth'});}
   addEventListener('popstate',function(e){goStage(e.state&&e.state.v==='checkout'?3:1,true);});
-  try{history.replaceState({v:'page'},'',location.pathname+location.search+(location.hash==='#plans'?'#plans':''));}catch(_){}
+  try{history.replaceState({v:'page'},'',location.pathname+location.search);}catch(_){}
   co.hidden=true;document.body.setAttribute('data-view','page');
   document.getElementById('coBack').addEventListener('click',function(){history.back();});
-  /* in-page links */
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]');if(!a)return;var h=a.getAttribute('href');
-    if(h==='#plans'){e.preventDefault();goStage(2);}
+    if(h==='#plans'){e.preventDefault();plansLink();}
     else if(h==='#build'){e.preventDefault();var b=document.getElementById('build');b.hidden=false;b.scrollIntoView({behavior:RM?'auto':'smooth'});}
     else if(h==='#buy'||h==='#ai-engine'||h==='#'){e.preventDefault();}
-  });
-  /* plans seen -> analytics + chat hint */
-  if('IntersectionObserver' in window){var seen=0;new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting&&!seen){seen=1;track('ViewPlans');try{if(window.fbq)fbq('track','ViewContent',{content_name:'plans'});}catch(_){}autoChat();}});},{threshold:.25}).observe(document.getElementById('plans'));}
-  /* "How soon do you want results?" highlights the matching plan */
-  var ask=document.getElementById('stAsk');
-  ask.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var k=b.dataset.pick,fly=k.indexOf('fly-')===0;
-    [].forEach.call(ask.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-    var tab=document.querySelector('.pt-tab[data-g="'+(fly?'fly':'bf')+'"]');if(tab&&!tab.classList.contains('on'))tab.click();
-    var grid=document.getElementById('ppGrid'),card=null,btn=grid.querySelector('[data-k="'+k+'"]');
-    if(btn)card=btn.closest('.pl-card');else if(fly)[].forEach.call(grid.querySelectorAll('.pl-card'),function(c){if(/10,000/.test(c.querySelector('h4').textContent))card=c;});
-    [].forEach.call(grid.querySelectorAll('.pl-hl'),function(c){c.classList.remove('pl-hl');});
-    if(card){card.classList.add('pl-hl');card.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});}
-    track('PickTimeline',{plan:k});
   });
   /* client logos: restart the scroll from the first logo each time it comes into view */
   (function(){var sec=document.querySelector('.trust'),tr=document.querySelector('.trust-track');if(!sec||!tr||!('IntersectionObserver' in window))return;
