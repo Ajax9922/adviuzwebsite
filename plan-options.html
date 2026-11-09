@@ -121,12 +121,16 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
  .bm-tabs button small{display:inline!important;margin-left:4px;font-size:11.5px!important}
  .bm-card{touch-action:pan-y;transition:transform .25s,opacity .25s}.bm-card.out{opacity:.2}}
 .lim{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b4235a;background:#ffe8f0;border-radius:999px;padding:4px 9px;margin-bottom:6px;white-space:nowrap}
-.bm-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -14px;padding:6px 14px 10px;scrollbar-width:none}
-.bm-track::-webkit-scrollbar{display:none}
-.bm-track .bm-card{flex:0 0 72%;scroll-snap-align:center;border:1.5px solid var(--line);background:#fff;box-shadow:0 14px 34px -18px rgba(35,8,53,.25);opacity:.9;transform:scale(.93);background:#f4effd;transition:opacity .25s,transform .25s}
-.bm-track .bm-card.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box}
-.bm-track .bm-card.hl.cur{background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box!important}
-.bm-track .bm-card.cur{opacity:1;transform:none;background:#fff;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+.bm-card{position:relative}
+.bm-swipe{display:none;position:absolute;left:50%;top:44%;z-index:3;transform:translate(-50%,-50%);flex-direction:column;align-items:center;gap:6px;pointer-events:none;background:rgba(35,8,53,.82);color:#fff;border-radius:22px;padding:16px 22px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 16px 40px rgba(35,8,53,.35);opacity:0}
+.bm-hand svg{width:38px;height:38px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
+.bm-card.nudge{animation:bmNudge 2.6s ease-in-out 2}
+.bm-card.nudge .bm-swipe{display:flex;animation:bmShow 5.2s ease forwards}
+.bm-card.nudge .bm-hand{animation:bmHand 1.3s ease-in-out 4}
+@keyframes bmNudge{0%,100%{transform:translateX(0)}20%{transform:translateX(-38px)}40%{transform:translateX(0)}60%{transform:translateX(26px)}80%{transform:translateX(0)}}
+@keyframes bmHand{0%,100%{transform:translateX(18px)}50%{transform:translateX(-18px)}}
+@keyframes bmShow{0%{opacity:0}8%,85%{opacity:1}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.bm-card.nudge,.bm-card.nudge .bm-hand{animation:none}}
 </style>
 </head>
 <body>
@@ -171,22 +175,19 @@ document.getElementById('B').innerHTML='<thead><tr><th></th>'+all.map(function(p
  +R('Unlimited design edits',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Valid for',function(p){return '<b>'+p.valid+' months</b>';})
  +R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
  +'<tr><td></td>'+all.map(function(p){return '<td'+(p.rec?' class="col"':'')+'><a class="btn'+(p.rec?'':' lt')+'" href="#">'+(p.cons?'Consult':p.n==='Pilot'?'Start Pilot':'Choose')+'</a></td>';}).join('')+'</tr></tbody>';
-var bmSel=2;
-function bmCard(p){var rows=[['Flyer views (25-second views)',f(p.v)],['Typically used over',p.use],['First flyer design','Included',1],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Unlimited design edits',p.m+' month'+(p.m>1?'s':'')],['Setup ($600 value)','Included',1],['Valid for',p.valid+' months']];
- return '<div class="bm-card'+(p.rec?' hl':'')+'"><div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.n==='Pilot'?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p"><s>'+d(p.val)+'</s>'+(p.cons?'<b style="font-size:22px">By consultation</b>':'<b>'+d(p.price)+'</b><small>CAD + tax</small>')+'</div></div>'
- +(p.cons?'<span class="bm-save" style="visibility:hidden">-</span>':'<span class="bm-save">You save '+d(p.save)+'</span>')
+var bmSel=2;function bm(){var p=all[bmSel],rows=[['Flyer views (25-second views)',f(p.v)],['Typically used over',p.use],['First flyer design','Included',1],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Unlimited design edits',p.m+' month'+(p.m>1?'s':'')],['Setup ($600 value)','Included',1],['Valid for',p.valid+' months']];
+ document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Consult':d(x.price))+'</small></button>';}).join('')+'</div>'
+ +'<div class="bm-card"><div class="bm-h"><div>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+(p.n==='Pilot'?'<span class="lim">Limited period</span>':'')+'<h3>'+p.n+'</h3></div><div class="bm-p"><s>'+d(p.val)+'</s>'+(p.cons?'<b style="font-size:24px">By consultation</b>':'<b>'+d(p.price)+'</b><small>CAD + tax</small>')+'</div></div>'
+ +(p.cons?'':'<span class="bm-save">You save '+d(p.save)+'</span>')
  +'<ul class="bm-rows">'+rows.map(function(r){return '<li><span>'+r[0]+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
- +'<a class="btn" href="#">'+(p.cons?'Book a consultation':p.n==='Pilot'?'Start the Pilot':'Choose '+p.n)+' &rarr;</a></div>';}
-var BMel=document.getElementById('BM');
-BMel.innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'">'+x.n+'<small>'+(x.cons?'Consult':d(x.price))+'</small></button>';}).join('')+'</div>'
- +'<div class="bm-track">'+all.map(bmCard).join('')+'</div><div class="bm-dots">'+all.map(function(){return '<i></i>';}).join('')+'</div><p class="bm-hint">&larr; Swipe to compare plans &rarr;</p>';
-var tr=BMel.querySelector('.bm-track'),cards=[].slice.call(tr.children),tabs=[].slice.call(BMel.querySelectorAll('.bm-tabs button')),dots=[].slice.call(BMel.querySelectorAll('.bm-dots i'));
-function mark(k){bmSel=k;tabs.forEach(function(b,i){b.classList.toggle('on',i===k);});dots.forEach(function(b,i){b.classList.toggle('on',i===k);});cards.forEach(function(c,i){c.classList.toggle('cur',i===k);});
- var t=tabs[k],bar=t.parentNode;bar.scrollTo({left:t.offsetLeft-(bar.clientWidth-t.offsetWidth)/2,behavior:'smooth'});}
-function go(k,sm){var c=cards[k];tr.scrollTo({left:c.offsetLeft-(tr.clientWidth-c.offsetWidth)/2,behavior:sm?'smooth':'auto'});mark(k);}
-BMel.querySelector('.bm-tabs').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(b)go(+b.dataset.k,true);});
-var st;tr.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){var mid=tr.scrollLeft+tr.clientWidth/2,best=0,bd=1e9;cards.forEach(function(c,i){var d2=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d2<bd){bd=d2;best=i;}});if(best!==bmSel)mark(best);},80);},{passive:true});
-requestAnimationFrame(function(){go(bmSel,false);});
+ +'<a class="btn" href="#">'+(p.cons?'Book a consultation':p.n==='Pilot'?'Start the Pilot':'Choose '+p.n)+' &rarr;</a></div><div class="bm-dots">'+all.map(function(x,k){return '<i class="'+(k===bmSel?'on':'')+'"></i>';}).join('')+'</div><p class="bm-hint">Swipe the card or tap a plan to compare</p>';
+ if(!window._bmHinted){var hc=document.querySelector('#BM .bm-card');hc.insertAdjacentHTML('beforeend','<div class="bm-swipe" aria-hidden="true"><span class="bm-hand"><svg viewBox="0 0 24 24"><path d="M8 13V5a2 2 0 014 0v6M12 11V4a2 2 0 014 0v7M16 11V6a2 2 0 014 0v8a7 7 0 01-7 7h-1a7 7 0 01-6-3l-3-5a2 2 0 013-2l2 2"/></svg></span><b>Swipe</b></div>');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();hc.classList.add('nudge');}},{threshold:.6});io.observe(hc);}else hc.classList.add('nudge');}
+ window._bmHinted=window._bmHinted||!!document.querySelector('#BM .bm-card.nudge');var on=document.querySelector('#BM .bm-tabs .on');if(on)on.scrollIntoView({inline:'center',block:'nearest'});
+ var c=document.querySelector('#BM .bm-card'),x0=null,y0=0;c.addEventListener('touchstart',function(e){window._bmHinted=1;c.classList.remove('nudge');x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+ c.addEventListener('touchmove',function(e){if(x0==null)return;var dx=e.touches[0].clientX-x0;if(Math.abs(dx)>Math.abs(e.touches[0].clientY-y0))c.style.transform='translateX('+dx*0.6+'px)';},{passive:true});
+ c.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;c.style.transform='';if(Math.abs(dx)>50){var n=bmSel+(dx<0?1:-1);if(n>=0&&n<all.length){bmSel=n;bm();}}});}
+document.getElementById('BM').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;window._bmHinted=1;bmSel=+b.dataset.k;bm();});bm();
 document.getElementById('C').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="out">Your flyer seen <b>'+f(p.v)+' times</b> for 25 seconds each · typically over <b>'+p.use+'</b></p>'
  +'<ul class="stack"><li><span>'+f(p.v)+' flyer views</span><span>'+d(p.v*5)+'</span></li><li><span>AI Conversion Engine · '+f(p.ai)+' min</span><span>'+d(p.aiv)+'</span></li><li class="free"><span>First flyer design</span><span>INCLUDED</span></li><li><span>Design edits · '+p.m+' months</span><span>'+d(p.ed)+'</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>'
  +'<div class="tot"><span>Total value</span><s>'+d(p.val)+'</s></div>'
