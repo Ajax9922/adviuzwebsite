@@ -567,6 +567,32 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .inf .container{padding:0 16px;box-sizing:border-box}#iErr{color:#c0265a}
 .inf-fine{margin:0;text-align:center;font-size:12.5px;color:var(--muted)}.inf-fine a{color:var(--accent)}
 @media(max-width:560px){.inf-r{grid-template-columns:1fr}.inf-f{padding:20px 16px}}
+
+/* plain header (no box) */
+.sx-head{position:relative!important;background:none!important;box-shadow:none!important}
+.sx-head .nav{background:none!important;box-shadow:none!important;border:0!important;justify-content:flex-start!important;padding-left:0!important;padding-right:0!important}
+/* hero: text left, video right */
+.sh2{padding:10px 0 30px;text-align:left}
+.sh2-g{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.sh2-pill{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#4b0fe0;background:#ece6ff;border-radius:999px;padding:9px 18px}
+.sh2 h1{font-size:clamp(40px,5.2vw,78px);line-height:.98;letter-spacing:-.045em;margin:18px 0 22px}
+.sh2 h1 span{display:block}
+.sh2-pts{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:12px}
+.sh2-pts li{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:600;color:var(--ink)}
+.sh2-pts i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--grad);flex:0 0 auto}
+.sh2-pts svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sh2 .nx{margin:0;max-width:440px}
+.sh2-cap{margin:0 0 12px;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.sh2 .ph-wrap{margin:0;justify-content:flex-start}
+.sh2 .ph.desk{width:100%;max-width:none;padding:0;border-radius:26px;background:#fff;box-shadow:0 40px 90px -30px rgba(35,8,53,.45),0 0 0 1px rgba(35,8,53,.06)}
+.sh2 .ph.desk:after{display:none}.sh2 .ph.desk .ph-isl{display:none}
+.sh2 .ph.desk .ph-scr{border-radius:26px}
+@media(min-width:861px){body[data-view="watch"]{overflow:hidden;height:100svh}body[data-view="watch"] .lp-foot{display:none}
+  body[data-view="watch"] main{min-height:calc(100svh - 90px);display:flex;align-items:center}body[data-view="watch"] .sh2{width:100%}
+  .sh2 .ph.desk{width:min(100%,calc((100svh - 200px)*16/9));aspect-ratio:16/9;height:auto}.sh2 .ph.desk .ph-scr{height:100%}}
+@media(max-width:860px){.sh2{padding:4px 0 26px}.sh2-g{grid-template-columns:1fr;gap:22px}.sh2-l{display:contents}
+  .sh2-pill{order:1;justify-self:start}.sh2 h1{order:2;margin:0;font-size:clamp(40px,11vw,54px)}.sh2-pts{order:3;margin:0;gap:10px}.sh2-pts li{font-size:16px}
+  .sh2-r{order:4}.sh2-nx{order:5}.sh2 .nx{max-width:none}.sh2 .ph-wrap{justify-content:center}.sh2-cap{text-align:center}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -579,12 +605,22 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 </header>
 
 <main>
-<section class="sh" data-v="watch">
-  <div class="container">
-    <h1>How <span>Digital Flyers</span> work</h1>
-    <p class="sh-sub">Watch the 2-minute video, then see your plans.</p>
-    <div class="ph-wrap">
-      <div class="ph" id="ph">
+<section class="sh sh2" data-v="watch">
+  <div class="container sh2-g">
+    <div class="sh2-l">
+      <span class="sh2-pill">Digital flyer distribution</span>
+      <h1>Distribute flyers <span>without printing.</span></h1>
+      <ul class="sh2-pts"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></i>100% Distribution Guarantee</li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></i>Detailed reports</li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></i>Charged only for viewed flyers</li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg></i>Contact details of interested people</li></ul>
+      <div class="sh2-nx"><div class="nx" id="nx">
+      <button type="button" class="nx-go" id="nxGo">
+        <span class="nx-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+        <span class="nx-txt"><b>Next step: choose your plan</b><small class="nx-wait">Unlocks after the video · <span id="nxT">2:13 left</span></small><small class="nx-ok">Tap to continue</small></span>
+        <span class="nx-arr">&rarr;</span>
+        <span class="nx-bar"><i id="nxBar"></i></span>
+      </button>
+    </div></div>
+    </div>
+    <div class="sh2-r"><p class="sh2-cap">&#9654; How it works · 2 min</p><div class="ph-wrap"><div class="ph" id="ph">
         <div class="ph-scr" id="phScr">
           <span class="ph-isl"></span>
           <video id="vfVid" playsinline preload="none" poster="assets/hiw-mobile.webp" aria-label="Video: how Digital Flyers work"></video>
@@ -594,15 +630,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
           <button type="button" class="ph-again" id="phAgain">&#8635; Watch again</button>
         </div>
       </div>
-    </div>
-    <div class="nx" id="nx">
-      <button type="button" class="nx-go" id="nxGo">
-        <span class="nx-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
-        <span class="nx-txt"><b>Next step: choose your plan</b><small class="nx-wait">Unlocks after the video · <span id="nxT">2:13 left</span></small><small class="nx-ok">Tap to continue</small></span>
-        <span class="nx-arr">&rarr;</span>
-        <span class="nx-bar"><i id="nxBar"></i></span>
-      </button>
-    </div>
+    </div></div>
   </div>
 </section><section class="aud" id="aud" data-v="ask" hidden>
   <div class="container">
