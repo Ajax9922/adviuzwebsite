@@ -90,99 +90,60 @@ h1{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:18px 0 6px}
 .c3 .c .btn{margin-top:auto}
 
 @media(max-width:900px){.g3{grid-template-columns:1fr;gap:26px}.stage{padding:24px 14px}}
+
+.g4>*{min-width:0}.c3 .stack li span:first-child{min-width:0}.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.cons{font-size:24px!important;line-height:1.1}.c3 .now{flex-wrap:wrap;gap:6px}.c3 .now b{font-size:32px}.a .pr{font-size:36px}.note{background:#fff7e6;border:1px solid #f5d79a;border-radius:16px;padding:14px 16px;font-size:14px;line-height:1.5;margin:0 0 18px}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.g4{grid-template-columns:1fr;gap:26px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><img src="assets/logo.png" alt="Adviuz"><span style="font-size:13px;color:var(--mut)">Preview only · not linked from the site</span></div>
   <h1>3 ways to show the plans</h1>
-  <p class="intro">Same plans and Black Friday prices (Consumers / B2C shown). Each version is built for a quicker yes: fewer things to read, one clear choice, and the value shown before the price. Pick one (or mix parts) and I'll put it on the page.</p>
+  <p class="intro">Same layouts as before, now with four plans: <b>1,000 · 3,000 · 6,000 · 12,000</b> flyer views (Consumers / B2C shown). Every plan includes the first flyer design.</p>
+  <div class="note"><b>Proposed prices to confirm:</b> Scale and Pro changed size, so their prices are worked out with the same value maths as today (views × $5 + AI credits + $600 setup + design edits) and a Black Friday cut similar to now. The 12,000-view 1-year plan totals over $50,000, so it shows "By consultation" (your rule for $50K+). Nothing here is live: tell me the prices you want and I'll put them in.</div>
   <nav class="tabs"><a href="#a">A · Simple &amp; decisive</a><a href="#b">B · Side-by-side</a><a href="#c">C · Value stack</a></nav>
-
-  <!-- ===================== A ===================== -->
-  <section class="opt a" id="a">
-    <div class="oh"><span>OPTION A</span><h2>Simple &amp; decisive</h2></div>
-    <p class="why"><b>Why it closes faster:</b> each card shows only what decides the purchase: the price drop, one line of what they get, and how long it typically lasts. The full list hides under "What's included". Less reading means less hesitation, and it works best on phones.</p>
-    <div class="stage">
-      <div class="g3">
-        <div class="c"><h3>Growth</h3><p class="for">Typically used over 1 month</p>
-          <div><div class="val">Total value <s>$6,647</s> · <span class="save">Save $1,673</span></div><div class="pr">$4,974 <small>CAD + tax</small></div></div>
-          <div class="big"><b>1,000</b> flyer views + <b>full access</b> to the AI Conversion Engine (500 AI minutes)</div>
-          <ul class="tick"><li>Flyer designed for you, unlimited edits for 3 months</li><li>Both setups included ($600 value)</li><li>Valid 12 months, pause anytime</li></ul>
-          <details><summary>What's included</summary><p>2,500 texts, 2,500 emails and 2,500 call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>
-          <a class="btn" href="#">Choose Growth &rarr;</a></div>
-        <div class="c rec"><span class="badge">RECOMMENDED</span><h3>Scale</h3><p class="for">Typically used over 3 months</p>
-          <div><div class="val">Total value <s>$15,059</s> · <span class="save">Save $2,591</span></div><div class="pr">$12,468 <small>CAD + tax</small></div></div>
-          <div class="big"><b>2,500</b> flyer views + <b>full access</b> to the AI Conversion Engine (1,250 AI minutes)</div>
-          <ul class="tick"><li>Flyer designed for you, unlimited edits for 4 months</li><li>Both setups included ($600 value)</li><li>Valid 12 months, pause anytime</li></ul>
-          <details><summary>What's included</summary><p>6,250 texts, 6,250 emails and 6,250 call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>
-          <a class="btn" href="#">Choose Scale &rarr;</a></div>
-        <div class="c"><h3>Pro</h3><p class="for">Typically used over 6 months</p>
-          <div><div class="val">Total value <s>$28,595</s> · <span class="save">Save $3,632</span></div><div class="pr">$24,963 <small>CAD + tax</small></div></div>
-          <div class="big"><b>5,000</b> flyer views + <b>full access</b> to the AI Conversion Engine (2,500 AI minutes)</div>
-          <ul class="tick"><li>Flyer designed for you, unlimited edits for 5 months</li><li>Both setups included ($600 value)</li><li>Valid 12 months, pause anytime</li></ul>
-          <details><summary>What's included</summary><p>12,500 texts, 12,500 emails and 12,500 call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>
-          <a class="btn" href="#">Choose Pro &rarr;</a></div>
-      </div>
-      <div class="pilotbar"><p><b>Not sure yet? Try the Pilot Project</b><br>200 flyer views + full access to the AI Conversion Engine · <s style="color:#9a8fb8">$1,899</s> <b>$982</b></p><a class="btn" href="#">Start the Pilot &rarr;</a></div>
-      <p class="fine">Prepaid · $0 monthly · Secure payment by Stripe</p>
-    </div>
-  </section>
-
-  <!-- ===================== B ===================== -->
-  <section class="opt b" id="b">
-    <div class="oh"><span>OPTION B</span><h2>Side-by-side comparison</h2></div>
-    <p class="why"><b>Why it closes faster:</b> buyers who compare (your "they start comparing" problem) see every plan in one table, row by row, so they don't scroll back and forth between cards. The highlighted column steers them to Scale. This works best on desktop; on phones the table scrolls sideways.</p>
-    <div class="stage">
-      <div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div>
-      <div class="scroll"><table>
-        <thead><tr><th></th>
-          <th><h3>Pilot</h3><div class="v"><s>$1,899</s></div><div class="p">$982</div></th>
-          <th><h3>Growth</h3><div class="v"><s>$6,647</s></div><div class="p">$4,974</div></th>
-          <th class="col"><span class="rb">RECOMMENDED</span><h3>Scale</h3><div class="v"><s>$15,059</s></div><div class="p">$12,468</div></th>
-          <th><h3>Pro</h3><div class="v"><s>$28,595</s></div><div class="p">$24,963</div></th></tr></thead>
-        <tbody>
-          <tr><td>Flyer views (25-second views)</td><td>200</td><td>1,000</td><td class="col"><b>2,500</b></td><td>5,000</td></tr>
-          <tr><td>Typically used over</td><td>1 week</td><td>1 month</td><td class="col">3 months</td><td>6 months</td></tr>
-          <tr><td>AI Conversion Engine</td><td class="yes">Full access</td><td class="yes">Full access</td><td class="col yes">Full access</td><td class="yes">Full access</td></tr>
-          <tr><td>AI minutes</td><td>100</td><td>500</td><td class="col">1,250</td><td>2,500</td></tr>
-          <tr><td>Texts, emails &amp; call minutes (each)</td><td>500</td><td>2,500</td><td class="col">6,250</td><td>12,500</td></tr>
-          <tr><td>Unlimited design edits</td><td>1 month</td><td>3 months</td><td class="col">4 months</td><td>5 months</td></tr>
-          <tr><td>Setup ($600 value)</td><td class="yes">Included</td><td class="yes">Included</td><td class="col yes">Included</td><td class="yes">Included</td></tr>
-          <tr><td>Valid for</td><td>6 months</td><td>12 months</td><td class="col">12 months</td><td>12 months</td></tr>
-          <tr><td>You save</td><td class="yes">$917</td><td class="yes">$1,673</td><td class="col yes">$2,591</td><td class="yes">$3,632</td></tr>
-          <tr><td></td><td><a class="btn lt" href="#">Start Pilot</a></td><td><a class="btn lt" href="#">Choose</a></td><td class="col"><a class="btn" href="#">Choose Scale</a></td><td><a class="btn lt" href="#">Choose</a></td></tr>
-        </tbody></table></div>
-      <p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · Black Friday prices end Nov 30</p>
-    </div>
-  </section>
-
-  <!-- ===================== C ===================== -->
-  <section class="opt c3" id="c">
-    <div class="oh"><span>OPTION C</span><h2>Value stack</h2></div>
-    <p class="why"><b>Why it closes faster:</b> this is what you do in a live demo. Each card adds up what they get, item by item with its value, shows the total value, then the Black Friday price. The price feels small next to the value, and the guarantees sit right under the button to remove last-second doubt.</p>
-    <div class="stage">
-      <div class="g3">
-        <div class="c"><h3>Growth</h3><p class="out">Your flyer seen <b>1,000 times</b> for 25 seconds each · typically over <b>1 month</b></p>
-          <ul class="stack"><li><span>1,000 flyer views</span><span>$5,000</span></li><li><span>AI Conversion Engine · 500 min</span><span>$750</span></li><li><span>Design edits · 3 months</span><span>$297</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>
-          <div class="tot"><span>Total value</span><s>$6,647</s></div>
-          <div class="now"><span>Your price <i class="bf">BLACK FRIDAY</i></span><b>$4,974</b></div>
-          <a class="btn" href="#">Get Growth &rarr;</a></div>
-        <div class="c rec"><span class="badge">RECOMMENDED</span><h3>Scale</h3><p class="out">Your flyer seen <b>2,500 times</b> for 25 seconds each · typically over <b>3 months</b></p>
-          <ul class="stack"><li><span>2,500 flyer views</span><span>$12,500</span></li><li><span>AI Conversion Engine · 1,250 min</span><span>$1,563</span></li><li><span>Design edits · 4 months</span><span>$396</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>
-          <div class="tot"><span>Total value</span><s>$15,059</s></div>
-          <div class="now"><span>Your price <i class="bf">BLACK FRIDAY</i></span><b>$12,468</b></div>
-          <a class="btn" href="#">Get Scale &rarr;</a></div>
-        <div class="c"><h3>Pro</h3><p class="out">Your flyer seen <b>5,000 times</b> for 25 seconds each · typically over <b>6 months</b></p>
-          <ul class="stack"><li><span>5,000 flyer views</span><span>$25,000</span></li><li><span>AI Conversion Engine · 2,500 min</span><span>$2,500</span></li><li><span>Design edits · 5 months</span><span>$495</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>
-          <div class="tot"><span>Total value</span><s>$28,595</s></div>
-          <div class="now"><span>Your price <i class="bf">BLACK FRIDAY</i></span><b>$24,963</b></div>
-          <a class="btn" href="#">Get Pro &rarr;</a></div>
-      </div>
+  <section class="opt a" id="a"><div class="oh"><span>OPTION A</span><h2>Simple &amp; decisive</h2></div>
+    <p class="why"><b>Why it closes faster:</b> each card shows only what decides the purchase: the price drop, one line of what they get and how long it typically lasts. The full list hides under "What's included".</p>
+    <div class="stage"><div class="g4" id="A"></div><div class="pilotbar" id="AP"></div><p class="fine">Prepaid · $0 monthly · Secure payment by Stripe</p></div></section>
+  <section class="opt b" id="b"><div class="oh"><span>OPTION B</span><h2>Side-by-side comparison</h2></div>
+    <p class="why"><b>Why it closes faster:</b> every plan in one table, row by row, so comparing takes seconds. The highlighted column steers them to the recommended plan.</p>
+    <div class="stage"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><div class="scroll"><table id="B"></table></div><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · Black Friday prices end Nov 30</p></div></section>
+  <section class="opt c3" id="c"><div class="oh"><span>OPTION C</span><h2>Value stack</h2></div>
+    <p class="why"><b>Why it closes faster:</b> like your live demo, each card adds up what they get with its value, shows the total value, then the Black Friday price, with the guarantees under the buttons.</p>
+    <div class="stage"><div class="g4" id="C"></div>
       <div class="safe"><span>✓ 100% distribution guarantee</span><span>✓ You approve the flyer first</span><span>✓ Prepaid, $0 monthly</span><span>✓ Pause anytime</span></div>
-      <p class="fine">Not sure yet? <a href="#" style="color:var(--acc);font-weight:800">Try the Pilot Project · <s style="color:#9a8fb8">$1,899</s> $982</a></p>
-    </div>
-  </section>
+      <p class="fine">Not sure yet? <a href="#" style="color:var(--acc);font-weight:800">Try the Pilot Project · <s style="color:#9a8fb8">$1,899</s> $982</a></p></div></section>
+<script>
+var P=[
+ {n:'Growth',v:1000,ai:500,aiv:750,m:3,use:'1 month',price:4974},
+ {n:'Scale',v:3000,ai:1500,aiv:1500,m:4,use:'3 months',price:14537,rec:1},
+ {n:'Pro',v:6000,ai:3000,aiv:2700,m:5,use:'6 months',price:29563},
+ {n:'Annual',v:12000,ai:6000,aiv:4800,m:12,use:'1 year',cons:1}];
+var PILOT={n:'Pilot',v:200,ai:100,aiv:200,m:1,use:'1 week',price:982,valid:6};
+function f(x){return x.toLocaleString('en-CA');}function d(x){return '$'+f(x);}
+[PILOT].concat(P).forEach(function(p){p.ed=p.m*99;p.val=p.v*5+p.aiv+600+p.ed;p.msg=p.v*2.5;p.save=p.cons?0:p.val-p.price;p.valid=p.valid||12;});
+PILOT.val=1899;PILOT.save=917;
+function btn(p,t){return '<a class="btn" href="#">'+(p.cons?'Book a consultation':t)+' &rarr;</a>';}
+function priceA(p){return p.cons?'<div class="val">Total value <s>'+d(p.val)+'</s></div><div class="pr cons">By consultation</div>':'<div class="val">Total value <s>'+d(p.val)+'</s> · <span class="save">Save '+d(p.save)+'</span></div><div class="pr">'+d(p.price)+' <small>CAD + tax</small></div>';}
+document.getElementById('A').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="for">Typically used over '+p.use+'</p><div>'+priceA(p)+'</div>'
+ +'<div class="big"><b>'+f(p.v)+'</b> flyer views + <b>full access</b> to the AI Conversion Engine ('+f(p.ai)+' AI minutes)</div>'
+ +'<ul class="tick"><li>First flyer design included</li><li>Unlimited design edits for '+p.m+' months</li><li>Both setups included ($600 value)</li><li>Valid 12 months, pause anytime</li></ul>'
+ +'<details><summary>What\'s included</summary><p>'+f(p.msg)+' texts, '+f(p.msg)+' emails and '+f(p.msg)+' call minutes to leads · Live dashboard · 100% distribution guarantee</p></details>'+btn(p,'Choose '+p.n)+'</div>';}).join('');
+document.getElementById('AP').innerHTML='<p><b>Not sure yet? Try the Pilot Project</b><br>200 flyer views + full access to the AI Conversion Engine · first flyer design included · <s style="color:#9a8fb8">$1,899</s> <b>$982</b></p><a class="btn" href="#">Start the Pilot &rarr;</a>';
+var all=[PILOT].concat(P),R=function(l,fn,c){return '<tr><td>'+l+'</td>'+all.map(function(p){return '<td class="'+(p.rec?'col ':'')+(c||'')+'">'+fn(p)+'</td>';}).join('')+'</tr>';};
+document.getElementById('B').innerHTML='<thead><tr><th></th>'+all.map(function(p){return '<th'+(p.rec?' class="col"':'')+'>'+(p.rec?'<span class="rb">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><div class="v"><s>'+d(p.val)+'</s></div><div class="p'+(p.cons?' cons':'')+'">'+(p.cons?'Consult':d(p.price))+'</div></th>';}).join('')+'</tr></thead><tbody>'
+ +R('Flyer views (25-second views)',function(p){return f(p.v);})+R('Typically used over',function(p){return p.use;})+R('First flyer design',function(){return 'Included';},'yes')
+ +R('AI Conversion Engine',function(){return 'Full access';},'yes')+R('AI minutes',function(p){return f(p.ai);})+R('Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);})
+ +R('Unlimited design edits',function(p){return p.m+' month'+(p.m>1?'s':'');})+R('Setup ($600 value)',function(){return 'Included';},'yes')+R('Valid for',function(p){return p.valid+' months';})
+ +R('You save',function(p){return p.cons?'Ask us':d(p.save);},'yes')
+ +'<tr><td></td>'+all.map(function(p){return '<td'+(p.rec?' class="col"':'')+'><a class="btn'+(p.rec?'':' lt')+'" href="#">'+(p.cons?'Consult':p.n==='Pilot'?'Start Pilot':'Choose')+'</a></td>';}).join('')+'</tr></tbody>';
+document.getElementById('C').innerHTML=P.map(function(p){return '<div class="c'+(p.rec?' rec':'')+'">'+(p.rec?'<span class="badge">RECOMMENDED</span>':'')+'<h3>'+p.n+'</h3><p class="out">Your flyer seen <b>'+f(p.v)+' times</b> for 25 seconds each · typically over <b>'+p.use+'</b></p>'
+ +'<ul class="stack"><li><span>'+f(p.v)+' flyer views</span><span>'+d(p.v*5)+'</span></li><li><span>AI Conversion Engine · '+f(p.ai)+' min</span><span>'+d(p.aiv)+'</span></li><li class="free"><span>First flyer design</span><span>INCLUDED</span></li><li><span>Design edits · '+p.m+' months</span><span>'+d(p.ed)+'</span></li><li class="free"><span>Flyer + AI setup</span><span><s>$600</s> FREE</span></li></ul>'
+ +'<div class="tot"><span>Total value</span><s>'+d(p.val)+'</s></div>'
+ +(p.cons?'<div class="now"><span>Over $50,000</span><b class="cons">By consultation</b></div>':'<div class="now"><span>Your price <i class="bf">BLACK FRIDAY</i></span><b>'+d(p.price)+'</b></div>')+btn(p,'Get '+p.n)+'</div>';}).join('');
+</script>
 </div>
 </body>
 </html>
