@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Plan Table Styles | Adviuz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css?v=20261005">
+<style>
+*{box-sizing:border-box}
+:root{--g:linear-gradient(135deg,#4000f3,#e65afc);--ink:#230835;--mut:#6d6782;--line:#ece6f8;--acc:#5a1fe0;--ok:#16a34a}
+body{margin:0;background:#f7f5fb;color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 20px 80px}
+.top{display:flex;justify-content:space-between;align-items:center}.top img{height:26px}.top span{font-size:13px;color:var(--mut)}
+h1{font-size:38px;letter-spacing:-.03em;margin:18px 0 6px}
+.intro{color:var(--mut);margin:0 0 10px;max-width:760px;line-height:1.55}
+.tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;padding:10px 0;background:#f7f5fb}
+.tabs a{text-decoration:none;font-weight:800;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.opt{margin-top:40px;scroll-margin-top:70px}
+.oh{display:flex;align-items:center;gap:12px}.oh span{font-size:12px;font-weight:800;letter-spacing:.14em;color:#fff;background:var(--g);border-radius:999px;padding:6px 12px}.oh h2{margin:0;font-size:26px}
+.why{color:var(--mut);margin:8px 0 18px;max-width:820px;line-height:1.55}
+table{width:100%;border-collapse:separate;border-spacing:0}
+th,td{text-align:center;padding:14px 12px;font-size:15px}
+td.l{text-align:left;font-weight:600;white-space:nowrap}
+.l i.ic{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;margin-right:10px;vertical-align:middle}
+.l i.ic svg{width:17px;height:17px;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.yes{font-weight:800}
+.pn{font-size:20px;font-weight:800;margin:0}.was{font-size:14px;text-decoration:line-through}.pr{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;border-radius:999px;padding:5px 10px;margin-bottom:8px}
+.btn{display:inline-flex;justify-content:center;width:100%;max-width:190px;border:0;border-radius:999px;font:800 15px Inter,sans-serif;padding:13px 10px;text-decoration:none;cursor:pointer}
+.fine{font-size:12.5px;text-align:center;margin:16px 0 0}
+
+/* ===== 1 · Midnight premium ===== */
+.v1 .box{position:relative;overflow:hidden;border-radius:32px;padding:34px 30px 26px;background:radial-gradient(60% 50% at 85% 0%,rgba(230,90,252,.35),transparent 70%),radial-gradient(50% 50% at 0% 100%,rgba(64,0,243,.45),transparent 70%),#170a2c;color:#fff;box-shadow:0 40px 90px -40px rgba(35,8,53,.8)}
+.v1 td{border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.9)}
+.v1 td.l{color:rgba(255,255,255,.75)}
+.v1 .l i.ic{background:rgba(255,255,255,.08)}.v1 .l i.ic svg{stroke:#c9b2ff}
+.v1 .yes{color:#6ee7a0}.v1 .was{color:rgba(255,255,255,.45)}
+.v1 .col{background:rgba(255,255,255,.07)}
+.v1 thead .col{border-radius:22px 22px 0 0;box-shadow:inset 0 2px 0 rgba(255,255,255,.18)}
+.v1 tbody tr:last-child .col{border-radius:0 0 22px 22px}
+.v1 thead .col .pr{background:linear-gradient(90deg,#fff,#f0c6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.v1 .rec{background:var(--g);color:#fff;box-shadow:0 0 24px rgba(230,90,252,.6)}
+.v1 .lim{background:rgba(255,120,170,.18);color:#ffb3cf}
+.v1 .btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}.v1 .col .btn{background:var(--g);border:0;box-shadow:0 12px 30px -8px rgba(230,90,252,.6)}
+.v1 .save td{color:#6ee7a0;font-weight:800}
+.v1 .seg{background:rgba(255,255,255,.08)}.v1 .seg b{color:#fff}.v1 .seg b.on{background:#fff;color:#170a2c}
+.v1 .fine{color:rgba(255,255,255,.55)}
+
+/* ===== 2 · Colour-coded plans ===== */
+.v2 .box{border-radius:32px;padding:34px 30px 26px;background:#fff;border:1px solid var(--line);box-shadow:0 30px 70px -40px rgba(35,8,53,.35)}
+.v2 thead th{padding:0 8px 18px;vertical-align:bottom}
+.v2 .hd{border-radius:22px;padding:20px 12px 18px;color:#fff;position:relative}
+.v2 .p0 .hd{background:linear-gradient(160deg,#a78bfa,#c4b5fd)}
+.v2 .p1 .hd{background:linear-gradient(160deg,#7c3aed,#a855f7)}
+.v2 .p2 .hd{background:linear-gradient(160deg,#4000f3,#e65afc);box-shadow:0 22px 50px -18px rgba(64,0,243,.65);transform:scale(1.06)}
+.v2 .p3 .hd{background:linear-gradient(160deg,#230835,#5b1a7e)}
+.v2 .hd .was{color:rgba(255,255,255,.7)}
+.v2 .tag{background:#fff;color:#4b0fe0}.v2 .lim{background:#fff;color:#b4235a}
+.v2 tbody tr:nth-child(odd) td{background:#faf8fe}
+.v2 tbody td:first-child{border-radius:12px 0 0 12px}.v2 tbody td:last-child{border-radius:0 12px 12px 0}
+.v2 td.l{color:var(--mut)}
+.v2 .l i.ic{background:#f1ebff}.v2 .l i.ic svg{stroke:#5a1fe0}
+.v2 .yes{color:var(--ok)}
+.v2 .col{font-weight:800;color:#4b0fe0}
+.v2 .save td{color:var(--ok);font-weight:800;font-size:17px}
+.v2 .btn{background:#f1ebff;color:#4b0fe0}.v2 .col .btn,.v2 .p2c .btn{background:var(--g);color:#fff;box-shadow:0 12px 28px -10px rgba(64,0,243,.6)}
+.v2 .fine{color:var(--mut)}
+
+/* ===== 3 · Floating columns ===== */
+.v3 .box{position:relative;border-radius:32px;padding:40px 26px 28px;background:radial-gradient(45% 60% at 100% 0%,#f3d9ff 0%,transparent 70%),radial-gradient(45% 60% at 0% 100%,#dcd2ff 0%,transparent 70%),#f4f0fb;overflow:hidden}
+.v3 table{border-spacing:14px 0}
+.v3 td,.v3 th{background:#fff}
+.v3 td.l,.v3 th.l{background:transparent}
+.v3 thead th{border-radius:24px 24px 0 0;padding-top:26px;box-shadow:0 -10px 30px -20px rgba(35,8,53,.25)}
+.v3 thead th.l{box-shadow:none}
+.v3 tbody tr:last-child td:not(.l){border-radius:0 0 24px 24px;padding-bottom:22px;box-shadow:0 26px 30px -26px rgba(35,8,53,.35)}
+.v3 td:not(.l){border-bottom:1px dashed #eee8f8}
+.v3 td.l{color:var(--mut);border-bottom:1px solid rgba(35,8,53,.06)}
+.v3 .l i.ic{background:#fff;box-shadow:0 4px 12px -4px rgba(64,0,243,.25)}.v3 .l i.ic svg{stroke:#7a3cff}
+.v3 th .bar{display:block;height:6px;border-radius:6px;margin:-12px auto 16px;width:46px;background:#e4dcf6}
+.v3 .p2c{position:relative}
+.v3 th.p2c{background:var(--g);color:#fff}
+.v3 th.p2c .was{color:rgba(255,255,255,.7)}.v3 th.p2c .bar{background:rgba(255,255,255,.5)}
+.v3 td.p2c{background:#fbf8ff;font-weight:700}
+.v3 .rec{background:#fff;color:#4b0fe0}.v3 .lim{background:#ffe8f0;color:#b4235a}
+.v3 .yes{color:var(--ok)}
+.v3 .save td:not(.l){color:var(--ok);font-weight:800}
+.v3 .btn{background:#f1ebff;color:#4b0fe0}.v3 td.p2c .btn{background:var(--g);color:#fff;box-shadow:0 12px 28px -10px rgba(64,0,243,.6)}
+.v3 .fine{color:var(--mut)}
+
+.seg{display:inline-flex;border-radius:999px;padding:5px;background:#f1ecfa;margin:0 auto 18px}.seg b{padding:9px 16px;border-radius:999px;font-size:14px}.seg b.on{background:var(--ink);color:#fff}
+.cen{text-align:center}
+.tip{display:inline-grid;place-items:center;width:16px;height:16px;margin-left:6px;border-radius:50%;border:1.5px solid currentColor;opacity:.55;font:800 10px/1 Georgia,serif;font-style:italic;vertical-align:1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img src="assets/logo.png" alt="Adviuz"><span>Preview only · desktop styles</span></div>
+  <h1>3 desktop styles for the comparison table</h1>
+  <p class="intro">Same table, same rows and prices as the version you locked. Only the look changes: colour, depth and how strongly Scale stands out.</p>
+  <nav class="tabs"><a href="#s1">1 · Midnight premium</a><a href="#s2">2 · Colour-coded plans</a><a href="#s3">3 · Floating columns</a></nav>
+
+  <section class="opt v1" id="s1"><div class="oh"><span>STYLE 1</span><h2>Midnight premium</h2></div>
+    <p class="why">Dark purple panel with soft glows, like a premium product page. Prices and the recommended Scale column glow; green ticks pop against the dark background. Feels high-end and stands out from the white page around it.</p>
+    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T1"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+
+  <section class="opt v2" id="s2"><div class="oh"><span>STYLE 2</span><h2>Colour-coded plans</h2></div>
+    <p class="why">Each plan gets its own coloured header that gets richer from Pilot to Pro, so bigger plans feel bigger. Scale's header is the brand gradient and slightly larger. Soft striped rows with icons make long rows easy to follow.</p>
+    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T2"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+
+  <section class="opt v3" id="s3"><div class="oh"><span>STYLE 3</span><h2>Floating columns</h2></div>
+    <p class="why">Each plan is its own white column floating on a soft lilac background, like four cards standing side by side. Scale's column has a gradient top and is raised above the others. Light and modern, closest to your current look.</p>
+    <div class="box"><div class="cen"><div class="seg"><b class="on">Consumers (B2C)</b><b>Business owners (B2B)</b></div></div><table id="T3"></table><p class="fine">Prices in CAD + tax · Prepaid · $0 monthly · *Estimated distribution is an estimate, not a guarantee</p></div></section>
+</div>
+<script>
+var PL=[{n:'Pilot',was:1899,pr:982,v:200,dist:'10K–20K',ed:'1 month',ai:100,msg:500,use:'1 week',val:'3 months',save:917,lim:1},
+ {n:'Growth',was:6647,pr:4974,v:1000,dist:'50K–100K',ed:'3 months',ai:500,msg:2500,use:'1 month',val:'6 months',save:1673},
+ {n:'Scale',was:17496,pr:14537,v:3000,dist:'150K–300K',ed:'4 months',ai:1500,msg:7500,use:'3 months',val:'9 months',save:2959,rec:1},
+ {n:'Pro',was:33795,pr:29563,v:6000,dist:'300K–600K',ed:'5 months',ai:3000,msg:15000,use:'6 months',val:'12 months',save:4232}];
+function f(x){return x.toLocaleString('en-CA');}function d(x){return '$'+f(x);}
+var IC={eye:'<circle cx="12" cy="12" r="3"/><path d="M2.5 12S6 5 12 5s9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7z"/>',users:'<circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 5.2a3.4 3.4 0 010 6.4M18.5 15.4c1.7.8 2.7 2.3 3 4.6"/>',
+ pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',loop:'<path d="M4 12a8 8 0 0114-5l2-2v6h-6l2.5-2.5A5 5 0 007 12"/><path d="M20 12a8 8 0 01-14 5l-2 2v-6h6l-2.5 2.5A5 5 0 0017 12"/>',
+ bot:'<rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ msg:'<path d="M4 5h16v11H9l-5 4z"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',tag:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>'};
+var ROWS=[['eye','Flyer views (25-second views)',function(p){return f(p.v);}],['users','Estimated distribution*',function(p){return p.dist;}],['pen','First flyer design',function(){return 'Included';},1],
+ ['loop','Unlimited design editing',function(p){return p.ed;}],['bot','AI Conversion Engine',function(){return 'Full access';},1],['clock','AI minutes',function(p){return f(p.ai);}],
+ ['msg','Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);}],['gear','Setup ($600 value)',function(){return 'Included';},1],['cal','Typically used over',function(p){return p.use;}],
+ ['shield','Recharge validity',function(p){return '<b>'+p.val+'</b>';}]];
+function build(id,v){
+ var h='<thead><tr><th class="l"></th>'+PL.map(function(p,i){var c='p'+i+(p.rec?' p2c col':'');
+   var inner=(v===3?'<span class="bar"></span>':'')+(p.rec?'<span class="tag rec">RECOMMENDED</span>':p.lim?'<span class="tag lim">LIMITED PERIOD</span>':'<span class="tag" style="visibility:hidden">-</span>')+'<p class="pn">'+p.n+'</p><div class="was">'+d(p.was)+'</div><div class="pr">'+d(p.pr)+'</div>';
+   return '<th class="'+c+'">'+(v===2?'<div class="hd">'+inner+'</div>':inner)+'</th>';}).join('')+'</tr></thead><tbody>';
+ ROWS.forEach(function(r){h+='<tr><td class="l"><i class="ic"><svg viewBox="0 0 24 24">'+IC[r[0]]+'</svg></i>'+r[1]+'<span class="tip">i</span></td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+(r[3]?' yes':'')+'">'+r[2](p)+'</td>';}).join('')+'</tr>';});
+ h+='<tr class="save"><td class="l"><i class="ic"><svg viewBox="0 0 24 24">'+IC.tag+'</svg></i>You save</td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'">'+d(p.save)+'</td>';}).join('')+'</tr>';
+ h+='<tr><td class="l"></td>'+PL.map(function(p,i){return '<td class="p'+i+(p.rec?' p2c col':'')+'"><a class="btn" href="#">'+(p.lim?'Start Pilot':'Choose '+p.n)+'</a></td>';}).join('')+'</tr></tbody>';
+ document.getElementById(id).innerHTML=h;}
+build('T1',1);build('T2',2);build('T3',3);
+</script>
+</body>
+</html>
