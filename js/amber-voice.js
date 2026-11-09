@@ -68,7 +68,14 @@
   function leadId() {
     if (window.ADV_LEAD) return String(window.ADV_LEAD);
     try { var q = new URLSearchParams(location.search).get('lead'); if (q) return q; } catch (_) {}
+    try { var ss = sessionStorage.getItem('adv_lead'); if (ss) return ss; } catch (_) {}
     return '';
+  }
+  /* the name they typed on this page (used only for Amber's greeting when there is no lead yet) */
+  function visitorName() {
+    var ids = ['iNm', 'qNm'];
+    for (var i = 0; i < ids.length; i++) { var el = document.getElementById(ids[i]); if (el && el.value && el.value.trim()) return el.value.trim().slice(0, 80); }
+    try { return (sessionStorage.getItem('adv_name') || '').slice(0, 80); } catch (_) { return ''; }
   }
   function loadSDK() {
     if (window.AdvRetell) return Promise.resolve();
@@ -126,7 +133,7 @@
         fetch: function (url, init) {
           var h = { 'Content-Type': 'application/json' };
           try { var v = init && init.headers && init.headers['X-Retell-Client-JS-SDK-Version']; if (v) h['x-retell-client-js-sdk-version'] = v; } catch (_) {}
-          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), page: location.pathname }) });
+          return fetch(FN, { method: 'POST', headers: h, body: JSON.stringify({ action: 'start', lead: leadId(), name: visitorName(), page: location.pathname }) });
         }
       });
       var me = client.createWebCall({

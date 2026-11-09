@@ -1226,7 +1226,7 @@ html,body{overflow-x:hidden}
       var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:location.href.split('#')[0],
         message:'Watched the how-it-works video on adviuz.com/start · Advertises to: '+(seg==='b2b'?'Business owners (B2B)':'Consumers (B2C)')+' · Interested in: Digital Flyers + AI Conversion Engine'};
       var t=setTimeout(done,6000);
-      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id)window.ADV_LEAD=j.lead_id;}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
+      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* they are on the page and can talk to Amber here: no automatic AI call for 60 minutes */fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'hold',lead:j.lead_id}),keepalive:true}).catch(function(){});}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
     });})();
   document.getElementById('plChange').addEventListener('click',function(){goView('ask');});
   /* Pilot Project highlight -> checkout */
@@ -1288,7 +1288,7 @@ html,body{overflow-x:hidden}
   }
 })();
 </script>
-<script src="/js/amber-voice.js?v=20261109a" defer></script>
+<script src="/js/amber-voice.js?v=20261109b" defer></script>
 <script src="/js/checkout.js?v=20261031a" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
