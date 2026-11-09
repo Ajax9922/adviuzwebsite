@@ -547,6 +547,14 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .qbox .button-outline{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.35)}
 .qbox-h{width:100%;font-size:13px;opacity:.75}
 @media(max-width:760px){.tr2-s{grid-template-columns:1fr 1fr;gap:20px 10px;margin:22px 16px 0}.tr2-t span{width:120px}.qbox{padding:24px 20px}.qbox-b,.qbox-b .button{width:100%;justify-content:center}}
+
+.ph.desk{height:auto;min-height:0;width:min(1000px,92vw,calc((100svh - 420px)*16/9));aspect-ratio:auto;border-radius:24px;padding:14px 14px 16px;transform:none}
+.ph.desk .ph-scr{aspect-ratio:16/9;height:auto;border-radius:12px;background-image:url(assets/hiw-desktop.webp)}
+.ph.desk .ph-isl{top:-9px;width:8px;height:8px;border-radius:50%;background:#4a3b66}
+.ph.desk:after{content:"";position:absolute;left:50%;bottom:-38px;width:22%;height:40px;transform:translateX(-50%);background:linear-gradient(#2a1d44,#1c1230);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);border-radius:0 0 10px 10px;z-index:-1}
+.ph.desk .ph-big{top:14px}
+.ph.desk ~ .x{}
+.sh .ph-wrap{margin-bottom:38px}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -916,7 +924,8 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   document.getElementById('nxGo').addEventListener('click',function(){if(unlocked)unlock();else{ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');}});
   /* ---- video: plays inside the phone; big screen on tap; button to go back to small ---- */
   var ph=document.getElementById('ph'),scr=document.getElementById('phScr'),v=document.getElementById('vfVid'),ov=document.getElementById('vfOv'),big=false,started=false,marks={25:0,50:0,75:0};
-  var SRC={s:'assets/hiw-mobile.mp4',b:tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4'};
+  var SRC={s:tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4',b:tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4'};
+  if(!tall){ph.classList.add('desk');v.poster='assets/hiw-desktop.webp';}
   function setSrc(u){if(v.getAttribute('src')===u)return;var t=v.currentTime||0,playing=started&&!v.paused;v.src=u;
     v.addEventListener('loadedmetadata',function f(){v.removeEventListener('loadedmetadata',f);try{v.currentTime=t;}catch(_){}if(playing)v.play();});}
   function goBig(){if(big)return;big=true;setSrc(SRC.b);ov.appendChild(v);ov.hidden=false;document.documentElement.classList.add('vf-lock');
