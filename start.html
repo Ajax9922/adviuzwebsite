@@ -451,6 +451,19 @@ html.vf-lock,html.vf-lock body{overflow:hidden}
 .aud-opts i{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--grad)}
 .aud-opts i svg{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .aud-opts b{font-size:22px;color:var(--ink)}.aud-opts span{font-size:14.5px;color:var(--muted)}
+.nx{max-width:460px;margin:30px auto 0}
+.nx-go{position:relative;width:100%;display:flex;align-items:center;gap:16px;text-align:left;border:2px dashed #d6ccf0;border-radius:22px;background:#faf8fe;padding:18px 20px 22px;cursor:not-allowed;font:inherit;overflow:hidden}
+.nx-lock{flex:0 0 auto;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#ece6fa}
+.nx-lock svg{width:24px;height:24px;fill:none;stroke:#8a7cb0;stroke-width:2;stroke-linecap:round}
+.nx-txt{flex:1;display:flex;flex-direction:column;gap:3px}.nx-txt b{font-size:18px;color:#8a7cb0}.nx-txt small{font-size:14px;color:var(--muted)}
+.nx-ok{display:none}.nx-arr{font-size:24px;font-weight:800;color:#c7bde3}
+.nx-bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:#ece6fa}.nx-bar i{display:block;height:100%;width:0;background:var(--grad)}
+.nx.ready .nx-go{border:0;background:var(--grad);cursor:pointer;box-shadow:0 18px 44px -10px rgba(64,0,243,.55);animation:nxP 2s infinite}
+.nx.ready .nx-lock{background:rgba(255,255,255,.2)}.nx.ready .nx-lock svg{stroke:#fff}
+.nx.ready .nx-lock svg path{d:path("M8 11V8a4 4 0 0 1 7.5-2")}
+.nx.ready .nx-txt b,.nx.ready .nx-txt small,.nx.ready .nx-arr{color:#fff}.nx.ready .nx-wait,.nx.ready .nx-bar{display:none}.nx.ready .nx-ok{display:block}
+body.unlocked .nx-go{animation:none}
+@keyframes nxP{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
 .unl-only{display:none}body.unlocked .unl-only{display:inline-flex}
 body:not(.unlocked) .cb-fab,body:not(.unlocked) .cb-tip{display:none}
 .co-back{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:none;border:0;font:700 15px var(--font-body);color:var(--accent);cursor:pointer;padding:0;margin:64px 0 6px}
@@ -518,6 +531,14 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
           <button type="button" class="ph-again" id="phAgain">&#8635; Watch again</button>
         </div>
       </div>
+    </div>
+    <div class="nx" id="nx">
+      <button type="button" class="nx-go" id="nxGo">
+        <span class="nx-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+        <span class="nx-txt"><b>Next step: choose your plan</b><small class="nx-wait">Unlocks after the video · <span id="nxT">2:13 left</span></small><small class="nx-ok">Tap to continue</small></span>
+        <span class="nx-arr">&rarr;</span>
+        <span class="nx-bar"><i id="nxBar"></i></span>
+      </button>
     </div>
   </div>
 </section>
@@ -938,10 +959,17 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
-  function unlock(scroll){
-    if(!unlocked){unlocked=true;document.body.classList.add('unlocked');document.getElementById('after').hidden=false;try{localStorage.setItem(KEY,'1');}catch(_){}}
-    if(scroll)document.getElementById('aud').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
+  var nx=document.getElementById('nx'),nxT=document.getElementById('nxT'),nxB=document.getElementById('nxBar');
+  function fmt(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+  /* video finished: the "next step" button unlocks under the phone */
+  function ready(scroll){
+    if(!unlocked){unlocked=true;nx.classList.add('ready');try{localStorage.setItem(KEY,'1');}catch(_){}}
+    if(scroll)setTimeout(function(){nx.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});},350);
   }
+  /* next step tapped: open the question + plans area */
+  function unlock(){document.body.classList.add('unlocked');document.getElementById('after').hidden=false;
+    document.getElementById('aud').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});track('NextStep');}
+  document.getElementById('nxGo').addEventListener('click',function(){if(unlocked)unlock();else{ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');}});
   /* ---- video: plays inside the phone; big screen on tap; button to go back to small ---- */
   var ph=document.getElementById('ph'),scr=document.getElementById('phScr'),v=document.getElementById('vfVid'),ov=document.getElementById('vfOv'),big=false,started=false,marks={25:0,50:0,75:0};
   var SRC={s:'assets/hiw-mobile.mp4',b:tall?'assets/hiw-mobile.mp4':'assets/hiw-desktop.mp4'};
@@ -962,11 +990,12 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
   v.addEventListener('pause',function(){ph.classList.add('paused');});v.addEventListener('play',function(){ph.classList.remove('paused');});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&big)goSmall();});
   document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&big)goSmall();});
-  v.addEventListener('timeupdate',function(){var p=v.duration?v.currentTime/v.duration*100:0;for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
-  v.addEventListener('ended',function(){track('WatchedVideo');goSmall();ph.classList.add('done');unlock(true);});
+  v.addEventListener('timeupdate',function(){var d=v.duration||133,p=v.duration?v.currentTime/v.duration*100:0;
+    if(!unlocked){nxT.textContent=fmt(d-v.currentTime)+' left';nxB.style.width=Math.min(100,v.currentTime/d*100)+'%';}for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
+  v.addEventListener('ended',function(){track('WatchedVideo');goSmall();ph.classList.add('done');ready(true);});
   document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
   /* returning visitors who already watched see the next step straight away */
-  try{if(localStorage.getItem(KEY)==='1'){unlock(false);ph.classList.add('seen');}}catch(_){}
+  try{if(localStorage.getItem(KEY)==='1'){ready(false);ph.classList.add('seen');}}catch(_){}
   /* ---- step after the video: who are your customers? ---- */
   var aud=document.getElementById('aud');
   aud.addEventListener('click',function(e){var b=e.target.closest('[data-aud]');if(!b)return;var s=b.dataset.aud;
@@ -990,7 +1019,7 @@ body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
     if(n===2&&to==='page')plansLink();
   };
   function plansLink(){if(!unlocked){ph.classList.remove('nudge');void ph.offsetWidth;ph.classList.add('nudge');ph.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});return;}
-    var p=document.getElementById('plans');(p.hidden?aud:p).scrollIntoView({behavior:RM?'auto':'smooth'});}
+    if(document.getElementById('after').hidden){unlock();return;}var p=document.getElementById('plans');(p.hidden?aud:p).scrollIntoView({behavior:RM?'auto':'smooth'});}
   addEventListener('popstate',function(e){goStage(e.state&&e.state.v==='checkout'?3:1,true);});
   try{history.replaceState({v:'page'},'',location.pathname+location.search);}catch(_){}
   co.hidden=true;document.body.setAttribute('data-view','page');
