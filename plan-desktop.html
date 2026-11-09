@@ -193,6 +193,10 @@ td.l{text-align:left;font-weight:600;white-space:nowrap}
  .bm .btn{max-width:none;background:var(--g);color:#fff;padding:15px;font-size:16px;box-shadow:0 14px 30px -12px rgba(64,0,243,.55)}
  .bm-fine{font-size:12px;color:var(--mut);text-align:center;margin:12px 0 0;line-height:1.5}}
 
+.mc{margin-bottom:20px}
+@media(max-width:760px){#BM .mc{border:1.5px solid var(--line);background:#fff;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
+ #BM .mc.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
+ #BM .mc:not(.hl) .btn{background:#fff;color:#4b0fe0;border:1.5px solid #ddd0fa;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -239,16 +243,9 @@ function bmInner(p){return '<div class="bm-h"><div>'+(p.rec?'<span class="rb">RE
  +(p.cons?'':'<span class="bm-save">You save '+d(p.save)+'</span>')
  +'<ul class="bm-rows">'+MROWS(p).map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="yes"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'
  +'<a class="btn" href="'+(p.cons?'/book?solution=both':'#')+'">'+(p.cons?'Contact us':p.lim?'Start the Pilot':'Choose '+p.n)+' &rarr;</a>';}
-var all=PL,bmSel=0;function bm(){
- document.getElementById('BM').innerHTML='<div class="bm-tabs">'+all.map(function(x,k){return '<button type="button" data-k="'+k+'" class="'+(k===bmSel?'on':'')+'">'+x.n+'<small>'+(x.cons?'Contact':d(x.pr))+'</small></button>';}).join('')+'</div>'
- +'<div class="bm-card">'+bmInner(all[bmSel])+'</div><div class="bm-dots">'+all.map(function(x,k){return '<i class="'+(k===bmSel?'on':'')+'"></i>';}).join('')+'</div><p class="bm-hint">Swipe the card or tap a plan to compare</p><p class="bm-fine">Prices in CAD + tax · Prepaid · $0 monthly<br>*Estimated distribution is an estimate, not a guarantee</p>';
- if(!window._bmHinted){var hc=document.querySelector('#BM .bm-card');hc.insertAdjacentHTML('beforeend','<div class="bm-swipe" aria-hidden="true"><span class="bm-hand"><svg viewBox="0 0 24 24"><path d="M8 13V5a2 2 0 014 0v6M12 11V4a2 2 0 014 0v7M16 11V6a2 2 0 014 0v8a7 7 0 01-7 7h-1a7 7 0 01-6-3l-3-5a2 2 0 013-2l2 2"/></svg></span><b>Swipe</b></div>');
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();hc.classList.add('nudge');}},{threshold:.6});io.observe(hc);}else hc.classList.add('nudge');}
- window._bmHinted=window._bmHinted||!!document.querySelector('#BM .bm-card.nudge');var on=document.querySelector('#BM .bm-tabs .on');if(on)on.parentNode.scrollLeft=on.offsetLeft-(on.parentNode.clientWidth-on.offsetWidth)/2;
- var c=document.querySelector('#BM .bm-card'),x0=null,y0=0;c.addEventListener('touchstart',function(e){window._bmHinted=1;c.classList.remove('nudge');x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
- c.addEventListener('touchmove',function(e){if(x0==null)return;var dx=e.touches[0].clientX-x0;if(Math.abs(dx)>Math.abs(e.touches[0].clientY-y0))c.style.transform='translateX('+dx*0.6+'px)';},{passive:true});
- c.addEventListener('touchend',function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;c.style.transform='';if(Math.abs(dx)>50){var n=bmSel+(dx<0?1:-1);if(n>=0&&n<all.length){bmSel=n;bm();}}});}
-document.getElementById('BM').addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;window._bmHinted=1;bmSel=+b.dataset.k;bm();});bm();
+document.getElementById('BM').innerHTML=PL.map(function(p){return '<div class="bm-card mc'+(p.rec?' hl':'')+'">'+bmInner(p)+'</div>';}).join('')
+ +'<p class="bm-fine">Prices in CAD + tax · Prepaid · $0 monthly<br>*Estimated distribution is an estimate, not a guarantee</p>';
+
 (function(){var box=null;function close(){if(box){box.remove();box=null;}}
 document.addEventListener('click',function(e){var t=e.target.closest('.tip');if(!t){if(!e.target.closest('.tipbox'))close();return;}e.preventDefault();e.stopPropagation();var same=box&&box._t===t;close();if(same)return;
  box=document.createElement('div');box.className='tipbox';box.textContent=t.dataset.tip;box._t=t;document.body.appendChild(box);var r=t.getBoundingClientRect(),w=Math.min(260,innerWidth-24),x=Math.max(12,Math.min(r.left+r.width/2-w/2,innerWidth-w-12));
