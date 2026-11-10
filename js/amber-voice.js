@@ -24,7 +24,8 @@
     + '.vc-fl{position:relative;background:#fff;border-radius:14px;padding:9px 13px;white-space:nowrap;box-shadow:0 10px 28px -10px rgba(35,8,53,.35);animation:vcIn .5s ease both}'
     + '.vc-fl:after{content:"";position:absolute;right:26px;bottom:-5px;width:10px;height:10px;background:#fff;transform:rotate(45deg);border-radius:2px}'
     + '.vc-fo{position:relative;display:block;width:64px;height:64px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 30%,#d58bff 0%,#8a3dff 40%,#4f12e6 72%,#2a0a8a 100%);box-shadow:0 14px 34px rgba(64,0,243,.45);animation:vcFloat 4s ease-in-out infinite,vcRing 2.4s ease-out infinite}'
-    + '.vc-fo i{position:absolute;inset:-35%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.8) 60deg,transparent 120deg,rgba(255,120,240,.95) 200deg,transparent 260deg,rgba(120,210,255,.75) 320deg,transparent 360deg);filter:blur(6px);animation:vcSpin 5s linear infinite;mix-blend-mode:screen}'
+    + '.vc-fi{position:absolute;inset:0;border-radius:50%;overflow:hidden;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(circle,#000 70%,#000 71%);transform:translateZ(0)}'
+    + '.vc-fo i{position:absolute;inset:-35%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.8) 60deg,transparent 120deg,rgba(255,120,240,.95) 200deg,transparent 260deg,rgba(120,210,255,.75) 320deg,transparent 360deg);filter:blur(6px);animation:vcSpin 5s linear infinite}'
     + '.vc-fo i+i{animation-duration:9s;animation-direction:reverse;opacity:.75}'
     + '.vc-fo:after{content:"";position:absolute;left:18%;top:12%;width:42%;height:30%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),transparent 70%)}'
     + '.vc-fab:hover .vc-fo{transform:scale(1.06)}.vc-fab:focus-visible .vc-fo{outline:3px solid #b9a6ec;outline-offset:3px}'
@@ -86,7 +87,7 @@
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   var fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'vc-fab'; fab.setAttribute('aria-label', 'Have questions? Talk to Amber by voice');
-  fab.innerHTML = '<span class="vc-fl">Questions? Let\'s talk</span><span class="vc-fo" aria-hidden="true"><i></i><i></i></span>';
+  fab.innerHTML = '<span class="vc-fl">Questions? Let\'s talk</span><span class="vc-fo" aria-hidden="true"><span class="vc-fi"><i></i><i></i></span></span>';
   var box = document.createElement('div');
   box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Talk to Amber');
   box.innerHTML = '<div class="vc-top"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Amber</b><small>Adviuz AI assistant · voice</small></div>'
