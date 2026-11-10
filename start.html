@@ -874,8 +874,12 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
           <label>Email<input id="qEm" type="email" autocomplete="email" placeholder="you@business.com" required></label>
           <label>Phone<input id="qPh" type="tel" autocomplete="tel" placeholder="(416) 555-0123" required></label>
         </div>
-        <label>Province or territory<select id="qPv" required><option value="">Choose…</option>
+        <div class="gq-row">
+          <label>Country<select id="qCt" autocomplete="country"><option value="CA">Canada</option><option value="US">United States</option><option value="MX">Mexico</option></select></label>
+          <label id="qPvL"><span id="qPvT">Province or territory</span><select id="qPv" required><option value="">Choose…</option>
           <option value="AB">Alberta</option><option value="BC">British Columbia</option><option value="MB">Manitoba</option><option value="NB">New Brunswick</option><option value="NL">Newfoundland and Labrador</option><option value="NS">Nova Scotia</option><option value="NT">Northwest Territories</option><option value="NU">Nunavut</option><option value="ON">Ontario</option><option value="PE">Prince Edward Island</option><option value="QC">Quebec</option><option value="SK">Saskatchewan</option><option value="YT">Yukon</option></select></label>
+        </div>
+        <p class="gs-fine" id="qCur" hidden>Prices are in Canadian dollars (CAD). Your card converts to your currency automatically.</p>
         <input class="gq-hp" id="qWs" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="gq-ck"><input type="checkbox" id="qCk"> <span>I agree to receive calls, texts and emails from Adviuz about my order and its services. Reply STOP to opt out anytime.</span></label>
         <p class="gq-err" id="qErr" role="alert"></p>
@@ -1074,8 +1078,26 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     var all=BFP[seg].concat(FLY),x=all.filter(function(p){return p.key===key;})[0];if(!x)return;
     if(!CARDS[key])planCard(Object.assign({},x));pickKey(key);
     goStage(3);};
+  /* 2026-11-09 (Ajax: "USA is my next target… include North American countries"): Canada = provincial tax;
+     United States / Mexico = no Canadian sales tax (business outside Canada); prices stay in CAD. */
+  var CA_OPTS=$('qPv').innerHTML,US_ST=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+  function setCountry(c,keep){
+    var pv=$('qPv'),old=pv.value;$('qCt').value=c;
+    if(c==='US'){pv.innerHTML='<option value="">Choose…</option>'+US_ST.map(function(x){return '<option value="'+x[0]+'">'+x[1]+'</option>';}).join('');$('qPvT').textContent='State';$('qPvL').hidden=false;}
+    else if(c==='MX'){pv.innerHTML='<option value="MX">Mexico</option>';$('qPvL').hidden=true;}
+    else{pv.innerHTML=CA_OPTS;$('qPvT').textContent='Province or territory';$('qPvL').hidden=false;}
+    if(keep&&old&&pv.querySelector('option[value="'+old+'"]'))pv.value=old;
+    $('qCur').hidden=c==='CA';
+  }
+  /* best guess from the visitor's time zone (they can change it) */
+  (function(){var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(_){}
+    var CA={'America/Regina':'SK','America/Swift_Current':'SK','America/Winnipeg':'MB','America/Edmonton':'AB','America/Vancouver':'BC','America/Toronto':'ON','America/Halifax':'NS','America/Glace_Bay':'NS','America/Moncton':'NB','America/St_Johns':'NL','America/Goose_Bay':'NL','America/Whitehorse':'YT','America/Dawson':'YT','America/Yellowknife':'NT','America/Inuvik':'NT','America/Iqaluit':'NU','America/Rankin_Inlet':'NU','America/Cambridge_Bay':'NU'};
+    var MX=/^America\/(Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Mazatlan|Bahia_Banderas|Hermosillo|Tijuana)$/;
+    var US=/^(America\/(New_York|Detroit|Chicago|Denver|Phoenix|Los_Angeles|Anchorage|Juneau|Sitka|Nome|Boise|Menominee|Indiana\/.+|Kentucky\/.+|North_Dakota\/.+)|Pacific\/Honolulu)$/;
+    if(CA[tz]){setCountry('CA');$('qPv').value=CA[tz];}else if(MX.test(tz))setCountry('MX');else if(US.test(tz))setCountry('US');else setCountry('CA');})();
+  $('qCt').addEventListener('change',function(){setCountry(this.value,false);sum();});
   function sum(){
-    var x=sel,setup=x.setup||0,pre=x.price+setup,pv=$('qPv').value,t=TAX[pv];
+    var x=sel,setup=x.setup||0,pre=x.price+setup,ct=$('qCt').value,pv=$('qPv').value,t=ct==='CA'?TAX[pv]:[0,'Sales tax'];
     $('qSeg').textContent=x.g==='fly'?'Digital Flyers':('Complete Solution · '+(seg==='b2b'?'Businesses (B2B)':'Consumers (B2C)'));
     $('qName').textContent=x.g==='fly'?x.name:x.name+(x.key==='bf-pilot'?'':' package');
     $('qWho').textContent=x.g==='fly'?'Flyer design, distribution on 15+ platforms and live reporting':(x.views+' flyer views + AI Conversion Engine');
@@ -1086,7 +1108,8 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     var sv=x.std&&x.std>x.price;$('qValRow').hidden=!sv;if(sv)$('qVal').innerHTML='<s>'+m2(x.std)+'</s>';
     $('qLine').textContent=sv?'Your price'+(BF&&x.g==='bf'&&x.key!=='bf-pilot'?' (Black Friday)':''):(x.g==='fly'?x.name:'Price');$('qPrice').textContent=m2(x.price);
     $('qSetRow').hidden=!setup;if(setup)$('qSet').textContent=m2(setup);
-    if(t){var tx=Math.round(pre*t[0]*100)/100;$('qTaxL').textContent=t[1]+' ('+(Math.round(t[0]*100000)/1000)+'%)';$('qTax').textContent=m2(tx);$('qTotal').textContent=m2(pre+tx)+' CAD';}
+    if(ct!=='CA'){$('qTaxL').textContent='Canadian sales tax';$('qTax').textContent='None (outside Canada)';$('qTotal').textContent=m2(pre)+' CAD';}
+    else if(t){var tx=Math.round(pre*t[0]*100)/100;$('qTaxL').textContent=t[1]+' ('+(Math.round(t[0]*100000)/1000)+'%)';$('qTax').textContent=m2(tx);$('qTotal').textContent=m2(pre+tx)+' CAD';}
     else{$('qTaxL').textContent='Tax';$('qTax').textContent='Choose your province';$('qTotal').textContent=m2(pre)+' + tax';}
   }
   grid.addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;e.preventDefault();pickKey(b.dataset.k);
@@ -1099,12 +1122,13 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     if(v('qNm').length<2)return err.textContent='Please enter your name.';
     if(!v('qBz'))return err.textContent='Please enter your business name.';
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('qEm')))return err.textContent='Please enter a valid email.';
-    if(!(d.length===10||(d.length===11&&d[0]==='1')))return err.textContent='Please enter a valid phone number.';
-    if(!v('qPv'))return err.textContent='Please choose your province or territory.';
+    var ct=$('qCt').value;
+    if(ct==='MX'?!(d.length===10||(d.length===12&&d.slice(0,2)==='52')):!(d.length===10||(d.length===11&&d[0]==='1')))return err.textContent='Please enter a valid phone number.';
+    if(!v('qPv'))return err.textContent=ct==='US'?'Please choose your state.':'Please choose your province or territory.';
     if(!$('qCk').checked)return err.textContent='Please tick the box so we can contact you about your order.';
     go.disabled=true;go.textContent='Opening secure payment…';
     var val=sel.price+(sel.setup||0);
-    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:sel.buy,seg:sel.g==='fly'?'b2c':seg,name:v('qNm'),business:v('qBz'),email:v('qEm'),phone:v('qPh'),province:v('qPv'),consent:true,website:v('qWs')})})
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:sel.buy,seg:sel.g==='fly'?'b2c':seg,name:v('qNm'),business:v('qBz'),email:v('qEm'),phone:v('qPh'),country:ct,province:ct==='MX'?'':v('qPv'),consent:true,website:v('qWs')})})
       .then(function(r){return r.json();}).then(function(j){
         if(!j||!j.ok||!j.url)throw new Error((j&&j.error)||'Something went wrong. Please call +1 647 250 1152.');
         try{if(window.fbq)fbq('track','InitiateCheckout',{currency:'CAD',value:val});if(window.gtag)gtag('event','begin_checkout',{currency:'CAD',value:val});}catch(_){}
