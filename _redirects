@@ -8,3 +8,6 @@
 # Old buy-online page (old plans) → the live landing page
 /get-started       /start   301
 /get-started.html  /start   301
+# Design library is private now (hub → Design Library, staff only)
+/showcase      /   302
+/showcase/*    /   302
