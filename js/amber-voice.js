@@ -245,9 +245,10 @@
     bar.hidden = true; document.body.classList.remove('vc-mini'); mini = false;
     var cb = document.getElementById('cb'); if (cb && !cb.hidden) { var x = document.getElementById('cbX'); if (x) x.click(); }
     box.hidden = false; document.body.classList.add('vc-open');
-    if (state !== 'live' && state !== 'connecting') view('idle');
-    loadSDK().catch(function () {});
     track('VoiceOpen');
+    /* one tap: opening the voice screen starts the conversation (the mic prompt appears right away);
+       if they minimised during a conversation, opening just brings it back */
+    if (state !== 'live' && state !== 'connecting') start();
   }
   function closeV() {
     if (call) end();
@@ -284,4 +285,10 @@
     cbh.insertBefore(tb, cbx);
   }
   view('idle');
+  /* load the voice library quietly once the plans are on screen, so the mic prompt is instant on tap */
+  (function () {
+    var go = function () { if (document.body.classList.contains('unlocked')) { loadSDK().catch(function () {}); return true; } return false; };
+    if (go()) return;
+    try { var mo = new MutationObserver(function () { if (go()) mo.disconnect(); }); mo.observe(document.body, { attributes: true, attributeFilter: ['class'] }); } catch (_) {}
+  })();
 })();
