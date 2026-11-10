@@ -741,6 +741,9 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
 .sp-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:16px;overflow-y:auto;overscroll-behavior:contain}
 .sp-cards .pl-card{margin:0;transition:opacity .3s,transform .3s}
 .sp .sp-cards{display:block}
+.sp-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 0 14px}.sp-nav[hidden]{display:none}
+.sp-ar{width:40px;height:40px;border-radius:50%;border:1px solid #ddd0fa;background:#fff;color:#4000f3;font-size:20px;line-height:1;cursor:pointer;box-shadow:0 8px 20px -10px rgba(64,0,243,.4)}.sp-ar:disabled{opacity:.35;cursor:default;box-shadow:none}
+.sp-dots{display:flex;gap:7px}.sp-dots i{width:8px;height:8px;border-radius:50%;background:#ddd3f5}.sp-dots i.on{width:22px;border-radius:5px;background:linear-gradient(135deg,#4000f3,#e65afc)}
 .sp-cards .ap-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 @media(max-width:900px){.sp-cards .ap-cards{grid-template-columns:1fr}}
 .sp .np-c{text-align:left;border:1.5px solid #ece6f8;background:#fff;border-radius:22px;padding:20px 16px;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
@@ -753,10 +756,10 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
 .sp .np-c .np-btn{display:block;text-align:center;text-decoration:none;border-radius:999px;font-weight:800;padding:13px;font-size:15px;background:var(--grad);color:#fff;border:0}
 .sp .np-c .np-btn.o{background:#fff;color:#4b0fe0;border:1.5px solid #ddd0fa}
 .sp .np-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:5px 10px;margin-bottom:6px}
-.sp-cards.one .pl-card{opacity:.45;transform:scale(.97)}
+.sp-cards.one .pl-card{opacity:.6;transform:scale(.97)}
 .sp-cards.one .pl-card.sp-on{opacity:1;transform:none;box-shadow:0 0 0 3px var(--accent,#4000f3),0 24px 60px -18px rgba(64,0,243,.45)}
 html.sp-lock,html.sp-lock body{overflow:hidden!important}
-@media(max-width:900px){.sp{padding:calc(max(10px,env(safe-area-inset-top)) + 58px) 10px 10px}.sp-cards{grid-template-columns:1fr;padding:12px}.sp-cards.one .pl-card{display:none}.sp-cards.one .pl-card.sp-on{display:block;opacity:1;transform:none}
+@media(max-width:900px){.sp{padding:calc(max(10px,env(safe-area-inset-top)) + 58px) 10px 10px}.sp-cards{grid-template-columns:1fr;padding:12px}.sp-cards.one .pl-card{opacity:1;transform:none}
   .sp-cards.all{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:88%;overflow-x:auto;overflow-y:auto;scroll-snap-type:x mandatory}.sp-cards.all .pl-card{scroll-snap-align:center}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
@@ -1152,8 +1155,18 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
     SP.setAttribute('aria-label',one?nm+' plan':'Our plans');
     SP.innerHTML='<div class="sp-in"><div class="sp-h"><div>'+(one?esc(nm)+(nm==='Pilot Project'?'':' plan'):'Our plans')+'<small>Amber is walking you through '+(one?'this plan':'the plans')+'</small></div><button type="button" class="sp-x" aria-label="Close">&times;</button></div><div class="sp-cards '+(one?'one':'all')+'">'+html+'</div></div>';
     var box0=SP.querySelector('.sp-cards');
-    AdvPlans.cards(box0,{seg:seg,plans:xs.map(function(x,i){return {key:x.key,name:x.name,rec:x.rec,std:x.std,price:(!BF&&i>0)?x.std:x.price};}),onChoose:function(kk){spClose();window.gsBuy(kk);}},(one&&innerWidth<=900)?k:null);
-    [].forEach.call(box0.querySelectorAll('.ap-c'),function(c){c.classList.add('pl-card');if(c.getAttribute('data-ap-card')===k)c.classList.add('sp-on');});
+    AdvPlans.cards(box0,{seg:seg,plans:xs.map(function(x,i){return {key:x.key,name:x.name,rec:x.rec,std:x.std,price:(!BF&&i>0)?x.std:x.price};}),onChoose:function(kk){spClose();window.gsBuy(kk);}},null);
+    /* 2026-11-10 (Ajax): at most 3 cards on a computer, 1 on a phone; the plan Amber is talking about in the middle (or shown alone) */
+    var cs=[].slice.call(box0.querySelectorAll('.ap-c')),V=innerWidth<=900?1:3,fi=Math.max(0,cs.map(function(c){return c.getAttribute('data-ap-card');}).indexOf(one?k:'bf-scale'));
+    var st=Math.max(0,Math.min(cs.length-V,V===1?fi:fi-1));
+    cs.forEach(function(c){c.classList.add('pl-card');if(one&&c.getAttribute('data-ap-card')===k)c.classList.add('sp-on');});
+    var nav=document.createElement('div');nav.className='sp-nav';nav.innerHTML='<button type="button" class="sp-ar" data-d="-1" aria-label="Previous plan">&#8249;</button><span class="sp-dots"></span><button type="button" class="sp-ar" data-d="1" aria-label="Next plan">&#8250;</button>';
+    box0.parentNode.insertBefore(nav,box0.nextSibling);
+    var spWin=function(){cs.forEach(function(c,i){c.style.display=(i>=st&&i<st+V)?'':'none';});box0.querySelector('.ap-cards').style.gridTemplateColumns='repeat('+V+',minmax(0,1fr))';
+      var ar=nav.querySelectorAll('.sp-ar');ar[0].disabled=st===0;ar[1].disabled=st>=cs.length-V;nav.hidden=cs.length<=V;
+      var n=cs.length-V+1,h='';for(var d=0;d<n;d++)h+='<i class="'+(d===st?'on':'')+'"></i>';nav.querySelector('.sp-dots').innerHTML=h;};
+    nav.addEventListener('click',function(e){var b=e.target.closest('.sp-ar');if(!b||b.disabled)return;st=Math.max(0,Math.min(cs.length-V,st+(+b.getAttribute('data-d'))));spWin();});
+    spWin();
     document.documentElement.classList.add('sp-lock');
     var on=SP.querySelector('.sp-on');if(on&&innerWidth>900)requestAnimationFrame(function(){on.scrollIntoView({block:'nearest',inline:'center'});});
     var box=SP.querySelector('.sp-cards');if(box&&(!on||innerWidth<=900))box.scrollTop=0;
