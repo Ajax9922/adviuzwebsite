@@ -1080,6 +1080,9 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     goStage(3);};
   /* 2026-11-09 (Ajax: "USA is my next target… include North American countries"): Canada = provincial tax;
      United States / Mexico = no Canadian sales tax (business outside Canada); prices stay in CAD. */
+  /* phase 1 (Ajax 2026-11-09: "finish it for Canada first… USA in second phase"): NA_CHECKOUT=false keeps the
+     checkout Canada-only and hides the country field; set it to true once invoices/payments support US & Mexico. */
+  var NA_CHECKOUT=false;
   var CA_OPTS=$('qPv').innerHTML,US_ST=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
   function setCountry(c,keep){
     var pv=$('qPv'),old=pv.value;$('qCt').value=c;
@@ -1094,6 +1097,7 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     var CA={'America/Regina':'SK','America/Swift_Current':'SK','America/Winnipeg':'MB','America/Edmonton':'AB','America/Vancouver':'BC','America/Toronto':'ON','America/Halifax':'NS','America/Glace_Bay':'NS','America/Moncton':'NB','America/St_Johns':'NL','America/Goose_Bay':'NL','America/Whitehorse':'YT','America/Dawson':'YT','America/Yellowknife':'NT','America/Inuvik':'NT','America/Iqaluit':'NU','America/Rankin_Inlet':'NU','America/Cambridge_Bay':'NU'};
     var MX=/^America\/(Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Mazatlan|Bahia_Banderas|Hermosillo|Tijuana)$/;
     var US=/^(America\/(New_York|Detroit|Chicago|Denver|Phoenix|Los_Angeles|Anchorage|Juneau|Sitka|Nome|Boise|Menominee|Indiana\/.+|Kentucky\/.+|North_Dakota\/.+)|Pacific\/Honolulu)$/;
+    if(!NA_CHECKOUT){$('qCt').closest('label').hidden=true;setCountry('CA');if(CA[tz])$('qPv').value=CA[tz];return;}
     if(CA[tz]){setCountry('CA');$('qPv').value=CA[tz];}else if(MX.test(tz))setCountry('MX');else if(US.test(tz))setCountry('US');else setCountry('CA');})();
   $('qCt').addEventListener('change',function(){setCountry(this.value,false);sum();});
   function sum(){
