@@ -166,6 +166,11 @@
     try { if (typeof window.gsBuy === 'function') { window.gsBuy(key); return; } } catch (_) {}
     var a = document.querySelector('[data-k="' + key + '"]'); if (a) a.click();
   }
+  /* 2026-11-09 (Ajax): Amber puts the plan she is explaining on screen (show_plans tool) */
+  function showPlan(key) {
+    if (key) { track('VoiceShowPlan', { plan: key }); setMini(true); }
+    try { window.dispatchEvent(new CustomEvent('adv:showplan', { detail: { plan: key || null } })); } catch (_) {}
+  }
   function pollLive() {
     if (!call || !callId) return;
     fetch(FN, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'live', call_id: callId }) })
@@ -175,7 +180,9 @@
         drawCaps(j.lines);
         if (j.action && j.action.id && j.action.id !== lastAct) {
           lastAct = j.action.id;
-          if (/^bf-(pilot|growth|scale|pro)$/.test(j.action.plan)) openCheckout(j.action.plan);
+          var ap = String(j.action.plan || '');
+          if (/^bf-(pilot|growth|scale|pro)$/.test(ap)) openCheckout(ap);
+          else if (/^show:(all|bf-(pilot|growth|scale|pro))$/.test(ap)) showPlan(ap.slice(5));
         }
       }).catch(function () {})
       .then(function () { if (call && !document.hidden) poll = setTimeout(pollLive, 1800); else if (call) poll = setTimeout(pollLive, 4000); });
@@ -238,6 +245,7 @@
   }
   function end() {
     var c = call; call = null; stopTimers();
+    showPlan(null);
     if (c) { try { c.end(); } catch (_) {} view('ended'); track('VoiceEnd'); }
     else view('idle');
   }

@@ -727,6 +727,19 @@ html body>.cb-fab,html body>.cb{display:none!important}
 html body>.cb-fab{right:18px;bottom:96px;width:54px;height:54px;padding:0!important;gap:0!important;justify-content:center;font-size:0!important;background:#fff;color:var(--accent);box-shadow:0 12px 30px rgba(35,8,53,.22),0 0 0 1px var(--line)}
 html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-fab.pulse::after{display:none}
 @media(max-width:720px){html body>.cb-fab{right:12px;bottom:86px;width:52px;height:52px}}
+.sp{position:fixed;inset:0;z-index:120;background:rgba(20,8,45,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:calc(max(10px,env(safe-area-inset-top)) + 62px) 16px 16px;overscroll-behavior:contain;animation:spIn .25s ease}
+@keyframes spIn{from{opacity:0}to{opacity:1}}
+.sp-in{width:100%;max-width:1180px;max-height:100%;display:flex;flex-direction:column;background:var(--wash,#f6f3ff);border-radius:24px;box-shadow:0 30px 80px -20px rgba(20,5,45,.6);overflow:hidden}
+.sp-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(64,0,243,.12);font-weight:800;font-size:15px;color:var(--ink,#1c0b38)}
+.sp-h small{display:block;font-weight:500;font-size:12.5px;color:var(--muted,#6b6280)}
+.sp-x{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:#1c0b38;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(20,5,45,.15)}
+.sp-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:16px;overflow-y:auto;overscroll-behavior:contain}
+.sp-cards .pl-card{margin:0;transition:opacity .3s,transform .3s}
+.sp-cards.one .pl-card{opacity:.45;transform:scale(.97)}
+.sp-cards.one .pl-card.sp-on{opacity:1;transform:none;box-shadow:0 0 0 3px var(--accent,#4000f3),0 24px 60px -18px rgba(64,0,243,.45)}
+html.sp-lock,html.sp-lock body{overflow:hidden!important}
+@media(max-width:900px){.sp{padding:calc(max(10px,env(safe-area-inset-top)) + 58px) 10px 10px}.sp-cards{grid-template-columns:1fr;padding:12px}.sp-cards.one .pl-card{display:none}.sp-cards.one .pl-card.sp-on{display:block;opacity:1;transform:none}
+  .sp-cards.all{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:88%;overflow-x:auto;overflow-y:auto;scroll-snap-type:x mandatory}.sp-cards.all .pl-card{scroll-snap-align:center}}
 </style>
 <script src="/js/vfull.js?v=20261108a"></script>
 </head>
@@ -1080,6 +1093,30 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
     var all=BFP[seg].concat(FLY),x=all.filter(function(p){return p.key===key;})[0];if(!x)return;
     if(!CARDS[key])planCard(Object.assign({},x));pickKey(key);
     goStage(3);};
+  /* 2026-11-09 (Ajax): when Amber explains the plans she puts them on screen — all four, or the one she is talking
+     about (on a phone only that card shows). The page behind is locked; "Get started" goes straight to checkout. */
+  var SP=null;
+  function spClose(){if(!SP)return;SP.remove();SP=null;document.documentElement.classList.remove('sp-lock');}
+  function spShow(k){
+    var xs=BFP[seg];if(k!=='all'&&!xs.some(function(x){return x.key===k;}))return;
+    var html=xs.map(function(x){return planCard(Object.assign({},x)).replace('class="pl-card','data-sp="'+x.key+'" class="pl-card'+(x.key===k?' sp-on':''));}).join('');
+    var one=k!=='all',nm=one?xs.filter(function(x){return x.key===k;})[0].name:'';
+    if(!SP){SP=document.createElement('div');SP.className='sp';SP.setAttribute('role','dialog');SP.setAttribute('aria-modal','true');
+      SP.addEventListener('click',function(e){
+        if(e.target===SP||e.target.closest('.sp-x')){spClose();return;}
+        var b=e.target.closest('[data-k]');if(b){e.preventDefault();var kk=b.getAttribute('data-k');spClose();window.gsBuy(kk);}
+      });
+      document.body.appendChild(SP);}
+    SP.setAttribute('aria-label',one?nm+' plan':'Our plans');
+    SP.innerHTML='<div class="sp-in"><div class="sp-h"><div>'+(one?esc(nm)+(nm==='Pilot Project'?'':' plan'):'Our plans')+'<small>Amber is walking you through '+(one?'this plan':'the plans')+'</small></div><button type="button" class="sp-x" aria-label="Close">&times;</button></div><div class="sp-cards '+(one?'one':'all')+'">'+html+'</div></div>';
+    [].forEach.call(SP.querySelectorAll('.pl-pa'),function(e){e.textContent=$m(e.getAttribute('data-to'));e.classList.add('pa-done');var c=e.closest('.pl-card');if(c)c.classList.add('pa-shown');});
+    document.documentElement.classList.add('sp-lock');
+    var on=SP.querySelector('.sp-on');if(on&&innerWidth>900)requestAnimationFrame(function(){on.scrollIntoView({block:'nearest',inline:'center'});});
+    var box=SP.querySelector('.sp-cards');if(box&&(!on||innerWidth<=900))box.scrollTop=0;
+  }
+  window.addEventListener('adv:showplan',function(e){var k=e.detail&&e.detail.plan;if(!k)spClose();else spShow(k);});
+  window.addEventListener('adv:checkout',spClose);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')spClose();});
   /* 2026-11-09 (Ajax: "USA is my next target… include North American countries"): Canada = provincial tax;
      United States / Mexico = no Canadian sales tax (business outside Canada); prices stay in CAD. */
   /* phase 1 (Ajax 2026-11-09: "finish it for Canada first… USA in second phase"): NA_CHECKOUT=false keeps the
@@ -1328,7 +1365,7 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
 })();
 </script>
 <script src="/js/visitor.js?v=20261109b" defer></script>
-<script src="/js/amber-voice.js?v=20261109g" defer></script>
+<script src="/js/amber-voice.js?v=20261109h" defer></script>
 <script src="/js/checkout.js?v=20261031a" defer></script>
 <script src="/js/ref.js?v=20261031a"></script>
 <script src="/js/tracking.js?v=20261030d" defer></script>
