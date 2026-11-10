@@ -19,9 +19,18 @@
 
   var css = ''
     /* launcher */
-    + 'html body>.vc-fab{position:fixed;right:18px;bottom:18px;z-index:80;width:auto;height:58px;border-radius:999px;border:0;background:var(--grad,linear-gradient(135deg,#4000f3,#e65afc));color:#fff;box-shadow:0 14px 34px rgba(64,0,243,.4);display:flex;align-items:center;gap:10px;padding:0 22px 0 18px;cursor:pointer;font:800 16px/1 var(--font-body,sans-serif)}'
-    + '.vc-fab svg{width:24px;height:24px}.vc-fab b{white-space:nowrap}'
-    + '.vc-fab.pulse::after{content:"";position:absolute;inset:0;border-radius:999px;box-shadow:0 0 0 0 rgba(122,60,255,.6);animation:vcP 2s infinite}'
+    /* 2026-11-10 (Ajax): round, animated AI orb (like ChatGPT voice) with a "Questions? Let's talk" bubble above it */
+    + 'html body>.vc-fab{position:fixed;right:18px;bottom:18px;z-index:80;width:auto;height:auto;border:0;background:none;box-shadow:none;padding:0;display:flex;flex-direction:column;align-items:flex-end;gap:10px;cursor:pointer;font:600 14px/1.2 var(--font-body,sans-serif);color:#1b1030;-webkit-tap-highlight-color:transparent}'
+    + '.vc-fl{position:relative;background:#fff;border-radius:14px;padding:9px 13px;white-space:nowrap;box-shadow:0 10px 28px -10px rgba(35,8,53,.35);animation:vcIn .5s ease both}'
+    + '.vc-fl:after{content:"";position:absolute;right:26px;bottom:-5px;width:10px;height:10px;background:#fff;transform:rotate(45deg);border-radius:2px}'
+    + '.vc-fo{position:relative;display:block;width:64px;height:64px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 30%,#d58bff 0%,#8a3dff 40%,#4f12e6 72%,#2a0a8a 100%);box-shadow:0 14px 34px rgba(64,0,243,.45);animation:vcFloat 4s ease-in-out infinite,vcRing 2.4s ease-out infinite}'
+    + '.vc-fo i{position:absolute;inset:-35%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.8) 60deg,transparent 120deg,rgba(255,120,240,.95) 200deg,transparent 260deg,rgba(120,210,255,.75) 320deg,transparent 360deg);filter:blur(6px);animation:vcSpin 5s linear infinite;mix-blend-mode:screen}'
+    + '.vc-fo i+i{animation-duration:9s;animation-direction:reverse;opacity:.75}'
+    + '.vc-fo:after{content:"";position:absolute;left:18%;top:12%;width:42%;height:30%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),transparent 70%)}'
+    + '.vc-fab:hover .vc-fo{transform:scale(1.06)}.vc-fab:focus-visible .vc-fo{outline:3px solid #b9a6ec;outline-offset:3px}'
+    + '@keyframes vcSpin{to{transform:rotate(360deg)}}@keyframes vcFloat{50%{transform:translateY(-3px) scale(1.03)}}@keyframes vcIn{from{opacity:0;transform:translateY(6px)}}'
+    + '@keyframes vcRing{0%{box-shadow:0 14px 34px rgba(64,0,243,.45),0 0 0 0 rgba(122,60,255,.45)}80%,100%{box-shadow:0 14px 34px rgba(64,0,243,.45),0 0 0 16px rgba(122,60,255,0)}}'
+    + '@media(prefers-reduced-motion:reduce){.vc-fo,.vc-fo i,.vc-fl{animation:none}}'
     + '@keyframes vcP{70%{box-shadow:0 0 0 16px rgba(122,60,255,0)}100%{box-shadow:0 0 0 0 rgba(122,60,255,0)}}'
     + 'body:not(.unlocked) .vc-fab{display:none}body.vc-open .vc-fab,body.vc-open .cb-fab,body.vc-open .cb-tip,body.vc-mini .vc-fab{display:none!important}'
     + 'body.vc-open{overflow:hidden}'
@@ -64,7 +73,7 @@
     /* chat header shortcut */
     + '.cb-talk{border:0;background:rgba(255,255,255,.14);color:#fff;height:34px;border-radius:999px;padding:0 12px 0 10px;font:800 13px var(--font-body,sans-serif);display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-left:auto}'
     + '.cb-talk svg{width:16px;height:16px}.cb-talk+.cb-x{margin-left:8px}'
-    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:12px;height:56px;padding:0 18px 0 16px;font-size:15px}.vc-cap p{font-size:16px}.vc-rb{width:60px;height:60px}}';
+    + '@media(max-width:720px){html body>.vc-fab{right:12px;bottom:12px}.vc-fo{width:58px;height:58px}.vc-cap p{font-size:16px}.vc-rb{width:60px;height:60px}}';
 
   var I = {
     mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8.5 21h7"/></svg>',
@@ -77,7 +86,7 @@
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   var fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'vc-fab'; fab.setAttribute('aria-label', 'Have questions? Talk to Amber by voice');
-  fab.innerHTML = I.mic + '<b>Have questions? Let\'s talk</b>';
+  fab.innerHTML = '<span class="vc-fl">Questions? Let\'s talk</span><span class="vc-fo" aria-hidden="true"><i></i><i></i></span>';
   var box = document.createElement('div');
   box.className = 'vc'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Talk to Amber');
   box.innerHTML = '<div class="vc-top"><img src="/assets/favicon.svg?v=5" alt=""><div><b>Amber</b><small>Adviuz AI assistant · voice</small></div>'
