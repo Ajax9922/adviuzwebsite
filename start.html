@@ -493,6 +493,8 @@ body[data-view="checkout"] .promo-bar,body[data-view="checkout"] .cb-tip{display
 .cb-f button{border:0;border-radius:999px;background:var(--grad);color:#fff;font:800 14px var(--font-body);padding:0 18px;cursor:pointer}
 .cb-tip{position:fixed;right:18px;bottom:162px;z-index:80;max-width:260px;background:#fff;border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:12px 14px;font-size:14px;line-height:1.4;color:var(--ink);box-shadow:0 16px 40px rgba(35,8,53,.18);cursor:pointer;animation:stIn .5s}
 .cb-tip[hidden]{display:none}
+/* 2026-11-10: the voice orb has its own "Questions? Let's talk" bubble, so the old hint stays hidden */
+html body .cb-tip{display:none!important}
 body[data-stage="1"] .cb-fab,body[data-stage="1"] .cb-tip{display:none}
 .cb-note{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
 @media(max-width:720px){.cb-fab{font-size:0!important;gap:0!important;padding:15px!important}.cb-fab svg{width:26px;height:26px}.cb-tip{right:12px;bottom:150px}
