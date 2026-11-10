@@ -953,6 +953,10 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
   FLY.push({key:'fly-10000',g:'fly',name:'10,000 Flyer Views',consult:1,price:0,list:[{t:'10,000 flyer views',em:'(25-second views)'},{t:'Unlimited flyer editing for 12 months'},{t:'Dedicated campaign planning'},{t:'Package validity: 12 months'}]});
   /* 2026-11-09 (Ajax: $10 test purchase): ?test=1 adds an internal $10 card to Digital Flyers. The server only accepts it while the test switch is on. */
   if(/[?&]test=1(&|$)/.test(location.search))FLY.unshift({key:'test-10',buy:'test10',g:'fly',name:'Test purchase (internal)',price:10,setup:0,list:[{t:'Internal test of the online checkout'},{t:'Refunded after the test'}]});
+  if(/[?&]test=1(&|$)/.test(location.search))(function(){var g=document.getElementById('ppGrid');if(!g)return;var t=document.createElement('div');
+    t.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 16px;padding:14px 18px;border:2px dashed #4000f3;border-radius:16px;background:#f6f3ff;color:#1c0b38';
+    t.innerHTML='<div><b style="display:block;font-size:16px">Test purchase (internal)</b><span style="font-size:13px;color:#6b6280">$10 + tax &middot; only for testing the checkout, refund it after</span></div><button type="button" style="border:0;border-radius:999px;padding:11px 20px;font-weight:800;color:#fff;background:linear-gradient(90deg,#4000f3,#e65afc);cursor:pointer">Buy test &ndash; $10</button>';
+    t.querySelector('button').addEventListener('click',function(){window.gsBuy('test-10');});g.parentNode.insertBefore(t,g);})();
   var DUR={'bf-pilot':'1 week','bf-growth':'1 month','fly-1000':'1 month','bf-scale':'3 months','fly-2500':'3 months','bf-pro':'6 months','fly-5000':'6 months','fly-10000':'1 year'};
   var CLK='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var AI=[{key:'ai-essential',ce:'ce-essential',g:'ai',name:'Essential',for:'For a business with a steady flow of new leads',price:600,setup:300,cap:'Follows up with about <b>400 new leads</b>',allow:'400 AI minutes · 2,000 texts, emails and call minutes',
