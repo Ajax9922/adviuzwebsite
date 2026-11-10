@@ -5,3 +5,6 @@
 /quote        /book         302
 /black-friday  /book?offer=bf  302
 /plans/:code  /plans?ref=:code  302
+# Old buy-online page (old plans) → the live landing page
+/get-started       /start   301
+/get-started.html  /start   301
