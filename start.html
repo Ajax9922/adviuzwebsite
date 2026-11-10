@@ -699,6 +699,9 @@ html,body{overflow-x:hidden}
 .np-tipbox{position:absolute;z-index:200;max-width:260px;background:#230835;color:#fff;font-size:13.5px;line-height:1.45;border-radius:14px;padding:12px 14px;box-shadow:0 16px 40px rgba(35,8,53,.35)}
 .np-tipbox:after{content:"";position:absolute;left:var(--ax,20px);top:-6px;width:12px;height:12px;background:#230835;transform:rotate(45deg)}
 .np-m{display:none}
+.np-wa{opacity:0;transition:opacity .45s}.np-wa.on{opacity:1}
+.np-pa{transition:opacity .3s}.np-pa.np-cut{text-decoration:line-through;text-decoration-thickness:3px;opacity:.5}
+.np-sv0{opacity:0;transform:scale(.92);transition:opacity .4s,transform .4s}.np-sv0.on{opacity:1;transform:none}
 @media(max-width:760px){.np-win,.np-dots{display:none}.np-m{display:block}#ppGrid.np{padding:16px 12px 18px}
  .np-c{text-align:left;border:1.5px solid #ece6f8;background:#fff;border-radius:24px;padding:22px 18px;margin-bottom:20px;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
  .np-c.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;box-shadow:0 20px 50px -20px rgba(64,0,243,.4)}
@@ -735,6 +738,16 @@ html body>.cb-fab svg{stroke:var(--accent);width:24px;height:24px}html body>.cb-
 .sp-x{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:#1c0b38;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(20,5,45,.15)}
 .sp-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:16px;overflow-y:auto;overscroll-behavior:contain}
 .sp-cards .pl-card{margin:0;transition:opacity .3s,transform .3s}
+.sp .np-c{text-align:left;border:1.5px solid #ece6f8;background:#fff;border-radius:22px;padding:20px 16px;box-shadow:0 14px 34px -18px rgba(35,8,53,.25)}
+.sp .np-c.hl{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box}
+.sp .np-ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.sp .np-ch h3{margin:0;font-size:22px}
+.sp .np-cp{text-align:right}.sp .np-cp s{color:#9a8fb8;font-size:13px}.sp .np-cp b{display:block;font-size:28px;letter-spacing:-.02em;line-height:1.05}.sp .np-cp small{font-size:12px;color:var(--muted)}
+.sp .np-save{display:inline-block;margin:12px 0 4px;font-size:13.5px;font-weight:800;color:#16a34a;background:#e9f9ef;border-radius:999px;padding:6px 12px}
+.sp .np-rows{list-style:none;margin:8px 0 16px;padding:0}.sp .np-rows li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #ece6f8;font-size:14px}
+.sp .np-rows li span:first-child{color:var(--muted)}.sp .np-rows li span:last-child{font-weight:700;text-align:right;white-space:nowrap}
+.sp .np-c .np-btn{display:block;text-align:center;text-decoration:none;border-radius:999px;font-weight:800;padding:13px;font-size:15px;background:var(--grad);color:#fff;border:0}
+.sp .np-c .np-btn.o{background:#fff;color:#4b0fe0;border:1.5px solid #ddd0fa}
+.sp .np-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:5px 10px;margin-bottom:6px}
 .sp-cards.one .pl-card{opacity:.45;transform:scale(.97)}
 .sp-cards.one .pl-card.sp-on{opacity:1;transform:none;box-shadow:0 0 0 3px var(--accent,#4000f3),0 24px 60px -18px rgba(64,0,243,.45)}
 html.sp-lock,html.sp-lock body{overflow:hidden!important}
@@ -1038,15 +1051,15 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
     var ROWS=[['users','Estimated distribution*',function(p){return p.dist;}],['eye','Flyer views (25-second views)',function(p){return f(p.v);}],['pen','First flyer design',function(){return 'Included';},1],['loop','Unlimited design editing',function(p){return p.ed;}],['bot','AI Conversion Engine',function(){return 'Full access';},1],['clock','AI minutes',function(p){return f(p.ai);}],['msg','Texts, emails &amp; call minutes (each)',function(p){return f(p.msg);}],['gear','Setup ($600 value)',function(){return 'Included';},1],['cal','Typically used over',function(p){return p.use;}],['shield','Recharge validity',function(p){return '<b>'+p.val+'</b>';}]];
     var btn=function(p,cls){return p.cons?'<a class="np-btn'+cls+'" href="/book?solution=both" target="_blank" rel="noopener">Contact us</a>':'<a class="np-btn'+cls+'" href="#buy" data-k="'+p.key+'">'+(p.lim?'Start the Pilot':'Choose '+p.n)+'</a>';};
     var tags=function(p){return p.rec?'<span class="np-tag np-rec">RECOMMENDED</span>':p.lim?'<span class="np-tag np-lim">LIMITED PERIOD</span>':'<span class="np-tag" style="visibility:hidden">-</span>';};
-    var price=function(p){return p.cons?'<div class="np-was" style="text-decoration:none">Custom pricing</div><div class="np-pr np-cons">Contact us</div>':'<div class="np-was">'+$m(p.was)+'</div><div class="np-pr">'+$m(p.pr)+'</div>';};
+    var price=function(p){return p.cons?'<div class="np-was" style="text-decoration:none">Custom pricing</div><div class="np-pr np-cons">Contact us</div>':'<div class="np-was np-wa">'+$m(p.was)+'</div><div class="np-pr np-pa" data-from="'+p.was+'" data-to="'+p.pr+'">'+$m(p.was)+'</div>';};
     var t='<div class="np-win"><button type="button" class="np-arw prev" aria-label="Previous plans">&#8249;</button><table class="np-t"><thead><tr><th class="l"></th>'
       +P.map(function(p,i){return '<th class="p'+i+'">'+tags(p)+'<p class="np-n">'+p.n+'</p>'+price(p)+'</th>';}).join('')+'</tr></thead><tbody>';
     ROWS.forEach(function(r){t+='<tr><td class="l"><i class="np-ic"><svg viewBox="0 0 24 24">'+IC[r[0]]+'</svg></i>'+TL(r[1])+'</td>'+P.map(function(p,i){return '<td class="p'+i+(r[3]?' y':'')+'">'+r[2](p)+'</td>';}).join('')+'</tr>';});
     t+='<tr class="np-sv"><td class="l"><i class="np-ic"><svg viewBox="0 0 24 24">'+IC.tag+'</svg></i>You save</td>'+P.map(function(p,i){return '<td class="p'+i+'">'+(p.cons?'Ask us':$m(p.save))+'</td>';}).join('')+'</tr>';
     t+='<tr><td class="l"></td>'+P.map(function(p,i){return '<td class="p'+i+'">'+btn(p,'')+'</td>';}).join('')+'</tr></tbody></table><button type="button" class="np-arw next" aria-label="More plans">&#8250;</button></div><div class="np-dots"></div>';
     var MR=function(p){return [['Estimated distribution*',p.dist],['Flyer views (25-second views)',f(p.v)],['First flyer design','Included',1],['Unlimited design editing',p.ed],['AI Conversion Engine','Full access',1],['AI minutes',f(p.ai)],['Texts, emails & call minutes',f(p.msg)+' each'],['Setup ($600 value)','Included',1],['Typically used over',p.use],['Recharge validity',p.val]];};
-    var m='<div class="np-m">'+P.map(function(p){return '<div class="np-c'+(p.rec?' hl':'')+'"><div class="np-ch"><div>'+(p.rec?'<span class="np-tag np-rec">RECOMMENDED</span>':p.lim?'<span class="np-tag np-lim">LIMITED PERIOD</span>':'')+'<h3>'+p.n+'</h3></div><div class="np-cp">'+(p.cons?'<s style="text-decoration:none">Custom pricing</s><b style="font-size:24px">Contact us</b>':'<s>'+$m(p.was)+'</s><b>'+$m(p.pr)+'</b><small>CAD + tax</small>')+'</div></div>'
-      +(p.cons?'':'<span class="np-save">You save '+$m(p.save)+'</span>')+'<ul class="np-rows">'+MR(p).map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="y"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'+btn(p,p.rec?'':' o')+'</div>';}).join('')+'</div>';
+    var m='<div class="np-m">'+P.map(function(p){return '<div class="np-c'+(p.rec?' hl':'')+'"><div class="np-ch"><div>'+(p.rec?'<span class="np-tag np-rec">RECOMMENDED</span>':p.lim?'<span class="np-tag np-lim">LIMITED PERIOD</span>':'')+'<h3>'+p.n+'</h3></div><div class="np-cp">'+(p.cons?'<s style="text-decoration:none">Custom pricing</s><b style="font-size:24px">Contact us</b>':'<s class="np-wa">'+$m(p.was)+'</s><b class="np-pa" data-from="'+p.was+'" data-to="'+p.pr+'">'+$m(p.was)+'</b><small>CAD + tax</small>')+'</div></div>'
+      +(p.cons?'':'<span class="np-save np-sv0">You save '+$m(p.save)+'</span>')+'<ul class="np-rows">'+MR(p).map(function(r){return '<li><span>'+TL(r[0])+'</span><span'+(r[2]?' class="y"':'')+'>'+r[1]+'</span></li>';}).join('')+'</ul>'+btn(p,p.rec?'':' o')+'</div>';}).join('')+'</div>';
     return t+m+'<p class="np-fine">Prices in CAD + tax · Prepaid · $0 monthly'+(BF?' · Black Friday prices end Nov 30':'')+'<br>*Estimated distribution is an estimate of how many people may see your flyer (typically 50–100× your flyer views). It depends on your audience, offer and market, and is not guaranteed.</p>';
   }
   function npWire(g){
@@ -1065,7 +1078,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
     document.getElementById('ppSeg').hidden=tab!=='bf';
     var xs=tab==='bf'?BFP[seg].filter(function(x){return x.key!=='bf-pilot';}):tab==='fly'?FLY:AI;
     grid.className='pp-grid';
-    if(tab==='bf'){BFP[seg].forEach(function(x){planCard(Object.assign({},x));});grid.className='np';grid.innerHTML=npRender(seg);npWire(grid);}
+    if(tab==='bf'){BFP[seg].forEach(function(x){planCard(Object.assign({},x));});grid.className='np';grid.innerHTML=npRender(seg);npWire(grid);npAnim(grid);}
     else grid.innerHTML=xs.map(planCard).join('');
     var pz=document.getElementById('ppPilot');if(tab==='bf'&&pz){pz.innerHTML='';pz=null;}
     if(pz&&tab==='bf'){pz.innerHTML='<div class="pilot2"><p class="pilot2-k">Not sure yet? Try it first</p>'+planCard(Object.assign({},BFP[seg][0]))+'</div>';}
@@ -1074,6 +1087,22 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
     if(!sel||(!CARDS[sel.key]))pickKey(tab==='ai'?'bf-scale':xs.filter(function(x){return x.rec;})[0].key,true);
     else if(sel.g==='bf'&&tab==='bf')pickKey(sel.key,true);
   }
+  /* 2026-11-10 (Ajax: "the animation of pricing lowering down was good"): plan table + phone cards open at the
+     full value, strike it, then count down to today's price; the struck value and "You save" appear after. */
+  function npAnim(root){
+    var els=[].slice.call(root.querySelectorAll('.np-pa:not(.pa-done)'));
+    var done=function(e){e.textContent=$m(e.getAttribute('data-to'));e.classList.remove('np-cut');e.classList.add('pa-done');
+      var box=e.closest('.np-c')||e.closest('th');if(box){[].forEach.call(box.querySelectorAll('.np-wa,.np-sv0'),function(x){x.classList.add('on');});}};
+    var reduce=false;try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(_){}
+    if(reduce||!('IntersectionObserver' in window)){els.forEach(done);return;}
+    var run=function(e){if(e._pa)return;e._pa=1;setTimeout(function(){e.classList.add('np-cut');},300);
+      setTimeout(function(){var a=Number(e.getAttribute('data-from')),b=Number(e.getAttribute('data-to')),t0=null,D=900;e.classList.remove('np-cut');
+        var box=e.closest('.np-c')||e.closest('th');if(box){var w=box.querySelector('.np-wa');if(w)w.classList.add('on');}
+        (function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/D),q=1-Math.pow(1-k,3);e.textContent=$m(Math.round(a+(b-a)*q));if(k<1)requestAnimationFrame(step);else done(e);})(performance.now());},1100);};
+    var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){io.unobserve(x.target);run(x.target);}});},{threshold:.6});
+    els.forEach(function(e){io.observe(e);});
+  }
+  window.advNpAnim=npAnim;
   function priceAnim(){
     var els=[].slice.call(document.querySelectorAll('#ppGrid .pl-pa:not(.pa-done),#ppPilot .pl-pa:not(.pa-done)'));
     var finish=function(e){e.textContent=$m(e.getAttribute('data-to'));e.classList.remove('pa-cut');e.classList.add('pa-done');var c=e.closest('.pl-card');if(c)c.classList.add('pa-shown');};
@@ -1103,7 +1132,10 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
   function spClose(){if(!SP)return;SP.remove();SP=null;document.documentElement.classList.remove('sp-lock');}
   function spShow(k){
     var xs=BFP[seg];if(k!=='all'&&!xs.some(function(x){return x.key===k;}))return;
-    var html=xs.map(function(x){return planCard(Object.assign({},x)).replace('class="pl-card','data-sp="'+x.key+'" class="pl-card'+(x.key===k?' sp-on':''));}).join('');
+    /* 2026-11-10: the same cards as the plan table on phones (np-c), with the price-drop animation */
+    xs.forEach(function(x){planCard(Object.assign({},x));});
+    var tmp=document.createElement('div');tmp.innerHTML=npRender(seg);
+    var html=[].slice.call(tmp.querySelectorAll('.np-m .np-c')).slice(0,xs.length).map(function(c,i){c.classList.add('pl-card');c.setAttribute('data-sp',xs[i].key);if(xs[i].key===k)c.classList.add('sp-on');return c.outerHTML;}).join('');
     var one=k!=='all',nm=one?xs.filter(function(x){return x.key===k;})[0].name:'';
     if(!SP){SP=document.createElement('div');SP.className='sp';SP.setAttribute('role','dialog');SP.setAttribute('aria-modal','true');
       SP.addEventListener('click',function(e){
@@ -1113,7 +1145,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
       document.body.appendChild(SP);}
     SP.setAttribute('aria-label',one?nm+' plan':'Our plans');
     SP.innerHTML='<div class="sp-in"><div class="sp-h"><div>'+(one?esc(nm)+(nm==='Pilot Project'?'':' plan'):'Our plans')+'<small>Amber is walking you through '+(one?'this plan':'the plans')+'</small></div><button type="button" class="sp-x" aria-label="Close">&times;</button></div><div class="sp-cards '+(one?'one':'all')+'">'+html+'</div></div>';
-    [].forEach.call(SP.querySelectorAll('.pl-pa'),function(e){e.textContent=$m(e.getAttribute('data-to'));e.classList.add('pa-done');var c=e.closest('.pl-card');if(c)c.classList.add('pa-shown');});
+    npAnim(SP);
     document.documentElement.classList.add('sp-lock');
     var on=SP.querySelector('.sp-on');if(on&&innerWidth>900)requestAnimationFrame(function(){on.scrollIntoView({block:'nearest',inline:'center'});});
     var box=SP.querySelector('.sp-cards');if(box&&(!on||innerWidth<=900))box.scrollTop=0;
