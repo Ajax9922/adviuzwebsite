@@ -153,7 +153,7 @@ input:focus,select:focus{border-color:#7a3bff;box-shadow:0 0 0 4px rgba(122,59,2
       })
       .catch(function (e) { btn.disabled = false; btn.textContent = 'Continue to secure payment →'; showErr(e.message + ' You can also call +1 647 250 1152.'); });
   }
-  if (!/^(growth|scale|pro|pilot)$/.test(planKey) || !/^(b2b|b2c)$/.test(seg)) { fail('This link is missing the plan.'); return; }
+  if (!/^[a-z0-9]{2,20}$/.test(planKey) || !/^(b2b|b2c)$/.test(seg)) { fail('This link is missing the plan.'); return; }
   fetch(API + '?plan=' + planKey + '&seg=' + seg).then(function (r) { return r.json(); }).then(function (j) {
     if (!j || !j.plan) throw new Error((j && j.error) || 'Plan not found.');
     P = j.plan; PROVS = j.provinces || []; render();
