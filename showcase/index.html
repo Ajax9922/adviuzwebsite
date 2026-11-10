@@ -72,7 +72,7 @@ button,input,select{font:inherit;color:inherit}
   var CROP_PHONE=40, CROP_DESKTOP=50;
   /* Phones: enlarge the design so its white side margins are trimmed away.
      Fine-tune here, or test with ?zoom=1.3 in the address bar (1 = no zoom). */
-  var ZOOM_PHONE=1.37;
+  var ZOOM_PHONE=1; /* 2026-11-09: was 1.37, which cut off the right side of some designs on phones */
   var HOST='https://adviuz.wixsite.com/';
 
   /* 2026-11-09 (Ajax): public, Google-style — no totals or counts; latest designs first; forms switched off in the viewer */
