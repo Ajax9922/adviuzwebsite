@@ -1,4 +1,6 @@
-/* adv-plans.js (2026-11-10, Ajax: "I like the html ... Yes go ahead")
+/* adv-plans.js v2 (2026-11-12, Ajax: blank gap on the Ultra/Enterprise page): the empty 'You save' placeholder used the class
+   'ph', which the landing page also uses for its phone mockup (700px tall). Renamed to 'ap-ph' so page styles can't reach it.
+   adv-plans.js (2026-11-10, Ajax: "I like the html ... Yes go ahead")
    One shared plan table for adviuz.com/start, Amber's on-screen plans and hub proposals (same file in both repos:
    adviuzwebsite/js/adv-plans.js and adviuz/assets/adv-plans.js — keep them identical).
    Wide containers: comparison table, 3 plans at a time (arrows + dots), payment button under each price,
@@ -79,7 +81,7 @@
     + '.ap-rec{background:var(--ap-grad);color:#fff}.ap-lim{background:#ffe8f0;color:#b4235a}.ap-tno{visibility:hidden}'
     + '.ap-pn{font-size:18px;font-weight:600;margin-bottom:6px}.ap-was{font-size:13px;color:#9a8fb8;text-decoration:line-through;opacity:0;transition:opacity .45s}.ap-was.on{opacity:1}'
     + '.ap-pr{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.1}.ap-pr.cut{text-decoration:line-through;text-decoration-thickness:2px;opacity:.5}.ap-pr.ap-cons{font-size:24px;font-weight:600}'
-    + '.ap-tax{font-size:12px;color:var(--ap-sub);margin-top:2px}.ap-save{display:inline-block;margin:10px 0 12px;font-size:12.5px;font-weight:600;color:var(--ap-green);background:#e9f9ef;border-radius:999px;padding:4px 10px;opacity:0;transform:scale(.92);transition:.4s}.ap-save.on{opacity:1;transform:none}.ap-save.ph{visibility:hidden}'
+    + '.ap-tax{font-size:12px;color:var(--ap-sub);margin-top:2px}.ap-save{display:inline-block;margin:10px 0 12px;font-size:12.5px;font-weight:600;color:var(--ap-green);background:#e9f9ef;border-radius:999px;padding:4px 10px;opacity:0;transform:scale(.92);transition:.4s}.ap-save.on{opacity:1;transform:none}.ap-save.ap-ph{visibility:hidden}'
     + '.ap-btn{display:block;width:100%;max-width:190px;margin:0 auto;text-align:center;text-decoration:none;font-weight:600;font-size:14.5px;padding:11px 14px;border-radius:999px;border:1.5px solid #ddd0fa;color:#4b0fe0;background:#fff;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:inherit}'
     + '.ap-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(64,0,243,.6)}.ap-btn[disabled]{opacity:.6}'
     + '.ap .ap-mid{background:#fff;box-shadow:-1px 0 0 #e2d6fb,1px 0 0 #e2d6fb}.ap .ap-mid .ap-btn{background:var(--ap-grad);border-color:transparent;color:#fff}'
@@ -176,7 +178,7 @@
     var P = build(o), V = 3, pg = 0, PG = []; for (var q = 0; q < P.length; q += V) PG.push(Math.min(q, P.length - V));
     var head = function (p, i) {
       return '<th class="ap-p' + i + '">' + (p.tag ? TAG(p.tag) : '<span class="ap-tag ap-tno">-</span>') + '<div class="ap-pn">' + esc(p.n) + '</div>'
-        + (p.cons ? '<div class="ap-was on" style="text-decoration:none">Custom pricing</div><div class="ap-pr ap-cons">Contact us</div><div class="ap-tax">For $50,000+ plans</div><span class="ap-save ph">-</span>'
+        + (p.cons ? '<div class="ap-was on" style="text-decoration:none">Custom pricing</div><div class="ap-pr ap-cons">Contact us</div><div class="ap-tax">For $50,000+ plans</div><span class="ap-save ap-ph">-</span>'
           : '<div class="ap-was">' + $m(p.was) + '</div><div class="ap-pr ap-pa" data-from="' + p.was + '" data-to="' + p.pr + '">' + $m(p.was) + '</div><div class="ap-tax">CAD + tax, one-time</div><span class="ap-save">You save ' + $m(p.was - p.pr) + '</span>')
         + btn(p, o) + '</th>';
     };
