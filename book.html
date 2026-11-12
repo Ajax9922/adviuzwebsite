@@ -257,8 +257,11 @@
   function dk(y,m,d){return y+'-'+('0'+(m+1)).slice(-2)+'-'+('0'+d).slice(-2);}
 
   function api(body){
-    return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-      .then(function(r){return r.json().then(function(j){return j||{};});});
+    // speed-1: text/plain is a 'simple' request, so the browser skips the extra pre-check round trip
+    var plain=function(){return fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){return j||{};});});};
+    var asJson=function(){return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){return j||{};});});};
+    // safety net: if the quick request is ever refused, ask again the old way
+    return plain().then(function(j){ return (j && (j.ok || j.error)) ? j : asJson(); }, function(){ return asJson(); });
   }
   function brand(){
     if(info&&info.business)document.title=(info.already_booked?'Your appointment — ':'Book — ')+info.business;
@@ -309,7 +312,8 @@
     el('bpTimes').innerHTML='<div class="bp-skel" style="width:100%"></div>';
     el('bpDayLabel').textContent='AVAILABLE TIMES';el('bpTzNote').textContent='';
     show('vSlots');
-    api({t:t,action:'slots'}).then(function(j){
+    var _sp=window._slotsPre; window._slotsPre=null;
+    (_sp||api({t:t,action:'slots'})).then(function(j){
       if(!j.ok){err('slotsErr',apiMsg(j.error));el('bpTimes').innerHTML='';el('bpCalMonth').textContent='';return;}
       days=(j.days||[]).filter(function(d){return d&&d.date&&Array.isArray(d.slots)&&d.slots.length;});
       byDate={};days.forEach(function(d){byDate[d.date]=d;});
@@ -402,6 +406,8 @@
 
   function reload(){
     show('vLoad');
+    // speed-1: ask for the free times at the same moment as the page info, not after it
+    try{ window._slotsPre=api({t:t,action:'slots'}); window._slotsPre.catch(function(){}); }catch(e){ window._slotsPre=null; }
     api({t:t,action:'info'}).then(function(j){
       if(!j.ok){info=j;hardErr(j.error);return;}
       // booking links open straight on the calendar when nothing is booked yet (Ajax 2026-11-11)
