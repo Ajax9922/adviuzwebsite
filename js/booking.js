@@ -489,7 +489,7 @@ function runWizard(){
           message:'Interested in: '+sols.join(' + ')+(/[?&]offer=bf/.test(location.search)?' · Black Friday offer':''),
           website:form.querySelector('[name=website]').value,
           ref:(window.advRef?window.advRef():''),
-          page:location.pathname
+          page:location.pathname+((window.advRef&&window.advRef())?'?ref='+encodeURIComponent(window.advRef()):'')
         })
       });
       const out=await res.json().catch(()=>({}));
@@ -601,7 +601,7 @@ function bindContact(){
           terms_accepted:(termsEl?termsEl.checked:undefined),
           terms_version:(termsEl?'partner-terms-2026-10-31':undefined),
           ref:(window.advRef?window.advRef():''),
-          page:location.pathname
+          page:location.pathname+((window.advRef&&window.advRef())?'?ref='+encodeURIComponent(window.advRef()):'')
         })
       });
       var out=await res.json().catch(function(){return {};});

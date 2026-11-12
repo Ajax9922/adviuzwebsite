@@ -1233,7 +1233,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
     if(!$('qCk').checked)return err.textContent='Please tick the box so we can contact you about your order.';
     go.disabled=true;go.textContent='Opening secure payment…';
     var val=sel.price+(sel.setup||0);
-    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:sel.buy,seg:sel.g==='fly'?'b2c':seg,name:v('qNm'),business:v('qBz'),email:v('qEm'),phone:v('qPh'),country:ct,province:ct==='MX'?'':v('qPv'),consent:true,website:v('qWs')})})
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:sel.buy,seg:sel.g==='fly'?'b2c':seg,name:v('qNm'),business:v('qBz'),email:v('qEm'),phone:v('qPh'),country:ct,province:ct==='MX'?'':v('qPv'),consent:true,website:v('qWs'),ref:(window.advRef?window.advRef():'')})})
       .then(function(r){return r.json();}).then(function(j){
         if(!j||!j.ok||!j.url)throw new Error((j&&j.error)||'Something went wrong. Please call +1 647 250 1152.');
         try{if(window.fbq)fbq('track','InitiateCheckout',{currency:'CAD',value:val});if(window.gtag)gtag('event','begin_checkout',{currency:'CAD',value:val});}catch(_){}
@@ -1361,7 +1361,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
         var ck=document.getElementById('qCk');if(ck)ck.checked=true;
         try{if(window.fbq)fbq('track','Lead',{content_name:'start-'+seg});if(window.gtag)gtag('event','generate_lead',{audience:seg});}catch(_){}
         goView('plans');};
-      var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:location.href.split('#')[0],
+      var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:(function(){var u=location.href.split('#')[0],r=window.advRef?window.advRef():'';return r&&!/[?&]ref=/.test(u)?u+(u.indexOf('?')<0?'?':'&')+'ref='+encodeURIComponent(r):u;})(),ref:(window.advRef?window.advRef():''),
         message:'Watched the how-it-works video on adviuz.com/start · Advertises to: '+(seg==='b2b'?'Business owners (B2B)':'Consumers (B2C)')+' · Interested in: Digital Flyers + AI Conversion Engine'};
       var t=setTimeout(done,6000);
       fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;if(window.advTrack)window.advTrack('lead',j.lead_id);try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* they are on the page and can talk to Amber here: no automatic AI call for 60 minutes */fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'hold',lead:j.lead_id}),keepalive:true}).catch(function(){});}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
