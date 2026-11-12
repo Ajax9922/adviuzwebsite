@@ -304,7 +304,7 @@
   function openSlots(){
     clearErrs();pick=null;confirmBtn(false);
     el('slotsH').textContent=rescheduling?'Pick a new time':'Pick a time';
-    el('slotsSub').textContent='with '+info.business;
+    el('slotsSub').textContent=(info.first?'Hi '+info.first+' \u00b7 ':'')+'with '+info.business;
     el('bpCalGrid').innerHTML='';el('bpCalMonth').textContent='Loading…';
     el('bpTimes').innerHTML='<div class="bp-skel" style="width:100%"></div>';
     el('bpDayLabel').textContent='AVAILABLE TIMES';el('bpTzNote').textContent='';
@@ -404,7 +404,8 @@
     show('vLoad');
     api({t:t,action:'info'}).then(function(j){
       if(!j.ok){info=j;hardErr(j.error);return;}
-      info=j;home();
+      // booking links open straight on the calendar when nothing is booked yet (Ajax 2026-11-11)
+      info=j;home();if(!info.already_booked){rescheduling=false;openSlots();}
     }).catch(function(){hardErr('network');});
   }
 
