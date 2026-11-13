@@ -9,6 +9,9 @@
 /plans/:code  /plans?ref=:code  302
 # Partner landing page link: adviuz.com/s/CODE opens the landing page credited to that partner
 /s/:code      /start?ref=:code   302
+# Short personal landing link (Ajax 2026-11-13: "shorten the link for sms"): adviuz.com/w/<12-char code> opens
+# that lead's own landing page (same as /start?lead=<id>), so their journey is tracked and checkout is pre-filled
+/w/:code      /start?lead=:code  302
 # Old buy-online page (old plans) → the live landing page
 /get-started       /start   301
 /get-started.html  /start   301

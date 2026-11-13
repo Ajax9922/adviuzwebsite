@@ -105,7 +105,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function leadId() {
     if (window.ADV_LEAD) return String(window.ADV_LEAD);
-    try { var q = new URLSearchParams(location.search).get('lead'); if (q) return q; } catch (_) {}
+    try { var q = new URLSearchParams(location.search).get('lead'); if (q && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q)) return q; } catch (_) {} /* a short /w/ code is turned into the full id by visitor.js (ADV_LEAD / adv_lead) */
     try { var ss = sessionStorage.getItem('adv_lead'); if (ss) return ss; } catch (_) {}
     return '';
   }
