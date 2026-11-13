@@ -1,3 +1,5 @@
+# Short personal booking link (Ajax 2026-11-12): adviuz.com/b/<12-char code> opens that lead's booking page
+/b/:code       /book?t=:code   302
 # Partner links: adviuz.com/p/CODE opens the site credited to that partner
 /p/:code      /?ref=:code   302
 /r/:code      /?ref=:code   302
