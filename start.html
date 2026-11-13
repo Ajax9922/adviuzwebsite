@@ -1274,7 +1274,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
   function knownVisitor(d){if(d&&d.lead_id){info=true;document.documentElement.classList.add('known-lead');}}
   if(window.ADV_VISITOR)knownVisitor(window.ADV_VISITOR);window.addEventListener('adv:visitor',function(e){knownVisitor(e.detail);});
   var tall=matchMedia('(max-width:760px), (orientation:portrait) and (max-width:1024px)').matches;
-  function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
+  function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}/* lp-journey (2026-11-13): the same steps go to the hub's Landing page journey */try{var T=window.advTrack;if(T){if(n==='VideoPlay')T('video','0');else if(n==='VideoProgress')T('video',String(p&&p.percent));else if(n==='WatchedVideo')T('video','100');else if(n==='PickAudience')T('aud',p&&p.audience);else if(n==='ViewPlans')T('plans');}}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
   var nx=document.getElementById('nx'),nxT=document.getElementById('nxT'),nxB=document.getElementById('nxBar');
   function fmtLeft(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
@@ -1364,7 +1364,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
       var body={name:g('iNm'),business:g('iBz'),email:g('iEm'),phone:g('iPh'),consent:true,website:g('iWs'),page:(function(){var u=location.href.split('#')[0],r=window.advRef?window.advRef():'';return r&&!/[?&]ref=/.test(u)?u+(u.indexOf('?')<0?'?':'&')+'ref='+encodeURIComponent(r):u;})(),ref:(window.advRef?window.advRef():''),
         message:'Watched the how-it-works video on adviuz.com/start · Advertises to: '+(seg==='b2b'?'Business owners (B2B)':'Consumers (B2C)')+' · Interested in: Digital Flyers + AI Conversion Engine'};
       var t=setTimeout(done,6000);
-      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;if(window.advTrack)window.advTrack('lead',j.lead_id);try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* they are on the page and can talk to Amber here: no automatic AI call for 60 minutes */fetch('https://crhvvfomwkrgwlnfruad.supabase.co/functions/v1/website-voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'hold',lead:j.lead_id}),keepalive:true}).catch(function(){});}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
+      fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json();}).then(function(j){if(j&&j.lead_id){window.ADV_LEAD=j.lead_id;if(window.advTrack)window.advTrack('lead',j.lead_id);try{sessionStorage.setItem('adv_lead',j.lead_id);sessionStorage.setItem('adv_name',g('iNm'));}catch(_){}/* lp-call-timing (2026-11-13, Ajax): the 60-minute hold is gone — the hub calls 10 min after the form, or 15 min after checkout */}}).catch(function(){}).then(function(){clearTimeout(t);if(!info)done();});
     });})();
   document.getElementById('plChange').addEventListener('click',function(){goView('ask');});
   /* Pilot Project highlight -> checkout */
