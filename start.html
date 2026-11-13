@@ -1277,7 +1277,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
   function track(n,p){try{if(window.fbq)fbq('trackCustom',n,p||{});if(window.gtag)gtag('event',n,p||{});}catch(_){}}
   var KEY='adviuz_hiw_done',unlocked=false;
   var nx=document.getElementById('nx'),nxT=document.getElementById('nxT'),nxB=document.getElementById('nxBar');
-  function fmt(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+  function fmtLeft(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
   /* video finished: the "next step" button unlocks under the phone */
   function ready(scroll){
     if(!unlocked){unlocked=true;nx.classList.add('ready');try{sessionStorage.setItem(KEY,'1');}catch(_){}}
@@ -1314,7 +1314,7 @@ html.sp-lock,html.sp-lock body{overflow:hidden!important}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&big)goSmall();});
   document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&big)goSmall();});
   v.addEventListener('timeupdate',function(){var d=v.duration||133,p=v.duration?v.currentTime/v.duration*100:0;
-    if(!unlocked){nxT.textContent=fmt(d-v.currentTime)+' left';nxB.style.width=Math.min(100,v.currentTime/d*100)+'%';}for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
+    if(!unlocked){nxT.textContent=fmtLeft(d-v.currentTime)+' left';nxB.style.width=Math.min(100,v.currentTime/d*100)+'%';}for(var k in marks)if(!marks[k]&&p>=k){marks[k]=1;track('VideoProgress',{percent:+k});}});
   v.addEventListener('ended',function(){track('WatchedVideo');goSmall();ph.classList.add('done');ready(true);});
   document.getElementById('phAgain').addEventListener('click',function(e){e.stopPropagation();ph.classList.remove('done');v.currentTime=0;start();});
   document.getElementById('phNext').addEventListener('click',function(e){e.stopPropagation();unlock();});
